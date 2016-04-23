@@ -30,7 +30,7 @@ class SearchBar extends Component {
     // ---------------------------------------------
 
     _getQuery() {
-        return { term: this._input.value.trim() };
+        return { term: this._input.value };
     }
 
     _handleInputChange() {
@@ -42,7 +42,8 @@ class SearchBar extends Component {
 
         const query = this._getQuery();
 
-        query.term && this.props.dispatch(runQuery(this._getQuery()));
+        query.term = query.term.trim();
+        query.term && this.props.dispatch(runQuery(query));
     }
 }
 
