@@ -29,16 +29,25 @@
     width: 50px;
     padding: 0;
     border: 0;
-    background: transparent;
+    outline: 0;
+    background-color: transparent;
     border-radius: 2px;
     color: #999;
+    cursor: pointer;
     transition: all 0.1s ease;
 }
 
-.search-box-component .search-input input:focus ~ button,
-.search-box-component .search-input button:focus {
+.search-box-component .search-input input:focus ~ button {
     background-color: #5b9e4d;
     color: #fff;
+    cursor: pointer;
+}
+
+.search-box-component .search-input button:focus,
+.search-box-component .search-input input:focus ~ button:hover {
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
 }
 
 .search-box-component .search-input button i {

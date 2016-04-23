@@ -7,6 +7,7 @@ import parameters from './parameters.json';
 const config = {
     api: {
         url: parameters.apiUrl,
+        timeout: 15000,
     },
 };
 

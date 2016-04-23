@@ -10,7 +10,7 @@ function updateQuery(state, action) {
     };
 }
 
-function resetQueryTerm(state, action) {
+function resetQueryTerm(state) {
     return {
         ...state,
         query: {
