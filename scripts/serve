@@ -1,0 +1,108 @@
+#!/usr/bin/env node
+
+'use strict';
+
+const yargs = require('yargs');
+const webpack = require('webpack');
+const planify = require('planify');
+const WebpackDevServer = require('webpack-dev-server');
+const validator = require('./common/validator');
+const web = require('./common/web');
+const webpackConfig = require('../config/webpack.config.js');
+const parameters = require('../config/parameters.json');
+
+// ---------------------------------------------------------
+// CLI definition
+// ---------------------------------------------------------
+
+const argv = yargs
+.strict()
+.wrap(Math.min(120, yargs.terminalWidth()))
+.help('help').alias('help', 'h')
+.usage('Usage: ./$0 [options]')
+.demand(0, 0)
+.option('env', {
+    alias: 'e',
+    type: 'string',
+    default: 'dev',
+    describe: 'The environment',
+})
+.option('address', {
+    alias: 'a',
+    type: 'number',
+    default: 'localhost',
+})
+.option('port', {
+    alias: 'p',
+    type: 'number',
+    default: 8080,
+})
+.option('reporter', {
+    alias: ['r', 'R'],
+    type: 'string',
+    describe: 'Any of the planify\'s reporters',
+})
+.example('$0', 'Serves the application for the dev environment')
+.example('$0 --env prod', 'Serves the application for the prod environment')
+.example('$0 --env staging --port 8081 --address 0.0.0.0', 'Serves the application for the staging \
+environment on all network interfaces in port 8081')
+.argv;
+
+// ---------------------------------------------------------
+// Functions
+// ---------------------------------------------------------
+
+function prepareWeb() {
+    if (argv.env === 'dev') {
+        web.cleanBuild();
+        web.generateIndex({
+            env: argv.env,
+            hash: null,
+            parameters,
+        });
+    } else {
+        validator.validateBuild();
+    }
+}
+
+function runServer() {
+    const config = webpackConfig({ env: argv.env });
+
+    process.stdout.write(`Environment:       ${argv.env}\n`);
+
+    if (argv.env === 'dev') {
+        process.stdout.write(`Hot reloading:     ${config.devServer.hot ? 'on' : 'off'}\n`);
+        process.stdout.write(`Lazy build:        ${config.devServer.lazy ? 'on' : 'off'}\n`);
+    } else {
+        process.stdout.write(`Gzip compression:  ${config.devServer.compress ? 'on' : 'off'}\n`);
+    }
+
+    process.stdout.write(`Server address:    http://${argv.address}:${argv.port}\n`);
+
+    return new Promise((resolve, reject) => {
+        const server = new WebpackDevServer(webpack(config), config.devServer);
+
+        server.listen(argv.port, argv.address, (err) => {
+            if (err) {
+                reject(err);
+            } else {
+                process.stdout.write('\nServer is now up and running, press CTRL-C to stop.\n');
+            }
+        });
+    });
+}
+
+// ---------------------------------------------------------
+// Steps
+// ---------------------------------------------------------
+
+planify({ exit: true, reporter: argv.reporter })
+// Validate environment
+.step(`Validating "${argv.env}" environment`, () => validator.validateEnvironment(argv.env))
+// Validate if parameters.json are ok and up to date
+.step('Validating config/parameters.json', () => validator.validateParameters(parameters))
+// Ensure build or clean build & setup if dev
+.step('Prepare web directory', () => prepareWeb())
+// Run server
+.step('Run server', () => runServer())
+.run();

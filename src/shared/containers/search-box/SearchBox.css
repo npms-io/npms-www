@@ -1,0 +1,46 @@
+.search-box-component {
+    width: 100%;
+    height: 46px;
+}
+
+.search-box-component .search-input {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.search-box-component .search-input input {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 0 56px 0 15px;
+    border: 1px solid #d0d0d0;
+    outline: 0;
+    background-color: #fff;
+    border-radius: 2px;
+    font-size: 16px;
+}
+
+.search-box-component .search-input button {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    bottom: 3px;
+    width: 50px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    border-radius: 2px;
+    color: #999;
+    transition: all 0.1s ease;
+}
+
+.search-box-component .search-input input:focus ~ button,
+.search-box-component .search-input button:focus {
+    background-color: #5b9e4d;
+    color: #fff;
+}
+
+.search-box-component .search-input button i {
+    line-height: 40px;
+}

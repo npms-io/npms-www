@@ -1,0 +1,3 @@
+{
+    "extends": "@satazor/stylelint-config"
+}

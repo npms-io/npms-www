@@ -1,0 +1,91 @@
+#!/usr/bin/env node
+
+'use strict';
+
+const yargs = require('yargs');
+const planify = require('planify');
+const eslint = require('eslint');
+const stylelint = require('stylelint');
+
+const projectDir = `${__dirname}/..`;
+
+// ---------------------------------------------------------
+// CLI definition
+// ---------------------------------------------------------
+
+const argv = yargs
+.strict()
+.wrap(Math.min(120, yargs.terminalWidth()))
+.help('help').alias('help', 'h')
+.usage('Usage: ./$0 [options]')
+.demand(0, 0)
+.option('lint-output', {
+    alias: 'l',
+    type: 'boolean',
+    describe: 'Show the lint output',
+    default: true,
+})
+.option('reporter', {
+    alias: ['r', 'R'],
+    type: 'string',
+    describe: 'Any of the planify\'s reporters',
+})
+.argv;
+
+if (argv.help) {
+    yargs.showHelp('log');
+    process.exit(0);
+}
+
+// ---------------------------------------------------------
+// Functions
+// ---------------------------------------------------------
+
+function runEslint(files) {
+    const cli = new eslint.CLIEngine();
+    const report = cli.executeOnFiles(files);
+
+    if (argv.lintOutput) {
+        const formatter = cli.getFormatter();
+        const output = formatter(report.results).trim();
+
+        output && process.stdout.write(`${output}\n`);
+    }
+
+    if (report.errorCount) {
+        throw new Error(`eslint reported ${report.errorCount} error(s)`);
+    }
+}
+
+function runStylelint(files) {
+    return stylelint.lint({
+        files,
+        formatter: 'string',
+    })
+    .then((result) => {
+        const output = result.output.trim();
+
+        if (argv.lintOutput) {
+            output && process.stdout.write(`${output}\n\n`);
+        }
+
+        if (result.errored) {
+            throw new Error('stylelint result contains errors');
+        }
+    });
+}
+
+// ---------------------------------------------------------
+// Steps
+// ---------------------------------------------------------
+
+
+planify({ exit: true, reporter: argv.reporter })
+// Run es-lint to validate JS source code
+.step('Running es-lint in src/**/*.js, scripts/**/*.js config/**/*.js', () =>
+    runEslint([`${projectDir}/src/**/*.js`, `${projectDir}/scripts/**/*.js`, `${projectDir}/config/**/*.js`]))
+// Run es-lint to validate scripts JS code
+.step('Running es-lint in scripts/**/*.js', () => runEslint([`${projectDir}/scripts/**/*.js`]))
+// Run stylelint to validate CSS code
+.step('Running stylelint in src/**/*.css', () => runStylelint([`${projectDir}/src/**/*.css`]))
+.run();

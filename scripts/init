@@ -1,0 +1,96 @@
+#!/usr/bin/env node
+
+'use strict';
+
+const fs = require('fs');
+const yargs = require('yargs');
+const planify = require('planify');
+
+const projectDir = `${__dirname}/..`;
+
+// ---------------------------------------------------------
+// CLI definition
+// ---------------------------------------------------------
+
+const argv = yargs
+.strict()
+.wrap(Math.min(120, yargs.terminalWidth()))
+.help('help').alias('help', 'h')
+.usage('Usage: ./$0 [options]')
+.demand(0, 0)
+.option('force', {
+    alias: 'f',
+    type: 'boolean',
+    describe: 'Forces the re-initialization of the project',
+})
+.option('reporter', {
+    alias: ['r', 'R'],
+    type: 'string',
+    describe: 'Any of the planify\'s reporters',
+})
+.argv;
+
+if (argv.help) {
+    yargs.showHelp('log');
+    process.exit(0);
+}
+
+// ---------------------------------------------------------
+// Functions
+// ---------------------------------------------------------
+
+function checkAlreadyInitialized() {
+    let inited = true;
+
+    try {
+        fs.statSync(`${projectDir}/config/parameters.json`);
+    } catch (err) {
+        if (err.code === 'ENOENT') {
+            inited = false;
+        } else {
+            throw err;
+        }
+    }
+
+    if (!inited) {
+        return process.stdout.write('Project not yet initialized, proceeding..\n');
+    }
+
+    if (argv.force) {
+        return process.stdout.write('Project already initialized but --force was specified, proceeding..\n');
+    }
+
+    process.stdout.write('Project is already initialized, run with --force to re-initialize the project.\n');
+    process.exit();
+}
+
+function copyParameters() {
+    const contents = fs.readFileSync(`${projectDir}/config/parameters.json.dist`);
+
+    fs.writeFileSync(`${projectDir}/config/parameters.json`, contents);
+
+    process.stdout.write('Parameters copied to config/parameters.json.\n');
+    process.stdout.write('You might need to tweak some of these properties for the app to work.\n');
+}
+
+function installPreCommitHook() {
+    const contents = '#!/bin/sh\n\nnpm run pre-commit';
+
+    fs.writeFileSync(`${projectDir}/.git/hooks/pre-commit`, contents);
+    fs.chmodSync(`${projectDir}/.git/hooks/pre-commit`, 0o755);
+
+    process.stdout.write('"npm run pre-commit" will now be automatically run each time you commit.\n');
+}
+
+// ---------------------------------------------------------
+// Steps
+// ---------------------------------------------------------
+
+planify({ exit: true, reporter: argv.reporter })
+// Check if project is already initialized
+.step('Check project status', () => checkAlreadyInitialized())
+// Copy dist parameters
+.step('Copy parameters.json.dist to parameters.json', () => copyParameters())
+// Install pre-commit hook into .git folder
+.step('Install pre-commit hook', () => installPreCommitHook())
+.run();

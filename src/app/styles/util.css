@@ -1,0 +1,23 @@
+/* Utility class to disable css transitions
+   ========================================================================== */
+
+.disable-transition,
+.disable-transition::before,
+.disable-transition::after,
+.disable-transition *,
+.disable-transition *::before,
+.disable-transition *::after {
+    transition: none !important;
+}
+
+/* Align center utility class that aligns content horizontally of unknown width and height
+   ========================================================================== */
+
+.align-center-wrapper {
+    height: 100%;
+    display: flex;
+}
+
+.align-center {
+    margin: auto;
+}

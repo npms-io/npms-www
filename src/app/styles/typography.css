@@ -1,0 +1,48 @@
+/* Typography defaults
+   ========================================================================== */
+
+body {
+    color: #4f4f4f;
+    font-family: "Roboto", Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    -moz-osx-font-smoothing: grayscale;  /* Font smoothing tweaks for MacOSx in Gecko */
+    -webkit-font-smoothing: antialiased; /* Font smoothing tweaks for MacOSx in Webkit */
+
+    line-height: 1.428571429;
+
+    /* Break long words by default */
+    word-wrap: break-word; /* Deprecated in favor of "overflow-wrap" */
+    overflow-wrap: break-word;
+}
+
+input,
+textarea,
+select {
+    font-family: "Roboto", Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+::selection {
+    background: #de5833;
+    color: #fff;
+}
+
+/* Links
+   ========================================================================== */
+
+a,
+a:visited,
+a:active {
+    color: #ce3833;
+    text-decoration: none;
+    transition: color 0.15s ease;
+}
+
+a:hover,
+a.hover,
+a:focus {
+    text-decoration: underline;
+}
+
+a:focus {
+    outline: 0;
+}

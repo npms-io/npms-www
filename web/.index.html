@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>npms</title>
+        <meta name="description" content="A better search for node modules.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,500,700" rel="stylesheet">
+
+        <% if (env !== 'dev') { %>
+        <!-- App stylesheet -->
+        <link rel="stylesheet" href="<%= parameters.publicPath %>app.<%= hash %>.css">
+        <% } %>
+    </head>
+    <body>
+        <!-- Root element where app goes -->
+        <div id="root"></div>
+
+        <!-- Load app main file -->
+        <script src="<%= parameters.publicPath %>main<%= hash ? '.' + hash : '' %>.js"></script>
+
+        <% if (env !== 'dev') { %>
+        <!-- Add google analytics and similar goes here -->
+        <script>
+            /*eslint-disable */
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='https://www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','<%= parameters.googleAnalyticsId %>','auto');ga('send','pageview');
+        </script>
+        <% } %>
+    </body>
+</html>

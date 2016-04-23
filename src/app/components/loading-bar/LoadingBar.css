@@ -1,0 +1,11 @@
+.loading-bar-component {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 2px;
+    z-index: 99;
+    transform-origin: top left;
+    background-color: #de5833;
+    transition: transform 0.2s linear;
+}

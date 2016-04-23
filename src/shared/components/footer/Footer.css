@@ -1,0 +1,41 @@
+.footer-component {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 41px;
+    padding: 0 15px;
+    border-top: 1px solid #e0e0e0;
+    background: #f0f0f0;
+}
+
+.footer-component ul {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.footer-component li {
+    height: 100%;
+    margin-right: 25px;
+    float: left;
+}
+
+.footer-component li:last-of-type {
+    margin-right: 0;
+}
+
+.footer-component li a {
+    color: #565;
+    line-height: 40px;
+}
+
+.footer-component .pages {
+    float: left;
+}
+
+.footer-component .social-links {
+    float: right;
+}
+

@@ -1,0 +1,119 @@
+#!/usr/bin/env node
+
+'use strict';
+
+const webpack = require('webpack');
+const path = require('path');
+const yargs = require('yargs');
+const planify = require('planify');
+const errcode = require('err-code');
+const validator = require('./common/validator');
+const web = require('./common/web');
+const webpackConfig = require('../config/webpack.config.js');
+const parameters = require('../config/parameters.json');
+
+const projectDir = `${__dirname}/..`;
+
+// ---------------------------------------------------------
+// CLI definition
+// ---------------------------------------------------------
+
+const argv = yargs
+.strict()
+.wrap(Math.min(120, yargs.terminalWidth()))
+.version().alias('version', 'v')
+.usage('Usage: ./$0 [options]')
+.demand(0, 0)
+.option('env', {
+    alias: 'e',
+    type: 'string',
+    default: 'prod',
+    describe: 'The environment',
+})
+.option('minify', {
+    alias: 'm',
+    type: 'boolean',
+    default: true,
+    describe: 'Whether to minify or assets (including index.html)',
+})
+.option('reporter', {
+    alias: ['r', 'R'],
+    type: 'string',
+    describe: 'Any of the planify\'s reporters',
+})
+.example('$0 --env staging', 'Builds the application for the staging environment')
+.example('$0 --no-minify', 'Builds the application for the production environment but do not minify')
+.argv;
+
+if (argv.help) {
+    yargs.showHelp('log');
+    process.exit(0);
+}
+
+// ---------------------------------------------------------
+// Functions
+// ---------------------------------------------------------
+
+function runWebpack() {
+    return new Promise((resolve, reject) => {
+        const config = webpackConfig({ env: argv.env, minify: argv.minify });
+        let errDetail;
+
+        errDetail = 'You can replicate the issue by running ';
+        errDetail += `${path.relative(process.cwd(), `${projectDir}/node_modules/.bin/webpack`)} --config`;
+        errDetail += `${path.relative(process.cwd(), `${projectDir}/config/webpack.config.js`)} --env ${argv.env}`;
+
+        // Set process.env.NODE_ENV because .babelrc has specific presets & plugins per env
+        process.env.NODE_ENV = argv.env === 'dev' ? 'development' : 'production';
+
+        webpack(config, (err, stats) => {
+            if (err) {
+                return reject(errcode(err, { detail: errDetail }));
+            }
+
+            const options = {
+                chunks: false,
+                children: false,
+                modules: false,
+            };
+
+            const json = stats.toJson(options);
+            const string = stats.toString(Object.assign({ colors: true }, options)).trim();
+
+            if (json.errors.length) {
+                return reject(errcode('Webpack build failed', { detail: `${string}\n\n${errDetail}` }));
+            }
+
+            process.stdout.write(`${string}\n\n`);
+
+            resolve({
+                env: argv.env,
+                hash: json.hash,
+                parameters,
+            });
+        });
+    });
+}
+
+// ---------------------------------------------------------
+// Steps
+// ---------------------------------------------------------
+
+planify({ exit: true, reporter: argv.reporter })
+// Validate build environment
+.step(`Validating "${argv.env}" environment`, () => {
+    if (argv.env === 'dev') {
+        throw new Error(`The ${argv.env} environment can't be built`);
+    }
+
+    return validator.validateEnvironment(argv.env);
+})
+// Validate if parameters.json are ok and up to date
+.step('Validating config/parameters.json', () => validator.validateParameters(parameters))
+.step('Remove previous build', () => web.cleanBuild())
+.step('Bundle with webpack', { slow: 10000 }, (data) => {
+    return runWebpack()
+    .then((result) => { data.webpack = result; });
+})
+.step('Generate index HTML page', (data) => web.generateIndex(data.webpack, argv.minify))
+.run();
