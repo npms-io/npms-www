@@ -1,13 +1,14 @@
 import './Search.css';
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { runQuery } from 'shared/state/search/actions';
+import { run, updateQuery, scroll } from 'shared/state/search/actions';
 import Header from 'shared/components/header/Header';
-import List from '../components/List';
+import ResultsList from '../components/ResultsList';
 
 class Search extends Component {
     componentWillMount() {
-        this.props.dispatch(runQuery(this.props.location.query));
+        this.props.dispatch(updateQuery(this.props.location.query));
+        this.props.dispatch(run());
     }
 
     render() {
@@ -16,7 +17,9 @@ class Search extends Component {
                 <Header query={ this.props.search.query } />
 
                 { this.props.search.results ?
-                    <List results={ this.props.search.results } /> :
+                    <ResultsList
+                        results={ this.props.search.results }
+                        onLoadMore={ () => this.props.dispatch(scroll()) } /> :
                     '' }
             </div>
         );

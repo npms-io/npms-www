@@ -1,0 +1,21 @@
+.page-search .results-list-item {
+    margin-bottom: 20px;
+    padding: 0;
+}
+
+.page-search .results-list-item .name {
+    display: block;
+    float: left;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.page-search .results-list-item .score-badge-component {
+    margin: 1px 10px 0 0;
+    float: left;
+}
+
+.page-search .results-list-item .description {
+    clear: both;
+}
+

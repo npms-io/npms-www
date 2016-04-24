@@ -4,11 +4,11 @@ import { connect } from 'react-redux';
 import SearchBox from 'shared/containers/search-box/SearchBox';
 import Footer from 'shared/components/footer/Footer';
 import { markAsLoading, unmarkAsLoading } from 'shared/state/app/actions';
-import { resetQueryTerm } from 'shared/state/search/actions';
+import { reset } from 'shared/state/search/actions';
 
 class Home extends Component {
     componentWillMount() {
-        this.props.dispatch(resetQueryTerm());
+        this.props.dispatch(reset());
         this.props.dispatch(markAsLoading());
         setTimeout(() => this.props.dispatch(unmarkAsLoading()), 300);
     }

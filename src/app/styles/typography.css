@@ -2,7 +2,7 @@
    ========================================================================== */
 
 body {
-    color: #4f4f4f;
+    color: #333;
     font-family: "Roboto", Helvetica Neue, Helvetica, Arial, sans-serif;
     font-size: 14px;
     -moz-osx-font-smoothing: grayscale;  /* Font smoothing tweaks for MacOSx in Gecko */
@@ -37,12 +37,26 @@ a:active {
     transition: color 0.15s ease;
 }
 
-a:hover,
-a.hover,
-a:focus {
+a:hover {
     text-decoration: underline;
 }
 
 a:focus {
     outline: 0;
+}
+
+/* Ellipsis
+   ========================================================================== */
+
+/**
+ * Add the `ellipsis` class whenever you want to add "..." when the text overflows.
+ * The container needs to have a width for it to work.
+ */
+
+.ellipsis {
+    overflow: hidden; /* "overflow" value must be different from "visible" */
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;  /* Deprecated in favor of "overflow-wrap" */
+    overflow-wrap: normal;
 }

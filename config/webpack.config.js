@@ -42,8 +42,8 @@ function buildConfig(options) {
         resolve: {
             alias: {
                 config: `${projectDir}/config/config-${options.env}.js`,
-                shared: `${projectDir}/src/shared/`,
-                app: `${projectDir}/src/app/`,
+                shared: `${projectDir}/src/shared`,
+                app: `${projectDir}/src/app`,
             },
         },
         module: {
