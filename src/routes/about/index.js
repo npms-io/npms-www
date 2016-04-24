@@ -1,4 +1,4 @@
-import About from './containers/about';
+import About from './containers/About';
 
 export default {
     component: About,

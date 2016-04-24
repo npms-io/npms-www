@@ -1,4 +1,4 @@
-import Search from './containers/search';
+import Search from './containers/Search';
 
 export default {
     component: Search,
