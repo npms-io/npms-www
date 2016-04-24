@@ -13,9 +13,16 @@ class ListItem extends Component {
         return (
             <li className="results-list-item">
                 <ScoreBadge score={ this.props.item.score.final } />
-                <NpmLink className="name ellipsis" name={ this.props.item.name }>{ this.props.item.name }</NpmLink>
+                <div className="name ellipsis">
+                    <NpmLink name={ this.props.item.name }>{ this.props.item.name }</NpmLink>
+                </div>
                 <div className="description ellipsis">{ this.props.item.description }</div>
-                <div className="keywords ellipsis">{ this.props.item.keywords.join(', ') }</div>
+                { this.props.item.keywords && this.props.item.keywords.length ?
+                    <div className="keywords ellipsis">
+                        <i className="material-icons">local_offer</i>
+                        { this.props.item.keywords.join(', ') }
+                    </div>
+                  : '' }
             </li>
         );
     }

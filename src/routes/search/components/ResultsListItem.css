@@ -1,21 +1,29 @@
 .page-search .results-list-item {
-    margin-bottom: 20px;
-    padding: 0;
+    position: relative;
+    margin-bottom: 30px;
+    padding: 0 0 0 50px;
+}
+
+.page-search .results-list-item .score-badge-component {
+    position: absolute;
+    top: 4px;
+    left: 0;
 }
 
 .page-search .results-list-item .name {
     display: block;
-    float: left;
     font-size: 20px;
     font-weight: 400;
 }
 
-.page-search .results-list-item .score-badge-component {
-    margin: 1px 10px 0 0;
-    float: left;
+.page-search .results-list-item .keywords {
+    margin-top: 5px;
+    font-size: 12px;
 }
 
-.page-search .results-list-item .description {
-    clear: both;
+.page-search .results-list-item .keywords i {
+    margin-right: 5px;
+    vertical-align: middle;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 14px;
 }
-
