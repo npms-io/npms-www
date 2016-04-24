@@ -11,8 +11,8 @@ class Terms extends Component {
 
     render() {
         return (
-            <div className="page page-about">
-                This will be the about page.
+            <div className="page page-terms">
+                This will be the terms page.
             </div>
         );
     }

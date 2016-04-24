@@ -12,6 +12,8 @@ class Search extends Component {
     }
 
     render() {
+        // TODO: errors
+
         return (
             <div className="page page-search">
                 <Header query={ this.props.search.query } />

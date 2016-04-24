@@ -28,7 +28,6 @@ class List extends Component {
 
                 <Waypoint
                     onEnter={ (props) => this.props.onLoadMore(props) }
-                    onLeave={ (props) => console.log('onLeave', props) }
                     threshold={ 0.2 } />
             </div>
         );

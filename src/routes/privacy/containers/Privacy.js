@@ -11,8 +11,8 @@ class Privacy extends Component {
 
     render() {
         return (
-            <div className="page page-about">
-                This will be the about page.
+            <div className="page page-privacy">
+                This will be the privacy page.
             </div>
         );
     }
