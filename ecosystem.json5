@@ -1,0 +1,18 @@
+// This is the pm2 configuration file for npms-www
+{
+    deploy: {
+        production: {
+            user: 'www',
+            host: '212.47.226.136',
+            ref: 'origin/master',
+            repo: 'https://github.com/npms-io/npms-www.git',
+            path: '/home/www/npms-www',
+            'post-deploy': '\
+cp ../parameters.json ./config/ && \
+npm update --loglevel http && \
+npm run build && \
+mkdir -p ../web && \
+rsync -r --delete --exclude .index.html ./web/ ../web/',
+        },
+    },
+}

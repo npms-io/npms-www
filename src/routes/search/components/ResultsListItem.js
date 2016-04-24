@@ -17,7 +17,7 @@ class ListItem extends Component {
                     <NpmLink name={ this.props.item.name }>{ this.props.item.name }</NpmLink>
                 </div>
                 <div className="description ellipsis">{ this.props.item.description }</div>
-                { this.props.item.keywords && this.props.item.keywords.length ?
+                { this.props.item.keywords ?
                     <div className="keywords ellipsis">
                         <i className="material-icons">local_offer</i>
                         { this.props.item.keywords.join(', ') }

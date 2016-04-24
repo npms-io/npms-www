@@ -23,7 +23,7 @@
         <!-- Load app main file -->
         <script src="<%= parameters.publicPath %>main<%= hash ? '.' + hash : '' %>.js"></script>
 
-        <% if (env !== 'dev') { %>
+        <% if (env !== 'dev' && parameters.googleAnalyticsId) { %>
         <!-- Add google analytics and similar goes here -->
         <script>
             /*eslint-disable */

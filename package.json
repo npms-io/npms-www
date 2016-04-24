@@ -6,8 +6,8 @@
     "lint": "./scripts/lint",
     "build": "./scripts/build",
     "serve": "./scripts/serve",
-    "serve:prod": "./scripts/serve --env prod",
     "pre-commit": "./scripts/lint",
+
     "test": "npm run lint",
     "postinstall": "./scripts/init"
   },
