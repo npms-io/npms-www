@@ -1,0 +1,12 @@
+.tooltip-component {
+    position: absolute;
+    z-index: 1070;
+}
+
+.tooltip-component.tooltip-component-hidden {
+    display: none;
+}
+
+.tooltip-component .tooltip-component-arrow {
+    position: absolute;
+}
