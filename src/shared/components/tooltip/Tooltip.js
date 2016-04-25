@@ -32,6 +32,7 @@ class Tooltip extends Component {
 Tooltip.defaultProps = {
     animation: 'zoom',
     theme: 'default',
+    mouseLeaveDelay: 0.2,
 };
 
 Tooltip.propTypes = Object.assign({
