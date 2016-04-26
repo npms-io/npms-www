@@ -20,7 +20,7 @@ export default [
         getComponent(location, callback) {
             store.dispatch(markAsLoading());
             require.ensure([], (require) => {
-                setTimeout(() => store.dispatch(unmarkAsLoading()), 10);
+                setTimeout(() => store.dispatch(unmarkAsLoading()), 50);
                 callback(null, require('./about').default.component);
             }, 'about');
         },
@@ -33,7 +33,7 @@ export default [
         getComponent(location, callback) {
             store.dispatch(markAsLoading());
             require.ensure([], (require) => {
-                setTimeout(() => store.dispatch(unmarkAsLoading()), 10);
+                setTimeout(() => store.dispatch(unmarkAsLoading()), 50);
                 callback(null, require('./privacy').default.component);
             }, 'privacy');
         },
@@ -46,7 +46,7 @@ export default [
         getComponent(location, callback) {
             store.dispatch(markAsLoading());
             require.ensure([], (require) => {
-                setTimeout(() => store.dispatch(unmarkAsLoading()), 10);
+                setTimeout(() => store.dispatch(unmarkAsLoading()), 50);
                 callback(null, require('./terms').default.component);
             }, 'terms');
         },
@@ -59,7 +59,7 @@ export default [
         getComponent(location, callback) {
             store.dispatch(markAsLoading());
             require.ensure([], (require) => {
-                setTimeout(() => store.dispatch(unmarkAsLoading()), 10);
+                setTimeout(() => store.dispatch(unmarkAsLoading()), 50);
                 callback(null, require('./not-found').default.component);
             }, 'not-found');
         },
