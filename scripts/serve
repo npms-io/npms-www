@@ -6,6 +6,7 @@ const yargs = require('yargs');
 const webpack = require('webpack');
 const planify = require('planify');
 const WebpackDevServer = require('webpack-dev-server');
+const forIn = require('lodash/forIn');
 const validator = require('./common/validator');
 const web = require('./common/web');
 const webpackConfig = require('../config/webpack.config.js');
@@ -76,6 +77,10 @@ function runServer() {
     } else {
         process.stdout.write(`Gzip compression:  ${config.devServer.compress ? 'on' : 'off'}\n`);
     }
+
+    forIn(config.devServer.proxy, (proxy, path) => {
+        process.stdout.write(`Proxy:             ${path} -> ${proxy.target}\n`);
+    });
 
     process.stdout.write(`Server address:    http://${argv.address}:${argv.port}\n`);
 

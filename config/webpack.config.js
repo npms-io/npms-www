@@ -121,9 +121,9 @@ function buildConfig(options) {
             // See available options in https://github.com/nodejitsu/node-http-proxy
             proxy: {
                 '/api/*': {
-                    target: 'https://mysite.com/api/',
-                    secure: false,
+                    target: 'https://npms.io/api/',
                     prependPath: false,
+                    headers: { host: 'npms.io' },
                 },
             },
         },
