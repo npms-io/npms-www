@@ -1,3 +1,5 @@
+import { markAsLoading, unmarkAsLoading } from 'shared/state/app/actions';
+import store from 'shared/state/store';
 import homeRoute from './home';
 import searchRoute from './search';
 
@@ -16,7 +18,11 @@ export default [
     {
         path: '/about',
         getComponent(location, callback) {
-            require.ensure([], (require) => callback(null, require('./about').default.component), 'about');
+            store.dispatch(markAsLoading());
+            require.ensure([], (require) => {
+                callback(null, require('./about').default.component);
+                store.dispatch(unmarkAsLoading());
+            }, 'about');
         },
         getChildRoutes(location, callback) {
             require.ensure([], (require) => callback(null, require('./about').default.component), 'about');
@@ -25,7 +31,11 @@ export default [
     {
         path: '/privacy',
         getComponent(location, callback) {
-            require.ensure([], (require) => callback(null, require('./privacy').default.component), 'privacy');
+            store.dispatch(markAsLoading());
+            require.ensure([], (require) => {
+                callback(null, require('./privacy').default.component);
+                store.dispatch(unmarkAsLoading());
+            }, 'privacy');
         },
         getChildRoutes(location, callback) {
             require.ensure([], (require) => callback(null, require('./privacy').default.component), 'privacy');
@@ -34,7 +44,11 @@ export default [
     {
         path: '/terms',
         getComponent(location, callback) {
-            require.ensure([], (require) => callback(null, require('./terms').default.component), 'terms');
+            store.dispatch(markAsLoading());
+            require.ensure([], (require) => {
+                callback(null, require('./terms').default.component);
+                store.dispatch(unmarkAsLoading());
+            }, 'terms');
         },
         getChildRoutes(location, callback) {
             require.ensure([], (require) => callback(null, require('./terms').default.component), 'terms');
@@ -43,7 +57,11 @@ export default [
     {
         path: '/*',
         getComponent(location, callback) {
-            require.ensure([], (require) => callback(null, require('./not-found').default.component), 'not-found');
+            store.dispatch(markAsLoading());
+            require.ensure([], (require) => {
+                callback(null, require('./not-found').default.component);
+                store.dispatch(unmarkAsLoading());
+            }, 'not-found');
         },
         getChildRoutes(location, callback) {
             require.ensure([], (require) => callback(null, require('./not-found').default.component), 'not-found');
