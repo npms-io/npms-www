@@ -40,4 +40,13 @@ export default [
             require.ensure([], (require) => callback(null, require('./terms').default.component), 'terms');
         },
     },
+    {
+        path: '/*',
+        getComponent(location, callback) {
+            require.ensure([], (require) => callback(null, require('./not-found').default.component), 'not-found');
+        },
+        getChildRoutes(location, callback) {
+            require.ensure([], (require) => callback(null, require('./not-found').default.component), 'not-found');
+        },
+    },
 ];
