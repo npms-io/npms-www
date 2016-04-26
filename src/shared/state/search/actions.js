@@ -80,14 +80,14 @@ export function run() {
 
 export function scroll() {
     return (dispatch, getState) => {
-        const state = getNormalizedQuery(getState().search.query);
+        const state = getState().search;
         const from = state.results.items.length;
 
         if (state.isLoading || from >= state.results.total) {
             return;
         }
 
-        const query = Object.assign({}, state.query, { from: state.results.items.length, size: resultsPerPage });
+        const query = getNormalizedQuery(Object.assign({}, state.query, { from: state.results.items.length, size: resultsPerPage }));
 
         dispatch(markAsLoading());
 
