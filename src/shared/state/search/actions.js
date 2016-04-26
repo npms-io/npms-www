@@ -80,7 +80,7 @@ export function run() {
 
 export function scroll() {
     return (dispatch, getState) => {
-        const state = getNormalizedQuery(getState().search);
+        const state = getNormalizedQuery(getState().search.query);
         const from = state.results.items.length;
 
         if (state.isLoading || from >= state.results.total) {
