@@ -23,6 +23,13 @@ function buildSearchUrl(query) {
     return `/search${queryStr ? `?${queryStr}` : ''}`;
 }
 
+function getNormalizedQuery(query) {
+    return {
+        ...query,
+        term: query.term.trim(),
+    };
+}
+
 export function updateQuery(query) {
     return {
         type: 'Search.UPDATE_QUERY',
@@ -37,9 +44,17 @@ export function reset(query) {
     };
 }
 
+export function navigate() {
+    return (dispatch, getState) => {
+        const query = getNormalizedQuery(getState().search.query);
+
+        dispatch(push(buildSearchUrl(query)));
+    };
+}
+
 export function run() {
     return (dispatch, getState) => {
-        const query = getState().search.query;
+        const query = getNormalizedQuery(getState().search.query);
 
         if (!query.term) {
             return;
@@ -49,7 +64,6 @@ export function run() {
         query.size = resultsPerPage;
 
         dispatch(markAsLoading());
-        dispatch(push(buildSearchUrl(query)));
 
         dispatch({
             type: 'Search.RUN',
@@ -66,7 +80,7 @@ export function run() {
 
 export function scroll() {
     return (dispatch, getState) => {
-        const state = getState().search;
+        const state = getNormalizedQuery(getState().search);
         const from = state.results.items.length;
 
         if (state.isLoading || from >= state.results.total) {
@@ -76,7 +90,6 @@ export function scroll() {
         const query = Object.assign({}, state.query, { from: state.results.items.length, size: resultsPerPage });
 
         dispatch(markAsLoading());
-        dispatch(push(buildSearchUrl(query)));
 
         dispatch({
             type: 'Search.SCROLL',

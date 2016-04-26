@@ -10,6 +10,12 @@ class List extends Component {
     }
 
     render() {
+        if (!this.props.results) {
+            return (
+                <div className="results-list empty-search"></div>
+            );
+        }
+
         if (!this.props.results.total) {
             return (
                 <div className="results-list no-results">
@@ -35,7 +41,7 @@ class List extends Component {
 }
 
 List.propTypes = {
-    results: PropTypes.object.isRequired,
+    results: PropTypes.object,
     onLoadMore: PropTypes.func.isRequired,
 };
 

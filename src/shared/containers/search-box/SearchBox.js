@@ -2,7 +2,7 @@ import './SearchBox.css';
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import shallowCompare from 'react-addons-shallow-compare';
-import { updateQuery, run } from 'shared/state/search/actions';
+import { updateQuery, navigate } from 'shared/state/search/actions';
 
 class SearchBox extends Component {
     componentDidMount() {
@@ -37,7 +37,7 @@ class SearchBox extends Component {
 
     _handleSubmit(e) {
         e.preventDefault();
-        this.props.dispatch(run());
+        this.props.dispatch(navigate());
     }
 }
 

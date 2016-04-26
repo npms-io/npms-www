@@ -1,6 +1,7 @@
 import './Search.css';
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import isEqual from 'lodash/isEqual';
 import { run, updateQuery, scroll } from 'shared/state/search/actions';
 import Header from 'shared/components/header/Header';
 import ResultsList from '../components/ResultsList';
@@ -11,6 +12,13 @@ class Search extends Component {
         this.props.dispatch(run());
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (!isEqual(this.props.location.query, nextProps.location.query)) {
+            this.props.dispatch(updateQuery(nextProps.location.query));
+            this.props.dispatch(run());
+        }
+    }
+
     render() {
         // TODO: errors
 
@@ -18,11 +26,9 @@ class Search extends Component {
             <div className="page page-search">
                 <Header query={ this.props.search.query } />
 
-                { this.props.search.results ?
-                    <ResultsList
-                        results={ this.props.search.results }
-                        onLoadMore={ () => this.props.dispatch(scroll()) } /> :
-                    '' }
+                <ResultsList
+                    results={ this.props.search.results }
+                    onLoadMore={ () => this.props.dispatch(scroll()) } />
             </div>
         );
     }

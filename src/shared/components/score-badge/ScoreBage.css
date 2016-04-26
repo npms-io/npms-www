@@ -16,10 +16,6 @@
     list-style-type: none;
 }
 
-.score-badge-tooltip-component .final-score {
-    margin-bottom: 10px;
-}
-
 .score-badge-tooltip-component .score-label {
     margin-right: 5px;
 }

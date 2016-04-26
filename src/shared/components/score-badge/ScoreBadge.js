@@ -32,17 +32,11 @@ class ScoreBadge extends Component {
 
     _renderTooltip() {
         return (
-            <div>
-                <div className="final-score">
-                    { this._renderTooltipScore('Final', this.props.score.final) }
-                </div>
-
-                <ul className="detailed-score">
-                    <li>{ this._renderTooltipScore('Quality', this.props.score.detail.quality) }</li>
-                    <li>{ this._renderTooltipScore('Maintenance', this.props.score.detail.maintenance) }</li>
-                    <li>{ this._renderTooltipScore('Popularity', this.props.score.detail.popularity) }</li>
-                </ul>
-            </div>
+            <ul>
+                <li>{ this._renderTooltipScore('Quality', this.props.score.detail.quality) }</li>
+                <li>{ this._renderTooltipScore('Popularity', this.props.score.detail.popularity) }</li>
+                <li>{ this._renderTooltipScore('Maintenance', this.props.score.detail.maintenance) }</li>
+            </ul>
         );
     }
 
