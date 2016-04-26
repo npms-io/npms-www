@@ -12,7 +12,7 @@ function markAsLoading(state, action) {
 function unmarkAsLoading(state, action) {
     return {
         ...state,
-        loadingCount: Math.max(0, state.loadingCount || 1) - action.payload,
+        loadingCount: Math.max(0, (state.loadingCount || 1) - action.payload),
     };
 }
 
