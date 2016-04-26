@@ -20,8 +20,8 @@ export default [
         getComponent(location, callback) {
             store.dispatch(markAsLoading());
             require.ensure([], (require) => {
+                setTimeout(() => store.dispatch(unmarkAsLoading()), 10);
                 callback(null, require('./about').default.component);
-                store.dispatch(unmarkAsLoading());
             }, 'about');
         },
         getChildRoutes(location, callback) {
@@ -33,8 +33,8 @@ export default [
         getComponent(location, callback) {
             store.dispatch(markAsLoading());
             require.ensure([], (require) => {
+                setTimeout(() => store.dispatch(unmarkAsLoading()), 10);
                 callback(null, require('./privacy').default.component);
-                store.dispatch(unmarkAsLoading());
             }, 'privacy');
         },
         getChildRoutes(location, callback) {
@@ -46,8 +46,8 @@ export default [
         getComponent(location, callback) {
             store.dispatch(markAsLoading());
             require.ensure([], (require) => {
+                setTimeout(() => store.dispatch(unmarkAsLoading()), 10);
                 callback(null, require('./terms').default.component);
-                store.dispatch(unmarkAsLoading());
             }, 'terms');
         },
         getChildRoutes(location, callback) {
@@ -59,8 +59,8 @@ export default [
         getComponent(location, callback) {
             store.dispatch(markAsLoading());
             require.ensure([], (require) => {
+                setTimeout(() => store.dispatch(unmarkAsLoading()), 10);
                 callback(null, require('./not-found').default.component);
-                store.dispatch(unmarkAsLoading());
             }, 'not-found');
         },
         getChildRoutes(location, callback) {
