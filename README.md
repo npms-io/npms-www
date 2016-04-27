@@ -11,7 +11,7 @@ The http://npms.io website.
 ## Development
 
 Simply spawn the server by running `$ npm run serve`. This will create a server defaulting to the `dev` environment.
-You may preview the production build by running `$ npm run build && npm run serve --env prod`.
+You may preview the production build by running `$ npm run build && npm run serve -- --env prod`.
 
 
 ## Deploys
