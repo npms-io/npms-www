@@ -23,8 +23,8 @@
         <!-- Load app main file -->
         <script src="<%= parameters.publicPath %>main<%= hash ? '.' + hash : '' %>.js"></script>
 
-        <% if (env !== 'dev' && parameters.googleAnalyticsId) { %>
-        <!-- Add google analytics and similar goes here -->
+        <% if (env === 'prod') { %>
+        <!-- Google analytics -->
         <script>
             /*eslint-disable */
             (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
@@ -33,6 +33,20 @@
             e.src='https://www.google-analytics.com/analytics.js';
             r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
             ga('create','<%= parameters.googleAnalyticsId %>','auto');ga('send','pageview');
+        </script>
+
+        <!-- Add search box to google: https://developers.google.com/structured-data/slsb-overview#markup_examples -->
+        <script type="application/ld+json">
+        {
+          "@context": "http://schema.org",
+          "@type": "WebSite",
+          "url": "https://npms.io/",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://npms.io/?term={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        }
         </script>
         <% } %>
     </body>
