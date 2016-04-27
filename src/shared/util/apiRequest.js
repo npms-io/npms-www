@@ -33,7 +33,7 @@ function onRejected(res) {
 }
 
 export default function apiRequest(path, options) {
-    options = Object.assign({ timeout: config.api.timeout }, options);
+    options = { timeout: config.api.timeout, ...options };
 
     return Promise.resolve(axios(createUrl(path), options))
     .timeout(config.api.timeout)

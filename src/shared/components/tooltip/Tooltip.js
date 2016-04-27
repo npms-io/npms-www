@@ -35,8 +35,9 @@ Tooltip.defaultProps = {
     mouseLeaveDelay: 0.1,
 };
 
-Tooltip.propTypes = Object.assign({
+Tooltip.propTypes = {
+    ...RcTooltip.propTypes,
     theme: PropTypes.string,
-}, RcTooltip.propTypes);
+};
 
 export default Tooltip;

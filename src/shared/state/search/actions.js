@@ -87,7 +87,10 @@ export function scroll() {
             return;
         }
 
-        const query = getNormalizedQuery(Object.assign({}, state.query, { from: state.results.items.length, size: resultsPerPage }));
+        const query = getNormalizedQuery({
+            ...state.query,
+            ...{ from: state.results.items.length, size: resultsPerPage },
+        });
 
         dispatch(markAsLoading());
 
