@@ -37,16 +37,19 @@ export function updateQuery(query) {
     };
 }
 
-export function reset(query) {
+export function reset() {
     return {
         type: 'Search.RESET',
-        payload: query,
     };
 }
 
 export function navigate() {
     return (dispatch, getState) => {
         const query = getNormalizedQuery(getState().search.query);
+
+        if (!query.term) {
+            delete query.term;
+        }
 
         dispatch(push(buildSearchUrl(query)));
     };
@@ -57,7 +60,7 @@ export function run() {
         const query = getNormalizedQuery(getState().search.query);
 
         if (!query.term) {
-            return;
+            return dispatch(reset());
         }
 
         query.from = 0;

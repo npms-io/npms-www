@@ -18,7 +18,7 @@ class SearchBox extends Component {
             <form className="search-box-component" onSubmit={ (e) => this._handleSubmit(e) }>
                 <div className="search-input">
                     <input type="text" placeholder="Search modules"
-                        value={ this.props.query ? this.props.query.term : '' }
+                        value={ this.props.query.term }
                         ref={ (el) => { this._input = el; } }
                         onChange={ () => this._handleInputChange() } />
                     <button><i className="material-icons">search</i></button>
@@ -43,7 +43,7 @@ class SearchBox extends Component {
 
 SearchBox.propTypes = {
     dispatch: PropTypes.func.isRequired,
-    query: PropTypes.object,
+    query: PropTypes.object.isRequired,
 };
 
 export default connect((state) => {

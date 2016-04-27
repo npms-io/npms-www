@@ -1,18 +1,28 @@
 const defaultState = {
     uid: null,
-    query: null,
+    query: { term: '', from: 0 },
     isLoading: false,
     results: null,
 };
 
 function reset() {
-    return defaultState;
+    return {
+        ...defaultState,
+        query: {
+            ...defaultState.term,
+            term: '',
+            from: 0,
+        },
+    };
 }
 
 function updateQuery(state, action) {
     return {
         ...state,
-        query: action.payload,
+        query: {
+            ...state.query,
+            ...action.payload,
+        },
     };
 }
 
