@@ -1,7 +1,6 @@
 import { push } from 'react-router-redux';
 import queryString from 'query-string';
 import omit from 'lodash/omit';
-import isEmpty from 'lodash/isEmpty';
 import uniqueId from 'lodash/uniqueId';
 import { markAsLoading, unmarkAsLoading } from '../app/actions';
 import apiRequest from '../../util/apiRequest';
@@ -9,21 +8,15 @@ import apiRequest from '../../util/apiRequest';
 const resultsPerPage = 50;
 
 function buildSearchUrl(query) {
-    let queryStr;
-
     query = omit(query, 'from', 'size');  // Params that don't go into the URL
 
-    if (isEmpty(query)) {
-        queryStr = '';
-    } else {
-        queryStr = queryString.stringify(query)
-        .replace(/%20/g, '+');                // Replace spaces with + because it's prettier
-    }
+    const queryStr = queryString.stringify(query)
+    .replace(/%20/g, '+');                // Replace spaces with + because it's prettier
 
     return `/search${queryStr ? `?${queryStr}` : ''}`;
 }
 
-function getNormalizedQuery(query) {
+function normalizeQuery(query) {
     return {
         ...query,
         term: query.term.trim(),
@@ -45,7 +38,7 @@ export function reset() {
 
 export function navigate() {
     return (dispatch, getState) => {
-        const query = getNormalizedQuery(getState().search.query);
+        const query = normalizeQuery(getState().search.query);
 
         if (!query.term) {
             delete query.term;
@@ -57,7 +50,7 @@ export function navigate() {
 
 export function run() {
     return (dispatch, getState) => {
-        const query = getNormalizedQuery(getState().search.query);
+        const query = normalizeQuery(getState().search.query);
 
         if (!query.term) {
             return dispatch(reset());
@@ -90,7 +83,7 @@ export function scroll() {
             return;
         }
 
-        const query = getNormalizedQuery({
+        const query = normalizeQuery({
             ...state.query,
             ...{ from: state.results.items.length, size: resultsPerPage },
         });

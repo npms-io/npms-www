@@ -5,11 +5,11 @@ const defaultState = {
     results: null,
 };
 
-function reset() {
+function reset(state) {
     return {
         ...defaultState,
         query: {
-            ...defaultState.term,
+            ...state.query,
             term: '',
             from: 0,
         },
