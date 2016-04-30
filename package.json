@@ -71,7 +71,7 @@
     "html-minifier": "^2.0.0",
     "json-loader": "^0.5.4",
     "planify": "^1.0.0",
-    "postcss-loader": "^0.9.0",
+    "postcss-loader": "^0.9.1",
     "rimraf": "^2.4.4",
     "style-loader": "^0.13.0",
     "stylelint": "^6.0.0",
