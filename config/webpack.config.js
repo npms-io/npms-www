@@ -122,8 +122,10 @@ function buildConfig(options) {
             proxy: {
                 '/api/*': {
                     target: 'https://npms.io/api/',
-                    prependPath: false,
                     headers: { host: 'npms.io' },
+                    rewrite: (req) => {
+                        req.url = req.url.replace(/^\/api/, '');
+                    },
                 },
             },
         },
