@@ -14,6 +14,9 @@
         <% if (env !== 'dev') { %>
         <!-- App stylesheet -->
         <link rel="stylesheet" href="<%= parameters.publicPath %>app.<%= hash %>.css">
+
+        <!-- Open search -->
+        <link title="npms.io" type="application/opensearchdescription+xml" href="https://npms.io/opensearch.xml" rel="search">
         <% } %>
     </head>
     <body>

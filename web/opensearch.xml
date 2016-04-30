@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+	<ShortName>npms</ShortName>
+	<Description>npms - a better and open sourced search for node modules</Description>
+	<Tags>npm search node module score github nsp david</Tags>
+	<Contact>amdfcruz@gmail.com</Contact>
+	<Developer>André Cruz</Developer>
+	<Url type="text/html" method="get" template="https://npms.io/search?term={searchTerms}"/>
+	<InputEncoding>UTF-8</InputEncoding>
+	<Image height="16" width="16" type="image/vnd.microsoft.icon"></Image>
+</OpenSearchDescription>
