@@ -66,7 +66,7 @@ export function run() {
             meta: { uid: uniqueId('search-') },
             payload: {
                 data: query,
-                promise: apiRequest(`/search/?${queryString.stringify(query)}`)
+                promise: apiRequest(`/search?${queryString.stringify(query)}`)
                 .then((res) => ({ total: res.total, items: res.results }))
                 .finally(() => dispatch(unmarkAsLoading())),
             },
@@ -95,7 +95,7 @@ export function scroll() {
             meta: { uid: uniqueId('search') },
             payload: {
                 data: query,
-                promise: apiRequest(`/search/?${queryString.stringify(query)}`)
+                promise: apiRequest(`/search?${queryString.stringify(query)}`)
                 .then((res) => ({ total: res.total, items: res.results }))
                 .finally(() => dispatch(unmarkAsLoading())),
             },
