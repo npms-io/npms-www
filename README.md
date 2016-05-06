@@ -18,7 +18,15 @@ You may preview the production build by running `$ npm run build && npm run serv
 
 ## Deploys
 
-There's a separate document that explains the setup procedure, you may read it [here](./docs/deploys.md).
+There's a separate document that explains the deployment procedure, you may read it [here](./docs/deploys.md).
+
+
+## Tests
+
+```bash
+$ npm test
+$ npm test-cov # to get coverage report
+```
 
 
 ## License
