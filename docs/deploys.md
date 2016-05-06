@@ -24,7 +24,7 @@ Before doing the first deploy, you need to setup the server.
   - Apply best practices in `nginx.conf`
   - Replace the `mime.types` with the h5bp one
   - Copy h5bp into `/etc/nginx`
-- Setup a new site (or just use the `default`) in `/etc/nginx/sites-available` with config below
+- Setup a new site (or just use the `default`) in `/etc/nginx/sites-available` with the config exemplified below
 - Finally restart nginx by running `$ sudo service nginx restart`
 
 ```
