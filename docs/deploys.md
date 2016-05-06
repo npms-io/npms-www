@@ -17,7 +17,7 @@ Before doing the first deploy, you need to setup the server.
 - Create `~/npms-www/parameters.json` in the server with the custom configuration (API URL, Google Analytics id, etc)
 - Do your first deploy by running `$ pm2 deploy ecosystem.json5 production` in your local machine
 
-### nginx
+### Nginx
 
 - Install nginx in the server by running `$ sudo aptitude install nginx`
 - Apply the https://github.com/h5bp/server-configs-nginx server config suggestions wisely
