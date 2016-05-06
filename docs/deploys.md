@@ -30,7 +30,7 @@ Before doing the first deploy, you need to setup the server.
 ```
 server {
   listen *:80;
-  root /home/www/npms-www//web;
+  root /home/www/npms-www/web;
 
   include h5bp/basic.conf;
 
@@ -41,20 +41,6 @@ server {
 
   location @missing {
     rewrite ^ /index.html last;
-  }
-
-  location /api/ {
-    proxy_pass http://127.0.0.1:3000/;
-
-    # Do not buffer, improves performance
-    proxy_buffering    off;
-    proxy_buffer_size  128k;
-    proxy_buffers 100  128k;
-
-    # Fix some headers
-    proxy_set_header  X-Real-IP  $remote_addr;
-    proxy_set_header  X-Forwarded-For $proxy_add_x_forwarded_for;
-    proxy_set_header  Host $http_host;
   }
 }
 ```
