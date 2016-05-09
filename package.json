@@ -6,7 +6,6 @@
     "lint": "./scripts/lint",
     "build": "./scripts/build",
     "serve": "./scripts/serve",
-
     "pre-commit": "./scripts/lint",
     "postinstall": "./scripts/init",
     "test": "npm run lint",
@@ -69,7 +68,7 @@
     "diff-json-structure": "^1.0.0",
     "err-code": "^1.1.0",
     "eslint": "^2.8.0",
-    "eslint-plugin-react": "^5.0.1",
+    "eslint-plugin-react": "^5.1.0",
     "extract-text-webpack-plugin": "^1.0.0",
     "html-minifier": "^2.0.0",
     "json-loader": "^0.5.4",
