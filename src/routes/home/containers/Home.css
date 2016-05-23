@@ -20,7 +20,7 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 70%;
+    width: calc(100% - 50px);
     max-width: 620px;
     transform: translate(-50%, calc(-50% - 20px));
     text-align: center;

@@ -51,6 +51,7 @@
     width: 24px;
     height: 24px;
     margin-right: 15px;
+    display: inline-block;
     fill: #fff;
 }
 
