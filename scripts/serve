@@ -30,7 +30,7 @@ const argv = yargs
 })
 .option('address', {
     alias: 'a',
-    type: 'number',
+    type: 'string',
     default: 'localhost',
 })
 .option('port', {
