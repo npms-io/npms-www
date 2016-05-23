@@ -3,5 +3,6 @@
     height: 24px;
     display: inline-block;
     vertical-align: middle;
+    user-select: none;
     transition: fill 0.15s ease, fill-opacity 0.15s ease;
 }

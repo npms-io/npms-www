@@ -27,12 +27,14 @@
     right: 0;
     bottom: 0;
     width: 40px;
+    margin: 0;
     padding: 0;
     border: 0;
     outline: 0;
     background-color: transparent;
     border-radius: 0 2px 2px 0;
     color: #999;
+    user-select: none;
     cursor: pointer;
     transition: background 0.15s ease;
 }

@@ -5,7 +5,6 @@ html,
 body {
     min-width: 320px;
     height: 100%;
-    min-height: 500px;
     margin: 0;
     background-color: #f7f7f6;
 }
