@@ -5,10 +5,6 @@ import shallowCompare from 'react-addons-shallow-compare';
 import { updateQuery, navigate } from 'shared/state/search/actions';
 
 class SearchBox extends Component {
-    componentDidMount() {
-        this._inputEl.focus();
-    }
-
     shouldComponentUpdate(nextProps, nextState) {
         return shallowCompare(this, nextProps, nextState);
     }
@@ -37,6 +33,7 @@ class SearchBox extends Component {
 
     _handleSubmit(e) {
         e.preventDefault();
+        this._inputEl.blur();
         this.props.dispatch(navigate());
     }
 }
