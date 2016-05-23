@@ -7,11 +7,12 @@ import shallowCompare from 'react-addons-shallow-compare';
 class Menu extends Component {
     constructor(props) {
         super(props);
-        this._handleOutsideClick = this._handleOutsideClick.bind(this);
+        this._handleOutsideClickOrTap = this._handleOutsideClickOrTap.bind(this);
     }
 
     componentDidMount() {
-        document.body.addEventListener('click', this._handleOutsideClick);
+        document.body.addEventListener('click', this._handleOutsideClickOrTap);
+        document.body.addEventListener('touchend', this._handleOutsideClickOrTap);
     }
 
     shouldComponentUpdate(nextProps, nextState) {
@@ -19,7 +20,8 @@ class Menu extends Component {
     }
 
     componentWillUnmount() {
-        document.body.removeEventListener('click', this._handleOutsideClick);
+        document.body.removeEventListener('click', this._handleOutsideClickOrTap);
+        document.body.removeEventListener('touchend', this._handleOutsideClickOrTap);
     }
 
     render() {
@@ -31,8 +33,10 @@ class Menu extends Component {
         );
     }
 
-    _handleOutsideClick(e) {
-        !this._el.contains(e.target) && this.props.dispatch(closeMenu());
+    _handleOutsideClickOrTap(e) {
+        if (this.props.isOpen && !this._el.contains(e.target)) {
+            this.props.dispatch(closeMenu());
+        }
     }
 }
 
