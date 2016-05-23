@@ -11,7 +11,7 @@ class ListItem extends Component {
     }
 
     render() {
-        const publishedAgo = this.props.item.publishedAt ? ago(this.props.item.publishedAgo) : '';
+        const publishedAgo = this.props.item.date ? ago(this.props.item.date) : '';
         const publishedBy = this.props.item.publisher && this.props.item.publisher.username ?
             <span className="publisher">by{ ' ' }
                 <a href={ `https://npmjs.com/~${encodeURIComponent(this.props.item.publisher.username)}` }
