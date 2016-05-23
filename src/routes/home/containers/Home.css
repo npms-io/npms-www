@@ -4,9 +4,13 @@
     background-color: #f7f7f6;
 }
 
+.page-home .header-component {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
 .page-home .upper-half {
     position: relative;
-    height: calc(55% - 42.5px);
+    height: calc(60% - 42.5px);
     min-height: 325px;
     background-color: #35405b;
     color: #fff;
@@ -18,8 +22,14 @@
     left: 50%;
     width: 70%;
     max-width: 620px;
-    transform: translate(-50%, -30%);
+    transform: translate(-50%, calc(-50% - 20px));
     text-align: center;
+}
+
+.page-home .upper-half .logo {
+    font-family: "Oleo Script", cursive;
+    font-size: 100px;
+    font-weight: bold;
 }
 
 .page-home .upper-half .moto {

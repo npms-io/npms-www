@@ -15,7 +15,15 @@
 }
 
 .header-component .logo {
-    width: 110px;
+    width: 150px;
+    font-family: "Oleo Script", cursive;
+    font-size: 36px;
+    text-align: center;
+}
+
+.header-component .logo a {
+    color: #fff;
+    text-decoration: none;
 }
 
 .header-component .search-box .search-box-component {
@@ -63,13 +71,13 @@
 
 .header-component-align-with-search-box {
     max-width: 700px;
-    margin-left: 110px;
+    margin-left: 150px;
     margin-right: 160px;
 }
 
 .header-component-align-with-search-box-floated {
     right: 160px;
-    left: 110px;
+    left: 150px;
     max-width: 700px;
 }
 
@@ -93,5 +101,20 @@
     .header-component-align-with-search-box-floated {
         right: 20px;
         left: 20px;
+    }
+}
+
+@media (min-width: 701px) and (max-width: 1000px) {
+    .header-component .logo {
+        width: 100px;
+        font-size: 24px;
+    }
+
+    .header-component-align-with-search-box {
+        margin-left: 100px;
+    }
+
+    .header-component-align-with-search-box-floated {
+        left: 100px;
     }
 }

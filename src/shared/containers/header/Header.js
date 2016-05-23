@@ -17,7 +17,7 @@ class Header extends Component {
         return (
             <div className={ `header-component header-component-appearance-${this.props.appearance}` }>
                 <div className="logo">
-                    <Link to={ '/' } className="logo">npms</Link>
+                    <Link to={ '/' }>npms</Link>
                 </div>
 
                 <div className="search-box">
