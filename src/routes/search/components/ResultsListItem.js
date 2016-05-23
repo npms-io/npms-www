@@ -20,7 +20,8 @@ class ListItem extends Component {
                 </a>
 
                 <span className="picture">
-                    <Gravatar size={ 20 } email={ this.props.item.publisher.email || 'n/a' } onLoad={ (e) => this._onGravatarLoad(e) } />
+                    <Gravatar size={ 20 } email={ this.props.item.publisher.email || 'n/a' } https
+                        onLoad={ (e) => this._onGravatarLoad(e) } />
                 </span>
             </span> :
             '';
