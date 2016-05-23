@@ -72,6 +72,7 @@
     display: inline-block;
     vertical-align: middle;
     border: 2px solid #57627d;
+    background-color: #ededeb;
     border-radius: 50%;
     transition: opacity 0.2s ease;
 }
