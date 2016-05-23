@@ -58,13 +58,19 @@
     display: none;
 }
 
-/* Utility class to be used by several pages
+/* Utility classes to be used by several pages
    ========================================================================== */
 
 .header-component-align-with-search-box {
     max-width: 700px;
     margin-left: 110px;
     margin-right: 160px;
+}
+
+.header-component-align-with-search-box-floated {
+    right: 160px;
+    left: 110px;
+    max-width: 700px;
 }
 
 /* Media queries
@@ -82,5 +88,10 @@
     .header-component-align-with-search-box {
         margin-left: 20px;
         margin-right: 20px;
+    }
+
+    .header-component-align-with-search-box-floated {
+        right: 20px;
+        left: 20px;
     }
 }

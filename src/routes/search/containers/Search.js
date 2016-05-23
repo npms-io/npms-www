@@ -6,6 +6,8 @@ import isEqual from 'lodash/isEqual';
 import { run, updateQuery, scroll, reset } from 'shared/state/search/actions';
 import Header from 'shared/containers/header/Header';
 import ResultsList from '../components/ResultsList';
+import ScrollToTop from 'react-scroll-up';
+import MaterialIcon from 'shared/components/icon/MaterialIcon';
 
 class Search extends Component {
     componentWillMount() {
@@ -34,6 +36,12 @@ class Search extends Component {
         return (
             <div className="page page-search">
                 <Header />
+
+                <div className="scroll-to-top header-component-align-with-search-box-floated">
+                    <ScrollToTop showUnder={ 200 } style={ {} }>
+                        <MaterialIcon id="keyboard_arrow_up" />
+                    </ScrollToTop>
+                </div>
 
                 <ResultsList
                     results={ this.props.search.results }

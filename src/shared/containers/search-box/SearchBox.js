@@ -6,7 +6,7 @@ import { updateQuery, navigate } from 'shared/state/search/actions';
 
 class SearchBox extends Component {
     componentDidMount() {
-        this._input.focus();
+        this._inputEl.focus();
     }
 
     shouldComponentUpdate(nextProps, nextState) {
@@ -19,7 +19,7 @@ class SearchBox extends Component {
                 <div className="search-input">
                     <input type="text" placeholder="Search modules"
                         value={ this.props.query.term }
-                        ref={ (el) => { this._input = el; } }
+                        ref={ (ref) => { this._inputEl = ref; } }
                         onChange={ () => this._handleInputChange() } />
                     <button><i className="material-icons">search</i></button>
                 </div>
@@ -30,7 +30,7 @@ class SearchBox extends Component {
     // ---------------------------------------------
 
     _handleInputChange() {
-        const query = { term: this._input.value };
+        const query = { term: this._inputEl.value };
 
         this.props.dispatch(updateQuery(query));
     }

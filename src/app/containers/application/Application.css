@@ -19,7 +19,7 @@
 }
 
 #menu {
-    position: absolute;
+    position: fixed;
     top: 3px;
     right: 0;
     bottom: 0;

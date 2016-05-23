@@ -63,7 +63,7 @@ function buildConfig(options) {
                     test: /\.css$/,
                     include: [`${projectDir}/src`],
                     loader: ExtractTextPlugin.extract('style-loader',
-                                'css-loader?importLoaders=1&sourceMap!postcss-loader'),
+                                'css-loader?importLoaders=1!postcss-loader'),
                 },
                 // JSON loader so that we can import json files, such as parameters.json
                 {

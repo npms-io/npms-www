@@ -57,16 +57,26 @@
     font-weight: 500;
 }
 
-.page-search .results-list-item .publish-info .publisher a {
+.page-search .results-list-item .publish-info .publisher .name {
     max-width: calc(100% - 140px);
     display: inline-block;
     vertical-align: middle;
     font-weight: 900;
 }
 
-.page-search .results-list-item .publish-info .publisher img {
+.page-search .results-list-item .publish-info .publisher .picture {
+    width: 24px;
+    height: 24px;
+    overflow: hidden;
     margin-left: 5px;
+    display: inline-block;
     vertical-align: middle;
     border: 2px solid #57627d;
     border-radius: 50%;
+    transition: opacity 0.2s ease;
+}
+
+.page-search .results-list-item .publish-info .publisher .picture img {
+    opacity: 0;
+    transition: opacity 0.2s ease;
 }

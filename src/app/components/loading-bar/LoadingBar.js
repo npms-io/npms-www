@@ -32,7 +32,6 @@ export default class LoadingBar extends Component {
     render() {
         return (
             <div className={ `loading-bar-component ${this.state.instant ? 'disable-transition' : ''}` }
-                ref={ (el) => { this._loadingBar = el; } }
                 style={ { transform: `scaleX(${this.state.percentage})` } }></div>
         );
     }

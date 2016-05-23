@@ -12,11 +12,16 @@ class ListItem extends Component {
 
     render() {
         const publishedAgo = this.props.item.publishedAt ? ago(this.props.item.publishedAgo) : '';
-        const publishedBy = this.props.item.publisher ?
+        const publishedBy = this.props.item.publisher && this.props.item.publisher.username ?
             <span className="publisher">by{ ' ' }
                 <a href={ `https://npmjs.com/~${encodeURIComponent(this.props.item.publisher.username)}` }
-                    target="_blank" className="ellipsis">{ this.props.item.publisher.username }</a>
-                <Gravatar size={ 22 } email={ this.props.item.publisher.email } />
+                    target="_blank" className="name ellipsis">
+                    { this.props.item.publisher.username }
+                </a>
+
+                <span className="picture">
+                    <Gravatar size={ 20 } email={ this.props.item.publisher.email || 'n/a' } onLoad={ (e) => this._onGravatarLoad(e) } />
+                </span>
             </span> :
             '';
 
@@ -48,6 +53,10 @@ class ListItem extends Component {
                     '' }
             </li>
         );
+    }
+
+    _onGravatarLoad(e) {
+        e.target.style.opacity = '1';
     }
 }
 

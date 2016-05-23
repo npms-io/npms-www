@@ -18,8 +18,26 @@ class List extends Component {
             return this._renderNoResults();
         }
 
+        return this._renderHasResults();
+    }
+
+    _renderEmpty() {
         return (
-            <div className="results-list has-results">
+            <div className="results-list is-empty header-component-align-with-search-box" ref={ (ref) => { this._el = ref; } }>
+            </div>
+        );
+    }
+
+    _renderNoResults() {
+        return (
+            <div className="results-list has-no-results header-component-align-with-search-box" ref={ (ref) => { this._el = ref; } }>
+                Sorry no results for <span className="term">{ this.props.results.term }</span>.
+            </div>
+        );
+    }
+    _renderHasResults() {
+        return (
+            <div className="results-list has-results" ref={ (ref) => { this._el = ref; } }>
                 <div className="summary">
                     <div className="header-component-align-with-search-box ellipsis">
                         <span className="nr-results">{ this.props.results.total }</span> results for <span className="term">
@@ -36,21 +54,6 @@ class List extends Component {
                 <Waypoint
                     onEnter={ (props) => this.props.onLoadMore(props) }
                     threshold={ 0.2 } />
-            </div>
-        );
-    }
-
-    _renderEmpty() {
-        return (
-            <div className="results-list is-empty header-component-align-with-search-box">
-            </div>
-        );
-    }
-
-    _renderNoResults() {
-        return (
-            <div className="results-list has-no-results header-component-align-with-search-box">
-                Sorry no results for <span className="term">{ this.props.results.term }</span>.
             </div>
         );
     }

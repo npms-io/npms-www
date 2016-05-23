@@ -26,13 +26,13 @@ class Menu extends Component {
         return (
             <div
                 className={ `menu-component ${this.props.isOpen ? 'is-open' : ''}` }
-                ref={ (el) => { this._element = el; } }>
+                ref={ (ref) => { this._el = ref; } }>
             </div>
         );
     }
 
     _handleOutsideClick(e) {
-        !this._element.contains(e.target) && this.props.dispatch(closeMenu());
+        !this._el.contains(e.target) && this.props.dispatch(closeMenu());
     }
 }
 
