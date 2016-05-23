@@ -46,6 +46,6 @@ SearchBox.propTypes = {
     query: PropTypes.object.isRequired,
 };
 
-export default connect((state) => {
-    return { query: state.search.query };
-})(SearchBox);
+export default connect((state) => ({
+    query: state.search.query,
+}))(SearchBox);

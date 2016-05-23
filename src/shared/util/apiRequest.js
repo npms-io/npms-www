@@ -35,7 +35,9 @@ function onRejected(res) {
 export default function apiRequest(path, options) {
     options = { timeout: config.api.timeout, ...options };
 
-    return Promise.resolve(axios(createUrl(path), options))
-    .timeout(config.api.timeout)
-    .then((res) => onFullfilled(res), (res) => onRejected(res));
+    return Promise.try(() => {
+        return axios(createUrl(path), options)
+        .then((res) => onFullfilled(res), (res) => onRejected(res));
+    })
+    .timeout(config.api.timeout);
 }

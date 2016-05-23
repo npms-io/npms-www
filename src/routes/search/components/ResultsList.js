@@ -11,22 +11,23 @@ class List extends Component {
 
     render() {
         if (!this.props.results) {
-            return (
-                <div className="results-list empty-search"></div>
-            );
+            return this._renderEmpty();
         }
 
         if (!this.props.results.total) {
-            return (
-                <div className="results-list no-results">
-                    Sorry no results for "<span className="term">{ this.props.results.term }".</span>
-                </div>
-            );
+            return this._renderNoResults();
         }
 
         return (
-            <div className="results-list">
-                <ul className="items">
+            <div className="results-list has-results">
+                <div className="summary">
+                    <div className="header-component-align-with-search-box ellipsis">
+                        <span className="nr-results">{ this.props.results.total }</span> results for <span className="term">
+                        { this.props.results.term }</span>
+                    </div>
+                </div>
+
+                <ul className="items header-component-align-with-search-box">
                     { this.props.results.items.map((item) =>
                         <ResultsListItem key={ item.name } item={ item } />
                     ) }
@@ -35,6 +36,21 @@ class List extends Component {
                 <Waypoint
                     onEnter={ (props) => this.props.onLoadMore(props) }
                     threshold={ 0.2 } />
+            </div>
+        );
+    }
+
+    _renderEmpty() {
+        return (
+            <div className="results-list is-empty header-component-align-with-search-box">
+            </div>
+        );
+    }
+
+    _renderNoResults() {
+        return (
+            <div className="results-list has-no-results header-component-align-with-search-box">
+                Sorry no results for <span className="term">{ this.props.results.term }</span>.
             </div>
         );
     }

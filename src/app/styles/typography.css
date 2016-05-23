@@ -22,7 +22,7 @@ select {
 }
 
 ::selection {
-    background: #de5833;
+    background: #1dd09b;
     color: #fff;
 }
 
@@ -32,7 +32,7 @@ select {
 a,
 a:visited,
 a:active {
-    color: #ce3833;
+    color: #35405b;
     text-decoration: none;
     transition: color 0.15s ease;
 }

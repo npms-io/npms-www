@@ -1,0 +1,11 @@
+.menu-component {
+    width: 100%;
+    height: 100%;
+    transform: translateX(100%);
+    background: rgba(0, 0, 0, 0.85);
+    transition: transform 0.2s ease-out;
+}
+
+.menu-component.is-open {
+    transform: translateX(0);
+}

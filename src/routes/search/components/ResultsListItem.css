@@ -1,29 +1,72 @@
 .page-search .results-list-item {
     position: relative;
     margin-bottom: 30px;
-    padding: 0 0 0 50px;
 }
 
-.page-search .results-list-item .score-badge-component {
-    position: absolute;
-    top: 4px;
-    left: 0;
+/* Headline
+   ========================================================================== */
+
+.page-search .results-list-item .headline .name,
+.page-search .results-list-item .headline .version,
+.page-search .results-list-item .headline .module-score-component {
+    display: inline-block;
+    vertical-align: middle;
 }
 
-.page-search .results-list-item .name {
-    display: block;
+.page-search .results-list-item .headline .name {
+    max-width: calc(100% - 100px);
     font-size: 20px;
     font-weight: 400;
 }
 
+.page-search .results-list-item .headline .version {
+    margin-left: 7px;
+    color: #858585;
+}
+
+.page-search .results-list-item .headline .module-score-component {
+    margin: -5px 0 0 5px;
+}
+
+/* Description and keywords
+   ========================================================================== */
+
+.page-search .results-list-item .description {
+    color: #414141;
+}
+
 .page-search .results-list-item .keywords {
     margin-top: 5px;
+    color: #858585;
     font-size: 12px;
 }
 
 .page-search .results-list-item .keywords i {
     margin-right: 5px;
     vertical-align: middle;
-    color: rgba(0, 0, 0, 0.6);
     font-size: 14px;
+}
+
+/* Publish info
+   ========================================================================== */
+
+.page-search .results-list-item .publish-info {
+    margin-top: 5px;
+    color: #303b55;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.page-search .results-list-item .publish-info .publisher a {
+    max-width: calc(100% - 140px);
+    display: inline-block;
+    vertical-align: middle;
+    font-weight: 900;
+}
+
+.page-search .results-list-item .publish-info .publisher img {
+    margin-left: 5px;
+    vertical-align: middle;
+    border: 2px solid #57627d;
+    border-radius: 50%;
 }

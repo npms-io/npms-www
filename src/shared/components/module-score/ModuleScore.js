@@ -1,12 +1,15 @@
-import './ScoreBage.css';
+import './ModuleScore.css';
 import React, { Component, PropTypes } from 'react';
 import shallowCompare from 'react-addons-shallow-compare';
-import warna from 'warna';
+import ColourMeLife from 'colour-me-life';
 import Tooltip from 'shared/components/tooltip/Tooltip';
+import scoreBadgeSvg from './svgs/score-badge.svg';
 
-const gradient = new warna.Gradient('#ce3833', '#5b9e4d');
+const gradient = new ColourMeLife()
+    .setSpectrum('#6e4b46', '#9e6b64', '#1ac391')
+    .setNumberRange(0, 1);
 
-class ScoreBadge extends Component {
+class ModuleScore extends Component {
     shouldComponentUpdate(nextProps, nextState) {
         return shallowCompare(this, nextProps, nextState);
     }
@@ -14,14 +17,16 @@ class ScoreBadge extends Component {
     render() {
         return (
             <Tooltip
-                overlayClassName="score-badge-tooltip-component"
+                overlayClassName="module-score-tooltip-component"
                 placement="top"
                 destroyTooltipOnHide
                 getTooltipContainer={ () => document.body }
                 overlay={ this._renderTooltip() }>
-                <div className="score-badge-component"
-                    style={ { backgroundColor: gradient.getPosition(this.props.score.final).hex } }>
-                { this._getScoreText(this.props.score.final) }
+                <div className="module-score-component">
+                    <svg className="score-badge" style={ { fill: this._getScoreColor(this.props.score.final) } }>
+                        <use xlinkHref={ scoreBadgeSvg }></use>
+                    </svg>
+                    <div className="score-value">{ this._getScoreText(this.props.score.final) }</div>
                 </div>
             </Tooltip>
 
@@ -44,7 +49,7 @@ class ScoreBadge extends Component {
         return (
             <div>
                 <span className="score-label">{ label }:</span>
-                <span className="score-value" style={ { color: gradient.getPosition(score).hex } }>
+                <span className="score-value" style={ { color: this._getScoreColor(score) } }>
                 { this._getScoreText(score) }
                 </span>
             </div>
@@ -54,10 +59,14 @@ class ScoreBadge extends Component {
     _getScoreText(score) {
         return Math.round(score * 100);
     }
+
+    _getScoreColor(score) {
+        return `#${gradient.colourAt(score)}`;
+    }
 }
 
-ScoreBadge.propTypes = {
+ModuleScore.propTypes = {
     score: PropTypes.object.isRequired,
 };
 
-export default ScoreBadge;
+export default ModuleScore;

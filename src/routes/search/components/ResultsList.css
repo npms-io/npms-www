@@ -1,13 +1,39 @@
-.page-search .results-list ul {
-    margin: 0;
-    padding: 0;
+/* Summary
+   ========================================================================== */
+
+.page-search .results-list .summary {
+    height: 30px;
+    background-color: #ededeb;
+    color: #939292;
+    font-weight: 500;
+    font-style: italic;
+    line-height: 30px;
+}
+
+.page-search .results-list .summary .nr-results {
+    font-weight: 900;
+}
+
+.page-search .results-list .summary .term {
+    color: #57627d;
+}
+
+/* Items list
+   ========================================================================== */
+
+.page-search .results-list .items {
+    padding: 30px 0 75px 0;
     list-style: none;
 }
 
-.page-search .results-list.no-results {
+/* Modifiers
+   ========================================================================== */
+
+.page-search .results-list.has-no-results {
+    margin-top: 60px;
     font-size: 16px;
 }
 
-.page-search .results-list.no-results span {
+.page-search .results-list.has-no-results span {
     font-weight: 500;
 }

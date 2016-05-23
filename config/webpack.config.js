@@ -43,7 +43,6 @@ function buildConfig(options) {
             alias: {
                 config: `${projectDir}/config/config-${options.env}.js`,
                 shared: `${projectDir}/src/shared`,
-                app: `${projectDir}/src/app`,
             },
         },
         module: {
@@ -51,7 +50,11 @@ function buildConfig(options) {
                 // Babel loader enables us to use ES2015 + react's JSX
                 {
                     test: /\.js$/,
-                    include: [`${projectDir}/src`, `${projectDir}/config`],
+                    include: [
+                        `${projectDir}/src`,
+                        `${projectDir}/config`,
+                        `${projectDir}/node_modules/s-ago`,  // See: https://github.com/sebastiansandqvist/s-ago/issues/1
+                    ],
                     loader: 'babel-loader',
                 },
                 // Style loader enables us to import CSS files through normal imports
@@ -67,6 +70,11 @@ function buildConfig(options) {
                     test: /\.json$/,
                     include: [`${projectDir}/src`, `${projectDir}/config`],
                     loader: 'json-loader',
+                },
+                // SVG loader that creates a sprite using symbols
+                {
+                    test: /\.svg$/,
+                    loader: 'svg-sprite?name=svg-[pathhash]-[name]',
                 },
             ],
         },
@@ -121,8 +129,8 @@ function buildConfig(options) {
             // See available options in https://github.com/nodejitsu/node-http-proxy
             proxy: {
                 '/api/*': {
-                    target: 'https://npms.io/api/',
-                    headers: { host: 'npms.io' },
+                    target: 'https://api.npms.io/',
+                    headers: { host: 'api.npms.io' },
                     rewrite: (req) => {
                         req.url = req.url.replace(/^\/api/, '');
                     },

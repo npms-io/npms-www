@@ -55,7 +55,7 @@ export default class LoadingBar extends Component {
         this._interval = setInterval(() => this._autoIncrement(), 190);
 
         this.setState({ percentage: 0, instant: true }, () => {
-            setTimeout(() => this.setState({ percentage: 0.1, instant: false }), 0);
+            setTimeout(() => this.props.running && this.setState({ percentage: 0.1, instant: false }), 0);
         });
     }
 
@@ -64,7 +64,7 @@ export default class LoadingBar extends Component {
             return;
         }
 
-        this.setState({ percentage: 1 });
+        this.setState({ percentage: 1, instant: false });
 
         clearInterval(this._interval);
         this._interval = null;
@@ -85,6 +85,5 @@ export default class LoadingBar extends Component {
 LoadingBar.propTypes = {
     running: PropTypes.bool.isRequired,
 };
-
 
 export default LoadingBar;

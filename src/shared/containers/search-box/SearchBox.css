@@ -1,6 +1,6 @@
 .search-box-component {
     width: 100%;
-    height: 46px;
+    height: 40px;
 }
 
 .search-box-component .search-input {
@@ -14,7 +14,7 @@
     width: 100%;
     height: 100%;
     padding: 0 56px 0 15px;
-    border: 1px solid #d0d0d0;
+    border: 0;
     outline: 0;
     background-color: #fff;
     border-radius: 2px;
@@ -23,29 +23,33 @@
 
 .search-box-component .search-input button {
     position: absolute;
-    top: 3px;
-    right: 3px;
-    bottom: 3px;
-    width: 50px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 40px;
     padding: 0;
     border: 0;
     outline: 0;
     background-color: transparent;
-    border-radius: 2px;
+    border-radius: 0 2px 2px 0;
     color: #999;
     cursor: pointer;
-    transition: all 0.1s ease;
+    transition: background 0.15s ease;
+}
+
+.search-box-component .search-input button:hover {
+    color: #1dd09b;
 }
 
 .search-box-component .search-input input:focus ~ button {
-    background-color: #5b9e4d;
+    background-color: #1dd09b;
     color: #fff;
     cursor: pointer;
 }
 
 .search-box-component .search-input button:focus,
 .search-box-component .search-input input:focus ~ button:hover {
-    background-color: #333;
+    background-color: #14946e;
     color: #fff;
     cursor: pointer;
 }

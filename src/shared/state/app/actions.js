@@ -11,3 +11,15 @@ export function unmarkAsLoading(decrement = 1) {
         payload: decrement,
     };
 }
+
+export function toggleMenu() {
+    return {
+        type: 'App.TOGGLE_MENU',
+    };
+}
+
+export function closeMenu() {
+    return {
+        type: 'App.CLOSE_MENU',
+    };
+}

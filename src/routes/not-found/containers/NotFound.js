@@ -22,5 +22,4 @@ NotFound.propTypes = {
     dispatch: PropTypes.func.isRequired,
 };
 
-
 export default connect()(NotFound);

@@ -2,11 +2,16 @@ import './Tooltip.css';
 import './themes/default.css';
 import './animations/zoom.css';
 import React, { Component, PropTypes } from 'react';
+import shallowCompare from 'react-addons-shallow-compare';
 import RcTooltip from 'rc-tooltip';
 
 const validPlacements = ['top', 'right', 'bottom', 'left'];
 
 class Tooltip extends Component {
+    shouldComponentUpdate(nextProps, nextState) {
+        return shallowCompare(this, nextProps, nextState);
+    }
+
     render() {
         const { overlayClassName, theme, animation, ...props } = this.props;
         const finalOverlayClassName = theme ? `${overlayClassName} tooltip-component-theme-${theme}` : overlayClassName;

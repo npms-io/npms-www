@@ -1,5 +1,6 @@
 const defaultState = {
     loadingCount: 0,
+    isMenuOpen: false,
 };
 
 function markAsLoading(state, action) {
@@ -16,12 +17,30 @@ function unmarkAsLoading(state, action) {
     };
 }
 
+function toggleMenu(state) {
+    return {
+        ...state,
+        isMenuOpen: !state.isMenuOpen,
+    };
+}
+
+function closeMenu(state) {
+    return {
+        ...state,
+        isMenuOpen: false,
+    };
+}
+
 export function appReducer(state = defaultState, action) {
     switch (action.type) {
     case 'App.MARK_AS_LOADING':
         return markAsLoading(state, action);
     case 'App.UNMARK_AS_LOADING':
         return unmarkAsLoading(state, action);
+    case 'App.TOGGLE_MENU':
+        return toggleMenu(state, action);
+    case 'App.CLOSE_MENU':
+        return closeMenu(state, action);
     default:
         return state;
     }

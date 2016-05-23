@@ -1,30 +1,34 @@
 import './Home.css';
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import shallowCompare from 'react-addons-shallow-compare';
+import Header from 'shared/containers/header/Header';
 import SearchBox from 'shared/containers/search-box/SearchBox';
-import Footer from 'shared/components/footer/Footer';
 import { markAsLoading, unmarkAsLoading } from 'shared/state/app/actions';
-import { reset } from 'shared/state/search/actions';
 
 class Home extends Component {
     componentWillMount() {
-        this.props.dispatch(reset());
         this.props.dispatch(markAsLoading());
         setTimeout(() => this.props.dispatch(unmarkAsLoading()), 300);
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        return shallowCompare(this, nextProps, nextState);
     }
 
     render() {
         return (
             <div className="page page-home">
-                <div className="centered">
-                    <div className="logo">
-                        <div className="label">npms</div>
+                <Header appearance="menu-only" />
+
+                <div className="upper-half">
+                    <div className="upper-half-centered">
+                        <div className="logo">npms</div>
+                        <div className="moto">A better and <strong>open source search</strong> for node modules</div>
+
+                        <SearchBox />
                     </div>
-
-                    <SearchBox />
                 </div>
-
-                <Footer />
             </div>
         );
     }

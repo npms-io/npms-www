@@ -1,8 +1,9 @@
 import './ResultsListItem.css';
 import React, { Component, PropTypes } from 'react';
 import shallowCompare from 'react-addons-shallow-compare';
-import NpmLink from 'shared/components/npm-link/NpmLink';
-import ScoreBadge from 'shared/components/score-badge/ScoreBadge';
+import ago from 's-ago';
+import Gravatar from 'react-gravatar';
+import ModuleScore from 'shared/components/module-score/ModuleScore';
 
 class ListItem extends Component {
     shouldComponentUpdate(nextProps, nextState) {
@@ -10,22 +11,41 @@ class ListItem extends Component {
     }
 
     render() {
+        const publishedAgo = this.props.item.publishedAt ? ago(this.props.item.publishedAgo) : '';
+        const publishedBy = this.props.item.publisher ?
+            <span className="publisher">by{ ' ' }
+                <a href={ `https://npmjs.com/~${encodeURIComponent(this.props.item.publisher.username)}` }
+                    target="_blank" className="ellipsis">{ this.props.item.publisher.username }</a>
+                <Gravatar size={ 22 } email={ this.props.item.publisher.email } />
+            </span> :
+            '';
+
         return (
             <li className="results-list-item">
-                <ScoreBadge score={ this.props.item.score } />
+                <div className="headline">
+                    <a href={ `https://npmjs.com/package/${encodeURIComponent(this.props.item.name)}` } target="_blank"
+                        className="name ellipsis">{ this.props.item.name }</a>
 
-                <div className="name ellipsis">
-                    <NpmLink name={ this.props.item.name }>{ this.props.item.name }</NpmLink>
+                    <span className="version">(v{ this.props.item.version })</span>
+                    <ModuleScore score={ this.props.item.score } />
                 </div>
 
-                <div className="description ellipsis">{ this.props.item.description }</div>
+                { this.props.item.description ?
+                    <div className="description ellipsis">{ this.props.item.description }</div> :
+                    '' }
 
                 { this.props.item.keywords ?
                     <div className="keywords ellipsis">
                         <i className="material-icons">local_offer</i>
                         { this.props.item.keywords.join(', ') }
-                    </div>
-                  : '' }
+                    </div> :
+                    '' }
+
+                { publishedAgo || publishedBy ?
+                    <div className="publish-info">
+                        published { publishedAgo } { publishedBy }
+                    </div> :
+                    '' }
             </li>
         );
     }

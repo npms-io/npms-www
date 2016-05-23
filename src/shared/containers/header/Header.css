@@ -1,0 +1,86 @@
+.header-component {
+    position: relative;
+    width: 100%;
+    height: 80px;
+    padding-top: 3px;
+    display: table;
+    table-layout: fixed;
+    background-color: #35405b;
+    color: #fff;
+}
+
+.header-component > * {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.header-component .logo {
+    width: 110px;
+}
+
+.header-component .search-box .search-box-component {
+    max-width: 700px;
+}
+
+.header-component .other-actions {
+    width: 160px;
+    text-align: right;
+    user-select: none;
+}
+
+.header-component .other-actions .toggle-menu {
+    margin-right: 25px;
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.header-component .other-actions .toggle-menu:hover {
+    color: #1dd09b;
+}
+
+.header-component .other-actions .social-link {
+    width: 24px;
+    height: 24px;
+    margin-right: 15px;
+    fill: #fff;
+}
+
+.header-component .other-actions .social-link:hover {
+    fill: #1dd09b;
+}
+
+/* Appearances
+   ========================================================================== */
+
+.header-component-appearance-menu-only .logo,
+.header-component-appearance-menu-only .search-box {
+    display: none;
+}
+
+/* Utility class to be used by several pages
+   ========================================================================== */
+
+.header-component-align-with-search-box {
+    max-width: 700px;
+    margin-left: 110px;
+    margin-right: 160px;
+}
+
+/* Media queries
+   ========================================================================== */
+
+@media (max-width: 700px) {
+    .header-component .logo {
+        width: 20px;
+    }
+
+    .header-component .logo > * {
+        display: none;
+    }
+
+    .header-component-align-with-search-box {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
