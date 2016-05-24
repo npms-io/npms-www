@@ -50,7 +50,6 @@ class Menu extends Component {
                 className={ `menu-component ${this.props.isOpen ? 'is-open' : ''}` }
                 ref={ (ref) => { this._el = ref; } }>
 
-                <div className="page-overlay"></div>
                 <MaterialIcon id="close" className="close" onClick={ () => this._handleCloseClick() } />
 
                 <div className="svg-morph" ref={ (ref) => { this._svgMorphEl = ref; } }>
@@ -65,24 +64,30 @@ class Menu extends Component {
                         <ul>
                             <li>
                                 <IndexLink to={ '/' } activeClassName="is-active"
-                                    onClick={ () => this._handleLinkClick() }>Home</IndexLink>
+                                    onClick={ () => this._handlePageLinkClick() }>Home</IndexLink>
                             </li>
                             <li>
                                 <Link to={ '/search' } activeClassName="is-active"
-                                    onClick={ () => this._handleLinkClick() }>Search</Link>
+                                    onClick={ () => this._handlePageLinkClick() }>Search</Link>
                             </li>
                             <li>
                                 <Link to={ '/about' } activeClassName="is-active"
-                                    onClick={ () => this._handleLinkClick() }>About</Link>
+                                    onClick={ () => this._handlePageLinkClick() }>About</Link>
                             </li>
                             <li>
                                 <Link to={ '/privacy' } activeClassName="is-active"
-                                    onClick={ () => this._handleLinkClick() }>Privacy</Link>
+                                    onClick={ () => this._handlePageLinkClick() }>Privacy</Link>
                             </li>
                             <li>
                                 <Link to={ '/terms' } activeClassName="is-active"
-                                    onClick={ () => this._handleLinkClick() }>Terms</Link>
+                                    onClick={ () => this._handlePageLinkClick() }>Terms</Link>
                             </li>
+                        </ul>
+
+                        <div className="section">External</div>
+                        <ul>
+                            <li><a className="social-link" href="https://twitter.com/npms_io" target="_blank">Twitter</a></li>
+                            <li><a className="social-link" href="https://github.com/npms-io" target="_blank">Github</a></li>
                         </ul>
                     </div>
                 </nav>
@@ -100,7 +105,7 @@ class Menu extends Component {
         this.props.dispatch(closeMenu());
     }
 
-    _handleLinkClick() {
+    _handlePageLinkClick() {
         this.props.dispatch(closeMenu());
     }
 

@@ -85,6 +85,16 @@
 /* Media queries
    ========================================================================== */
 
+@media (max-width: 475px) {
+    .header-component .other-actions {
+        width: 70px;
+    }
+
+    .header-component .other-actions .social-link {
+        display: none;
+    }
+}
+
 @media (max-width: 700px) {
     .header-component .logo {
         width: 20px;
@@ -92,6 +102,10 @@
 
     .header-component .logo > * {
         display: none;
+    }
+
+    .header-component .other-actions .toggle-menu {
+        margin-right: 20px;
     }
 
     .header-component-align-with-search-box {
