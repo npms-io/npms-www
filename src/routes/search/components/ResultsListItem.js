@@ -32,7 +32,7 @@ class ListItem extends Component {
                     <a href={ `https://npmjs.com/package/${encodeURIComponent(this.props.item.name)}` } target="_blank"
                         className="name ellipsis">{ this.props.item.name }</a>
 
-                    <span className="version">(v{ this.props.item.version })</span>
+                    <span className="version">({ this.props.item.version })</span>
                     <ModuleScore score={ this.props.item.score } />
                 </div>
 
