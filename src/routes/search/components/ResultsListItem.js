@@ -49,7 +49,7 @@ class ListItem extends Component {
 
                 { publishedAgo || publishedBy ?
                     <div className="publish-info">
-                        published { publishedAgo } { publishedBy }
+                        updated { publishedAgo } { publishedBy }
                     </div> :
                     '' }
             </li>

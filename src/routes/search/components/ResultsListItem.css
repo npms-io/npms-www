@@ -54,14 +54,13 @@
     margin-top: 5px;
     color: #303b55;
     font-size: 12px;
-    font-weight: 500;
 }
 
 .page-search .results-list-item .publish-info .publisher .name {
     max-width: calc(100% - 140px);
     display: inline-block;
     vertical-align: middle;
-    font-weight: 900;
+    font-weight: bold;
 }
 
 .page-search .results-list-item .publish-info .publisher .picture {
