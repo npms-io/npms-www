@@ -1,6 +1,7 @@
 import './Privacy.css';
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import Header from 'shared/containers/header/Header';
 import { markAsLoading, unmarkAsLoading } from 'shared/state/app/actions';
 
 class Privacy extends Component {
@@ -12,6 +13,8 @@ class Privacy extends Component {
     render() {
         return (
             <div className="page page-privacy">
+                <Header appearance="menu-only" />
+
                 This will be the privacy page.
             </div>
         );

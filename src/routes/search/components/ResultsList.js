@@ -23,21 +23,21 @@ class List extends Component {
 
     _renderEmpty() {
         return (
-            <div className="results-list is-empty header-component-align-with-search-box" ref={ (ref) => { this._el = ref; } }>
+            <div className="results-list is-empty header-component-align-with-search-box">
             </div>
         );
     }
 
     _renderNoResults() {
         return (
-            <div className="results-list has-no-results header-component-align-with-search-box" ref={ (ref) => { this._el = ref; } }>
+            <div className="results-list has-no-results header-component-align-with-search-box">
                 Sorry no results for <span className="term">{ this.props.results.term }</span>.
             </div>
         );
     }
     _renderHasResults() {
         return (
-            <div className="results-list has-results" ref={ (ref) => { this._el = ref; } }>
+            <div className="results-list has-results">
                 <div className="summary">
                     <div className="header-component-align-with-search-box ellipsis">
                         <span className="nr-results">{ this.props.results.total }</span> results for <span className="term">

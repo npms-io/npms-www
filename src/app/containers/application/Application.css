@@ -20,12 +20,11 @@
 
 #menu {
     position: fixed;
-    top: 3px;
+    top: 0;
     right: 0;
     bottom: 0;
-    width: 200px;
+    width: 300px;
     z-index: 20;
-    overflow: hidden;
     pointer-events: none;
 }
 

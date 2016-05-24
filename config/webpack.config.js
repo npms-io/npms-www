@@ -70,7 +70,11 @@ function buildConfig(options) {
                 // SVG loader that creates a sprite using symbols
                 {
                     test: /\.svg$/,
-                    loader: 'svg-sprite?name=svg-[pathhash]-[name]',
+                    loader: 'svg-sprite-loader?name=svg-[pathhash]-[name]',
+                },
+                {
+                    test: require.resolve('snapsvg'),
+                    loader: 'imports-loader?this=>window,fix=>module.exports=0',
                 },
             ],
         },

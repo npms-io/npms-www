@@ -1,6 +1,7 @@
 import './Terms.css';
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import Header from 'shared/containers/header/Header';
 import { markAsLoading, unmarkAsLoading } from 'shared/state/app/actions';
 
 class Terms extends Component {
@@ -12,6 +13,8 @@ class Terms extends Component {
     render() {
         return (
             <div className="page page-terms">
+                <Header appearance="menu-only" />
+
                 This will be the terms page.
             </div>
         );

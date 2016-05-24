@@ -1,5 +1,5 @@
 .material-icons {
     vertical-align: middle;
     user-select: none;
-    transition: color 0.15s ease;
+    transition: color 0.15s ease, opacity 0.15s ease;
 }
