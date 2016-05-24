@@ -47,11 +47,11 @@
     bottom: 0;
     left: 120px;
     width: 130px;
-    background-color: rgb(242, 242, 241);
+    background-color: #f2f2f1;
 }
 
 .menu-component .svg-morph svg {
-    fill: rgb(242, 242, 241);
+    fill: #f2f2f1;
     transform: rotate(180deg);
 }
 
