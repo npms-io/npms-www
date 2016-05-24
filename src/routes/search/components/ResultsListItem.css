@@ -56,14 +56,18 @@
     font-size: 12px;
 }
 
-.page-search .results-list-item .publish-info .publisher .name {
+.page-search .results-list-item .publish-info > * {
+    vertical-align: middle;
+}
+
+.page-search .results-list-item .publish-info .publisher-name {
     max-width: calc(100% - 140px);
     display: inline-block;
     vertical-align: middle;
     font-weight: bold;
 }
 
-.page-search .results-list-item .publish-info .publisher .picture {
+.page-search .results-list-item .publish-info .publisher-picture {
     width: 24px;
     height: 24px;
     overflow: hidden;
@@ -76,7 +80,7 @@
     transition: opacity 0.2s ease;
 }
 
-.page-search .results-list-item .publish-info .publisher .picture img {
+.page-search .results-list-item .publish-info .publisher-picture img {
     opacity: 0;
     transition: opacity 0.2s ease;
 }

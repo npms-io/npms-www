@@ -11,21 +11,6 @@ class ListItem extends Component {
     }
 
     render() {
-        const publishedAgo = this.props.item.date ? ago(new Date(this.props.item.date)) : '';
-        const publishedBy = this.props.item.publisher && this.props.item.publisher.username ?
-            <span className="publisher">by{ ' ' }
-                <a href={ `https://npmjs.com/~${encodeURIComponent(this.props.item.publisher.username)}` }
-                    target="_blank" className="name ellipsis">
-                    { this.props.item.publisher.username }
-                </a>
-
-                <span className="picture">
-                    <Gravatar size={ 20 } email={ this.props.item.publisher.email || 'n/a' } https
-                        onLoad={ (e) => this._onGravatarLoad(e) } />
-                </span>
-            </span> :
-            '';
-
         return (
             <li className="results-list-item">
                 <div className="headline">
@@ -47,12 +32,31 @@ class ListItem extends Component {
                     </div> :
                     '' }
 
-                { publishedAgo || publishedBy ?
-                    <div className="publish-info">
-                        updated { publishedAgo } { publishedBy }
-                    </div> :
-                    '' }
+                { this._renderPublisherInfo() }
             </li>
+        );
+    }
+
+    _renderPublisherInfo() {
+        const hasPublisher = !!(this.props.item.publisher && this.props.item.publisher.username);
+        const hasDate = !!(this.props.item.date);
+
+        if (!hasPublisher && !hasDate) {
+            return '';
+        }
+
+        return (
+            <div className="publish-info">
+                <span>updated </span>
+                { hasDate ? <span className="date">{ ago(new Date(this.props.item.date)) }</span> : '' }
+
+                { hasPublisher ? <span> by </span> : '' }
+                { hasPublisher ? <a href={ `https://npmjs.com/~${encodeURIComponent(this.props.item.publisher.username)}` }
+                    target="_blank" className="publisher-name ellipsis">{ this.props.item.publisher.username }</a> : '' }
+                { hasPublisher ? <span className="publisher-picture">
+                    <Gravatar size={ 20 } email={ this.props.item.publisher.email || 'n/a' } https
+                        onLoad={ (e) => this._onGravatarLoad(e) } /></span> : '' }
+            </div>
         );
     }
 
