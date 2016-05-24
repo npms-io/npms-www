@@ -51,7 +51,7 @@
     "redux": "^3.5.1",
     "redux-promise-middleware": "^3.0.0",
     "redux-thunk": "^2.0.1",
-    "s-ago": "^1.0.6"
+    "s-ago": "^1.1.0"
   },
   "devDependencies": {
     "@satazor/eslint-config": "^2.2.0",

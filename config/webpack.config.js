@@ -50,11 +50,7 @@ function buildConfig(options) {
                 // Babel loader enables us to use ES2015 + react's JSX
                 {
                     test: /\.js$/,
-                    include: [
-                        `${projectDir}/src`,
-                        `${projectDir}/config`,
-                        `${projectDir}/node_modules/s-ago`,  // See: https://github.com/sebastiansandqvist/s-ago/issues/1
-                    ],
+                    include: [`${projectDir}/src`, `${projectDir}/config`],
                     loader: 'babel-loader',
                 },
                 // Style loader enables us to import CSS files through normal imports
