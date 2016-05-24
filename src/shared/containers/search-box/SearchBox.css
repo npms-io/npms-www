@@ -31,29 +31,16 @@
     padding: 0;
     border: 0;
     outline: 0;
-    background-color: transparent;
+    background-color: #1dd09b;
     border-radius: 0 2px 2px 0;
-    color: #999;
+    color: #fff;
     user-select: none;
     cursor: pointer;
     transition: background 0.15s ease;
 }
 
 .search-box-component .search-input button:hover {
-    color: #1dd09b;
-}
-
-.search-box-component .search-input input:focus ~ button {
-    background-color: #1dd09b;
-    color: #fff;
-    cursor: pointer;
-}
-
-.search-box-component .search-input button:focus,
-.search-box-component .search-input input:focus ~ button:hover {
-    background-color: #14946e;
-    color: #fff;
-    cursor: pointer;
+    background-color: #1fb387;
 }
 
 .search-box-component .search-input button i {
