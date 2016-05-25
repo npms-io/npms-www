@@ -77,7 +77,7 @@
 
 .menu-component.is-open .nav-content {
     opacity: 1;
-    transition: opacity 0.3s ease 0.2s;
+    transition: opacity 0.3s 0.2s;
 }
 
 .menu-component nav .section {
@@ -87,7 +87,7 @@
 }
 
 .menu-component nav ul {
-    margin: 0 0 50px 0;
+    margin: 0 0 40px 0;
     padding: 0;
     list-style: none;
 }
@@ -117,15 +117,15 @@
     left: 0;
     transform: translate3d(0, 0, 0);
     opacity: 0;
-    background: rgba(0, 0, 0, 0.4);
+    background: #000;
     transition: transform 0.3s, opacity 0.3s, visibility 0s 0.3s;
 }
 
 .is-menu-open #menu::after {
     transform: translate3d(-130px, 0, 0);
     visibility: visible;
-    opacity: 1;
-    transition: transform 0.3s 0.1s, opacity 0.3s, visibility 0s;
+    opacity: 0.4;
+    transition: transform 0.3s 0.1s, opacity 0.3s 0.1s, visibility 0s;
 }
 
 #page {

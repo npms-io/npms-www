@@ -18,7 +18,7 @@ class ModuleScore extends Component {
         return (
             <Tooltip
                 overlayClassName="module-score-tooltip-component"
-                placement="top"
+                placement="right"
                 destroyTooltipOnHide
                 getTooltipContainer={ () => document.body }
                 overlay={ this._renderTooltip() }>

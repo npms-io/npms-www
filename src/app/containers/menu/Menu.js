@@ -7,16 +7,21 @@ import { closeMenu } from 'shared/state/app/actions';
 import MaterialIcon from 'shared/components/icon/MaterialIcon';
 import Snap from 'snapsvg';
 
-const svgMorthDuration = 400;
-const svgMorthPaths = {
-    initial: 'M-1,0h101c0,0-97.833,153.603-97.833,396.167C2.167,627.579,100,800,100,800H-1V0z',
-    final: 'M-1,0h101c0,0,0-1,0,395c0,404,0,405,0,405H-1V0z',
+const svgMorphDurations = {
+    open: 400,
+    closed: 300,
+};
+const svgMorphPaths = {
+    open: 'M-1,0h101c0,0,0-1,0,395c0,404,0,405,0,405H-1V0z',
+    closed: 'M-1,0h101c0,0-97.833,153.603-97.833,396.167C2.167,627.579,100,800,100,800H-1V0z',
 };
 
 class Menu extends Component {
     constructor(props) {
         super(props);
+
         this._handleOutsideClickOrTap = this._handleOutsideClickOrTap.bind(this);
+        this._firstSvgMorphPath = this.props.isOpen ? svgMorphPaths.open : svgMorphPaths.closed;
     }
 
     componentDidMount() {
@@ -54,7 +59,7 @@ class Menu extends Component {
 
                 <div className="svg-morph" ref={ (ref) => { this._svgMorphEl = ref; } }>
                     <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 800" preserveAspectRatio="none">
-                        <path d={ svgMorthPaths.initial }/>
+                        <path d={ this._firstSvgMorphPath }/>
                     </svg>
                 </div>
 
@@ -114,7 +119,7 @@ class Menu extends Component {
         document.body.classList.toggle('is-menu-open', this.props.isOpen);
 
         // Animate / reset svg morph path
-        const path = new Snap(this._svgMorphEl).select('path');
+        const svgMorphPathSnap = new Snap(this._svgMorphEl).select('path');
 
         if (this._resetSvgMorphPathTimeout) {
             clearTimeout(this._resetSvgMorphPathTimeout);
@@ -122,12 +127,12 @@ class Menu extends Component {
         }
 
         if (this.props.isOpen) {
-            path.animate({ path: svgMorthPaths.final }, svgMorthDuration, window.mina.easeinout);
+            svgMorphPathSnap.animate({ path: svgMorphPaths.open }, svgMorphDurations.open, window.mina.easeinout);
         } else {
             this._resetSvgMorphPathTimeout = setTimeout(() => {
                 this._resetSvgMorphPathTimeout = null;
-                path.attr({ path: svgMorthPaths.initial });
-            }, 400);
+                svgMorphPathSnap.attr({ path: svgMorphPaths.closed });
+            }, svgMorphDurations.closed);
         }
     }
 }

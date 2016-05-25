@@ -2,17 +2,23 @@ import './Search.css';
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import shallowCompare from 'react-addons-shallow-compare';
+import ScrollToTop from 'react-scroll-up';
 import isEqual from 'lodash/isEqual';
-import { run, updateQuery, scroll, reset } from 'shared/state/search/actions';
 import Header from 'shared/containers/header/Header';
 import ResultsList from '../components/ResultsList';
-import ScrollToTop from 'react-scroll-up';
 import MaterialIcon from 'shared/components/icon/MaterialIcon';
+import { markAsLoading, unmarkAsLoading } from 'shared/state/app/actions';
+import { run, updateQuery, scroll, reset } from 'shared/state/search/actions';
 
 class Search extends Component {
     componentWillMount() {
-        this.props.dispatch(updateQuery(this.props.location.query));
-        this.props.dispatch(run());
+        if (this.props.location.query.term) {
+            this.props.dispatch(updateQuery(this.props.location.query));
+            this.props.dispatch(run());
+        } else {
+            this.props.dispatch(markAsLoading());
+            setTimeout(() => this.props.dispatch(unmarkAsLoading()), 300);
+        }
     }
 
     componentWillReceiveProps(nextProps) {

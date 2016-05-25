@@ -30,7 +30,7 @@
 
 .page-search .scroll-to-top div {
     pointer-events: auto;
-    transition: opacity 0.2s ease;
+    transition: opacity 0.2s;
 }
 
 .page-search .scroll-to-top i {
@@ -44,7 +44,7 @@
     text-align: center;
     line-height: 33px;
     cursor: pointer;
-    transition: background 0.2s ease, color 0.2s ease;
+    transition: background 0.2s, color 0.2s;
 }
 
 .page-search .scroll-to-top i:hover {
