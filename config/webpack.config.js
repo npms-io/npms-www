@@ -51,7 +51,7 @@ function buildConfig(options) {
                 {
                     test: /\.js$/,
                     include: [`${projectDir}/src`, `${projectDir}/config`],
-                    loader: 'babel-loader',
+                    loader: 'babel-loader?cacheDirectory',
                 },
                 // Style loader enables us to import CSS files through normal imports
                 // We also use postcss-loader so that we can use the awesome autoprefixer
@@ -72,6 +72,7 @@ function buildConfig(options) {
                     test: /\.svg$/,
                     loader: 'svg-sprite-loader?name=svg-[pathhash]-[name]',
                 },
+                // Make snapsvg work
                 {
                     test: require.resolve('snapsvg'),
                     loader: 'imports-loader?this=>window,fix=>module.exports=0',
