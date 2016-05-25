@@ -40,11 +40,8 @@ export function navigate() {
     return (dispatch, getState) => {
         const query = normalizeQuery(getState().search.query);
 
-        if (!query.term) {
-            delete query.term;
-        }
-
-        dispatch(push(buildSearchUrl(query)));
+        // Only navigate if we got a term filled in
+        query.term && dispatch(push(buildSearchUrl(query)));
     };
 }
 
