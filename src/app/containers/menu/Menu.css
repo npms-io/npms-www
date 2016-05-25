@@ -125,15 +125,16 @@
     transform: translate3d(-130px, 0, 0);
     visibility: visible;
     opacity: 0.4;
+    pointer-events: auto;
     transition: transform 0.3s 0.1s, opacity 0.3s 0.1s, visibility 0s;
 }
 
-#page {
+.is-menu-mounted #page {
     transform: translate3d(0, 0, 0);
     transition: transform 0.3s;
 }
 
-.is-menu-open #page {
+.is-menu-mounted.is-menu-open #page {
     transform: translate3d(-100px, 0, 0);
     transition: transform 0.3s 0.1s;
 }

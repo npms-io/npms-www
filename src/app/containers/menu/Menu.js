@@ -2,6 +2,7 @@ import './Menu.css';
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link, IndexLink } from 'react-router';
+import arrival from 'arrival';
 import shallowCompare from 'react-addons-shallow-compare';
 import { closeMenu } from 'shared/state/app/actions';
 import MaterialIcon from 'shared/components/icon/MaterialIcon';
@@ -27,6 +28,8 @@ class Menu extends Component {
     componentDidMount() {
         document.body.addEventListener('click', this._handleOutsideClickOrTap);
         document.body.addEventListener('touchend', this._handleOutsideClickOrTap);
+
+        this._updateAppOnMount();
     }
 
     shouldComponentUpdate(nextProps, nextState) {
@@ -35,7 +38,8 @@ class Menu extends Component {
 
     componentDidUpdate(prevProps) {
         if (prevProps.isOpen !== this.props.isOpen) {
-            this._handleIsOpenChange();
+            this._updateAppOnOpenChange();
+            this._updateSvgMorphOnOpenChange();
         }
     }
 
@@ -43,10 +47,10 @@ class Menu extends Component {
         document.body.removeEventListener('click', this._handleOutsideClickOrTap);
         document.body.removeEventListener('touchend', this._handleOutsideClickOrTap);
 
-        if (this._resetSvgMorphPathTimeout) {
-            clearTimeout(this._resetSvgMorphPathTimeout);
-            this._resetSvgMorphPathTimeout = null;
-        }
+        document.body.classList.remove('is-menu-mounted is-menu-open');
+        document.body.getElementById('page').style.transform = '';
+
+        this._resetSvgMorphPathTimeout && clearTimeout(this._resetSvgMorphPathTimeout);
     }
 
     render() {
@@ -59,7 +63,7 @@ class Menu extends Component {
 
                 <div className="svg-morph" ref={ (ref) => { this._svgMorphEl = ref; } }>
                     <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 800" preserveAspectRatio="none">
-                        <path d={ this._firstSvgMorphPath }/>
+                        <path d={ this._firstSvgMorphPath } />
                     </svg>
                 </div>
 
@@ -100,6 +104,45 @@ class Menu extends Component {
         );
     }
 
+    _updateAppOnMount() {
+        // Need to set transform to 'none' so that fixed positioned inside pages work correctly
+        // See: https://bugs.chromium.org/p/chromium/issues/detail?id=20574
+        document.getElementById('page').style.transform = !this.props.isOpen ? 'none' : '';
+
+        document.body.classList.add('is-menu-mounted');
+        document.body.classList.toggle('is-menu-open', this.props.isOpen);
+    }
+
+    _updateAppOnOpenChange() {
+        // Need to set transform to 'none' so that fixed positioned inside pages work correctly
+        // See: https://bugs.chromium.org/p/chromium/issues/detail?id=20574
+        if (!this.props.isOpen) {
+            arrival(document.body, () => {
+                document.getElementById('page').style.transform = 'none';
+            }, '#page');
+        } else {
+            document.getElementById('page').style.transform = '';
+        }
+
+        document.body.classList.toggle('is-menu-open', this.props.isOpen);
+    }
+
+    _updateSvgMorphOnOpenChange() {
+        const svgMorphPathSnap = new Snap(this._svgMorphEl).select('path');
+
+        this._resetSvgMorphPathTimeout && clearTimeout(this._resetSvgMorphPathTimeout);
+
+        if (this.props.isOpen) {
+            this._resetSvgMorphPathTimeout = null;
+            svgMorphPathSnap.animate({ path: svgMorphPaths.open }, svgMorphDurations.open, window.mina.easeinout);
+        } else {
+            this._resetSvgMorphPathTimeout = setTimeout(() => {
+                this._resetSvgMorphPathTimeout = null;
+                svgMorphPathSnap.attr({ path: svgMorphPaths.closed });
+            }, svgMorphDurations.closed);
+        }
+    }
+
     _handleOutsideClickOrTap(e) {
         if (this.props.isOpen && !this._el.contains(e.target)) {
             this.props.dispatch(closeMenu());
@@ -112,28 +155,6 @@ class Menu extends Component {
 
     _handlePageLinkClick() {
         this.props.dispatch(closeMenu());
-    }
-
-    _handleIsOpenChange() {
-        // Add global class to body
-        document.body.classList.toggle('is-menu-open', this.props.isOpen);
-
-        // Animate / reset svg morph path
-        const svgMorphPathSnap = new Snap(this._svgMorphEl).select('path');
-
-        if (this._resetSvgMorphPathTimeout) {
-            clearTimeout(this._resetSvgMorphPathTimeout);
-            this._resetSvgMorphPathTimeout = null;
-        }
-
-        if (this.props.isOpen) {
-            svgMorphPathSnap.animate({ path: svgMorphPaths.open }, svgMorphDurations.open, window.mina.easeinout);
-        } else {
-            this._resetSvgMorphPathTimeout = setTimeout(() => {
-                this._resetSvgMorphPathTimeout = null;
-                svgMorphPathSnap.attr({ path: svgMorphPaths.closed });
-            }, svgMorphDurations.closed);
-        }
     }
 }
 

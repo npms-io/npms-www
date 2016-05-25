@@ -33,6 +33,7 @@
   },
   "homepage": "https://github.com/npms-io/npms-www",
   "dependencies": {
+    "arrival": "^1.2.2",
     "axios": "^0.11.0",
     "bluebird": "^3.3.5",
     "colour-me-life": "^2.0.0",
