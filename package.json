@@ -47,7 +47,7 @@
     "react-redux": "^4.4.5",
     "react-router": "^2.3.0",
     "react-router-redux": "^4.0.2",
-    "react-scroll-up": "satazor/react-scroll-up#patch-1",
+    "react-scroll-up": "^1.1.5",
     "react-waypoint": "^2.0.1",
     "redux": "^3.5.1",
     "redux-promise-middleware": "^3.0.0",

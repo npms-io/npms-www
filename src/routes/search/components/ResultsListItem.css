@@ -28,12 +28,8 @@
     margin: -5px 0 0 5px;
 }
 
-/* Description and keywords
+/* Keywords
    ========================================================================== */
-
-.page-search .results-list-item .description {
-    color: #414141;
-}
 
 .page-search .results-list-item .keywords {
     margin-top: 5px;

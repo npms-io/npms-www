@@ -3,3 +3,69 @@
     min-height: 100%;
     background-color: #f7f7f6;
 }
+
+.page-terms .header-component {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+/* Page header
+   ========================================================================== */
+
+.page-terms .page-header {
+    position: relative;
+    height: 45vh;
+    background-color: #35405b;
+    color: #fff;
+    font-family: "Oleo Script", cursive;
+    font-size: 80px;
+    text-align: center;
+}
+
+.page-terms .page-header::after {
+    content: "";
+    position: absolute;
+    bottom: -22px;
+    left: 50%;
+    width: 0;
+    height: 0;
+    margin-left: -22px;
+    border-style: solid;
+    border-color: transparent;
+    border-right-width: 28px;
+    border-left-width: 28px;
+    border-top-width: 22px;
+    border-bottom-width: 0;
+    border-top-color: #35405b;
+}
+
+.page-terms .page-header .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, calc(-50% - 20px));
+    text-align: center;
+}
+
+/* Page content
+   ========================================================================== */
+
+.page-terms .page-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px;
+}
+
+.page-terms .page-content h1,
+.page-terms .page-content strong,
+.page-terms .page-content .npms {
+    color: #35405b;
+}
+
+/* Media queries
+   ========================================================================== */
+
+@media (max-height: 600px) {
+    .page-terms .page-header {
+        font-size: 60px;
+    }
+}
