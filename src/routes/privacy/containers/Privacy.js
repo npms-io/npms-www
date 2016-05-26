@@ -28,8 +28,8 @@ class Privacy extends Component {
 
                     <p>
                         This Privacy Policy governs the manner in which <span className="npms">npms</span> collects, uses, maintains and
-                        discloses information collected from users (each, a "User") of the <a href="https://npms.io">https://npms.io</a>
-                        website ("Site").
+                        discloses information collected from users (each, a "User") of
+                        the <a href="https://npms.io">https://npms.io</a>website ("Site").
                     </p>
 
                     <h1>Personal identification information</h1>
