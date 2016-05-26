@@ -24,7 +24,7 @@ class Privacy extends Component {
                 </div>
 
                 <div className="page-content">
-                    <strong>Last updated:</strong> April 27, 2016
+                    <div className="last-update"><strong>Last updated:</strong> April 27, 2016</div>
 
                     <p>
                         This Privacy Policy governs the manner in which <span className="npms">npms</span> collects, uses, maintains and

@@ -55,6 +55,10 @@
     padding: 40px;
 }
 
+.page-privacy .last-update {
+    margin-bottom: 30px;
+}
+
 .page-privacy .page-content h1,
 .page-privacy .page-content strong,
 .page-privacy .page-content .npms {

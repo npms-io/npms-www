@@ -55,6 +55,10 @@
     padding: 40px;
 }
 
+.page-terms .last-update {
+    margin-bottom: 30px;
+}
+
 .page-terms .page-content h1,
 .page-terms .page-content strong,
 .page-terms .page-content .npms {

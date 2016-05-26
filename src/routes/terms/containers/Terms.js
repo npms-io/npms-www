@@ -24,7 +24,7 @@ class Terms extends Component {
                 </div>
 
                 <div className="page-content">
-                    <strong>Last updated:</strong> April 27, 2016
+                    <div className="last-update"><strong>Last updated:</strong> April 27, 2016</div>
 
                     <p>
                         Please read these Terms of Service ("Terms", "Terms of Service") carefully before using
