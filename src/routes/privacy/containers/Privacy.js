@@ -61,28 +61,27 @@ class Privacy extends Component {
                     <h1>How we use collected information</h1>
                     <p>
                         <span className="npms">npms</span> may collect and use Users personal information for the following purposes:
-
-                        <ul>
-                            <li>
-                                <strong>To run and operate our Site</strong>
-                                <p>We may need your information to display content on the Site correctly.</p>
-                            </li>
-                            <li>
-                                <strong>To improve customer service</strong>
-                                <p>Information you provide helps us respond to your customer service requests and support needs more
-                                efficiently.</p>
-                            </li>
-                            <li>
-                                <strong>To personalize user experience</strong>
-                                <p>We may use information in the aggregate to understand how our Users as a group use the services and
-                                resources provided on our Site.</p>
-                            </li>
-                            <li>
-                                <strong>To improve our Site</strong>
-                                <p>We may use feedback you provide to improve our products and services.</p>
-                            </li>
-                        </ul>
                     </p>
+                    <ul>
+                        <li>
+                            <strong>To run and operate our Site</strong>
+                            <p>We may need your information to display content on the Site correctly.</p>
+                        </li>
+                        <li>
+                            <strong>To improve customer service</strong>
+                            <p>Information you provide helps us respond to your customer service requests and support needs more
+                            efficiently.</p>
+                        </li>
+                        <li>
+                            <strong>To personalize user experience</strong>
+                            <p>We may use information in the aggregate to understand how our Users as a group use the services and
+                            resources provided on our Site.</p>
+                        </li>
+                        <li>
+                            <strong>To improve our Site</strong>
+                            <p>We may use feedback you provide to improve our products and services.</p>
+                        </li>
+                    </ul>
 
                     <h1>How we protect your information</h1>
                     <p>

@@ -118,7 +118,10 @@ class Menu extends Component {
         // See: https://bugs.chromium.org/p/chromium/issues/detail?id=20574
         if (!this.props.isOpen) {
             arrival(document.body, () => {
-                document.getElementById('page').style.transform = 'none';
+                // Need to check if we are still mounted & open because the transition takes time
+                if (!this.props.isOpen && document.body.classList.contains('is-menu-mounted')) {
+                    document.getElementById('page').style.transform = 'none';
+                }
             }, '#page');
         } else {
             document.getElementById('page').style.transform = '';
