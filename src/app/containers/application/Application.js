@@ -1,13 +1,19 @@
 import './Application.css';
 import React, { Component, PropTypes } from 'react';
+import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import shallowCompare from 'react-addons-shallow-compare';
 import LoadingBar from '../../components/loading-bar/LoadingBar';
+import Animation from 'rc-animate';
 import Menu from '../menu/Menu';
 
 class Application extends Component {
     shouldComponentUpdate(nextProps, nextState) {
         return shallowCompare(this, nextProps, nextState);
+    }
+
+    componentWillUpdate(prevProps) {
+        prevProps.location.pathname !== this.props.location.pathname && this._toggleAnimationClass(true);
     }
 
     render() {
@@ -22,15 +28,24 @@ class Application extends Component {
                 </div>
 
                 <div id="page">
-                    { this.props.children }
+                    <Animation component="div" transitionName="page-transition"
+                        ref={ (ref) => { this._animationComponent = ref; } }
+                        onEnter={ () => this._toggleAnimationClass(false) }>
+                      { React.cloneElement(this.props.children, { key: this.props.location.pathname }) }
+                    </Animation>
                 </div>
             </div>
         );
     }
+
+    _toggleAnimationClass(active) {
+        ReactDOM.findDOMNode(this._animationComponent).classList.toggle('page-transition', active);
+    }
 }
 
 Application.propTypes = {
-    children: PropTypes.element,
+    children: PropTypes.element.isRequired,
+    location: PropTypes.object.isRequired,
     loadingCount: PropTypes.number.isRequired,
 };
 

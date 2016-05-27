@@ -39,6 +39,7 @@
     "colour-me-life": "^2.0.0",
     "lodash": "^4.0.0",
     "query-string": "^4.1.0",
+    "rc-animate": "^2.0.4",
     "rc-tooltip": "^3.3.2",
     "react": "^15.0.0",
     "react-addons-shallow-compare": "^15.0.1",
