@@ -1,9 +1,9 @@
 import './Menu.css';
 import React, { Component, PropTypes } from 'react';
+import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { Link, IndexLink } from 'react-router';
 import arrival from 'arrival';
-import shallowCompare from 'react-addons-shallow-compare';
 import { closeMenu } from 'shared/state/app/actions';
 import MaterialIcon from 'shared/components/icon/MaterialIcon';
 import Snap from 'snapsvg';
@@ -26,14 +26,13 @@ class Menu extends Component {
     }
 
     componentDidMount() {
+        this._pageEl = document.getElementById('page');
+        this._menuEl = document.getElementById('menu');
+
         document.body.addEventListener('click', this._handleOutsideClickOrTap);
         document.body.addEventListener('touchend', this._handleOutsideClickOrTap);
 
         this._updateAppOnMount();
-    }
-
-    shouldComponentUpdate(nextProps, nextState) {
-        return shallowCompare(this, nextProps, nextState);
     }
 
     componentDidUpdate(prevProps) {
@@ -48,7 +47,7 @@ class Menu extends Component {
         document.body.removeEventListener('touchend', this._handleOutsideClickOrTap);
 
         document.body.classList.remove('is-menu-mounted is-menu-open');
-        document.body.getElementById('page').style.transform = '';
+        this._pageEl.style.transform = '';
 
         this._resetSvgMorphPathTimeout && clearTimeout(this._resetSvgMorphPathTimeout);
     }
@@ -56,8 +55,7 @@ class Menu extends Component {
     render() {
         return (
             <div
-                className={ `menu-component ${this.props.isOpen ? 'is-open' : ''}` }
-                ref={ (ref) => { this._el = ref; } }>
+                className={ `menu-component ${this.props.isOpen ? 'is-open' : ''}` }>
 
                 <MaterialIcon id="close" className="close" onClick={ () => this._handleCloseClick() } />
 
@@ -107,7 +105,7 @@ class Menu extends Component {
     _updateAppOnMount() {
         // Need to set transform to 'none' so that fixed positioned inside pages work correctly
         // See: https://bugs.chromium.org/p/chromium/issues/detail?id=20574
-        document.getElementById('page').style.transform = !this.props.isOpen ? 'none' : '';
+        this._pageEl.style.transform = !this.props.isOpen ? 'none' : '';
 
         document.body.classList.add('is-menu-mounted');
         document.body.classList.toggle('is-menu-open', this.props.isOpen);
@@ -120,11 +118,11 @@ class Menu extends Component {
             arrival(document.body, () => {
                 // Need to check if we are still mounted & open because the transition takes time
                 if (!this.props.isOpen && document.body.classList.contains('is-menu-mounted')) {
-                    document.getElementById('page').style.transform = 'none';
+                    this._pageEl.style.transform = 'none';
                 }
             }, '#page');
         } else {
-            document.getElementById('page').style.transform = '';
+            this._pageEl.style.transform = '';
         }
 
         document.body.classList.toggle('is-menu-open', this.props.isOpen);
@@ -147,7 +145,7 @@ class Menu extends Component {
     }
 
     _handleOutsideClickOrTap(e) {
-        if (this.props.isOpen && !this._el.contains(e.target)) {
+        if (this.props.isOpen && !ReactDOM.findDOMNode(this).contains(e.target)) {
             this.props.dispatch(closeMenu());
         }
     }

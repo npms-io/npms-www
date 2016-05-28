@@ -72,12 +72,12 @@
     height: 100%;
     padding: 40px;
     opacity: 0;
-    transition: opacity 0s 0.3s;
+    transition: opacity 0s linear 0.3s;
 }
 
 .menu-component.is-open .nav-content {
     opacity: 1;
-    transition: opacity 0.3s 0.2s;
+    transition: opacity 0.3s linear 0.2s;
 }
 
 .menu-component nav .section {
@@ -118,7 +118,7 @@
     transform: translate3d(0, 0, 0);
     opacity: 0;
     background: #000;
-    transition: transform 0.3s, opacity 0.3s, visibility 0s 0.3s;
+    transition: transform 0.3s, opacity linear 0.3s, visibility 0s 0.3s;
 }
 
 .is-menu-open #menu::after {
@@ -126,7 +126,7 @@
     visibility: visible;
     opacity: 0.4;
     pointer-events: auto;
-    transition: transform 0.3s 0.1s, opacity 0.3s 0.1s, visibility 0s;
+    transition: transform 0.3s 0.1s, opacity linear 0.3s 0.1s, visibility 0s;
 }
 
 .is-menu-mounted #page {
