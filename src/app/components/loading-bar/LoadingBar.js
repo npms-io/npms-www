@@ -4,6 +4,9 @@ import './LoadingBar.css';
 import React, { Component, PropTypes } from 'react';
 import shallowCompare from 'react-addons-shallow-compare';
 
+const autoUpdateInterval = 250;
+const firstPercentage = 0.55;
+
 export default class LoadingBar extends Component {
     constructor(props) {
         super(props);
@@ -30,9 +33,15 @@ export default class LoadingBar extends Component {
     }
 
     render() {
+        const hasFinished = this.state.percentage === 1;
+        const className = `loading-bar-component ${hasFinished ? 'is-finished' : ''} ${this.state.instant ? 'disable-transition' : ''}`;
+        const style = {
+            transform: `scaleX(${this.state.percentage})`,
+            opacity: this.state.percentage === 1 ? '0' : '1',
+        };
+
         return (
-            <div className={ `loading-bar-component ${this.state.instant ? 'disable-transition' : ''}` }
-                style={ { transform: `scaleX(${this.state.percentage})` } }></div>
+            <div className={ className } style={ style }></div>
         );
     }
 
@@ -51,10 +60,10 @@ export default class LoadingBar extends Component {
             return;
         }
 
-        this._interval = setInterval(() => this._autoIncrement(), 190);
+        this._interval = setInterval(() => this._autoIncrement(), autoUpdateInterval);
 
         this.setState({ percentage: 0, instant: true }, () => {
-            setTimeout(() => this.props.running && this.setState({ percentage: 0.1, instant: false }), 0);
+            setTimeout(() => this.props.running && this.setState({ percentage: firstPercentage, instant: false }), 0);
         });
     }
 
@@ -70,10 +79,10 @@ export default class LoadingBar extends Component {
     }
 
     _autoIncrement() {
-        let percentage = this.state.percentage + Math.min(0.8, (1 - this.state.percentage) / 15);
+        let percentage = this.state.percentage + Math.min(0.8, (1 - this.state.percentage) / 10);
 
-        if (percentage > 0.8) {
-            percentage = 0.8;
+        if (percentage > 0.95) {
+            percentage = 0.95;
             clearInterval(this._interval);
         }
 
