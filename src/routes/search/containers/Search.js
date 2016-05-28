@@ -1,7 +1,6 @@
 import './Search.css';
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import shallowCompare from 'react-addons-shallow-compare';
 import ScrollToTop from 'react-scroll-up';
 import isEqual from 'lodash/isEqual';
 import Header from 'shared/containers/header/Header';
@@ -17,7 +16,7 @@ class Search extends Component {
             this.props.dispatch(run());
         } else {
             this.props.dispatch(markAsLoading());
-            setTimeout(() => this.props.dispatch(unmarkAsLoading()), 300);
+            setTimeout(() => this.props.dispatch(unmarkAsLoading()), 10);
         }
     }
 
@@ -26,10 +25,6 @@ class Search extends Component {
             this.props.dispatch(updateQuery(nextProps.location.query));
             this.props.dispatch(run());
         }
-    }
-
-    shouldComponentUpdate(nextProps, nextState) {
-        return shallowCompare(this, nextProps, nextState);
     }
 
     componentWillUnmount() {

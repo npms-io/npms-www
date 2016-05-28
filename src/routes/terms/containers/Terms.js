@@ -7,11 +7,7 @@ import { markAsLoading, unmarkAsLoading } from 'shared/state/app/actions';
 class Terms extends Component {
     componentWillMount() {
         this.props.dispatch(markAsLoading());
-        setTimeout(() => this.props.dispatch(unmarkAsLoading()), 300);
-    }
-
-    shouldComponentUpdate() {
-        return false;
+        setTimeout(() => this.props.dispatch(unmarkAsLoading()), 10);
     }
 
     render() {

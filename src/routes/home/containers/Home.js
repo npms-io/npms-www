@@ -1,7 +1,6 @@
 import './Home.css';
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import shallowCompare from 'react-addons-shallow-compare';
 import Header from 'shared/containers/header/Header';
 import SearchBox from 'shared/containers/search-box/SearchBox';
 import { markAsLoading, unmarkAsLoading } from 'shared/state/app/actions';
@@ -9,11 +8,7 @@ import { markAsLoading, unmarkAsLoading } from 'shared/state/app/actions';
 class Home extends Component {
     componentWillMount() {
         this.props.dispatch(markAsLoading());
-        setTimeout(() => this.props.dispatch(unmarkAsLoading()), 300);
-    }
-
-    shouldComponentUpdate(nextProps, nextState) {
-        return shallowCompare(this, nextProps, nextState);
+        setTimeout(() => this.props.dispatch(unmarkAsLoading()), 10);
     }
 
     render() {

@@ -7,7 +7,7 @@ import { markAsLoading, unmarkAsLoading } from 'shared/state/app/actions';
 class About extends Component {
     componentWillMount() {
         this.props.dispatch(markAsLoading());
-        setTimeout(() => this.props.dispatch(unmarkAsLoading()), 300);
+        setTimeout(() => this.props.dispatch(unmarkAsLoading()), 10);
     }
 
     render() {
