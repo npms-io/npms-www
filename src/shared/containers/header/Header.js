@@ -2,17 +2,12 @@ import './Header.css';
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import shallowCompare from 'react-addons-shallow-compare';
 import SearchBox from 'shared/containers/search-box/SearchBox';
 import MaterialIcon from 'shared/components/icon/MaterialIcon';
 import SvgIcon from 'shared/components/icon/SvgIcon';
 import { toggleMenu } from 'shared/state/app/actions';
 
 class Header extends Component {
-    shouldComponentUpdate(nextProps, nextState) {
-        return shallowCompare(this, nextProps, nextState);
-    }
-
     render() {
         return (
             <div className={ `header-component header-component-appearance-${this.props.appearance}` }>
@@ -21,7 +16,7 @@ class Header extends Component {
                 </div>
 
                 <div className="search-box">
-                    <SearchBox />
+                    { this.props.appearance !== 'menu-only' ? <SearchBox /> : '' }
                 </div>
 
                 <div className="other-actions">
@@ -46,7 +41,7 @@ class Header extends Component {
 }
 
 Header.propTypes = {
-    appearance: PropTypes.string,
+    appearance: PropTypes.oneOf(['default', 'menu-only']),
     dispatch: PropTypes.func.isRequired,
 };
 
