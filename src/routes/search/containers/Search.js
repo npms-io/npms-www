@@ -1,11 +1,10 @@
 import './Search.css';
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import ScrollToTop from 'react-scroll-up';
 import isEqual from 'lodash/isEqual';
 import Header from 'shared/containers/header/Header';
 import ResultsList from '../components/ResultsList';
-import MaterialIcon from 'shared/components/icon/MaterialIcon';
+import ScrollToTop from 'shared/components/scroll-to-top/ScrollToTop';
 import { markAsLoading, unmarkAsLoading } from 'shared/state/app/actions';
 import { run, updateQuery, scroll, reset } from 'shared/state/search/actions';
 
@@ -39,9 +38,7 @@ class Search extends Component {
                 <Header />
 
                 <div className="scroll-to-top header-component-align-with-search-box-floated">
-                    <ScrollToTop showUnder={ 200 } style={ {} }>
-                        <MaterialIcon id="keyboard_arrow_up" />
-                    </ScrollToTop>
+                    <ScrollToTop showUnder={ 200 }/>
                 </div>
 
                 <ResultsList
