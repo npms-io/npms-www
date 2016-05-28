@@ -4,5 +4,5 @@
     z-index: 99;
     transform-origin: top left;
     background-color: #1dd09b;
-    transition: transform 0.45s linear, opacity 0.8s 0.4s;
+    transition: transform 0.5s linear, opacity 0.8s 0.45s;
 }
