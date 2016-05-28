@@ -4,7 +4,7 @@
     background-color: #f7f7f6;
 }
 
-/* List & header
+/* List header
    ========================================================================== */
 
 .page-search .results-list {
@@ -17,39 +17,21 @@
     z-index: 3;
 }
 
-/* Go back to top
+/* Scroll to top
    ========================================================================== */
 
 .page-search .scroll-to-top {
     position: fixed;
     top: 30px;
-    height: 30px;
     z-index: 2;
     pointer-events: none;
 }
 
-.page-search .scroll-to-top div {
-    pointer-events: auto;
-    transition: opacity 0.2s;
-}
-
-.page-search .scroll-to-top i {
+.page-search .scroll-to-top .scroll-to-top-component {
     position: absolute;
     top: 0;
     right: -50px;
-    width: 33px;
-    height: 33px;
-    background-color: #ddd;
-    border-radius: 2px;
-    text-align: center;
-    line-height: 33px;
-    cursor: pointer;
-    transition: background 0.2s, color 0.2s;
-}
-
-.page-search .scroll-to-top i:hover {
-    background-color: #6d6d6d;
-    color: #fff;
+    pointer-events: auto;
 }
 
 /* Media queries

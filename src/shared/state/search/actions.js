@@ -3,7 +3,7 @@ import queryString from 'query-string';
 import omit from 'lodash/omit';
 import uniqueId from 'lodash/uniqueId';
 import { markAsLoading, unmarkAsLoading } from '../app/actions';
-import apiRequest from '../../util/apiRequest';
+import npmsRequest from '../util/npmsRequest';
 
 const resultsPerPage = 50;
 
@@ -63,7 +63,7 @@ export function run() {
             meta: { uid: uniqueId('search-') },
             payload: {
                 data: query,
-                promise: apiRequest(`/search?${queryString.stringify(query)}`)
+                promise: npmsRequest(`/search?${queryString.stringify(query)}`)
                 .then((res) => ({ total: res.total, items: res.results }))
                 .finally(() => dispatch(unmarkAsLoading())),
             },
@@ -92,7 +92,7 @@ export function scroll() {
             meta: { uid: uniqueId('search') },
             payload: {
                 data: query,
-                promise: apiRequest(`/search?${queryString.stringify(query)}`)
+                promise: npmsRequest(`/search?${queryString.stringify(query)}`)
                 .then((res) => ({ total: res.total, items: res.results }))
                 .finally(() => dispatch(unmarkAsLoading())),
             },

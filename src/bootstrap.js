@@ -1,7 +1,9 @@
+import './shared/monkey-patch';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { Router, browserHistory } from 'react-router';
+import { applyRouterMiddleware, Router, browserHistory } from 'react-router';
+import useScroll from 'react-router-scroll';
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
 import config from 'config';
 import store, { addReducers } from 'shared/state/store';
@@ -24,7 +26,7 @@ const appRoutes = {
 // Render our app!
 ReactDOM.render(
     <Provider store={ store }>
-        <Router history={ browserHistory } routes={ appRoutes }/>
+        <Router history={ browserHistory } routes={ appRoutes } render={ applyRouterMiddleware(useScroll()) }/>
     </Provider>,
     document.querySelector('#root')
 );

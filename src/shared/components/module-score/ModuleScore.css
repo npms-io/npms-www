@@ -2,6 +2,7 @@
     position: relative;
     width: 26px;
     height: 26px;
+    cursor: default;
 }
 
 .module-score-component .score-badge {

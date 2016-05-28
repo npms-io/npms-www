@@ -34,7 +34,7 @@ a:visited,
 a:active {
     color: #35405b;
     text-decoration: none;
-    transition: color 0.15s;
+    transition: color 0.15s linear;
 }
 
 a:hover {

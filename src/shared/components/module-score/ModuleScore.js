@@ -2,12 +2,15 @@ import './ModuleScore.css';
 import React, { Component, PropTypes } from 'react';
 import shallowCompare from 'react-addons-shallow-compare';
 import ColourMeLife from 'colour-me-life';
+import range from 'lodash/range';
 import Tooltip from 'shared/components/tooltip/Tooltip';
 import scoreBadgeSvg from './svgs/score-badge.svg';
 
 const gradient = new ColourMeLife()
     .setSpectrum('#6e4b46', '#9e6b64', '#1ac391')
     .setNumberRange(0, 1);
+
+const colors = range(101).map((index) => gradient.colourAt(index / 100));
 
 class ModuleScore extends Component {
     shouldComponentUpdate(nextProps, nextState) {
@@ -61,7 +64,7 @@ class ModuleScore extends Component {
     }
 
     _getScoreColor(score) {
-        return `#${gradient.colourAt(score)}`;
+        return `#${colors[Math.round(score * 100)]}`;
     }
 }
 

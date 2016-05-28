@@ -21,7 +21,7 @@ class Home extends Component {
                         <div className="logo">npms</div>
                         <div className="moto">A better and <strong>open source search</strong> for node modules</div>
 
-                        <SearchBox />
+                        <SearchBox initiallyEmpty />
                     </div>
                 </div>
             </div>

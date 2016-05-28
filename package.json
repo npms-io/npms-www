@@ -48,12 +48,12 @@
     "react-redux": "^4.4.5",
     "react-router": "^2.3.0",
     "react-router-redux": "^4.0.2",
-    "react-scroll-up": "^1.1.5",
     "react-waypoint": "^2.0.1",
     "redux": "^3.5.1",
     "redux-promise-middleware": "^3.0.0",
     "redux-thunk": "^2.0.1",
     "s-ago": "^1.1.0",
+    "smoothscroll": "^0.2.2",
     "snapsvg": "^0.4.0"
   },
   "devDependencies": {

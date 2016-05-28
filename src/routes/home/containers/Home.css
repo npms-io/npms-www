@@ -15,28 +15,6 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.03);
 }
 
-.page-home .search-box-component .search-input::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 40px;
-    bottom: 0;
-    left: 0;
-    z-index: 2;
-    opacity: 0;
-    background-color: #fff;
-    pointer-events: none;
-    transition: opacity 0.25s linear;
-}
-
-.page-transition .page-home:last-of-type .search-box-component .search-input::before {
-    opacity: 0;
-}
-
-.page-home.page-transition-enter .search-box-component .search-input::before {
-    opacity: 1;
-}
-
 /* Upper-half
    ========================================================================== */
 

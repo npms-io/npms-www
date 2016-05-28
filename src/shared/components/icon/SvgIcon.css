@@ -4,5 +4,5 @@
     display: inline-block;
     vertical-align: middle;
     user-select: none;
-    transition: fill 0.15s, fill-opacity 0.15s;
+    transition: fill 0.15s linear, fill-opacity 0.15s linear;
 }

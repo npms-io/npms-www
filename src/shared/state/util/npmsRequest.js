@@ -1,6 +1,5 @@
 import axios from 'axios';
 import config from 'config';
-import Promise from 'bluebird';
 import isPlainObject from 'lodash/isPlainObject';
 
 function createUrl(path) {
@@ -30,12 +29,9 @@ function onRejected(res) {
         { status: res.status, statusText: res.statusText || 'Unknown' });
 }
 
-export default function apiRequest(path, options) {
+export default function npmsRequest(path, options) {
     options = { timeout: config.api.timeout, ...options };
 
-    return Promise.try(() => {
-        return axios(createUrl(path), options)
-        .then((res) => onFullfilled(res), (res) => onRejected(res));
-    })
-    .timeout(config.api.timeout);
+    return axios(createUrl(path), options)
+    .then((res) => onFullfilled(res), (res) => onRejected(res));
 }

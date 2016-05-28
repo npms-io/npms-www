@@ -56,14 +56,11 @@ body {
    ========================================================================== */
 
 .page-transition > .page:first-of-type {
-    transform: translateZ(0);
-    opacity: 0;
-    transition: opacity 60s linear;
-}
-
-.page-transition .page-transition-enter {
+    /* Can't use .page-transition-enter due to a bug, see https://github.com/react-component/animate/issues/10 */
     position: absolute;
     top: 0;
+    opacity: 0;
+    transition: opacity 0.2s linear;
 }
 
 .page-transition .page-transition-enter.page-transition-enter-active {
@@ -72,7 +69,7 @@ body {
 
 .page-transition-leave {
     opacity: 1;
-    transition: opacity 60s linear;
+    transition: opacity 0.2s linear;
 }
 
 .page-transition-leave.page-transition-leave-active {
