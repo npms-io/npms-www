@@ -20,7 +20,7 @@
 
 .page-home .upper-half {
     position: relative;
-    height: calc(60% - 42.5px);
+    height: calc(65vh - 80px);
     min-height: 275px;
     background-color: #35405b;
     color: #fff;

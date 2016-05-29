@@ -5,7 +5,9 @@ import uniqueId from 'lodash/uniqueId';
 import { markAsLoading, unmarkAsLoading } from '../app/actions';
 import npmsRequest from '../util/npmsRequest';
 
-const resultsPerPage = 50;
+const resultsPerPage = 25;
+
+// TODO: store results in an LRU to improve integration with back button
 
 function buildSearchUrl(query) {
     query = omit(query, 'from', 'size');  // Params that don't go into the URL

@@ -4,6 +4,8 @@ import shallowCompare from 'react-addons-shallow-compare';
 import Waypoint from 'react-waypoint';
 import ResultsListItem from './ResultsListItem';
 
+// TODO: Add animation to list
+
 class List extends Component {
     shouldComponentUpdate(nextProps, nextState) {
         return shallowCompare(this, nextProps, nextState);
