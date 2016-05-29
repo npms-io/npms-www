@@ -1,1 +1,65 @@
 @import "../../styles/index.css";
+
+#root {
+    height: 100%;
+}
+
+#application {
+    position: relative;
+    height: 100%;
+}
+
+#loading-bar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 3px;
+    z-index: 10;
+}
+
+#menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 20;
+    pointer-events: none;
+}
+
+#menu > * {
+    pointer-events: auto;
+}
+
+#page {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+/* Page animation
+   ========================================================================== */
+
+.page-transition > .page:not(.page-transition-leave),
+.page-transition-enter {
+    /* Can't use .page-transition-enter due to a bug, see https://github.com/react-component/animate/issues/10 */
+    opacity: 0;
+    transition: opacity 0.25s linear;
+}
+
+.page-transition .page-transition-enter.page-transition-enter-active {
+    opacity: 1;
+}
+
+.page-transition-leave {
+    position: absolute;
+    top: 0;
+    opacity: 1;
+    transition: opacity 0.25s linear;
+}
+
+.page-transition-leave.page-transition-leave-active {
+    opacity: 0;
+}

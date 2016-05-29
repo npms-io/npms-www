@@ -1,3 +1,4 @@
+import Promise from 'bluebird';
 import axios from 'axios';
 import config from 'config';
 import isPlainObject from 'lodash/isPlainObject';
@@ -32,6 +33,8 @@ function onRejected(res) {
 export default function npmsRequest(path, options) {
     options = { timeout: config.api.timeout, ...options };
 
-    return axios(createUrl(path), options)
-    .then((res) => onFullfilled(res), (res) => onRejected(res));
+    return Promise.try(() => {
+        return axios(createUrl(path), options)
+        .then((res) => onFullfilled(res), (res) => onRejected(res));
+    });
 }
