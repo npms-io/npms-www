@@ -42,14 +42,12 @@
 /* Page animation
    ========================================================================== */
 
-.page-transition > .page:not(.page-transition-leave),
 .page-transition-enter {
-    /* Can't use .page-transition-enter due to a bug, see https://github.com/react-component/animate/issues/10 */
     opacity: 0;
-    transition: opacity 0.25s linear;
+    transition: opacity 0.25s ease-out;
 }
 
-.page-transition .page-transition-enter.page-transition-enter-active {
+.page-transition-enter.page-transition-enter-active {
     opacity: 1;
 }
 
@@ -57,7 +55,7 @@
     position: absolute;
     top: 0;
     opacity: 1;
-    transition: opacity 0.25s linear;
+    transition: opacity 0.25s ease-in;
 }
 
 .page-transition-leave.page-transition-leave-active {

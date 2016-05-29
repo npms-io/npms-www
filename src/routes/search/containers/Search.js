@@ -5,7 +5,6 @@ import isEqual from 'lodash/isEqual';
 import Header from 'shared/containers/header/Header';
 import ResultsList from '../components/ResultsList';
 import ScrollToTop from 'shared/components/scroll-to-top/ScrollToTop';
-import { markAsLoading, unmarkAsLoading } from 'shared/state/app/actions';
 import { run, updateQuery, scroll, reset } from 'shared/state/search/actions';
 
 class Search extends Component {
@@ -13,9 +12,6 @@ class Search extends Component {
         if (this.props.location.query.term) {
             this.props.dispatch(updateQuery(this.props.location.query));
             this.props.dispatch(run());
-        } else {
-            this.props.dispatch(markAsLoading());
-            setTimeout(() => this.props.dispatch(unmarkAsLoading()), 10);
         }
     }
 

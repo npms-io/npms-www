@@ -3,6 +3,21 @@ import store from 'shared/state/store';
 import homeRoute from './home';
 import searchRoute from './search';
 
+function startLoading() {
+    let timeout = setTimeout(() => {
+        timeout = null;
+        store.dispatch(markAsLoading());
+    }, 1);
+
+    return () => {
+        if (!timeout) {
+            store.dispatch(unmarkAsLoading());
+        } else {
+            clearTimeout(timeout);
+        }
+    };
+}
+
 export default [
     // The following routes are part of the main build
     {
@@ -18,9 +33,10 @@ export default [
     {
         path: '/about',
         getComponent(location, callback) {
-            store.dispatch(markAsLoading());
+            const doneLoading = startLoading();
+
             require.ensure([], (require) => {
-                setTimeout(() => store.dispatch(unmarkAsLoading()), 50);
+                doneLoading();
                 callback(null, require('./about').default.component);
             }, 'about');
         },
@@ -31,9 +47,10 @@ export default [
     {
         path: '/privacy',
         getComponent(location, callback) {
-            store.dispatch(markAsLoading());
+            const doneLoading = startLoading();
+
             require.ensure([], (require) => {
-                setTimeout(() => store.dispatch(unmarkAsLoading()), 50);
+                doneLoading();
                 callback(null, require('./privacy').default.component);
             }, 'privacy');
         },
@@ -44,9 +61,10 @@ export default [
     {
         path: '/terms',
         getComponent(location, callback) {
-            store.dispatch(markAsLoading());
+            const doneLoading = startLoading();
+
             require.ensure([], (require) => {
-                setTimeout(() => store.dispatch(unmarkAsLoading()), 50);
+                doneLoading();
                 callback(null, require('./terms').default.component);
             }, 'terms');
         },
@@ -57,9 +75,10 @@ export default [
     {
         path: '/*',
         getComponent(location, callback) {
-            store.dispatch(markAsLoading());
+            const doneLoading = startLoading();
+
             require.ensure([], (require) => {
-                setTimeout(() => store.dispatch(unmarkAsLoading()), 50);
+                doneLoading();
                 callback(null, require('./not-found').default.component);
             }, 'not-found');
         },
