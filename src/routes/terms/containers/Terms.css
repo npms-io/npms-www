@@ -13,7 +13,10 @@
 
 .page-terms .page-header {
     position: relative;
-    height: 45vh;
+    width: 100%;
+    min-height: 45vh;
+    padding: 50px;
+    display: table;
     background-color: #35405b;
     color: #fff;
     font-family: "Oleo Script", cursive;
@@ -39,10 +42,8 @@
 }
 
 .page-terms .page-header .centered {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, calc(-50% - 20px));
+    display: table-cell;
+    vertical-align: middle;
     text-align: center;
 }
 
@@ -67,13 +68,4 @@
 
 .page-terms .page-content h1 {
     margin-top: 1.4em;
-}
-
-/* Media queries
-   ========================================================================== */
-
-@media (max-height: 600px) {
-    .page-terms .page-header {
-        font-size: 60px;
-    }
 }
