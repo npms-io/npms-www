@@ -15,9 +15,7 @@ class Privacy extends Component {
             <div className="page page-privacy">
                 <Header appearance="menu-only" />
 
-                <div className="page-header">
-                    <div className="centered">Privacy Policy</div>
-                </div>
+                <div className="page-header">Privacy Policy</div>
 
                 <div className="page-content">
                     <div className="last-update"><strong>Last updated:</strong> April 27, 2016</div>

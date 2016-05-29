@@ -14,8 +14,7 @@
 .page-terms .page-header {
     position: relative;
     width: 100%;
-    padding: 50px;
-    display: table;
+    padding: 50px 40px;
     background-color: #35405b;
     color: #fff;
     font-family: "Oleo Script", cursive;
@@ -67,4 +66,13 @@
 
 .page-terms .page-content h1 {
     margin-top: 1.4em;
+}
+
+/* Media queries
+   ========================================================================== */
+
+@media (max-width: 340px) {
+    .page-terms .page-header {
+        font-size: 70px;
+    }
 }

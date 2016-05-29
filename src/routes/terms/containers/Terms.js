@@ -15,9 +15,7 @@ class Terms extends Component {
             <div className="page page-terms">
                 <Header appearance="menu-only" />
 
-                <div className="page-header">
-                    <div className="centered">Terms of Service</div>
-                </div>
+                <div className="page-header">Terms of Service</div>
 
                 <div className="page-content">
                     <div className="last-update"><strong>Last updated:</strong> April 27, 2016</div>
