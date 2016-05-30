@@ -76,10 +76,12 @@ class Menu extends Component {
                             <Link to={ '/search' } activeClassName="is-active"
                                 onClick={ () => this._handlePageLinkClick() }>Search</Link>
                         </li>
+                        { /*
                         <li>
                             <Link to={ '/about' } activeClassName="is-active"
                                 onClick={ () => this._handlePageLinkClick() }>About</Link>
                         </li>
+                        */ }
                         <li>
                             <Link to={ '/privacy' } activeClassName="is-active"
                                 onClick={ () => this._handlePageLinkClick() }>Privacy</Link>
