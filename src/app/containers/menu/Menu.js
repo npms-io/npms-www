@@ -66,37 +66,35 @@ class Menu extends Component {
                 </div>
 
                 <nav>
-                    <div className="nav-content">
-                        <div className="section">Menu</div>
-                        <ul>
-                            <li>
-                                <IndexLink to={ '/' } activeClassName="is-active"
-                                    onClick={ () => this._handlePageLinkClick() }>Home</IndexLink>
-                            </li>
-                            <li>
-                                <Link to={ '/search' } activeClassName="is-active"
-                                    onClick={ () => this._handlePageLinkClick() }>Search</Link>
-                            </li>
-                            <li>
-                                <Link to={ '/about' } activeClassName="is-active"
-                                    onClick={ () => this._handlePageLinkClick() }>About</Link>
-                            </li>
-                            <li>
-                                <Link to={ '/privacy' } activeClassName="is-active"
-                                    onClick={ () => this._handlePageLinkClick() }>Privacy</Link>
-                            </li>
-                            <li>
-                                <Link to={ '/terms' } activeClassName="is-active"
-                                    onClick={ () => this._handlePageLinkClick() }>Terms</Link>
-                            </li>
-                        </ul>
+                    <div className="section">Menu</div>
+                    <ul>
+                        <li>
+                            <IndexLink to={ '/' } activeClassName="is-active"
+                                onClick={ () => this._handlePageLinkClick() }>Home</IndexLink>
+                        </li>
+                        <li>
+                            <Link to={ '/search' } activeClassName="is-active"
+                                onClick={ () => this._handlePageLinkClick() }>Search</Link>
+                        </li>
+                        <li>
+                            <Link to={ '/about' } activeClassName="is-active"
+                                onClick={ () => this._handlePageLinkClick() }>About</Link>
+                        </li>
+                        <li>
+                            <Link to={ '/privacy' } activeClassName="is-active"
+                                onClick={ () => this._handlePageLinkClick() }>Privacy</Link>
+                        </li>
+                        <li>
+                            <Link to={ '/terms' } activeClassName="is-active"
+                                onClick={ () => this._handlePageLinkClick() }>Terms</Link>
+                        </li>
+                    </ul>
 
-                        <div className="section">External</div>
-                        <ul>
-                            <li><a className="social-link" href="https://twitter.com/npms_io" target="_blank">Twitter</a></li>
-                            <li><a className="social-link" href="https://github.com/npms-io" target="_blank">Github</a></li>
-                        </ul>
-                    </div>
+                    <div className="section">External</div>
+                    <ul>
+                        <li><a className="social-link" href="https://twitter.com/npms_io" target="_blank">Twitter</a></li>
+                        <li><a className="social-link" href="https://github.com/npms-io" target="_blank">Github</a></li>
+                    </ul>
                 </nav>
             </div>
         );

@@ -2,7 +2,7 @@
     width: 33px;
     height: 33px;
     opacity: 0;
-    background-color: #ddd;
+    background-color: rgba(220, 220, 220, 0.9);
     border-radius: 2px;
     text-align: center;
     line-height: 33px;

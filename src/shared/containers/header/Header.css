@@ -14,10 +14,14 @@
 }
 
 .header-component .logo {
-    width: 150px;
+    width: 20px;
+    padding-left: 20px;
     font-family: "Oleo Script", cursive;
     font-size: 36px;
-    text-align: center;
+}
+
+.header-component.has-logo .logo {
+    width: 130px;
 }
 
 .header-component .logo a {
@@ -36,7 +40,7 @@
 }
 
 .header-component .other-actions .toggle-menu {
-    margin-right: 25px;
+    margin-right: 17px;  /* Should be 20px but icon is centered */
     display: inline-block;
     vertical-align: middle;
     cursor: pointer;
@@ -63,64 +67,65 @@
 
 .header-component-align-with-search-box {
     max-width: 700px;
-    margin-left: 150px;
+    margin-left: 20px;
+    margin-right: 160px;
+}
+
+.header-component-with-logo-align-with-search-box {
+    max-width: 700px;
+    margin-left: 130px;
     margin-right: 160px;
 }
 
 .header-component-align-with-search-box-floated {
     right: 160px;
-    left: 150px;
+    left: 160px;
+    max-width: 700px;
+}
+
+.header-component-with-logo-align-with-search-box-floated {
+    right: 160px;
+    left: 130px;
     max-width: 700px;
 }
 
 /* Media queries
    ========================================================================== */
 
-@media (max-width: 475px) {
-    .header-component .other-actions {
-        width: 70px;
-    }
-
-    .header-component .other-actions .social-link {
-        display: none;
-    }
-}
-
-@media (max-width: 700px) {
-    .header-component .logo {
+@media (max-width: 850px) {
+    .header-component.has-search.has-logo .logo {
         width: 20px;
     }
 
-    .header-component .logo > * {
+    .header-component.has-search.has-logo .logo > * {
         display: none;
     }
 
-    .header-component .other-actions .toggle-menu {
+    .header-component-align-with-search-box {
         margin-right: 20px;
     }
 
-    .header-component-align-with-search-box {
+    .header-component-with-logo-align-with-search-box {
         margin-left: 20px;
         margin-right: 20px;
     }
 
     .header-component-align-with-search-box-floated {
         right: 20px;
+    }
+
+    .header-component-with-logo-align-with-search-box-floated {
+        right: 20px;
         left: 20px;
     }
 }
 
-@media (min-width: 701px) and (max-width: 1000px) {
-    .header-component .logo {
-        width: 100px;
-        font-size: 24px;
+@media (max-width: 475px) {
+    .header-component.has-search .other-actions {
+        width: 70px;
     }
 
-    .header-component-align-with-search-box {
-        margin-left: 100px;
-    }
-
-    .header-component-align-with-search-box-floated {
-        left: 100px;
+    .header-component.has-search .other-actions .social-link {
+        display: none;
     }
 }

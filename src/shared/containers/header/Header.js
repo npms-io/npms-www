@@ -12,7 +12,7 @@ import { toggleMenu } from 'shared/state/app/actions';
 class Header extends Component {
     render() {
         return (
-            <div className="header-component">
+            <div className={ `header-component ${this.props.showLogo ? 'has-logo' : ''} ${this.props.showSearch ? 'has-search' : ''}` }>
                 <div className="logo">
                     { this.props.showLogo ? <Link to={ '/' }>npms</Link> : '' }
                 </div>

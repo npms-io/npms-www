@@ -33,7 +33,7 @@ class Search extends Component {
             <div className="page page-search">
                 <Header showSearch />
 
-                <div className="scroll-to-top header-component-align-with-search-box-floated">
+                <div className="scroll-to-top header-component-with-logo-align-with-search-box-floated">
                     <ScrollToTop showUnder={ 200 }/>
                 </div>
 

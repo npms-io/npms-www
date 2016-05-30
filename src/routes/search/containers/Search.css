@@ -37,8 +37,12 @@
 /* Media queries
    ========================================================================== */
 
-@media (max-width: 700px) {
+@media (max-width: 850px) {
     .page-search .scroll-to-top {
-        display: none;
+        top: 20px;
+    }
+
+    .page-search .scroll-to-top .scroll-to-top-component {
+        right: 0;
     }
 }

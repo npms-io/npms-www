@@ -1,6 +1,6 @@
 .menu-component {
     position: relative;
-    width: 250px;
+    width: 220px;
     height: 100%;
     z-index: 1;
     transform: translate3d(100%, 0, 0);
@@ -65,17 +65,12 @@
     bottom: 0;
     left: 0;
     z-index: 5;
-    font-size: 12px;
-}
-
-.menu-component .nav-content {
-    height: 100%;
     padding: 40px;
     opacity: 0;
     transition: opacity 0s linear 0.3s;
 }
 
-.menu-component.is-open .nav-content {
+.menu-component.is-open nav {
     opacity: 1;
     transition: opacity 0.3s linear 0.2s;
 }
@@ -83,6 +78,7 @@
 .menu-component nav .section {
     margin-bottom: 10px;
     color: #878786;
+    font-size: 13px;
     text-transform: uppercase;
 }
 
@@ -94,7 +90,6 @@
 
 .menu-component nav li {
     margin-bottom: 3px;
-    font-size: 13px;
 }
 
 .menu-component nav li a {

@@ -25,14 +25,14 @@ class List extends Component {
 
     _renderEmpty() {
         return (
-            <div className="results-list is-empty header-component-align-with-search-box">
+            <div className="results-list is-empty header-component-with-logo-align-with-search-box">
             </div>
         );
     }
 
     _renderNoResults() {
         return (
-            <div className="results-list has-no-results header-component-align-with-search-box">
+            <div className="results-list has-no-results header-component-with-logo-align-with-search-box">
                 Sorry no results for <span className="term">{ this.props.results.term }</span>.
             </div>
         );
@@ -41,13 +41,13 @@ class List extends Component {
         return (
             <div className="results-list has-results">
                 <div className="summary">
-                    <div className="header-component-align-with-search-box ellipsis">
+                    <div className="header-component-with-logo-align-with-search-box ellipsis">
                         <span className="nr-results">{ this.props.results.total }</span> results for <span className="term">
                         { this.props.results.term }</span>
                     </div>
                 </div>
 
-                <ul className="items header-component-align-with-search-box">
+                <ul className="items header-component-with-logo-align-with-search-box">
                     { this.props.results.items.map((item) =>
                         <ResultsListItem key={ item.name } item={ item } />
                     ) }
