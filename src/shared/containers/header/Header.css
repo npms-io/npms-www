@@ -1,4 +1,5 @@
 .header-component {
+    box-sizing: content-box;
     width: 100%;
     height: 80px;
     display: table;
