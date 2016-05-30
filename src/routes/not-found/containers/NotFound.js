@@ -7,7 +7,7 @@ class NotFound extends Component {
     render() {
         return (
             <div className="page page-not-found">
-                <Header appearance="menu-only" />
+                <Header />
 
                 This will be the 404 page.
             </div>

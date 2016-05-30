@@ -7,7 +7,7 @@ class Terms extends Component {
     render() {
         return (
             <div className="page page-terms">
-                <Header appearance="menu-only" />
+                <Header />
 
                 <div className="page-header">Terms of Service</div>
 

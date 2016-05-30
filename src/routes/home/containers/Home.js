@@ -8,7 +8,7 @@ class Home extends Component {
     render() {
         return (
             <div className="page page-home">
-                <Header appearance="menu-only" />
+                <Header showLogo={ false } />
 
                 <div className="upper-half">
                     <div className="upper-half-centered">

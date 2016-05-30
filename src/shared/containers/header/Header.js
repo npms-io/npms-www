@@ -12,13 +12,13 @@ import { toggleMenu } from 'shared/state/app/actions';
 class Header extends Component {
     render() {
         return (
-            <div className={ `header-component header-component-appearance-${this.props.appearance}` }>
+            <div className="header-component">
                 <div className="logo">
-                    <Link to={ '/' }>npms</Link>
+                    { this.props.showLogo ? <Link to={ '/' }>npms</Link> : '' }
                 </div>
 
                 <div className="search-box">
-                    { this.props.appearance !== 'menu-only' ? <SearchBox /> : '' }
+                    { this.props.showSearch ? <SearchBox /> : '' }
                 </div>
 
                 <div className="other-actions">
@@ -43,12 +43,14 @@ class Header extends Component {
 }
 
 Header.propTypes = {
-    appearance: PropTypes.oneOf(['default', 'menu-only']),
+    showSearch: PropTypes.bool,
+    showLogo: PropTypes.bool,
     dispatch: PropTypes.func.isRequired,
 };
 
 Header.defaultProps = {
-    appearance: 'default',
+    showSearch: false,
+    showLogo: true,
 };
 
 export default connect()(Header);

@@ -50,6 +50,10 @@ SearchBox.propTypes = {
     initiallyEmpty: PropTypes.bool,
 };
 
+SearchBox.defaultProps = {
+    initiallyEmpty: false,
+};
+
 export default connect((state, ownProps) => ({
     query: state.search.query,
     initiallyEmpty: ownProps.initiallyEmpty,

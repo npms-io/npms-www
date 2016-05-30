@@ -1,8 +1,6 @@
 .header-component {
-    position: relative;
     width: 100%;
     height: 80px;
-    padding-top: 3px;
     display: table;
     table-layout: fixed;
     background-color: #35405b;
@@ -57,14 +55,6 @@
 
 .header-component .other-actions .social-link:hover {
     fill: #1dd09b;
-}
-
-/* Appearances
-   ========================================================================== */
-
-.header-component-appearance-menu-only .logo,
-.header-component-appearance-menu-only .search-box {
-    display: none;
 }
 
 /* Utility classes to be used by several pages

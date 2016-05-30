@@ -7,7 +7,7 @@ class About extends Component {
     render() {
         return (
             <div className="page page-about">
-                <Header appearance="menu-only" />
+                <Header />
 
                 This will be the about page.
             </div>

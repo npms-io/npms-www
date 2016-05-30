@@ -7,7 +7,7 @@ class Privacy extends Component {
     render() {
         return (
             <div className="page page-privacy">
-                <Header appearance="menu-only" />
+                <Header />
 
                 <div className="page-header">Privacy Policy</div>
 

@@ -44,7 +44,7 @@
 
 .page-transition-enter {
     opacity: 0;
-    transition: opacity 0.25s ease-out;
+    transition: opacity 0.25s linear;
 }
 
 .page-transition-enter.page-transition-enter-active {
@@ -55,7 +55,7 @@
     position: absolute;
     top: 0;
     opacity: 1;
-    transition: opacity 0.25s ease-in;
+    transition: opacity 0.25s linear;
 }
 
 .page-transition-leave.page-transition-leave-active {
