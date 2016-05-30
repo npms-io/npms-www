@@ -21,13 +21,12 @@
 
 .module-score-component .score-value {
     position: relative;
-    top: 50%;
     z-index: 2;
-    transform: translateY(-50%);
     color: #fff;
     font-size: 12px;
     font-weight: 900;
     text-align: center;
+    line-height: 26px;
 }
 
 /* Tooltip
