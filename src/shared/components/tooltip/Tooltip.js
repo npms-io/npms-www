@@ -38,6 +38,7 @@ Tooltip.defaultProps = {
     animation: 'zoom',
     theme: 'default',
     mouseLeaveDelay: 0.1,
+    trigger: ['hover', 'click'],
 };
 
 Tooltip.propTypes = {
