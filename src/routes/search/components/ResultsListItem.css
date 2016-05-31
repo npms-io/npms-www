@@ -63,7 +63,7 @@
     font-weight: bold;
 }
 
-.page-search .results-list-item .publish-info .publisher-picture {
+.page-search .results-list-item .publish-info .publisher-avatar {
     width: 24px;
     height: 24px;
     overflow: hidden;
@@ -76,7 +76,7 @@
     border-radius: 50%;
 }
 
-.page-search .results-list-item .publish-info .publisher-picture img {
+.page-search .results-list-item .publish-info .publisher-avatar img {
     opacity: 0;
     transition: opacity 0.2s linear;
 }

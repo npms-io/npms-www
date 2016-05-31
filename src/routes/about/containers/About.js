@@ -183,7 +183,7 @@ class About extends Component {
                             <h1>Authors</h1>
                             <div className="authors-list">
                                 <div className="author">
-                                    <Gravatar email="andremiguelcruz@msn.com" size={ 130 } className="avatar" />
+                                    <Gravatar size={ 130 } email="andremiguelcruz@msn.com" className="avatar" https />
                                     <div className="name">André Cruz</div>
                                     <div className="links">
                                         <a className="social-link" href="https://twitter.com/satazor" target="_blank">
@@ -196,7 +196,7 @@ class About extends Component {
                                 </div>
 
                                 <div className="author">
-                                    <Gravatar email="mail@andreduarte.net" size={ 130 } className="avatar" />
+                                    <Gravatar size={ 130 } email="mail@andreduarte.net" className="avatar" https />
                                     <div className="name">André Duarte</div>
                                     <div className="links">
                                         <a className="social-link" href="https://twitter.com/atduarte" target="_blank">
