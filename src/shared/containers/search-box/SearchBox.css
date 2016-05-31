@@ -34,6 +34,7 @@
     background-color: #1dd09b;
     border-radius: 0 2px 2px 0;
     color: #fff;
+    line-height: 40px;
     user-select: none;
     cursor: pointer;
     transition: background-color 0.15s linear;
@@ -44,5 +45,8 @@
 }
 
 .search-box-component .search-input button i {
-    line-height: 40px;
+    width: 100%;
+    height: 100%;
+    line-height: inherit;
+    cursor: inherit;
 }
