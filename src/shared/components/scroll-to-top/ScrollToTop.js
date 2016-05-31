@@ -2,7 +2,6 @@ import './ScrollToTop.css';
 import React, { Component, PropTypes } from 'react';
 import shallowCompare from 'react-addons-shallow-compare';
 import MaterialIcon from 'shared/components/icon/MaterialIcon';
-import 'smoothscroll-polyfill';
 
 class ScrollToTop extends Component {
     constructor(props) {

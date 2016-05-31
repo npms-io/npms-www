@@ -7,7 +7,6 @@
  * We avoid doing this for browsers that do not support history.scrollRestoration because they cause a white flash
  */
 
-import 'smoothscroll-polyfill';
 import wrap from 'lodash/wrap';
 
 const canSmoothScroll = typeof history.scrollRestoration === 'string';
