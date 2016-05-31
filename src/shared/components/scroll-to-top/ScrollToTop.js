@@ -36,7 +36,7 @@ class ScrollToTop extends Component {
     }
 
     _handleScroll() {
-        this._el && this._el.classList.toggle('is-visible', document.body.scrollTop > this.props.showUnder);
+        this._el && this._el.classList.toggle('is-visible', (window.pageYOffset || document.body.scrollTop) > this.props.showUnder);
     }
 
     _handleScrollToTopIconClick() {

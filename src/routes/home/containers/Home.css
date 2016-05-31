@@ -32,7 +32,8 @@
     left: 50%;
     width: calc(100% - 40px);
     max-width: 620px;
-    transform: translate(-50%, calc(-50% - 20px));
+    margin-top: -20px;
+    transform: translate(-50%, -50%);
     text-align: center;
 }
 

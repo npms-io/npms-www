@@ -1,3 +1,4 @@
+import './polyfills';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
@@ -10,6 +11,9 @@ import Application from './app';
 import routes from './routes';
 
 console.info('[bootstrap] App config is', config);
+
+// Default promise implementation is bluebird!
+window.Promise = Promise;
 
 // Setup routing
 addReducers({ routing: routerReducer });

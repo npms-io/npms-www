@@ -50,7 +50,11 @@ function buildConfig(options) {
                 // Babel loader enables us to use ES2015 + react's JSX
                 {
                     test: /\.js$/,
-                    include: [`${projectDir}/src`, `${projectDir}/config`],
+                    include: [
+                        `${projectDir}/src`,
+                        `${projectDir}/config`,
+                        `${projectDir}/node_modules/react-gravatar`,  // Uses Object.assign()
+                    ],
                     loader: 'babel-loader?cacheDirectory',
                 },
                 // Style loader enables us to import CSS files through normal imports
