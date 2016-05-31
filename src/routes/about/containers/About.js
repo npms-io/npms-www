@@ -53,7 +53,7 @@ class About extends Component {
                     <div className="section-how-it-works">
                         <h1>How it works</h1>
                         <p>
-                            The <a href="https://github.com/npms-io/npms-analyzer" target="_blank">npms analyzer</a> continuously analyzes npm ecosystem,
+                            The <a href="https://github.com/npms-io/npms-analyzer" target="_blank">npms analyzer</a> continuously analyzes <span className="highlight">npm</span> ecosystem,
                             gathering as much information as possible from a variety of sources, including GitHub, <a href="https://david-dm.org/" target="_blank">david</a> and <a href="https://nodesecurity.io/" target="_blank">nsp</a>.
 
                             Using the collected information, a final score for each module is calculated based on four different aspects:
@@ -77,7 +77,7 @@ class About extends Component {
                                     <li>Has outdated dependencies? Do they have vulnerabilities?</li>
                                     <li>Has custom website? Has badges?</li>
                                     <li>Does the project have linters configured?</li>
-                                    <li>What’s the code complexity score?</li>
+                                    <li>What's the code complexity score?</li>
                                 </ul>
                             </div>
                             <div className="aspect">
@@ -146,7 +146,8 @@ class About extends Component {
                         <h1>Get involved</h1>
                         <p>
                             <span className="highlight">npms</span> is open-source and we still have some work to do (Wouldn't it be cool to
-                            have some kick-ass package badges?). Any contributions, ideas or bug reports are welcome. Visit our <a href="https://github.com/npms-io" target="_blank">GitHub</a> and help us!
+                            have some kick-ass package <a href="https://github.com/npms-io/npms-badge" target="_blank">badges</a>?).
+                            Any contributions, ideas or bug reports are welcome. Visit our <a href="https://github.com/npms-io" target="_blank">GitHub</a> and help us!
                         </p>
                         <p>
                             Feel free to reach us directly via email or <a href="https://twitter.com/npms_io" target="_blank">Twitter</a>.
@@ -164,7 +165,7 @@ class About extends Component {
                                     <img src={ keymetricsLogo } />
                                 </a>
                                 <div className="description">
-                                    We use <a href="http://pm2.keymetrics.io/" target="_blank">PM2</a> to deploy the <span className="highlight">npms</span> services
+                                    We use <a href="http://pm2.keymetrics.io/" target="_blank">PM2</a> to deploy our services
                                     and <a href="https://keymetrics.io" target="_blank">Keymetrics</a> allows us to easily manage these deployments and to monitor the production machines.
                                 </div>
                             </div>
