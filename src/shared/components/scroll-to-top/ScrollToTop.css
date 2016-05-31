@@ -7,12 +7,16 @@
     text-align: center;
     line-height: 33px;
     pointer-events: auto;
-    cursor: pointer;
     transition: background 0.15s, opacity 0.2s linear;
 }
 
 .scroll-to-top-component.is-visible {
     opacity: 1;
+}
+
+.scroll-to-top-component,
+.scroll-to-top-component i {
+    cursor: pointer;
 }
 
 .scroll-to-top-component:hover {
