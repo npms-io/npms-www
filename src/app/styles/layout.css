@@ -10,7 +10,7 @@ body {
 }
 
 body {
-    overflow-y: auto;  /* Prevent screen from "dancing" when going from a page to another */
+    overflow-y: scroll;  /* Prevent screen from "dancing" when going from a page to another */
 }
 
 * {
