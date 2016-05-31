@@ -43,6 +43,9 @@
     margin-right: 17px;  /* Should be 20px but icon is centered */
     display: inline-block;
     vertical-align: middle;
+}
+
+.header-component .other-actions .toggle-menu i {
     cursor: pointer;
 }
 

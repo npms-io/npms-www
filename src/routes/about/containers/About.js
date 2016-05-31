@@ -1,7 +1,14 @@
 import './About.css';
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import Gravatar from 'react-gravatar';
 import Header from 'shared/containers/header/Header';
+import MaterialIcon from 'shared/components/icon/MaterialIcon';
+import SvgIcon from 'shared/components/icon/SvgIcon';
+import keymetricsLogo from 'file!./logos/keymetrics.svg';
+
+// TODO: split each section in its own component?
+// TODO: add screenshots of npmjs search results
 
 class About extends Component {
     render() {
@@ -9,9 +16,205 @@ class About extends Component {
             <div className="page page-about">
                 <Header />
 
-                <div className="page-header">About</div>
+                <div className="page-header">About npms</div>
 
-                <div className="page-content">To be done..</div>
+                <div className="page-content">
+                    <p className="headline">
+                        <span className="highlight">npms</span> - which stands for npm search - was built to empower the javascript
+                        community by providing a better and open source search for node modules.
+                    </p>
+
+                    { /* ------------- Why ------------- */ }
+
+                    <div className="section-why">
+                        <h1>Why?</h1>
+                        <p>
+                            <a href="https://npmjs.com" target="_blank">npmjs.com</a> allows developers to search for node modules, but,
+                            having used it for several years, I always felt that the overall experience and quality of the results were bad.
+                        </p>
+                        <p>
+                            The official search is powered by <a href="http://elasticsearch.com" target="_blank">Elasticsearch</a> but no advanced analyzers were
+                            configured. More specifically, no <a href="https://www.elastic.co/guide/en/elasticsearch/guide/current/stemming.html" target="_blank">stemming</a> nor <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-word-delimiter-tokenfilter.html" target="_blank">split word</a> are
+                            enabled. What does this mean for you? Try searching for <a href="https://www.npmjs.com/search?q=couchdb+promise" target="_blank">"couchdb promise"</a> and <a href="https://www.npmjs.com/search?q=couchdb+promises" target="_blank">"couchdb promises"</a> and see how different the search results are.
+                            Imagine how many modules you lost on your previous searches because of this.
+                        </p>
+                        <p>
+                            When a list of results is presented to you on the screen, the order of the results are simply based on the
+                            relevance they have to the search terms. <a href="https://npmjs.com" target="_blank">npmjs.com</a> search does
+                            not take into account the modules value to rank good modules higher. Because of this, users must manually
+                            analyze the search results one by one, taking into consideration several attributes such as the module's version
+                            (> 1.0.0?), the downloads count, the latest publish date, the number of GitHub issues, stars, forks, etc.
+                            This process is tedious and slow.
+                        </p>
+                    </div>
+
+                    { /* ------------- How it works ------------- */ }
+
+                    <div className="section-how-it-works">
+                        <h1>How it works</h1>
+                        <p>
+                            The <a href="https://github.com/npms-io/npms-analyzer" target="_blank">npms analyzer</a> continuously analyzes npm ecosystem,
+                            gathering as much information as possible from a variety of sources, including GitHub, <a href="https://david-dm.org/" target="_blank">david</a> and <a href="https://nodesecurity.io/" target="_blank">nsp</a>.
+
+                            Using the collected information, a final score for each module is calculated based on four different aspects:
+                        </p>
+
+                        <div className="aspects">
+                            <div className="aspect">
+                                <MaterialIcon id="high_quality" />
+                                <div className="name">Quality</div>
+                                <div className="description">
+                                    <p>
+                                        Quality attributes are easy to calculate because they are self contained.
+                                        These are the kind of attributes that a person looks first when looking at the module.
+                                    </p>
+
+                                </div>
+                                <ul className="examples">
+                                    <li>Has README? Has license? Has .gitignore and friends?</li>
+                                    <li>Is the version stable (&gt; 1.x.x)? Is it deprecated?</li>
+                                    <li>Has tests? Whats their coverage %? Is build passing?</li>
+                                    <li>Has outdated dependencies? Do they have vulnerabilities?</li>
+                                    <li>Has custom website? Has badges?</li>
+                                    <li>Does the project have linters configured?</li>
+                                    <li>What’s the code complexity score?</li>
+                                </ul>
+                            </div>
+                            <div className="aspect">
+                                <MaterialIcon id="build" />
+                                <div className="name">Maintenance</div>
+                                <div className="description">
+                                    <p>
+                                        Maintenance attributes allows us to understand if the module is active & healthy or if it is
+                                        abandoned. These are typically the second kind of attributes that a person looks when looking at
+                                        the module.
+                                    </p>
+                                </div>
+                                <ul className="examples">
+                                    <li>Ratio of open issues vs the total issues</li>
+                                    <li>The time it takes to close issues</li>
+                                    <li>Most recent commit</li>
+                                    <li>Commit frequency</li>
+                                </ul>
+                            </div>
+                            <div className="aspect">
+                                <MaterialIcon id="star_half" />
+                                <div className="name">Popularity</div>
+                                <div className="description">
+                                    <p>
+                                        Popularity attributes allows us to understand the module extend and adoption.
+                                    </p>
+                                    <p>
+                                        These are the kind of attributes that a person looks when they are undecided on the module choice.
+                                    </p>
+                                </div>
+                                <ul className="examples">
+                                    <li>Number of stars</li>
+                                    <li>Number of forks</li>
+                                    <li>Number of subscribers</li>
+                                    <li>Number of contributors</li>
+                                    <li>Number of dependents</li>
+                                    <li>Number of downloads</li>
+                                    <li>Downloads acceleration</li>
+                                </ul>
+                            </div>
+                            <div className="aspect">
+                                <MaterialIcon id="record_voice_over" />
+                                <div className="name">Personalities</div>
+                                <div className="description">
+                                    <p>
+                                        If two modules are similar, one tend to choose the one in which the author is well known in the
+                                        community.
+                                    </p>
+                                    <p>
+                                        Relationships between people are also important. When an user follows another, there's a bound
+                                        between them. We can infer that people prefer modules from the users they follow.
+                                    </p>
+                                    <p>
+                                        As of this writting the personalities attributes are not yet implemented.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p>If you want to know more, you may look at the <a href="https://github.com/npms-io/npms-analyzer/blob/master/docs/architecture.md" target="_blank">architecture</a> document.</p>
+                    </div>
+
+                    { /* ------------- Get involved ------------- */ }
+
+                    <div className="section-get-involved">
+                        <h1>Get involved</h1>
+                        <p>
+                            <span className="highlight">npms</span> is open-source and we still have some work to do (Wouldn't it be cool to
+                            have some kick-ass package badges?). Any contributions, ideas or bug reports are welcome. Visit our <a href="https://github.com/npms-io" target="_blank">GitHub</a> and help us!
+                        </p>
+                        <p>
+                            Feel free to reach us directly via email or <a href="https://twitter.com/npms_io" target="_blank">Twitter</a>.
+                        </p>
+                    </div>
+
+                    { /* ------------- Sponsors ------------- */ }
+
+                    <div className="section-sponsors">
+                        <h1>Sponsors</h1>
+
+                        <div className="sponsor">
+                            <a href="https://keymetrics.io" className="logo" target="_blank">
+                                <img src={ keymetricsLogo } />
+                            </a>
+                            <div className="description">
+                                We use <a href="http://pm2.keymetrics.io/" target="_blank">PM2</a> to deploy the <span className="highlight">npms</span> services
+                                and <a href="https://keymetrics.io" target="_blank">Keymetrics</a> allows us to easily manage these deployments and to monitor the production machines.
+                            </div>
+                        </div>
+
+                        <p className="contact-us">
+                            We are using money from our own pockets to provide this service to you. <a href="https://salt.bountysource.com/teams/npms" target="_blank">Donations</a> are welcome.
+                            If you would like to sponsor this project, feel free to reach us.
+                        </p>
+                    </div>
+
+                    { /* ------------- Authors ------------- */ }
+
+                    <div className="section-authors">
+                        <div className="core-authors">
+                            <h1>Authors</h1>
+                            <div className="author">
+                                <Gravatar email="andremiguelcruz@msn.com" size={ 130 } className="avatar" />
+                                <div className="name">André Cruz</div>
+                                <div className="links">
+                                    <a className="social-link" href="https://twitter.com/satazor" target="_blank">
+                                        <SvgIcon id={ SvgIcon.twitter } />
+                                    </a>
+                                    <a className="social-link" href="https://github.com/satazor" target="_blank">
+                                        <SvgIcon id={ SvgIcon.github } />
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div className="author">
+                                <Gravatar email="mail@andreduarte.net" size={ 130 } className="avatar" />
+                                <div className="name">André Duarte</div>
+                                <div className="links">
+                                    <a className="social-link" href="https://twitter.com/atduarte" target="_blank">
+                                        <SvgIcon id={ SvgIcon.twitter } />
+                                    </a>
+                                    <a className="social-link" href="https://github.com/atduarte" target="_blank">
+                                        <SvgIcon id={ SvgIcon.github } />
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="special-thanks">
+                            <h3>Special thanks</h3>
+                            <ul>
+                                <li><a href="http://pinxai.com" target="_blank">Cátia Santos</a> for the website design</li>
+                                <li><a href="https://github.com/carsy" target="_blank">José Bateira</a> for the initial effort put into this project</li>
+                                <li><a href="https://www.behance.net/mariamonteiro" target="_blank">Maria Monteiro</a> for the identity design</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }

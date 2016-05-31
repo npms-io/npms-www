@@ -4,7 +4,7 @@
 body {
     color: #414141;
     font-family: "Roboto", Helvetica Neue, Helvetica, Arial, sans-serif;
-    font-size: 14px;
+    font-size: 16px;
     -moz-osx-font-smoothing: grayscale;  /* Font smoothing tweaks for MacOSx in Gecko */
     -webkit-font-smoothing: antialiased; /* Font smoothing tweaks for MacOSx in Webkit */
 

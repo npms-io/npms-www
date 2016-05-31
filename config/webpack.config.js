@@ -71,9 +71,10 @@ function buildConfig(options) {
                     include: [`${projectDir}/src`, `${projectDir}/config`],
                     loader: 'json-loader',
                 },
-                // SVG loader that creates a sprite using symbols
+                // SVG loader that creates a sprite using symbols for our icons
                 {
                     test: /\.svg$/,
+                    exclude: [`${projectDir}/src/routes/about/containers/logos`],
                     loader: 'svg-sprite-loader?name=svg-[pathhash]-[name]',
                 },
                 // Make snapsvg work

@@ -43,7 +43,7 @@
    ========================================================================== */
 
 .page-not-found .page-content {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
     padding: 82px 20px;  /* 42 because arrow is 22px */
     text-align: center;
