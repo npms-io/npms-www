@@ -9,6 +9,10 @@ body {
     background-color: #f7f7f6;
 }
 
+body {
+    overflow-y: auto;  /* Prevent screen from "dancing" when going from a page to another */
+}
+
 * {
     box-sizing: border-box;
 }
