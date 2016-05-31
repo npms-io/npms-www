@@ -16,10 +16,10 @@ class About extends Component {
             <div className="page page-about">
                 <Header />
 
-                <div className="page-header">About npms</div>
+                <div className="page-header">About</div>
 
                 <div className="page-content">
-                    <p className="headline">
+                    <p className="section-headline">
                         <span className="highlight">npms</span> - which stands for npm search - was built to empower the javascript
                         community by providing a better and open source search for node modules.
                     </p>
@@ -158,13 +158,15 @@ class About extends Component {
                     <div className="section-sponsors">
                         <h1>Sponsors</h1>
 
-                        <div className="sponsor">
-                            <a href="https://keymetrics.io" className="logo" target="_blank">
-                                <img src={ keymetricsLogo } />
-                            </a>
-                            <div className="description">
-                                We use <a href="http://pm2.keymetrics.io/" target="_blank">PM2</a> to deploy the <span className="highlight">npms</span> services
-                                and <a href="https://keymetrics.io" target="_blank">Keymetrics</a> allows us to easily manage these deployments and to monitor the production machines.
+                        <div className="sponsors-list">
+                            <div className="sponsor">
+                                <a href="https://keymetrics.io" className="logo" target="_blank">
+                                    <img src={ keymetricsLogo } />
+                                </a>
+                                <div className="description">
+                                    We use <a href="http://pm2.keymetrics.io/" target="_blank">PM2</a> to deploy the <span className="highlight">npms</span> services
+                                    and <a href="https://keymetrics.io" target="_blank">Keymetrics</a> allows us to easily manage these deployments and to monitor the production machines.
+                                </div>
                             </div>
                         </div>
 
@@ -179,32 +181,35 @@ class About extends Component {
                     <div className="section-authors">
                         <div className="core-authors">
                             <h1>Authors</h1>
-                            <div className="author">
-                                <Gravatar email="andremiguelcruz@msn.com" size={ 130 } className="avatar" />
-                                <div className="name">André Cruz</div>
-                                <div className="links">
-                                    <a className="social-link" href="https://twitter.com/satazor" target="_blank">
-                                        <SvgIcon id={ SvgIcon.twitter } />
-                                    </a>
-                                    <a className="social-link" href="https://github.com/satazor" target="_blank">
-                                        <SvgIcon id={ SvgIcon.github } />
-                                    </a>
+                            <div className="authors-list">
+                                <div className="author">
+                                    <Gravatar email="andremiguelcruz@msn.com" size={ 130 } className="avatar" />
+                                    <div className="name">André Cruz</div>
+                                    <div className="links">
+                                        <a className="social-link" href="https://twitter.com/satazor" target="_blank">
+                                            <SvgIcon id={ SvgIcon.twitter } />
+                                        </a>
+                                        <a className="social-link" href="https://github.com/satazor" target="_blank">
+                                            <SvgIcon id={ SvgIcon.github } />
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div className="author">
-                                <Gravatar email="mail@andreduarte.net" size={ 130 } className="avatar" />
-                                <div className="name">André Duarte</div>
-                                <div className="links">
-                                    <a className="social-link" href="https://twitter.com/atduarte" target="_blank">
-                                        <SvgIcon id={ SvgIcon.twitter } />
-                                    </a>
-                                    <a className="social-link" href="https://github.com/atduarte" target="_blank">
-                                        <SvgIcon id={ SvgIcon.github } />
-                                    </a>
+                                <div className="author">
+                                    <Gravatar email="mail@andreduarte.net" size={ 130 } className="avatar" />
+                                    <div className="name">André Duarte</div>
+                                    <div className="links">
+                                        <a className="social-link" href="https://twitter.com/atduarte" target="_blank">
+                                            <SvgIcon id={ SvgIcon.twitter } />
+                                        </a>
+                                        <a className="social-link" href="https://github.com/atduarte" target="_blank">
+                                            <SvgIcon id={ SvgIcon.github } />
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
                         <div className="special-thanks">
                             <h3>Special thanks</h3>
                             <ul>

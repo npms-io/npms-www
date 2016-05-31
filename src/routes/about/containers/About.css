@@ -58,7 +58,11 @@
     margin-top: 1.4em;
 }
 
-.page-about .page-content .headline {
+/* Pseudo-section "Headline"
+   ========================================================================== */
+
+.page-about .section-headline {
+    margin-bottom: 50px;
     padding: 0 50px;
     font-size: 18px;
     font-weight: 300;
@@ -69,12 +73,9 @@
 
 .page-about .section-how-it-works .aspect {
     width: calc((100% - 80px) / 2);
+    margin: 20px 40px 20px 0;
     display: inline-block;
     vertical-align: top;
-}
-
-.page-about .section-how-it-works .aspect {
-    margin: 20px 40px 20px 0;
 }
 
 .page-about .section-how-it-works .aspect i {
@@ -140,39 +141,43 @@
     margin-bottom: 30px;
 }
 
-.page-about .section-authors .core-authors {
-    margin-top: 40px;
+.page-about .section-authors .authors-list {
+    position: relative;
+    left: calc(50% + 25px);
+    margin: 0 auto;
+    transform: translateX(-50%);
+    display: inline-block;
 }
 
-.page-about .section-authors .core-authors .author {
-    margin-right: 100px;
+.page-about .section-authors .authors-list .author {
+    margin-right: 50px;
     display: inline-block;
     text-align: center;
 }
 
-.page-about .section-authors .core-authors .author .avatar {
+.page-about .section-authors .authors-list .author .avatar {
     margin-bottom: 10px;
     border-radius: 50%;
 }
 
-.page-about .section-authors .core-authors .author .name {
+.page-about .section-authors .authors-list .author .name {
     margin-bottom: 10px;
     font-weight: bold;
 }
 
-.page-about .section-authors .core-authors .author .links a {
+.page-about .section-authors .authors-list .author .links a {
     margin-right: 10px;
 }
 
-.page-about .section-authors .core-authors .author .links a:last-of-type {
+.page-about .section-authors .authors-list .author .links a:last-of-type {
     margin-right: 0;
 }
 
-.page-about .section-authors .core-authors .author .links svg {
+.page-about .section-authors .authors-list .author .links svg {
     fill: #7c7a79;
 }
 
-.page-about .section-authors .core-authors .author .links a:hover svg {
+.page-about .section-authors .authors-list .author .links a:hover svg {
     fill: #35405b;
 }
 
@@ -183,8 +188,44 @@
 /* Media queries
    ========================================================================== */
 
-@media (max-width: 340px) {
-    .page-about .page-header {
-        font-size: 70px;
+@media (max-width: 450px) {
+    .page-about .section-authors .authors-list .author .avatar {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+@media (max-width: 350px) {
+    .page-about .section-authors .authors-list .author .avatar {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+@media (max-width: 700px) {
+    .page-about .section-headline {
+        padding: 0;
+    }
+
+    .page-about .section-sponsors .sponsor .logo {
+        width: calc(100% - 100px);
+        min-width: 250px;
+        max-width: 380px;
+        margin: 0 auto;
+        display: block;
+    }
+
+    .page-about .section-sponsors .sponsor .description {
+        width: 100%;
+        margin-top: 20px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 750px) {
+    .page-about .section-how-it-works .aspect {
+        width: 100%;
+        margin: 25px 0 25px 0;
+        display: block;
     }
 }
