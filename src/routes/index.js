@@ -3,6 +3,8 @@ import store from 'shared/state/store';
 import homeRoute from './home';
 import searchRoute from './search';
 
+// TODO: Handle require.ensure error
+
 function startLoading() {
     let timeout = setTimeout(() => {
         timeout = null;
