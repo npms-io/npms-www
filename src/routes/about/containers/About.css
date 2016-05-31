@@ -3,3 +3,56 @@
     min-height: 100%;
     background-color: #f7f7f6;
 }
+
+.page-about .header-component {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+/* Page header
+   ========================================================================== */
+
+.page-about .page-header {
+    position: relative;
+    width: 100%;
+    padding: 50px 40px;
+    background-color: #35405b;
+    color: #fff;
+    font-family: "Oleo Script", cursive;
+    font-size: 80px;
+    text-align: center;
+}
+
+.page-about .page-header::after {
+    content: "";
+    position: absolute;
+    bottom: -22px;
+    left: 50%;
+    width: 0;
+    height: 0;
+    margin-left: -22px;
+    border-style: solid;
+    border-color: transparent;
+    border-right-width: 28px;
+    border-left-width: 28px;
+    border-top-width: 22px;
+    border-bottom-width: 0;
+    border-top-color: #35405b;
+}
+
+/* Page content
+   ========================================================================== */
+
+.page-about .page-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 42px 20px;  /* 42 because arrow is 22px */
+}
+
+/* Media queries
+   ========================================================================== */
+
+@media (max-width: 340px) {
+    .page-about .page-header {
+        font-size: 70px;
+    }
+}

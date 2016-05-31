@@ -9,7 +9,9 @@ class About extends Component {
             <div className="page page-about">
                 <Header />
 
-                This will be the about page.
+                <div className="page-header">About</div>
+
+                <div className="page-content">To be done..</div>
             </div>
         );
     }
