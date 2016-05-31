@@ -24,6 +24,10 @@
     color: #858585;
 }
 
+.page-search .results-list-item .description {
+    font-size: 14px;
+}
+
 .page-search .results-list-item .headline .module-score-component {
     margin: -5px 0 0 5px;
 }

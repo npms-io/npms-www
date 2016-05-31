@@ -102,7 +102,7 @@ class About extends Component {
                                 <div className="name">Popularity</div>
                                 <div className="description">
                                     <p>
-                                        Popularity attributes allows us to understand the module extend and adoption.
+                                        Popularity attributes allows us to understand the module adoption and community size.
                                     </p>
                                     <p>
                                         These are the kind of attributes that a person looks when they are undecided on the module choice.
