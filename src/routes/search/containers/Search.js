@@ -17,7 +17,7 @@ class Search extends Component {
 
     componentWillReceiveProps(nextProps) {
         if (!isEqual(this.props.location.query, nextProps.location.query)) {
-            this.props.dispatch(updateQuery(nextProps.location.query));
+            this.props.dispatch(updateQuery({ term: '', ...nextProps.location.query }));
             this.props.dispatch(run());
         }
     }
