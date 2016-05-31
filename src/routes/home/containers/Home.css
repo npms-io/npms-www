@@ -22,6 +22,7 @@
     position: relative;
     height: calc(65vh - 80px);
     min-height: 275px;
+    overflow: hidden;  /* Necessary because of the translate -50% on IE */
     background-color: #35405b;
     color: #fff;
 }
@@ -32,7 +33,6 @@
     left: 50%;
     width: calc(100% - 40px);
     max-width: 620px;
-    margin-top: -20px;
     transform: translate(-50%, -50%);
     text-align: center;
 }
@@ -50,8 +50,12 @@
 /* Media queries
    ========================================================================== */
 
-@media (max-height: 600px) {
+@media (max-height: 620px) {
     .page-home .upper-half {
-        height: calc(55% - 42.5px);
+        min-height: 300px;
+    }
+
+    .page-home .upper-half-centered {
+        margin-top: -10px;
     }
 }

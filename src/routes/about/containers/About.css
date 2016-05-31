@@ -141,6 +141,10 @@
 /* Authors
    ========================================================================== */
 
+.page-search .section-authors {
+    overflow: hidden; /* Necessary because of the translate -50% on IE */
+}
+
 .page-about .section-authors h1 {
     margin-bottom: 30px;
 }
