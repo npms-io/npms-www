@@ -72,10 +72,14 @@
    ========================================================================== */
 
 .page-about .section-how-it-works .aspect {
-    width: calc((100% - 80px) / 2);
+    width: calc((100% - 40px) / 2);
     margin: 20px 40px 20px 0;
     display: inline-block;
     vertical-align: top;
+}
+
+.page-about .section-how-it-works .aspect:nth-child(even) {
+    margin-right: 0;
 }
 
 .page-about .section-how-it-works .aspect i {
