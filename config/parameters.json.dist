@@ -1,5 +1,5 @@
 {
     "publicPath": "/build/",
-    "apiUrl": "http://localhost:3000",
+    "apiUrl": "/api/",
     "googleAnalyticsId": "UA-XXXXX-X"
 }
