@@ -21,15 +21,15 @@
 }
 
 .header-component .logo a > span {
-      position: relative;
+    position: relative;
 }
 
 .header-component .logo .beta {
-    font-size: 10px;
     position: absolute;
     right: 2px;
     bottom: 0;
     color: #95a2c1;
+    font-size: 10px;
     font-weight: 500;
 }
 
