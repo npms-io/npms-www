@@ -55,6 +55,7 @@ class List extends Component {
 
                 <Waypoint
                     onEnter={ (props) => this.props.onLoadMore(props) }
+                    scrollableAncestor={ window }
                     threshold={ 0.2 } />
             </div>
         );
