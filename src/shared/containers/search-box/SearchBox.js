@@ -3,6 +3,14 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { updateQuery, navigate } from 'shared/state/search/actions';
 
+const suggestions = [
+    'test',
+    'couchdb',
+    'test framework',
+    'socket',
+    'promises',
+];
+
 class SearchBox extends Component {
     componentWillMount() {
         this._suggestion = this._getRandomSuggestion();
@@ -32,14 +40,6 @@ class SearchBox extends Component {
     // ---------------------------------------------
 
     _getRandomSuggestion() {
-        const suggestions = [
-            'test',
-            'couchdb',
-            'test framework',
-            'socket',
-            'promises',
-        ];
-
         return suggestions[Math.floor(Math.random() * suggestions.length)];
     }
 
