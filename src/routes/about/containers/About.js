@@ -216,7 +216,6 @@ class About extends Component {
                             <ul>
                                 <li><a href="http://pinxai.com" target="_blank">Cátia Santos</a> for the website design</li>
                                 <li><a href="https://github.com/carsy" target="_blank">José Bateira</a> for the initial effort put into this project</li>
-                                <li><a href="https://www.behance.net/mariamonteiro" target="_blank">Maria Monteiro</a> for the identity design</li>
                             </ul>
                         </div>
                     </div>

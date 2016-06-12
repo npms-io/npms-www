@@ -4,6 +4,7 @@ import homeRoute from './home';
 import searchRoute from './search';
 
 // TODO: Handle require.ensure error
+// TODO: Use https://github.com/nfl/react-helmet to update document title
 
 function startLoading() {
     let timeout = setTimeout(() => {
