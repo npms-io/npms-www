@@ -12,7 +12,12 @@ class Home extends Component {
 
                 <div className="upper-half">
                     <div className="upper-half-centered">
-                        <div className="logo">npms</div>
+                        <div className="logo">
+                            <span>
+                                npms
+                                <span className="beta">beta</span>
+                            </span>
+                        </div>
                         <div className="moto">A better and <strong>open source search</strong> for node modules</div>
 
                         <SearchBox initiallyEmpty />

@@ -20,6 +20,19 @@
     font-size: 36px;
 }
 
+.header-component .logo a > span {
+    position: relative;
+}
+
+.header-component .logo .beta {
+    position: absolute;
+    right: 2px;
+    bottom: 0;
+    color: #95a2c1;
+    font-size: 10px;
+    font-weight: 500;
+}
+
 .header-component.has-logo .logo {
     width: 130px;
 }
