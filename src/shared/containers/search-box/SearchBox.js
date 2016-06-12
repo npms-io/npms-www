@@ -5,6 +5,7 @@ import { updateQuery, navigate } from 'shared/state/search/actions';
 
 class SearchBox extends Component {
     componentWillMount() {
+        this._suggestion = this._getRandomSuggestion();
         this._inputValue = this.props.initiallyEmpty ? '' : this.props.query.term;
     }
 
@@ -18,7 +19,7 @@ class SearchBox extends Component {
         return (
             <form className="search-box-component" onSubmit={ (e) => this._handleSubmit(e) }>
                 <div className="search-input">
-                    <input type="text" placeholder="Search modules"
+                    <input type="text" placeholder={ `Search modules, like "${this._suggestion}"` }
                         value={ this._inputValue }
                         ref={ (ref) => { this._inputEl = ref; } }
                         onChange={ () => this._handleInputChange() } />
@@ -29,6 +30,18 @@ class SearchBox extends Component {
     }
 
     // ---------------------------------------------
+
+    _getRandomSuggestion() {
+        const suggestions = [
+            'test',
+            'couchdb',
+            'test framework',
+            'socket',
+            'promises',
+        ];
+
+        return suggestions[Math.floor(Math.random() * suggestions.length)];
+    }
 
     _handleInputChange() {
         const query = { term: this._inputEl.value };
