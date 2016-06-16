@@ -3,6 +3,8 @@ import React, { Component, PropTypes } from 'react';
 import shallowCompare from 'react-addons-shallow-compare';
 import ColourMeLife from 'colour-me-life';
 import range from 'lodash/range';
+import capitalize from 'lodash/capitalize';
+import CircularProgressbar from 'react-circular-progressbar';
 import Tooltip from 'shared/components/tooltip/Tooltip';
 import scoreBadgeSvg from './svgs/score-badge.svg';
 
@@ -19,32 +21,50 @@ class ModuleScore extends Component {
 
     render() {
         return (
-            <Tooltip
-                overlayClassName="module-score-tooltip-component"
-                placement="right"
-                destroyTooltipOnHide
-                getTooltipContainer={ () => document.body }
-                overlay={ this._renderTooltip() }>
-                <div className="module-score-component">
+            <div className="module-score-component">
+                { this._renderDetailedScore('quality') }
+                { this._renderDetailedScore('popularity') }
+                { this._renderDetailedScore('maintenance') }
+                { this._renderFinalScore() }
+            </div>
+        );
+    }
+
+    // ---------------------------------------------------------
+
+    _renderFinalScore() {
+        const tooltip = (
+            <ul>
+                <li>{ this._renderTooltipScore('Quality', this.props.score.detail.quality) }</li>
+                <li>{ this._renderTooltipScore('Popularity', this.props.score.detail.popularity) }</li>
+                <li>{ this._renderTooltipScore('Maintenance', this.props.score.detail.maintenance) }</li>
+            </ul>
+        );
+
+        return (
+            <Tooltip overlayClassName="module-score-tooltip-component" placement="top" destroyTooltipOnHide overlay={ tooltip }>
+                <div className="score-full">
                     <svg className="score-badge" style={ { fill: this._getScoreColor(this.props.score.final) } }>
                         <use xlinkHref={ scoreBadgeSvg }></use>
                     </svg>
                     <div className="score-value">{ this._getScoreText(this.props.score.final) }</div>
                 </div>
             </Tooltip>
-
         );
     }
 
-    // ---------------------------------------------------------
+    _renderDetailedScore(property) {
+        const tooltip = this._renderTooltipScore(capitalize(property), this.props.score.detail[property]);
 
-    _renderTooltip() {
         return (
-            <ul>
-                <li>{ this._renderTooltipScore('Quality', this.props.score.detail.quality) }</li>
-                <li>{ this._renderTooltipScore('Popularity', this.props.score.detail.popularity) }</li>
-                <li>{ this._renderTooltipScore('Maintenance', this.props.score.detail.maintenance) }</li>
-            </ul>
+            <Tooltip overlayClassName="module-score-tooltip-component" placement="top" destroyTooltipOnHide overlay={ tooltip }>
+                <div className="score-detailed">
+                    <CircularProgressbar classForPercentage={ () => 'score-detailed' }
+                        percentage={ this.props.score.detail[property] * 100 }
+                        textForPercentage={ () => property[0].toUpperCase() } />
+                </div>
+            </Tooltip>
+
         );
     }
 
