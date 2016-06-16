@@ -123,7 +123,7 @@ class About extends Component {
                                 <div className="name">Personalities</div>
                                 <div className="description">
                                     <p>
-                                        If two modules are similar, one tend to choose the one in which the author is well known in the
+                                        If two modules are similar, one tends to choose the one in which the author is well known in the
                                         community.
                                     </p>
                                     <p>
