@@ -26,6 +26,7 @@ SvgIcon.propTypes = {
 Object.assign(SvgIcon, {
     github: require('./svgs/github.svg'),
     twitter: require('./svgs/twitter.svg'),
+    npm: require('./svgs/npm.svg'),
 });
 
 export default SvgIcon;

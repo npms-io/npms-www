@@ -1,0 +1,15 @@
+.full-module-score-component .detail-score {
+    margin-right: 7px;
+    vertical-align: middle;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: default;
+}
+
+.full-module-score-component .module-score-component {
+    display: inline-block;
+}
+
+.full-module-score-tooltip-component.tooltip-component-theme-default .tooltip-component-inner {
+    font-size: 12px;
+}

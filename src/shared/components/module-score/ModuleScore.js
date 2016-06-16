@@ -1,16 +1,8 @@
 import './ModuleScore.css';
 import React, { Component, PropTypes } from 'react';
 import shallowCompare from 'react-addons-shallow-compare';
-import ColourMeLife from 'colour-me-life';
-import range from 'lodash/range';
-import Tooltip from 'shared/components/tooltip/Tooltip';
 import scoreBadgeSvg from './svgs/score-badge.svg';
-
-const gradient = new ColourMeLife()
-    .setSpectrum('#6e4b46', '#9e6b64', '#1ac391')
-    .setNumberRange(0, 1);
-
-const colors = range(101).map((index) => gradient.colourAt(index / 100));
+import { getColor, getText } from './util/transformer';
 
 class ModuleScore extends Component {
     shouldComponentUpdate(nextProps, nextState) {
@@ -19,52 +11,13 @@ class ModuleScore extends Component {
 
     render() {
         return (
-            <Tooltip
-                overlayClassName="module-score-tooltip-component"
-                placement="right"
-                destroyTooltipOnHide
-                getTooltipContainer={ () => document.body }
-                overlay={ this._renderTooltip() }>
-                <div className="module-score-component">
-                    <svg className="score-badge" style={ { fill: this._getScoreColor(this.props.score.final) } }>
-                        <use xlinkHref={ scoreBadgeSvg }></use>
-                    </svg>
-                    <div className="score-value">{ this._getScoreText(this.props.score.final) }</div>
-                </div>
-            </Tooltip>
-
-        );
-    }
-
-    // ---------------------------------------------------------
-
-    _renderTooltip() {
-        return (
-            <ul>
-                <li>{ this._renderTooltipScore('Quality', this.props.score.detail.quality) }</li>
-                <li>{ this._renderTooltipScore('Popularity', this.props.score.detail.popularity) }</li>
-                <li>{ this._renderTooltipScore('Maintenance', this.props.score.detail.maintenance) }</li>
-            </ul>
-        );
-    }
-
-    _renderTooltipScore(label, score) {
-        return (
-            <div>
-                <span className="score-label">{ label }:</span>
-                <span className="score-value" style={ { color: this._getScoreColor(score) } }>
-                { this._getScoreText(score) }
-                </span>
+            <div className="module-score-component">
+                <svg className="score-badge" style={ { fill: getColor(this.props.score.final) } }>
+                    <use xlinkHref={ scoreBadgeSvg }></use>
+                </svg>
+                <div className="score-value">{ getText(this.props.score.final) }</div>
             </div>
         );
-    }
-
-    _getScoreText(score) {
-        return Math.round(score * 100);
-    }
-
-    _getScoreColor(score) {
-        return `#${colors[Math.round(score * 100)]}`;
     }
 }
 
