@@ -12,13 +12,10 @@ class ListItem extends Component {
     }
 
     render() {
-        const npmUrl = this.props.item.links ? this.props.item.links.npm : `https://npmjs.com/package/${encodeURIComponent(this.props.item.name)}`;
-        const url = this.props.item.links ? this.props.item.links.repository : npmUrl;
-
         return (
             <li className="results-list-item">
                 <div className="headline">
-                    <a href={ url } target="_blank"
+                    <a href={ this.props.item.links.repository || this.props.item.links.npm } target="_blank"
                         className="name ellipsis">{ this.props.item.name }</a>
 
                     <span className="version">({ this.props.item.version })</span>
@@ -38,7 +35,7 @@ class ListItem extends Component {
                 { this._renderPublisherInfo() }
 
                 <div className="npm-link">
-                    <a href={ npmUrl }>
+                    <a href={ this.props.item.links.npm }>
                         <SvgIcon id={ SvgIcon.npm } />
                     </a>
                 </div>
