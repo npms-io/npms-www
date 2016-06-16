@@ -34,8 +34,11 @@ class ListItem extends Component {
 
                 { this._renderPublisherInfo() }
 
-                <div className="npm-link">
-                    <a href={ this.props.item.links.npm }>
+                <div className="links">
+                    <a href={ `https://tonicdev.com/npm/${this.props.item.name}` } className="tonic-link">
+                        <SvgIcon id={ SvgIcon.tonic } />
+                    </a>
+                    <a href={ this.props.item.links.npm } className="npm-link">
                         <SvgIcon id={ SvgIcon.npm } />
                     </a>
                 </div>

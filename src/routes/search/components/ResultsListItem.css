@@ -14,7 +14,7 @@
 .page-search .results-list-item .publish-info a,
 .page-search .results-list-item .keywords,
 .page-search .results-list-item .keywords i {
-    color: rgba(133, 133, 133, 0.77);
+    color: rgba(0, 0, 0, 0.45);
 }
 
 /* Headline
@@ -68,7 +68,7 @@
    ========================================================================== */
 
 .page-search .results-list-item .publish-info {
-    max-width: calc(100% - 37px);
+    max-width: calc(100% - 70px);
     margin-top: 4px;
     font-size: 12px;
 }
@@ -103,20 +103,40 @@
 /* Publish info
    ========================================================================== */
 
-.page-search .results-list-item .npm-link {
+.page-search .results-list-item .links {
     position: absolute;
     right: 0;
-    bottom: 13px; /* 15px - 2px from the p's leg */
-    opacity: 0.1;
-    fill: #35405b;
-    transition: opacity 0.05s linear;
+    bottom: 15px;
+    opacity: 0;
+    transition: opacity 0.2s linear;
 }
 
-.page-search .results-list-item .npm-link:hover {
+.page-search .results-list-item .links a {
+    margin-left: 10px;
+}
+
+.page-search .results-list-item:hover .links {
     opacity: 1;
+}
+
+.page-search .results-list-item .tonic-link svg {
+    width: 20px;
+    height: 20px;
 }
 
 .page-search .results-list-item .npm-link svg {
     width: 32px;
     height: 13px;
+    margin-top: 2px;
+    fill: #c12127;
+}
+
+@media (max-width: 360px) {
+    .page-search .results-list-item .publish-info {
+        max-width: 100%;
+    }
+
+    .page-search .results-list-item:hover .links {
+        opacity: 0;
+    }
 }
