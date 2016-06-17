@@ -35,12 +35,11 @@ class ListItem extends Component {
                 { this._renderPublisherInfo() }
 
                 <div className="links">
-                    <a className="tonic-link" href={ `https://tonicdev.com/npm/${this.props.item.name}` } target="_blank"
-                        title="Try this module in Tonic">
+                    <a className="tonic-link" href={ `https://tonicdev.com/npm/${encodeURIComponent(this.props.item.name)}` }
+                        target="_blank" title="Try this module in Tonic">
                         <SvgIcon id={ SvgIcon.tonic } />
                     </a>
-                    <a className="npm-link" href={ this.props.item.links.npm } target="_blank"
-                        title="View this module in npmjs.org">
+                    <a className="npm-link" href={ this.props.item.links.npm } target="_blank" title="View this module in npmjs.org">
                         <SvgIcon id={ SvgIcon.npm } />
                     </a>
                 </div>
