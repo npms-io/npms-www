@@ -3,7 +3,7 @@ import React, { Component, PropTypes } from 'react';
 import shallowCompare from 'react-addons-shallow-compare';
 import ago from 's-ago';
 import Gravatar from 'react-gravatar';
-import FullModuleScore from 'shared/components/module-score/FullModuleScore';
+import ModuleScore from 'shared/components/module-score/ModuleScore';
 import SvgIcon from 'shared/components/icon/SvgIcon';
 
 class ListItem extends Component {
@@ -18,8 +18,8 @@ class ListItem extends Component {
                     <a href={ this.props.item.links.repository || this.props.item.links.npm } target="_blank"
                         className="name ellipsis">{ this.props.item.name }</a>
 
-                    <span className="version">({ this.props.item.version })</span>
-                    <FullModuleScore score={ this.props.item.score } />
+                    <span className="version ellipsis">({ this.props.item.version })</span>
+                    <ModuleScore score={ this.props.item.score } />
                 </div>
 
                 { this.props.item.description ?
