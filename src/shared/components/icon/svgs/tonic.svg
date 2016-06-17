@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400px" height="400px" viewBox="0 0 400 400" version="1.1">
+    <defs/>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="#FFFFFF" fill-rule="evenodd">
+        <g id="Black">
+            <rect id="Square" stroke="#D8D8D8" stroke-width="8" x="4" y="4" width="392" height="392" rx="30.7000008" />
+            <path d="M260.036075,121.5 L139.963925,121.5 L139.963925,150.045455 L180.516595,150.045455 L180.516595,278.5 L217.670996,278.5 L217.670996,150.045455 L256.411255,150.045455 L260.036075,121.5 Z" id="T" fill="#333333" />
+        </g>
+    </g>
+</svg>

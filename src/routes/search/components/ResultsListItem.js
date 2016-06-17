@@ -3,7 +3,8 @@ import React, { Component, PropTypes } from 'react';
 import shallowCompare from 'react-addons-shallow-compare';
 import ago from 's-ago';
 import Gravatar from 'react-gravatar';
-import ModuleScore from 'shared/components/module-score/ModuleScore';
+import FullModuleScore from 'shared/components/module-score/FullModuleScore';
+import SvgIcon from 'shared/components/icon/SvgIcon';
 
 class ListItem extends Component {
     shouldComponentUpdate(nextProps, nextState) {
@@ -14,11 +15,11 @@ class ListItem extends Component {
         return (
             <li className="results-list-item">
                 <div className="headline">
-                    <a href={ `https://npmjs.com/package/${encodeURIComponent(this.props.item.name)}` } target="_blank"
+                    <a href={ this.props.item.links.repository || this.props.item.links.npm } target="_blank"
                         className="name ellipsis">{ this.props.item.name }</a>
 
                     <span className="version">({ this.props.item.version })</span>
-                    <ModuleScore score={ this.props.item.score } />
+                    <FullModuleScore score={ this.props.item.score } />
                 </div>
 
                 { this.props.item.description ?
@@ -27,12 +28,21 @@ class ListItem extends Component {
 
                 { this.props.item.keywords ?
                     <div className="keywords ellipsis">
-                        <i className="material-icons">local_offer</i>
                         { this.props.item.keywords.join(', ') }
                     </div> :
                     '' }
 
                 { this._renderPublisherInfo() }
+
+                <div className="links">
+                    <a href={ `https://tonicdev.com/npm/${this.props.item.name}` } className="tonic-link">
+                        <SvgIcon id={ SvgIcon.tonic } />
+                    </a>
+                    <a href={ this.props.item.links.npm } className="npm-link">
+                        <SvgIcon id={ SvgIcon.npm } />
+                    </a>
+                </div>
+
             </li>
         );
     }
@@ -54,7 +64,7 @@ class ListItem extends Component {
                 { hasPublisher ? <a href={ `https://npmjs.com/~${encodeURIComponent(this.props.item.publisher.username)}` }
                     target="_blank" className="publisher-name ellipsis">{ this.props.item.publisher.username }</a> : '' }
                 { hasPublisher ? <span className="publisher-avatar">
-                    <Gravatar size={ 20 } email={ this.props.item.publisher.email || 'n/a' } https
+                    <Gravatar size={ 18 } email={ this.props.item.publisher.email || 'n/a' } https
                         onLoad={ (e) => this._onGravatarLoad(e) } /></span> : '' }
             </div>
         );
