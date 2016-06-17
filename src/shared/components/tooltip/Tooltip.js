@@ -40,6 +40,7 @@ Tooltip.defaultProps = {
     trigger: ['hover', 'click'],
     getTooltipContainer: () => document.body,
     mouseLeaveDelay: 0.1,
+    mouseEnterDelay: 0.1,
 };
 
 Tooltip.propTypes = {
