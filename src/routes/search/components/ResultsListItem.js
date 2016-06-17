@@ -64,7 +64,7 @@ class ListItem extends Component {
                 { hasPublisher ? <a href={ `https://npmjs.com/~${encodeURIComponent(this.props.item.publisher.username)}` }
                     target="_blank" className="publisher-name ellipsis">{ this.props.item.publisher.username }</a> : '' }
                 { hasPublisher ? <span className="publisher-avatar">
-                    <Gravatar size={ 18 } email={ this.props.item.publisher.email || 'n/a' } https
+                    <Gravatar size={ 20 } email={ this.props.item.publisher.email || 'n/a' } https
                         onLoad={ (e) => this._onGravatarLoad(e) } /></span> : '' }
             </div>
         );
