@@ -3,10 +3,24 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import LoadingBar from '../../components/loading-bar/LoadingBar';
-import Menu from '../menu/Menu';
 import { canSmoothScroll } from './util/smoothScroll';
 
+let Menu; // Menu component will be lazy loaded here
+
 class Application extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { isMenuLoaded: false };
+    }
+
+    componentDidMount() {
+        // Lazy load the Menu because it's too heavy due to snapsvg
+        require.ensure([], (require) => {
+            Menu = require('../menu/Menu').default;
+            this.setState({ isMenuLoaded: true });  // eslint-disable-line react/no-set-state
+        }, 'menu');
+    }
+
     render() {
         return (
             <div id="application">
@@ -15,7 +29,7 @@ class Application extends Component {
                 </div>
 
                 <div id="menu">
-                    <Menu />
+                    { this.state.isMenuLoaded ? <Menu /> : '' }
                 </div>
 
                 <div id="page">
