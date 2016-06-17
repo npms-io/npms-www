@@ -68,6 +68,7 @@ class SearchBox extends Component {
     }
 
     _handleWindowKeyDown(e) {
+        // Skip if not `focusOnKeyDown` is not enabled or if something else is already focused
         if (this.props.focusOnKeyDown && !e.target.matches('input,textarea,select')) {
             this._inputEl.focus();
         }
