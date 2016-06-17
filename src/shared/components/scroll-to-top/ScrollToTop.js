@@ -39,7 +39,7 @@ class ScrollToTop extends Component {
     }
 
     _handleScrollToTopIconClick() {
-        window.scrollTo({ left: 0, behavior: 'smooth' });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 }
 
