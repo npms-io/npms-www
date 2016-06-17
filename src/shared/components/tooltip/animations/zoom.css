@@ -1,10 +1,12 @@
 .tooltip-component.tooltip-component-animation-zoom-enter,
-.tooltip-component.tooltip-component-animation-zoom-leave {
-    display: block;
+.tooltip-component.tooltip-component-animation-zoom-leave,
+.tooltip-component-animation-zoom-appear {
+    pointer-events: none;
 }
 
 .tooltip-component-animation-zoom-enter,
 .tooltip-component-animation-zoom-appear {
+    z-index: 1170;  /* Appear above others */
     opacity: 0;
 
     animation-play-state: paused;
@@ -16,7 +18,7 @@
 .tooltip-component-animation-zoom-leave {
     animation-play-state: paused;
     animation-fill-mode: both;
-    animation-duration: 0.2s;
+    animation-duration: 0.1s;
     animation-timing-function: cubic-bezier(0.6, -0.3, 0.74, 0.05);
 }
 
@@ -47,14 +49,10 @@
 
 @keyframes tooltip-component-animation-zoom-out {
     0% {
-        transform-origin: 50% 50%;
-        transform: scale(1, 1);
         opacity: 1;
     }
 
     100% {
-        transform-origin: 50% 50%;
-        transform: scale(0, 0);
         opacity: 0;
     }
 }

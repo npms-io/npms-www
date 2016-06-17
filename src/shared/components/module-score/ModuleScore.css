@@ -1,11 +1,49 @@
 .module-score-component {
-    position: relative;
-    width: 26px;
-    height: 26px;
+    display: table;
+}
+
+/* Detailed score (circular progress)
+   ========================================================================== */
+
+.module-score-component .score-detailed {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    display: table-cell;
+    vertical-align: middle;
+    font-weight: 700;
     cursor: default;
 }
 
-.module-score-component .score-badge {
+.module-score-component .score-detailed .CircularProgressbar-path {
+    stroke: #999;
+    stroke-linecap: round;
+}
+
+.module-score-component .score-detailed .CircularProgressbar-trail {
+    stroke: #eaeaea;
+}
+
+.module-score-component .score-detailed .CircularProgressbar-text {
+    fill: #414141;
+    font-size: 44px;
+    dominant-baseline: central;
+    text-anchor: middle;
+}
+
+/* Full score
+   ========================================================================== */
+
+.module-score-component .score-full {
+    position: relative;
+    width: 26px;
+    height: 26px;
+    display: table-cell;
+    vertical-align: middle;
+    cursor: default;
+}
+
+.module-score-component .score-full .score-badge {
     position: absolute;
     top: 0;
     left: 0;
@@ -14,12 +52,12 @@
     z-index: 1;
 }
 
-.module-score-component .score-badge svg {
+.module-score-component .score-full .score-badge svg {
     width: 100%;
     height: 100%;
 }
 
-.module-score-component .score-value {
+.module-score-component .score-full .score-value {
     position: relative;
     z-index: 2;
     color: #fff;

@@ -4,6 +4,8 @@ import shallowCompare from 'react-addons-shallow-compare';
 import ago from 's-ago';
 import Gravatar from 'react-gravatar';
 import ModuleScore from 'shared/components/module-score/ModuleScore';
+import MaterialIcon from 'shared/components/icon/MaterialIcon';
+import SvgIcon from 'shared/components/icon/SvgIcon';
 
 class ListItem extends Component {
     shouldComponentUpdate(nextProps, nextState) {
@@ -14,10 +16,10 @@ class ListItem extends Component {
         return (
             <li className="results-list-item">
                 <div className="headline">
-                    <a href={ `https://npmjs.com/package/${encodeURIComponent(this.props.item.name)}` } target="_blank"
+                    <a href={ this.props.item.links.repository || this.props.item.links.npm } target="_blank"
                         className="name ellipsis">{ this.props.item.name }</a>
 
-                    <span className="version">({ this.props.item.version })</span>
+                    <span className="version ellipsis">({ this.props.item.version })</span>
                     <ModuleScore score={ this.props.item.score } />
                 </div>
 
@@ -27,12 +29,23 @@ class ListItem extends Component {
 
                 { this.props.item.keywords ?
                     <div className="keywords ellipsis">
-                        <i className="material-icons">local_offer</i>
+                        <MaterialIcon id="local_offer" />
                         { this.props.item.keywords.join(', ') }
                     </div> :
                     '' }
 
                 { this._renderPublisherInfo() }
+
+                <div className="links">
+                    <a className="tonic-link" href={ `https://tonicdev.com/npm/${encodeURIComponent(this.props.item.name)}` }
+                        target="_blank" title="Try this module in Tonic">
+                        <SvgIcon id={ SvgIcon.tonic } />
+                    </a>
+                    <a className="npm-link" href={ this.props.item.links.npm } target="_blank" title="View this module in npmjs.org">
+                        <SvgIcon id={ SvgIcon.npm } />
+                    </a>
+                </div>
+
             </li>
         );
     }

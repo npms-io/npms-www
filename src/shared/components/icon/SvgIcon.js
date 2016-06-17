@@ -7,11 +7,14 @@ class SvgIcon extends Component {
     }
 
     render() {
+        const { id, onClick, className, ...props } = this.props;
+
         return (
             <svg
-                className={ `svg-icon ${this.props.className || ''}` }
-                onClick={ () => this.props.onClick && this.props.onClick() }>
-                <use xlinkHref={ this.props.id }></use>
+                className={ `svg-icon ${className || ''}` }
+                onClick={ () => onClick && onClick() }
+                { ...props }>
+                <use xlinkHref={ id }></use>
             </svg>
         );
     }
@@ -26,6 +29,8 @@ SvgIcon.propTypes = {
 Object.assign(SvgIcon, {
     github: require('./svgs/github.svg'),
     twitter: require('./svgs/twitter.svg'),
+    npm: require('./svgs/npm.svg'),
+    tonic: require('./svgs/tonic.svg'),
 });
 
 export default SvgIcon;
