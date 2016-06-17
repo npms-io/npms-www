@@ -20,7 +20,7 @@ class Home extends Component {
                         </div>
                         <div className="moto">A better and <strong>open source search</strong> for node modules</div>
 
-                        <SearchBox initiallyEmpty />
+                        <SearchBox initiallyEmpty focusOnKeyDown />
                     </div>
                 </div>
             </div>
