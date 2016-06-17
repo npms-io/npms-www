@@ -12,15 +12,26 @@ const suggestions = [
 ];
 
 class SearchBox extends Component {
+    constructor(props) {
+        super(props);
+        this._handleWindowKeyDown = this._handleWindowKeyDown.bind(this);
+    }
+
     componentWillMount() {
         this._suggestion = this._getRandomSuggestion();
         this._inputValue = this.props.initiallyEmpty ? '' : this.props.query.term;
+
+        window.addEventListener('keydown', this._handleWindowKeyDown);
     }
 
     componentWillUpdate(nextProps) {
         if (nextProps.query.term !== this._inputValue) {
             this._inputValue = nextProps.query.term;
         }
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('keydown', this._handleWindowKeyDown);
     }
 
     render() {
@@ -55,16 +66,24 @@ class SearchBox extends Component {
 
         this.props.dispatch(navigate());
     }
+
+    _handleWindowKeyDown(e) {
+        if (this.props.focusOnKeyDown && !e.target.matches('input,textarea,select')) {
+            this._inputEl.focus();
+        }
+    }
 }
 
 SearchBox.propTypes = {
     dispatch: PropTypes.func.isRequired,
     query: PropTypes.object.isRequired,
     initiallyEmpty: PropTypes.bool,
+    focusOnKeyDown: PropTypes.bool,
 };
 
 SearchBox.defaultProps = {
     initiallyEmpty: false,
+    focusOnKeyDown: false,
 };
 
 export default connect((state, ownProps) => ({
