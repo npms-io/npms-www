@@ -4,6 +4,7 @@ import shallowCompare from 'react-addons-shallow-compare';
 import ago from 's-ago';
 import Gravatar from 'react-gravatar';
 import ModuleScore from 'shared/components/module-score/ModuleScore';
+import MaterialIcon from 'shared/components/icon/MaterialIcon';
 import SvgIcon from 'shared/components/icon/SvgIcon';
 
 class ListItem extends Component {
@@ -28,6 +29,7 @@ class ListItem extends Component {
 
                 { this.props.item.keywords ?
                     <div className="keywords ellipsis">
+                        <MaterialIcon id="local_offer" />
                         { this.props.item.keywords.join(', ') }
                     </div> :
                     '' }
