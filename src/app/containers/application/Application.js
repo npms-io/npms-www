@@ -5,19 +5,14 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import LoadingBar from '../../components/loading-bar/LoadingBar';
 import { canSmoothScroll } from './util/smoothScroll';
 
-let Menu; // Menu component will be lazy loaded here
+let Menu;  // Menu component will be lazy loaded here
 
 class Application extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { isMenuLoaded: false };
-    }
-
     componentDidMount() {
         // Lazy load the Menu because it's too heavy due to snapsvg
         require.ensure([], (require) => {
             Menu = require('../menu/Menu').default;
-            this.setState({ isMenuLoaded: true });  // eslint-disable-line react/no-set-state
+            this.forceUpdate();
         }, 'menu');
     }
 
@@ -29,7 +24,7 @@ class Application extends Component {
                 </div>
 
                 <div id="menu">
-                    { this.state.isMenuLoaded ? <Menu /> : '' }
+                    { Menu ? <Menu /> : '' }
                 </div>
 
                 <div id="page">
