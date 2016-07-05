@@ -53,7 +53,6 @@ function buildConfig(options) {
                     include: [
                         `${projectDir}/src`,
                         `${projectDir}/config`,
-                        `${projectDir}/node_modules/react-gravatar`,  // Uses Object.assign()
                     ],
                     loader: 'babel-loader?cacheDirectory',
                 },
