@@ -8,7 +8,7 @@ function createUrl(path) {
 }
 
 function onFullfilled(res) {
-    if (!isPlainObject(res.data)) {
+    if (!isPlainObject(res.data) && !Array.isArray(res.data)) {
         throw Object.assign(new Error('Unexpected response'),
             { status: res.status, statusText: res.statusText || 'Unknown' });
     }
@@ -21,7 +21,7 @@ function onRejected(res) {
         throw res;
     }
 
-    if (!isPlainObject(res.data)) {
+    if (!isPlainObject(res.data) && !Array.isArray(res.data)) {
         throw Object.assign(new Error(`${res.status} - ${res.statusText || 'Unknown'}`),
             { status: res.status, statusText: res.statusText || 'Unknown' });
     }
