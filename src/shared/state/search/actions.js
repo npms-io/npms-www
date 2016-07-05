@@ -69,7 +69,8 @@ export function run() {
                 .then((res) => ({ total: res.total, items: res.results }))
                 .finally(() => dispatch(unmarkAsLoading())),
             },
-        });
+        })
+        .catch(() => {});  // Search.RUN_REJECTED will be dispatched, so swallow any error
     };
 }
 
@@ -98,6 +99,7 @@ export function scroll() {
                 .then((res) => ({ total: res.total, items: res.results }))
                 .finally(() => dispatch(unmarkAsLoading())),
             },
-        });
+        })
+        .catch(() => {});  // Search.SCROLL_REJECTED will be dispatched, so swallow any error
     };
 }

@@ -22,7 +22,6 @@
     position: relative;
     height: calc(65vh - 80px);
     min-height: 275px;
-    overflow: hidden;  /* Necessary because of the translate -50% on IE */
     background-color: #35405b;
     color: #fff;
 }
@@ -59,6 +58,14 @@
 
 .page-home .upper-half .moto {
     margin-bottom: 30px;
+}
+
+.page-home .upper-half .search-box-component {
+    text-align: left;
+}
+
+.page-home .upper-half .search-box-component .autosuggest-component-suggestions-container {
+    max-height: 35vh;
 }
 
 /* Media queries

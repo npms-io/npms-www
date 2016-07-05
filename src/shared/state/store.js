@@ -1,11 +1,12 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import promiseMiddleware from 'redux-promise-middleware';
 import { browserHistory } from 'react-router';
 import { routerMiddleware } from 'react-router-redux';
 import omit from 'lodash/omit';
-import appReducers from './app/reducers';
-import searchReducers from './search/reducers';
+import appReducer from './app/reducer';
+import searchReducer from './search/reducer';
+import searchSuggestionsReducer from './search-suggestions/reducer';
 
 const store = createStore((state = {}) => state, {}, compose(
     applyMiddleware(routerMiddleware(browserHistory), thunkMiddleware, promiseMiddleware()),
@@ -13,8 +14,9 @@ const store = createStore((state = {}) => state, {}, compose(
 ));
 
 let registeredReducers = {
-    app: appReducers,
-    search: searchReducers,
+    app: appReducer,
+    search: searchReducer,
+    searchSuggestions: searchSuggestionsReducer,
 };
 
 /**
