@@ -49,7 +49,7 @@ class List extends Component {
 
                 <ul className="items header-component-with-logo-align-with-search-box">
                     { this.props.results.items.map((item) =>
-                        <ResultsListItem key={ item.name } item={ item } />
+                        <ResultsListItem key={ item.module.name } module={ item.module } score={ item.score } />
                     ) }
                 </ul>
 
