@@ -7,8 +7,10 @@ import omit from 'lodash/omit';
 import appReducers from './app/reducers';
 import searchReducers from './search/reducers';
 
-const store = createStore((state = {}) => state, {},
-    applyMiddleware(routerMiddleware(browserHistory), thunkMiddleware, promiseMiddleware()));
+const store = createStore((state = {}) => state, {}, compose(
+    applyMiddleware(routerMiddleware(browserHistory), thunkMiddleware, promiseMiddleware()),
+    window.devToolsExtension ? window.devToolsExtension() : (f) => f
+));
 
 let registeredReducers = {
     app: appReducers,
