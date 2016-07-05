@@ -37,7 +37,6 @@ class SearchBox extends Component {
     }
 
     render() {
-        console.log(this.props.suggestions);
         return (
             <form className="search-box-component" onSubmit={ (e) => this._handleSubmit(e) }>
                 <div className="search-input">
