@@ -66,7 +66,7 @@
     position: absolute;
     top: 45px;
     width: 100%;
-    max-height: 400px;  /* Max of 10 items */
+    max-height: 402px;  /* Max of 10 items */
     z-index: 2;
     overflow: auto;
     margin: 0;
