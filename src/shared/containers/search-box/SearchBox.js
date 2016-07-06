@@ -109,6 +109,7 @@ class SearchBox extends Component {
     }
 
     _handleSuggestionsUpdateRequested(request) {
+        // TODO: Should we throttle this?
         this.props.dispatch(fetchSuggestions(request.value));
     }
 

@@ -12,7 +12,16 @@ export function reset() {
 }
 
 export function fetch(term) {
-    return (dispatch) => {
+    return (dispatch, getState) => {
+        term = term.trim();
+
+
+        // Do nothing if current term is the same
+        if (getState().searchSuggestions.term === term) {
+            return;
+        }
+
+        // Reset if term is empty
         if (!term) {
             return dispatch(reset());
         }
