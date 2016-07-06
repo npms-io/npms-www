@@ -78,7 +78,10 @@ class SearchBox extends Component {
     _renderSuggestion(suggestion) {
         return (
             <div className="suggestion">
-                <div className="suggestion-name ellipsis">{ suggestion.module.name }</div>
+                { suggestion.highlight ?
+                    <div className="suggestion-name ellipsis" dangerouslySetInnerHTML={ { __html: suggestion.highlight } }></div> :
+                    <div className="suggestion-name ellipsis">{ suggestion.module.name }</div>
+                }
                 <div className="suggestion-description ellipsis">{ suggestion.module.description }</div>
             </div>
         );

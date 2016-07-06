@@ -95,7 +95,11 @@
 .search-box-component .autosuggest-component-suggestion .suggestion-name {
     color: #35405b;
     font-size: 14px;
-    font-weight: 500;
+}
+
+.search-box-component .autosuggest-component-suggestion .suggestion-name em {
+    font-weight: bold;
+    font-style: normal;
 }
 
 .search-box-component .autosuggest-component-suggestion .suggestion-description {
