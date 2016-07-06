@@ -28,8 +28,8 @@ const argv = yargs
     default: 'dev',
     describe: 'The environment',
 })
-.option('address', {
-    alias: 'a',
+.option('hostname', {
+    alias: 'H',
     type: 'string',
     default: 'localhost',
 })
@@ -45,7 +45,7 @@ const argv = yargs
 })
 .example('$0', 'Serves the application for the dev environment')
 .example('$0 --env prod', 'Serves the application for the prod environment')
-.example('$0 --env staging --port 8081 --address 0.0.0.0', 'Serves the application for the staging \
+.example('$0 --env staging --port 8081 --hostname 0.0.0.0', 'Serves the application for the staging \
 environment on all network interfaces in port 8081')
 .argv;
 
@@ -82,12 +82,12 @@ function runServer() {
         process.stdout.write(`Proxy:             ${path} -> ${proxy.target}\n`);
     });
 
-    process.stdout.write(`Server address:    http://${argv.address}:${argv.port}\n`);
+    process.stdout.write(`Server address:    http://${argv.hostname}:${argv.port}\n`);
 
     return new Promise((resolve, reject) => {
         const server = new WebpackDevServer(webpack(config), config.devServer);
 
-        server.listen(argv.port, argv.address, (err) => {
+        server.listen(argv.port, argv.hostname, (err) => {
             if (err) {
                 reject(err);
             } else {
