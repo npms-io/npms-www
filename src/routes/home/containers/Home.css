@@ -69,6 +69,12 @@
 /* Media queries
    ========================================================================== */
 
+@media (max-width: 400px) {
+    .page-home .upper-half .moto {
+        font-size: 14px;
+    }
+}
+
 @media (max-height: 584px) {
     .page-home .upper-half {
         height: 300px;
