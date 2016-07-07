@@ -4,7 +4,7 @@
     right: 0;
     bottom: 0;
     left: 0;
-    min-height: 465px;  /* minimum acceptable so that iphone5 does not show scroll */
+    min-height: 465px;  /* Minimum acceptable so that iphone5 does not show scroll */
     background-color: #f7f7f6;
 }
 
@@ -62,7 +62,7 @@
 }
 
 .page-home .upper-half .search-box-component .autosuggest-component-suggestions-container {
-    /* Complex calculation that measures the left space above the input with a 20px margin */
+    /* Complex calculation that measures the remaining space above the input with a 20px margin */
     max-height: calc(35vh - 5px - 20px + ((65vh - 80px - 234px) / 2));
 }
 
@@ -89,7 +89,7 @@
     }
 
     .page-home .upper-half .search-box-component .autosuggest-component-suggestions-container {
-        /* Complex calculation that measures the left space above the input with a 20px margin */
+        /* Complex calculation that measures the remaining space above the input with a 20px margin */
         max-height: calc(100vh - 80px - 300px - 5px - 20px + ((300px - 202px) / 2));
     }
 }
