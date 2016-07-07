@@ -1,9 +1,11 @@
 import './SearchBox.css';
 import React, { Component, PropTypes } from 'react';
+import Autosuggest from 'react-autosuggest';
 import { connect } from 'react-redux';
 import { updateQuery, navigate } from 'shared/state/search/actions';
+import { fetch as fetchSuggestions } from 'shared/state/search-suggestions/actions';
 
-const suggestions = [
+const placeholderSuggestions = [
     'test',
     'couchdb',
     'test framework',
@@ -18,15 +20,15 @@ class SearchBox extends Component {
     }
 
     componentWillMount() {
-        this._suggestion = this._getRandomSuggestion();
-        this._inputValue = this.props.initiallyEmpty ? '' : this.props.query.term;
+        this._placeholder = this._getRandomPlaceholder();
+        this._inputValue = this.props.initiallyEmpty ? '' : this.props.term;
 
         window.addEventListener('keydown', this._handleWindowKeyDown);
     }
 
     componentWillUpdate(nextProps) {
-        if (nextProps.query.term !== this._inputValue) {
-            this._inputValue = nextProps.query.term;
+        if (nextProps.term !== this._inputValue) {
+            this._inputValue = nextProps.term;
         }
     }
 
@@ -38,11 +40,34 @@ class SearchBox extends Component {
         return (
             <form className="search-box-component" onSubmit={ (e) => this._handleSubmit(e) }>
                 <div className="search-input">
-                    <input type="text" placeholder={ `Search modules, like "${this._suggestion}"` }
-                        value={ this._inputValue }
-                        ref={ (ref) => { this._inputEl = ref; } }
-                        onChange={ () => this._handleInputChange() } />
-                    <button><i className="material-icons">search</i></button>
+                    <Autosuggest
+                        id="search-box-autosuggest"
+                        suggestions={ this.props.suggestions }
+                        getSuggestionValue={ (suggestion) => suggestion.module.name }
+                        renderSuggestion={ (suggestion) => this._renderSuggestion(suggestion) }
+                        ref={ (ref) => { this._inputEl = ref && ref.input; } }
+                        onSuggestionsUpdateRequested={ (request) => this._handleSuggestionsUpdateRequested(request) }
+                        onSuggestionSelected={ (e, selected) => this._handleSuggestionSelected(e, selected) }
+                        focusInputOnSuggestionClick={ false }
+                        inputProps={ {
+                            value: this._inputValue,
+                            placeholder: this._placeholder,
+                            onChange: () => this._handleInputChange(),
+                        } }
+                        theme={ {
+                            container: 'autosuggest-component-container',
+                            containerOpen: 'is-open',
+                            input: 'autosuggest-component-input',
+                            suggestionsContainer: 'autosuggest-component-suggestions-container',
+                            suggestion: 'autosuggest-component-suggestion',
+                            suggestionFocused: 'is-focused',
+                            sectionContainer: 'autosuggest-component-section-container',
+                            sectionTitle: 'autosuggest-component-section-title',
+                            sectionSuggestionsContainer: 'autosuggest-component-section-suggestions-container',
+                        } } />
+                    <button ref={ (ref) => { this._buttonEl = ref; } }>
+                        <i className="material-icons">search</i>
+                    </button>
                 </div>
             </form>
         );
@@ -50,20 +75,29 @@ class SearchBox extends Component {
 
     // ---------------------------------------------
 
-    _getRandomSuggestion() {
-        return suggestions[Math.floor(Math.random() * suggestions.length)];
+    _renderSuggestion(suggestion) {
+        return (
+            <div className="suggestion">
+                { suggestion.highlight ?
+                    <div className="suggestion-name ellipsis" dangerouslySetInnerHTML={ { __html: suggestion.highlight } }></div> :
+                    <div className="suggestion-name ellipsis">{ suggestion.module.name }</div>
+                }
+                <div className="suggestion-description ellipsis">{ suggestion.module.description }</div>
+            </div>
+        );
+    }
+
+    _getRandomPlaceholder() {
+        return `Search modules, like "${placeholderSuggestions[Math.floor(Math.random() * placeholderSuggestions.length)]}"`;
     }
 
     _handleInputChange() {
-        const query = { term: this._inputEl.value };
-
-        this.props.dispatch(updateQuery(query));
+        this.props.dispatch(updateQuery({ term: this._inputEl.value }));
     }
 
     _handleSubmit(e) {
         e.preventDefault();
-        this._inputEl.blur();
-
+        this._inputEl.blur();  // Ensure keyboard is hidden in mobile
         this.props.dispatch(navigate());
     }
 
@@ -73,11 +107,23 @@ class SearchBox extends Component {
             this._inputEl.focus();
         }
     }
+
+    _handleSuggestionsUpdateRequested(request) {
+        // TODO: Should we throttle this?
+        this.props.dispatch(fetchSuggestions(request.value));
+    }
+
+    _handleSuggestionSelected(e, selected) {
+        this.props.dispatch(updateQuery({ term: selected.suggestionValue }));
+        this._buttonEl.click();  // Submit the form (calling submit() was not working with react)
+    }
 }
 
 SearchBox.propTypes = {
     dispatch: PropTypes.func.isRequired,
-    query: PropTypes.object.isRequired,
+    term: PropTypes.string.isRequired,
+    suggestions: PropTypes.array.isRequired,
+
     initiallyEmpty: PropTypes.bool,
     focusOnKeyDown: PropTypes.bool,
 };
@@ -88,6 +134,7 @@ SearchBox.defaultProps = {
 };
 
 export default connect((state, ownProps) => ({
-    query: state.search.query,
-    initiallyEmpty: ownProps.initiallyEmpty,
+    ...ownProps,
+    term: state.search.query.term,
+    suggestions: state.searchSuggestions.results,
 }))(SearchBox);

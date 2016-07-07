@@ -4,7 +4,7 @@
     right: 0;
     bottom: 0;
     left: 0;
-    min-height: 465px;  /* minimum acceptable so that iphone5 does not show scroll */
+    min-height: 465px;  /* Minimum acceptable so that iphone5 does not show scroll */
     background-color: #f7f7f6;
 }
 
@@ -19,28 +19,24 @@
    ========================================================================== */
 
 .page-home .upper-half {
-    position: relative;
     height: calc(65vh - 80px);
-    min-height: 275px;
-    overflow: hidden;  /* Necessary because of the translate -50% on IE */
+    justify-content: center;
+    align-items: center;
+    display: flex;
     background-color: #35405b;
     color: #fff;
 }
 
-.page-home .upper-half-centered {
-    position: absolute;
-    top: 50%;
-    left: 50%;
+.page-home .upper-half-wrapper {
     width: calc(100% - 40px);
     max-width: 620px;
-    transform: translate(-50%, -50%);
-    text-align: center;
 }
 
 .page-home .upper-half .logo {
     font-family: "Oleo Script", cursive;
     font-size: 100px;
     font-weight: bold;
+    text-align: center;
     cursor: default;
 }
 
@@ -58,18 +54,48 @@
 }
 
 .page-home .upper-half .moto {
-    margin-bottom: 30px;
+    text-align: center;
+}
+
+.page-home .upper-half .search-box-component {
+    margin-top: 30px;
+}
+
+.page-home .upper-half .search-box-component .autosuggest-component-suggestions-container {
+    /* Complex calculation that measures the remaining space above the input with a 20px margin */
+    max-height: calc(35vh - 5px - 20px + ((65vh - 80px - 234px) / 2));
 }
 
 /* Media queries
    ========================================================================== */
 
-@media (max-height: 620px) {
+@media (max-width: 400px) {
+    .page-home .upper-half .moto {
+        font-size: 14px;
+    }
+}
+
+@media (max-height: 584px) {
     .page-home .upper-half {
-        min-height: 300px;
+        height: 300px;
     }
 
-    .page-home .upper-half-centered {
-        margin-top: -10px;
+    .page-home .upper-half .moto {
+        display: none;
+    }
+
+    .page-home .upper-half .search-box-component {
+        margin-top: 20px;
+    }
+
+    .page-home .upper-half .search-box-component .autosuggest-component-suggestions-container {
+        /* Complex calculation that measures the remaining space above the input with a 20px margin */
+        max-height: calc(100vh - 80px - 300px - 5px - 20px + ((300px - 202px) / 2));
+    }
+}
+
+@media (max-height: 500px) {
+    .page-home .upper-half .search-box-component .autosuggest-component-suggestions-container {
+        display: none;
     }
 }

@@ -11,7 +11,7 @@ class Home extends Component {
                 <Header showLogo={ false } />
 
                 <div className="upper-half">
-                    <div className="upper-half-centered">
+                    <div className="upper-half-wrapper">
                         <div className="logo">
                             <span>
                                 npms
