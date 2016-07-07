@@ -96,6 +96,7 @@
     color: #35405b;
     font-size: 14px;
     font-weight: bold;
+    line-height: 1.25;
 }
 
 .search-box-component .autosuggest-component-suggestion .suggestion-name em {
