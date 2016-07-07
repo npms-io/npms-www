@@ -52,7 +52,7 @@ class SearchBox extends Component {
                         inputProps={ {
                             value: this._inputValue,
                             placeholder: this._placeholder,
-                            onChange: () => this._handleInputChange(),
+                            onChange: (e, { newValue }) => this._handleInputChange(newValue),
                         } }
                         theme={ {
                             container: 'autosuggest-component-container',
@@ -91,8 +91,8 @@ class SearchBox extends Component {
         return `Search modules, like "${placeholderSuggestions[Math.floor(Math.random() * placeholderSuggestions.length)]}"`;
     }
 
-    _handleInputChange() {
-        this.props.dispatch(updateQuery({ term: this._inputEl.value }));
+    _handleInputChange(newValue) {
+        this.props.dispatch(updateQuery({ term: newValue }));
     }
 
     _handleSubmit(e) {
