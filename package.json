@@ -90,7 +90,7 @@
     "rimraf": "^2.4.4",
     "style-loader": "^0.13.0",
     "stylelint": "^6.6.0",
-    "svg-sprite-loader": "0.0.25",
+    "svg-sprite-loader": "0.0.26",
     "webpack": "^1.12.9",
     "webpack-dev-server": "^1.14.0",
     "yargs": "^4.6.0"
