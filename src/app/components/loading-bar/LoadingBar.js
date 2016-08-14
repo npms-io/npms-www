@@ -41,7 +41,7 @@ export default class LoadingBar extends Component {
         };
 
         return (
-            <div className={ className } style={ style }></div>
+            <div className={ className } style={ style } />
         );
     }
 

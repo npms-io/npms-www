@@ -25,8 +25,7 @@ class List extends Component {
 
     _renderEmpty() {
         return (
-            <div className="results-list is-empty header-component-with-logo-align-with-search-box">
-            </div>
+            <div className="results-list is-empty header-component-with-logo-align-with-search-box" />
         );
     }
 

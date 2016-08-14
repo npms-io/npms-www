@@ -45,7 +45,7 @@ class ModuleScore extends Component {
             <Tooltip overlayClassName="module-score-tooltip-component" placement="top" destroyTooltipOnHide overlay={ tooltip }>
                 <div className="score-full">
                     <svg className="score-badge" style={ { fill: this._getScoreColor(this.props.score.final) } }>
-                        <use xlinkHref={ scoreBadgeSvg }></use>
+                        <use xlinkHref={ scoreBadgeSvg } />
                     </svg>
                     <div className="score-value">{ this._getScoreText(this.props.score.final) }</div>
                 </div>

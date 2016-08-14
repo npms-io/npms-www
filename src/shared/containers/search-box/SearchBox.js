@@ -59,6 +59,7 @@ class SearchBox extends Component {
                             containerOpen: 'is-open',
                             input: 'autosuggest-component-input',
                             suggestionsContainer: 'autosuggest-component-suggestions-container',
+                            suggestionsList: 'autosuggest-component-suggestions-list',
                             suggestion: 'autosuggest-component-suggestion',
                             suggestionFocused: 'is-focused',
                             sectionContainer: 'autosuggest-component-section-container',
@@ -79,7 +80,7 @@ class SearchBox extends Component {
         return (
             <div className="suggestion">
                 { suggestion.highlight ?
-                    <div className="suggestion-name ellipsis" dangerouslySetInnerHTML={ { __html: suggestion.highlight } }></div> :
+                    <div className="suggestion-name ellipsis" dangerouslySetInnerHTML={ { __html: suggestion.highlight } } /> :
                     <div className="suggestion-name ellipsis">{ suggestion.module.name }</div>
                 }
                 <div className="suggestion-description ellipsis">{ suggestion.module.description }</div>

@@ -14,7 +14,7 @@ class SvgIcon extends Component {
                 className={ `svg-icon ${className || ''}` }
                 onClick={ () => onClick && onClick() }
                 { ...props }>
-                <use xlinkHref={ id }></use>
+                <use xlinkHref={ id } />
             </svg>
         );
     }
