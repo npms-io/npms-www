@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { applyRouterMiddleware, Router, browserHistory } from 'react-router';
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
-import useScroll from 'react-router-scroll';
+import { useScroll } from 'react-router-scroll';
 import config from 'config';
 import store, { addReducers } from 'shared/state/store';
 import Application from './app';
