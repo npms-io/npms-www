@@ -78,7 +78,7 @@
     "css-loader": "^0.23.0",
     "diff-json-structure": "^1.0.0",
     "err-code": "^1.1.0",
-    "eslint": "^3.0.0",
+    "eslint": "^3.0.1",
     "eslint-plugin-react": "^5.1.0",
     "extract-text-webpack-plugin": "^1.0.0",
     "file-loader": "^0.9.0",
