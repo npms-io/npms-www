@@ -7,7 +7,7 @@ import shallowCompare from 'react-addons-shallow-compare';
 const autoUpdateInterval = 250;
 const firstPercentage = 0.55;
 
-export default class LoadingBar extends Component {
+class LoadingBar extends Component {
     constructor(props) {
         super(props);
         this.state = { percentage: 0 };
