@@ -22,8 +22,17 @@ class SearchBox extends Component {
     componentWillMount() {
         this._placeholder = this._getRandomPlaceholder();
         this._inputValue = this.props.initiallyEmpty ? '' : this.props.term;
+    }
 
+    componentDidMount() {
         window.addEventListener('keydown', this._handleWindowKeyDown);
+
+        // Focus on desktop devices automatically
+        // The non-mobile device detecting is pretty naive but works for most cases
+        // Adding a 20kb library to detect mobile devices is just not worth it
+        if (this.props.initiallyFocused && !('onorientationchange' in window)) {
+            this._inputEl.focus();
+        }
     }
 
     componentWillUpdate(nextProps) {
@@ -116,7 +125,6 @@ class SearchBox extends Component {
     }
 
     _handleSuggestionsClearRequested() {
-        // TODO: Should we throttle this?
         this.props.dispatch(resetSuggestions());
     }
 
@@ -132,11 +140,13 @@ SearchBox.propTypes = {
     suggestions: PropTypes.array.isRequired,
 
     initiallyEmpty: PropTypes.bool,
+    initiallyFocused: PropTypes.bool,
     focusOnKeyDown: PropTypes.bool,
 };
 
 SearchBox.defaultProps = {
     initiallyEmpty: false,
+    initiallyFocused: false,
     focusOnKeyDown: false,
 };
 
