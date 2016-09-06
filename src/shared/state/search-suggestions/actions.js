@@ -15,7 +15,6 @@ export function fetch(term) {
     return (dispatch, getState) => {
         term = term.trim();
 
-
         // Do nothing if current term is the same
         if (getState().searchSuggestions.term === term) {
             return;
