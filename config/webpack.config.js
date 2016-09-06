@@ -136,9 +136,8 @@ function buildConfig(options) {
                 '/api/*': {
                     target: 'https://api.npms.io/',
                     headers: { host: 'api.npms.io' },
-                    rewrite: (req) => {
-                        req.url = req.url.replace(/^\/api/, '');
-                    },
+                    pathRewrite: { '^/api': '/' },
+                    logLevel: 'warn',
                 },
             },
         },

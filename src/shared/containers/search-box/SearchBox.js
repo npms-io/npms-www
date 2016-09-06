@@ -3,7 +3,7 @@ import React, { Component, PropTypes } from 'react';
 import Autosuggest from 'react-autosuggest';
 import { connect } from 'react-redux';
 import { updateQuery, navigate } from 'shared/state/search/actions';
-import { fetch as fetchSuggestions } from 'shared/state/search-suggestions/actions';
+import { fetch as fetchSuggestions, reset as resetSuggestions } from 'shared/state/search-suggestions/actions';
 
 const placeholderSuggestions = [
     'test',
@@ -46,7 +46,8 @@ class SearchBox extends Component {
                         getSuggestionValue={ (suggestion) => suggestion.module.name }
                         renderSuggestion={ (suggestion) => this._renderSuggestion(suggestion) }
                         ref={ (ref) => { this._inputEl = ref && ref.input; } }
-                        onSuggestionsUpdateRequested={ (request) => this._handleSuggestionsUpdateRequested(request) }
+                        onSuggestionsFetchRequested={ (request) => this._handleSuggestionsFetchRequested(request) }
+                        onSuggestionsClearRequested={ () => this._handleSuggestionsClearRequested() }
                         onSuggestionSelected={ (e, selected) => this._handleSuggestionSelected(e, selected) }
                         focusInputOnSuggestionClick={ false }
                         inputProps={ {
@@ -109,9 +110,14 @@ class SearchBox extends Component {
         }
     }
 
-    _handleSuggestionsUpdateRequested(request) {
+    _handleSuggestionsFetchRequested(request) {
         // TODO: Should we throttle this?
         this.props.dispatch(fetchSuggestions(request.value));
+    }
+
+    _handleSuggestionsClearRequested() {
+        // TODO: Should we throttle this?
+        this.props.dispatch(resetSuggestions());
     }
 
     _handleSuggestionSelected(e, selected) {
