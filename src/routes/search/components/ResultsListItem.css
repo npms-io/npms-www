@@ -66,8 +66,7 @@
     font-size: 14px;
 }
 
-.page-search .results-list-item .keywords a {
-    margin-right: 5px;
+.page-search .results-list-item .keywords .keyword a {
     color: #858585;
 }
 

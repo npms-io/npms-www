@@ -1,7 +1,9 @@
 import './ResultsListItem.css';
 import React, { Component, PropTypes } from 'react';
 import shallowCompare from 'react-addons-shallow-compare';
+import { Link } from 'react-router';
 import ago from 's-ago';
+import { uniq } from 'lodash';
 import Gravatar from 'react-gravatar';
 import ModuleScore from 'shared/components/module-score/ModuleScore';
 import MaterialIcon from 'shared/components/icon/MaterialIcon';
@@ -46,17 +48,21 @@ class ListItem extends Component {
     }
 
     _renderKeywords() {
-        const { keywords } = this.props.module;
+        const keywords = uniq(this.props.module.keywords);  // Remove duplicates because we use keywords as React keys
+        const keywordsCount = keywords && keywords.length;
 
-        if (!keywords) {
+        if (!keywordsCount) {
             return '';
         }
 
         return (
             <div className="keywords ellipsis">
                 <MaterialIcon id="local_offer" />
-                { keywords.map((keyword) =>
-                    <a key={ keyword } href={ '/search?term=' + encodeURIComponent(keyword) }>{ keyword }</a>
+                { keywords.map((keyword, index) =>
+                    <span className="keyword" key={ keyword }>
+                        <Link to={ `/search?term=${encodeURIComponent(keyword)}` }>{ keyword }</Link>
+                        { index < keywordsCount - 1 ? ', ' : '' }
+                    </span>
                 ) }
             </div>
         );
