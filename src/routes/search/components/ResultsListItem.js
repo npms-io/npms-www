@@ -27,12 +27,7 @@ class ListItem extends Component {
                     <div className="description ellipsis">{ this.props.module.description }</div> :
                     '' }
 
-                { this.props.module.keywords ?
-                    <div className="keywords ellipsis">
-                        <MaterialIcon id="local_offer" />
-                        { this.props.module.keywords.join(', ') }
-                    </div> :
-                    '' }
+                { this._renderKeywords() }
 
                 { this._renderPublisherInfo() }
 
@@ -47,6 +42,23 @@ class ListItem extends Component {
                 </div>
 
             </li>
+        );
+    }
+
+    _renderKeywords() {
+        const { keywords } = this.props.module;
+
+        if (!keywords) {
+            return '';
+        }
+
+        return (
+            <div className="keywords ellipsis">
+                <MaterialIcon id="local_offer" />
+                { keywords.map((keyword) =>
+                    <a key={ keyword } href={ '/search?term=' + encodeURIComponent(keyword) }>{ keyword }</a>
+                ) }
+            </div>
         );
     }
 

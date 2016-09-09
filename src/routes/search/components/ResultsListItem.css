@@ -66,6 +66,11 @@
     font-size: 14px;
 }
 
+.page-search .results-list-item .keywords a {
+    margin-right: 5px;
+    color: #858585;
+}
+
 /* Publish info
    ========================================================================== */
 
