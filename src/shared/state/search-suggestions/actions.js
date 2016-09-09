@@ -1,5 +1,5 @@
 import uniqueId from 'lodash/uniqueId';
-import npmsRequest from '../util/npmsRequest';
+import npmsRequest from '../../util/npmsRequest';
 
 const maxResults = 10;
 

@@ -3,7 +3,7 @@ import queryString from 'query-string';
 import omit from 'lodash/omit';
 import uniqueId from 'lodash/uniqueId';
 import { markAsLoading, unmarkAsLoading } from '../app/actions';
-import npmsRequest from '../util/npmsRequest';
+import npmsRequest from '../../util/npmsRequest';
 
 const resultsPerPage = 25;
 
