@@ -145,8 +145,7 @@ class About extends Component {
                     <div className="section-get-involved">
                         <h1>Get involved</h1>
                         <p>
-                            <span className="highlight">npms</span> is open-source and we still have some work to do (Wouldn't it be cool to
-                            have some kick-ass package <a href="https://github.com/npms-io/npms-badge" target="_blank">badges</a>?).
+                            <span className="highlight">npms</span> is open-source and we still have some work to do.
                             Any contributions, ideas or bug reports are welcome. Visit our <a href="https://github.com/npms-io" target="_blank">GitHub</a> and help us!
                         </p>
                         <p>
