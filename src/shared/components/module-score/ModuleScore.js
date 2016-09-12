@@ -73,7 +73,7 @@ class ModuleScore extends Component {
             <div>
                 <span className="score-label">{ label }:</span>
                 <span className="score-value" style={ { color: this._getScoreColor(score) } }>
-                { this._getScoreText(score) }
+                { this._getScoreText(score) }%
                 </span>
             </div>
         );
