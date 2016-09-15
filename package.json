@@ -8,7 +8,6 @@
     "serve": "./scripts/serve",
     "pre-commit": "./scripts/lint",
     "postinstall": "./scripts/init",
-    "start": "npm run serve",
     "test": "npm run lint",
     "test-cov": "npm test",
     "test-travis": "npm test"
