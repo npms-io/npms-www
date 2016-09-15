@@ -8,6 +8,7 @@
 
 .page-search .results-list-item .headline .name,
 .page-search .results-list-item .headline .version,
+.page-search .results-list-item .headline .deprecated,
 .page-search .results-list-item .headline .module-score-component {
     display: inline-block;
     vertical-align: middle;
@@ -19,12 +20,26 @@
     font-weight: 400;
 }
 
+.page-search .results-list-item.is-deprecated .headline .name {
+    max-width: calc(100% - 235px);
+}
+
 .page-search .results-list-item .headline .version {
     max-width: 55px;
     margin-left: 7px;
     color: #858585;
     font-size: 12px;
     line-height: 20px;
+}
+
+.page-search .results-list-item .headline .deprecated {
+    margin-left: 7px;
+    padding: 1px 3px;
+    display: inline-block;
+    background: #ad3237;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 9px;
 }
 
 .page-search .results-list-item .headline .module-score-component {
@@ -145,6 +160,17 @@
 @media (max-width: 375px) {
     .page-search .results-list-item .headline .name {
         max-width: calc(100% - 100px);
+    }
+
+    .page-search .results-list-item.is-deprecated .headline .name {
+        max-width: calc(100% - 111px);
+    }
+
+    .page-search .results-list-item .headline .deprecated {
+        width: 11px;
+        overflow: hidden;
+        letter-spacing: 10px;
+        white-space: nowrap;
     }
 
     .page-search .results-list-item .headline .module-score-component .score-detailed {

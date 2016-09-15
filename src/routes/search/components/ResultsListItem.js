@@ -15,13 +15,17 @@ class ListItem extends Component {
     }
 
     render() {
+        const isDeprecated = !!this.props.module.deprecated;
+
         return (
-            <li className="results-list-item">
+            <li className={ `results-list-item ${isDeprecated ? 'is-deprecated' : ''}` }>
                 <div className="headline">
                     <a href={ this.props.module.links.repository || this.props.module.links.npm } target="_blank"
                         className="name ellipsis">{ this.props.module.name }</a>
-
                     <span className="version ellipsis">({ this.props.module.version })</span>
+
+                    { isDeprecated ? <span className="deprecated">deprecated</span> : '' }
+
                     <ModuleScore score={ this.props.score } />
                 </div>
 
