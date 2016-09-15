@@ -170,6 +170,7 @@
         width: 11px;
         overflow: hidden;
         letter-spacing: 10px;
+        text-transform: uppercase;
         white-space: nowrap;
     }
 
