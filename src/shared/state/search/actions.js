@@ -9,26 +9,26 @@ const resultsPerPage = 25;
 
 // TODO: store results in an LRU to improve integration with back button
 
-function buildSearchUrl(query) {
-    query = omit(query, 'from', 'size');  // Params that don't go into the URL
+function buildSearchUrl(params) {
+    params = omit(params, 'from', 'size');  // Params that don't go into the URL
 
-    const queryStr = queryString.stringify(query)
+    const queryStr = queryString.stringify(params)
     .replace(/%20/g, '+');                // Replace spaces with + because it's prettier
 
     return `/search${queryStr ? `?${queryStr}` : ''}`;
 }
 
-function normalizeQuery(query) {
+function normalizeParams(params) {
     return {
-        ...query,
-        term: query.term.trim(),
+        ...params,
+        q: params.q.trim(),
     };
 }
 
-export function updateQuery(query) {
+export function updateParams(params) {
     return {
-        type: 'Search.UPDATE_QUERY',
-        payload: query,
+        type: 'Search.UPDATE_PARAMS',
+        payload: params,
     };
 }
 
@@ -40,23 +40,22 @@ export function reset() {
 
 export function navigate() {
     return (dispatch, getState) => {
-        const query = normalizeQuery(getState().search.query);
+        const params = normalizeParams(getState().search.params);
 
-        // Only navigate if we got a term filled in
-        query.term && dispatch(push(buildSearchUrl(query)));
+        // Only navigate if we got a query filled in
+        params.q && dispatch(push(buildSearchUrl(params)));
     };
 }
 
 export function run() {
     return (dispatch, getState) => {
-        const query = normalizeQuery(getState().search.query);
+        const params = normalizeParams(getState().search.params);
 
-        if (!query.term) {
+        if (!params.q) {
             return dispatch(reset());
         }
 
-        query.from = 0;
-        query.size = resultsPerPage;
+        params.from = 0;
 
         dispatch(markAsLoading());
 
@@ -64,8 +63,8 @@ export function run() {
             type: 'Search.RUN',
             meta: { uid: uniqueId('search-') },
             payload: {
-                data: query,
-                promise: npmsRequest(`/search?${queryString.stringify(query)}`)
+                data: params,
+                promise: npmsRequest(`/search?${queryString.stringify(params)}`)
                 .then((res) => ({ total: res.total, items: res.results }))
                 .finally(() => dispatch(unmarkAsLoading())),
             },
@@ -83,8 +82,8 @@ export function scroll() {
             return;
         }
 
-        const query = normalizeQuery({
-            ...state.query,
+        const params = normalizeParams({
+            ...state.params,
             ...{ from: state.results.items.length, size: resultsPerPage },
         });
 
@@ -94,8 +93,8 @@ export function scroll() {
             type: 'Search.SCROLL',
             meta: { uid: uniqueId('search') },
             payload: {
-                data: query,
-                promise: npmsRequest(`/search?${queryString.stringify(query)}`)
+                data: params,
+                promise: npmsRequest(`/search?${queryString.stringify(params)}`)
                 .then((res) => ({ total: res.total, items: res.results }))
                 .finally(() => dispatch(unmarkAsLoading())),
             },

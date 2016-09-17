@@ -11,17 +11,17 @@ export function reset() {
     };
 }
 
-export function fetch(term) {
+export function fetch(text) {
     return (dispatch, getState) => {
-        term = term.trim();
+        text = text.trim();
 
-        // Do nothing if current term is the same
-        if (getState().searchSuggestions.term === term) {
+        // Do nothing if current text is the same
+        if (getState().searchSuggestions.text === text) {
             return;
         }
 
-        // Reset if term is empty
-        if (!term) {
+        // Reset if text is empty
+        if (!text) {
             return dispatch(reset());
         }
 
@@ -29,8 +29,8 @@ export function fetch(term) {
             type: 'SearchSuggestions.FETCH',
             meta: { uid: uniqueId('search-suggestions-') },
             payload: {
-                data: term,
-                promise: npmsRequest(`/search/suggestions?term=${encodeURIComponent(term)}&size=${maxResults}`),
+                data: text,
+                promise: npmsRequest(`/search/suggestions?text=${encodeURIComponent(text)}&size=${maxResults}`),
             },
         })
         .catch(() => {});  // SearchSuggestions.FETCH_REJECTED will be dispatched, so swallow any error

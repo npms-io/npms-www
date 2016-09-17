@@ -21,7 +21,7 @@ class About extends Component {
                 <div className="page-content">
                     <p className="section-headline">
                         <span className="highlight">npms</span> - which stands for npm search - was built to empower the javascript
-                        community by providing a better and open source search for node modules.
+                        community by providing a better and open source search for node packages.
                     </p>
 
                     { /* ------------- Why ------------- */ }
@@ -29,22 +29,22 @@ class About extends Component {
                     <div className="section-why">
                         <h1>Why?</h1>
                         <p>
-                            <a href="https://npmjs.com" target="_blank">npmjs.com</a> allows developers to search for node modules, but,
+                            <a href="https://npmjs.com" target="_blank">npmjs.com</a> allows developers to search for node packages, but,
                             having used it for several years, I always felt that the overall experience and quality of the results were bad.
                         </p>
                         <p>
                             The official search is powered by <a href="http://elasticsearch.com" target="_blank">Elasticsearch</a> but no advanced analyzers were
                             configured. More specifically, no <a href="https://www.elastic.co/guide/en/elasticsearch/guide/current/stemming.html" target="_blank">stemming</a> nor <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-word-delimiter-tokenfilter.html" target="_blank">split word</a> are
                             enabled. What does this mean for you? Try searching for <a href="https://www.npmjs.com/search?q=couchdb+promise" target="_blank">"couchdb promise"</a> and <a href="https://www.npmjs.com/search?q=couchdb+promises" target="_blank">"couchdb promises"</a> and see how different the search results are.
-                            Imagine how many modules you lost on your previous searches because of this.
+                            Imagine how many packages you lost on your previous searches because of this.
                         </p>
                         <p>
                             When a list of results is presented to you on the screen, the order of the results are simply based on the
                             relevance they have to the search terms. <a href="https://npmjs.com" target="_blank">npmjs.com</a> search does
-                            not take into account the modules value to rank good modules higher. Because of this, users must manually
-                            analyze the search results one by one, taking into consideration several attributes such as the module's version
-                            (> 1.0.0?), the downloads count, the latest publish date, the number of GitHub issues, stars, forks, etc.
-                            This process is tedious and slow.
+                            not take into account the packages value to rank good packages higher. Because of this, users must manually
+                            analyze the search results one by one, taking into consideration several attributes such as the package's
+                            version (> 1.0.0?), the downloads count, the latest publish date, the number of GitHub issues, stars, forks,
+                            etc. This process is tedious and slow.
                         </p>
                     </div>
 
@@ -56,7 +56,7 @@ class About extends Component {
                             The <a href="https://github.com/npms-io/npms-analyzer" target="_blank">npms analyzer</a> continuously analyzes <span className="highlight">npm</span> ecosystem,
                             gathering as much information as possible from a variety of sources, including GitHub, <a href="https://david-dm.org/" target="_blank">david</a> and <a href="https://nodesecurity.io/" target="_blank">nsp</a>.
 
-                            Using the collected information, a final score for each module is calculated based on four different aspects:
+                            Using the collected information, a final score for each package is calculated based on four different aspects:
                         </p>
 
                         <div className="aspects">
@@ -66,7 +66,7 @@ class About extends Component {
                                 <div className="description">
                                     <p>
                                         Quality attributes are easy to calculate because they are self contained.
-                                        These are the kind of attributes that a person looks first when looking at the module.
+                                        These are the kind of attributes that a person looks first when looking at the package.
                                     </p>
 
                                 </div>
@@ -85,9 +85,9 @@ class About extends Component {
                                 <div className="name">Maintenance</div>
                                 <div className="description">
                                     <p>
-                                        Maintenance attributes allows us to understand if the module is active & healthy or if it is
+                                        Maintenance attributes allows us to understand if the package is active & healthy or if it is
                                         abandoned. These are typically the second kind of attributes that a person looks when looking at
-                                        the module.
+                                        the package.
                                     </p>
                                 </div>
                                 <ul className="examples">
@@ -102,10 +102,10 @@ class About extends Component {
                                 <div className="name">Popularity</div>
                                 <div className="description">
                                     <p>
-                                        Popularity attributes allows us to understand the module adoption and community size.
+                                        Popularity attributes allows us to understand the package adoption and community size.
                                     </p>
                                     <p>
-                                        These are the kind of attributes that a person looks when they are undecided on the module choice.
+                                        These are the kind of attributes that a person looks when they are undecided on the package choice.
                                     </p>
                                 </div>
                                 <ul className="examples">
@@ -123,12 +123,12 @@ class About extends Component {
                                 <div className="name">Personalities</div>
                                 <div className="description">
                                     <p>
-                                        If two modules are similar, one tends to choose the one in which the author is well known in the
+                                        If two packages are similar, one tends to choose the one in which the author is well known in the
                                         community.
                                     </p>
                                     <p>
                                         Relationships between people are also important. When an user follows another, there's a bound
-                                        between them. We can infer that people prefer modules from the users they follow.
+                                        between them. We can infer that people prefer packages from the users they follow.
                                     </p>
                                     <p>
                                         As of this writting the personalities attributes are not yet implemented.

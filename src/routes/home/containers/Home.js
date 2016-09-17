@@ -18,7 +18,7 @@ class Home extends Component {
                                 <span className="beta">beta</span>
                             </span>
                         </div>
-                        <div className="moto">A better and <strong>open source search</strong> for node modules</div>
+                        <div className="moto">A better and <strong>open source search</strong> for node packages</div>
 
                         <SearchBox initiallyEmpty initiallyFocused focusOnKeyDown />
                     </div>

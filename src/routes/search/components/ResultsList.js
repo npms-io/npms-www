@@ -32,7 +32,7 @@ class List extends Component {
     _renderNoResults() {
         return (
             <div className="results-list has-no-results header-component-with-logo-align-with-search-box">
-                Sorry no results for <span className="term">{ this.props.results.term }</span>.
+                Sorry no results for <span className="query">{ this.props.results.q }</span>.
             </div>
         );
     }
@@ -41,14 +41,14 @@ class List extends Component {
             <div className="results-list has-results">
                 <div className="summary">
                     <div className="header-component-with-logo-align-with-search-box ellipsis">
-                        <span className="nr-results">{ this.props.results.total }</span> results for <span className="term">
-                        { this.props.results.term }</span>
+                        <span className="nr-results">{ this.props.results.total }</span> results for <span className="query">
+                        { this.props.results.q }</span>
                     </div>
                 </div>
 
                 <ul className="items header-component-with-logo-align-with-search-box">
                     { this.props.results.items.map((item) =>
-                        <ResultsListItem key={ item.module.name } module={ item.module } score={ item.score } />
+                        <ResultsListItem key={ item.package.name } package={ item.package } score={ item.score } flags={ item.flags } />
                     ) }
                 </ul>
 

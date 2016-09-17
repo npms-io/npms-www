@@ -1,4 +1,4 @@
-import './ModuleScore.css';
+import './PackageScore.css';
 import React, { Component, PropTypes } from 'react';
 import shallowCompare from 'react-addons-shallow-compare';
 import ColourMeLife from 'colour-me-life';
@@ -14,14 +14,14 @@ const gradient = new ColourMeLife()
 
 const colors = range(101).map((index) => gradient.colourAt(index / 100));
 
-class ModuleScore extends Component {
+class PackageScore extends Component {
     shouldComponentUpdate(nextProps, nextState) {
         return shallowCompare(this, nextProps, nextState);
     }
 
     render() {
         return (
-            <div className="module-score-component">
+            <div className="package-score-component">
                 { this._renderDetailedScore('quality') }
                 { this._renderDetailedScore('popularity') }
                 { this._renderDetailedScore('maintenance') }
@@ -42,7 +42,7 @@ class ModuleScore extends Component {
         );
 
         return (
-            <Tooltip overlayClassName="module-score-tooltip-component" placement="top" destroyTooltipOnHide overlay={ tooltip }>
+            <Tooltip overlayClassName="package-score-tooltip-component" placement="top" destroyTooltipOnHide overlay={ tooltip }>
                 <div className="score-full">
                     <svg className="score-badge" style={ { fill: this._getScoreColor(this.props.score.final) } }>
                         <use xlinkHref={ scoreBadgeSvg } />
@@ -57,7 +57,7 @@ class ModuleScore extends Component {
         const tooltip = this._renderTooltipScore(capitalize(property), this.props.score.detail[property]);
 
         return (
-            <Tooltip overlayClassName="module-score-tooltip-component" placement="top" destroyTooltipOnHide overlay={ tooltip }>
+            <Tooltip overlayClassName="package-score-tooltip-component" placement="top" destroyTooltipOnHide overlay={ tooltip }>
                 <div className="score-detailed">
                     <CircularProgressbar classForPercentage={ () => 'score-detailed' }
                         percentage={ this.props.score.detail[property] * 100 }
@@ -88,8 +88,8 @@ class ModuleScore extends Component {
     }
 }
 
-ModuleScore.propTypes = {
+PackageScore.propTypes = {
     score: PropTypes.object.isRequired,
 };
 
-export default ModuleScore;
+export default PackageScore;

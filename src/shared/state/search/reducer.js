@@ -1,6 +1,6 @@
 const defaultState = {
     uid: null,
-    query: { term: '', from: 0 },
+    params: { q: '', from: 0, size: 25 },
     isLoading: false,
     results: null,
 };
@@ -8,19 +8,19 @@ const defaultState = {
 function reset(state) {
     return {
         ...defaultState,
-        query: {
-            ...state.query,
-            term: '',
+        params: {
+            ...state.params,
+            q: '',
             from: 0,
         },
     };
 }
 
-function updateQuery(state, action) {
+function updateParams(state, action) {
     return {
         ...state,
-        query: {
-            ...state.query,
+        params: {
+            ...state.params,
             ...action.payload,
         },
     };
@@ -32,7 +32,7 @@ function run(state, action) {
         return {
             ...state,
             uid: action.meta.uid,
-            query: action.payload,
+            params: action.payload,
             isLoading: true,
         };
     case 'Search.RUN_REJECTED':
@@ -55,7 +55,7 @@ function run(state, action) {
             ...state,
             isLoading: false,
             results: {
-                term: state.query.term,
+                q: state.params.q,
                 ...action.payload,
             },
             error: null,
@@ -71,7 +71,7 @@ function scroll(state, action) {
         return {
             ...state,
             uid: action.meta.uid,
-            query: action.payload,
+            params: action.payload,
             isLoading: true,
         };
     case 'Search.SCROLL_REJECTED':
@@ -93,7 +93,7 @@ function scroll(state, action) {
             ...state,
             isLoading: false,
             results: {
-                term: state.query.term,
+                q: state.params.q,
                 ...action.payload,
                 items: state.results.items.concat(action.payload.items),
             },
@@ -106,8 +106,8 @@ function scroll(state, action) {
 
 export function searchReducer(state = defaultState, action) {
     switch (action.type) {
-    case 'Search.UPDATE_QUERY':
-        return updateQuery(state, action);
+    case 'Search.UPDATE_PARAMS':
+        return updateParams(state, action);
     case 'Search.RESET':
         return reset(state, action);
     case 'Search.RUN_PENDING':

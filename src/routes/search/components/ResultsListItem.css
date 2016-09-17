@@ -9,7 +9,7 @@
 .page-search .results-list-item .headline .name,
 .page-search .results-list-item .headline .version,
 .page-search .results-list-item .headline .deprecated,
-.page-search .results-list-item .headline .module-score-component {
+.page-search .results-list-item .headline .package-score-component {
     display: inline-block;
     vertical-align: middle;
 }
@@ -21,7 +21,7 @@
 }
 
 .page-search .results-list-item.is-deprecated .headline .name {
-    max-width: calc(100% - 235px);
+    max-width: calc(100% - 238px);
 }
 
 .page-search .results-list-item .headline .version {
@@ -40,22 +40,23 @@
     border-radius: 3px;
     color: #fff;
     font-size: 9px;
+    cursor: default;
 }
 
-.page-search .results-list-item .headline .module-score-component {
+.page-search .results-list-item .headline .package-score-component {
     float: right;
 }
 
-.page-search .results-list-item .headline .module-score-component .score-detailed .CircularProgressbar-path,
-.page-search .results-list-item .headline .module-score-component .score-detailed .CircularProgressbar-trail {
+.page-search .results-list-item .headline .package-score-component .score-detailed .CircularProgressbar-path,
+.page-search .results-list-item .headline .package-score-component .score-detailed .CircularProgressbar-trail {
     transition: stroke 0.2s linear;
 }
 
-.page-search .results-list-item:hover .headline .module-score-component .score-detailed .CircularProgressbar-path {
+.page-search .results-list-item:hover .headline .package-score-component .score-detailed .CircularProgressbar-path {
     stroke: #35405b;
 }
 
-.page-search .results-list-item:hover .headline .module-score-component .score-detailed .CircularProgressbar-trail {
+.page-search .results-list-item:hover .headline .package-score-component .score-detailed .CircularProgressbar-trail {
     stroke: #d6d6d6;
 }
 
@@ -157,13 +158,9 @@
 /* Media queries
    ========================================================================== */
 
-@media (max-width: 375px) {
-    .page-search .results-list-item .headline .name {
-        max-width: calc(100% - 100px);
-    }
-
+@media (max-width: 500px) {
     .page-search .results-list-item.is-deprecated .headline .name {
-        max-width: calc(100% - 111px);
+        max-width: calc(100% - 191px);
     }
 
     .page-search .results-list-item .headline .deprecated {
@@ -173,8 +170,14 @@
         text-transform: uppercase;
         white-space: nowrap;
     }
+}
 
-    .page-search .results-list-item .headline .module-score-component .score-detailed {
+@media (max-width: 375px) {
+    .page-search .results-list-item .headline .name {
+        max-width: calc(100% - 100px);
+    }
+
+    .page-search .results-list-item .headline .package-score-component .score-detailed {
         display: none;
     }
 

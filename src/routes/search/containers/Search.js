@@ -5,19 +5,17 @@ import isEqual from 'lodash/isEqual';
 import Header from 'shared/containers/header/Header';
 import ResultsList from '../components/ResultsList';
 import ScrollToTop from 'shared/components/scroll-to-top/ScrollToTop';
-import { run, updateQuery, scroll, reset } from 'shared/state/search/actions';
+import { run, updateParams, scroll, reset } from 'shared/state/search/actions';
 
 class Search extends Component {
     componentWillMount() {
-        if (this.props.location.query.term) {
-            this.props.dispatch(updateQuery(this.props.location.query));
-            this.props.dispatch(run());
-        }
+        this.props.dispatch(updateParams(this.props.location.query));
+        this.props.dispatch(run());
     }
 
     componentWillReceiveProps(nextProps) {
         if (!isEqual(this.props.location.query, nextProps.location.query)) {
-            this.props.dispatch(updateQuery({ term: '', ...nextProps.location.query }));
+            this.props.dispatch(updateParams(nextProps.location.query));
             this.props.dispatch(run());
         }
     }
@@ -27,6 +25,7 @@ class Search extends Component {
     }
 
     render() {
+        console.log('render');
         // TODO: errors
 
         return (

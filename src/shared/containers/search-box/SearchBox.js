@@ -2,7 +2,7 @@ import './SearchBox.css';
 import React, { Component, PropTypes } from 'react';
 import Autosuggest from 'react-autosuggest';
 import { connect } from 'react-redux';
-import { updateQuery, navigate } from 'shared/state/search/actions';
+import { updateParams, navigate } from 'shared/state/search/actions';
 import { fetch as fetchSuggestions, reset as resetSuggestions } from 'shared/state/search-suggestions/actions';
 
 const placeholderSuggestions = [
@@ -21,7 +21,7 @@ class SearchBox extends Component {
 
     componentWillMount() {
         this._placeholder = this._getRandomPlaceholder();
-        this._inputValue = this.props.initiallyEmpty ? '' : this.props.term;
+        this._inputValue = this.props.initiallyEmpty ? '' : this.props.q;
     }
 
     componentDidMount() {
@@ -36,8 +36,8 @@ class SearchBox extends Component {
     }
 
     componentWillUpdate(nextProps) {
-        if (nextProps.term !== this._inputValue) {
-            this._inputValue = nextProps.term;
+        if (nextProps.q !== this._inputValue) {
+            this._inputValue = nextProps.q;
         }
     }
 
@@ -46,13 +46,14 @@ class SearchBox extends Component {
     }
 
     render() {
+        console.log(this.props);
         return (
             <form className="search-box-component" onSubmit={ (e) => this._handleSubmit(e) }>
                 <div className="search-input">
                     <Autosuggest
                         id="search-box-autosuggest"
                         suggestions={ this.props.suggestions }
-                        getSuggestionValue={ (suggestion) => suggestion.module.name }
+                        getSuggestionValue={ (suggestion) => suggestion.package.name }
                         renderSuggestion={ (suggestion) => this._renderSuggestion(suggestion) }
                         ref={ (ref) => { this._inputEl = ref && ref.input; } }
                         onSuggestionsFetchRequested={ (request) => this._handleSuggestionsFetchRequested(request) }
@@ -91,19 +92,19 @@ class SearchBox extends Component {
             <div className="suggestion">
                 { suggestion.highlight ?
                     <div className="suggestion-name ellipsis" dangerouslySetInnerHTML={ { __html: suggestion.highlight } } /> :
-                    <div className="suggestion-name ellipsis">{ suggestion.module.name }</div>
+                    <div className="suggestion-name ellipsis">{ suggestion.package.name }</div>
                 }
-                <div className="suggestion-description ellipsis">{ suggestion.module.description }</div>
+                <div className="suggestion-description ellipsis">{ suggestion.package.description }</div>
             </div>
         );
     }
 
     _getRandomPlaceholder() {
-        return `Search modules, like "${placeholderSuggestions[Math.floor(Math.random() * placeholderSuggestions.length)]}"`;
+        return `Search packages, like "${placeholderSuggestions[Math.floor(Math.random() * placeholderSuggestions.length)]}"`;
     }
 
     _handleInputChange(newValue) {
-        this.props.dispatch(updateQuery({ term: newValue }));
+        this.props.dispatch(updateParams({ q: newValue }));
     }
 
     _handleSubmit(e) {
@@ -129,14 +130,14 @@ class SearchBox extends Component {
     }
 
     _handleSuggestionSelected(e, selected) {
-        this.props.dispatch(updateQuery({ term: selected.suggestionValue }));
+        this.props.dispatch(updateParams({ q: selected.suggestionValue }));
         this._buttonEl.click();  // Submit the form (calling submit() was not working with react)
     }
 }
 
 SearchBox.propTypes = {
     dispatch: PropTypes.func.isRequired,
-    term: PropTypes.string.isRequired,
+    q: PropTypes.string.isRequired,
     suggestions: PropTypes.array.isRequired,
 
     initiallyEmpty: PropTypes.bool,
@@ -152,6 +153,6 @@ SearchBox.defaultProps = {
 
 export default connect((state, ownProps) => ({
     ...ownProps,
-    term: state.search.query.term,
+    q: state.search.params.q,
     suggestions: state.searchSuggestions.results,
 }))(SearchBox);
