@@ -92,8 +92,9 @@ class Menu extends Component {
 
                     <div className="section">External</div>
                     <ul>
-                        <li><a className="social-link" href="https://twitter.com/npms_io" target="_blank">Twitter</a></li>
-                        <li><a className="social-link" href="https://github.com/npms-io" target="_blank">GitHub</a></li>
+                        <li><a href="https://api-docs.npms.io" target="_blank">API docs</a></li>
+                        <li><a href="https://twitter.com/npms_io" target="_blank">Twitter</a></li>
+                        <li><a href="https://github.com/npms-io" target="_blank">GitHub</a></li>
                     </ul>
                 </nav>
             </div>
