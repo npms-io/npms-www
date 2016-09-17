@@ -7,12 +7,11 @@ class SvgIcon extends Component {
     }
 
     render() {
-        const { id, onClick, className, ...props } = this.props;
+        const { id, className, ...props } = this.props;
 
         return (
             <svg
                 className={ `svg-icon ${className || ''}` }
-                onClick={ () => onClick && onClick() }
                 { ...props }>
                 <use xlinkHref={ id } />
             </svg>
@@ -23,7 +22,6 @@ class SvgIcon extends Component {
 SvgIcon.propTypes = {
     id: PropTypes.string.isRequired,
     className: PropTypes.string,
-    onClick: PropTypes.func,
 };
 
 Object.assign(SvgIcon, {

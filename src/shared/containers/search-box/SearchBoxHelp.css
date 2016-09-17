@@ -1,0 +1,25 @@
+.search-box-help-component i {
+    color: #a1a1a1;
+    font-size: 16px;
+}
+
+.search-box-help-component-tooltip {
+    max-width: 400px;
+    margin: 10px;
+}
+
+.search-box-help-component-tooltip ul {
+    margin: 20px 0;
+    padding: 0;
+    list-style: none;
+}
+
+.search-box-help-component-tooltip ul li {
+    margin-bottom: 5px;
+}
+
+@media (max-width: 374px) {
+    .search-box-help-component {
+        display: none;
+    }
+}

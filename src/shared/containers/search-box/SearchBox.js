@@ -2,8 +2,10 @@ import './SearchBox.css';
 import React, { Component, PropTypes } from 'react';
 import Autosuggest from 'react-autosuggest';
 import { connect } from 'react-redux';
+import MaterialIcon from 'shared/components/icon/MaterialIcon';
 import { updateParams, navigate } from 'shared/state/search/actions';
 import { fetch as fetchSuggestions, reset as resetSuggestions } from 'shared/state/search-suggestions/actions';
+import SearchBoxHelp from './SearchBoxHelp';
 
 const placeholderSuggestions = [
     'test',
@@ -20,7 +22,7 @@ class SearchBox extends Component {
     }
 
     componentWillMount() {
-        this._placeholder = this._getRandomPlaceholder();
+        this._placeholder = `Search packages, like "${placeholderSuggestions[Math.floor(Math.random() * placeholderSuggestions.length)]}"`;
         this._inputValue = this.props.initiallyEmpty ? '' : this.props.q;
     }
 
@@ -28,7 +30,7 @@ class SearchBox extends Component {
         window.addEventListener('keydown', this._handleWindowKeyDown);
 
         // Focus on desktop devices automatically
-        // The non-mobile device detecting is pretty naive but works for most cases
+        // The non-mobile device detecting below is pretty naive but works for most cases
         // Adding a 20kb library to detect mobile devices is just not worth it
         if (this.props.initiallyFocused && !('onorientationchange' in window)) {
             this._inputEl.focus();
@@ -46,7 +48,6 @@ class SearchBox extends Component {
     }
 
     render() {
-        console.log(this.props);
         return (
             <form className="search-box-component" onSubmit={ (e) => this._handleSubmit(e) }>
                 <div className="search-input">
@@ -77,8 +78,11 @@ class SearchBox extends Component {
                             sectionTitle: 'autosuggest-component-section-title',
                             sectionSuggestionsContainer: 'autosuggest-component-section-suggestions-container',
                         } } />
+
+                    <SearchBoxHelp />
+
                     <button ref={ (ref) => { this._buttonEl = ref; } }>
-                        <i className="material-icons">search</i>
+                        <MaterialIcon id="search" />
                     </button>
                 </div>
             </form>
@@ -97,10 +101,6 @@ class SearchBox extends Component {
                 <div className="suggestion-description ellipsis">{ suggestion.package.description }</div>
             </div>
         );
-    }
-
-    _getRandomPlaceholder() {
-        return `Search packages, like "${placeholderSuggestions[Math.floor(Math.random() * placeholderSuggestions.length)]}"`;
     }
 
     _handleInputChange(newValue) {

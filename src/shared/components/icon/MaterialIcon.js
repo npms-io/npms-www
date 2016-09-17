@@ -7,12 +7,11 @@ class MaterialIcon extends Component {
     }
 
     render() {
-        const { id, onClick, className, ...props } = this.props;
+        const { id, className, ...props } = this.props;
 
         return (
             <i
                 className={ `material-icons ${className || ''}` }
-                onClick={ () => onClick && onClick() }
                 { ...props }>
                 { id }
             </i>
@@ -23,7 +22,6 @@ class MaterialIcon extends Component {
 MaterialIcon.propTypes = {
     id: PropTypes.string.isRequired,
     className: PropTypes.string,
-    onClick: PropTypes.func,
 };
 
 export default MaterialIcon;

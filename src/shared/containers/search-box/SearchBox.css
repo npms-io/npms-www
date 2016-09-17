@@ -24,6 +24,13 @@
     font-size: 16px;
 }
 
+.search-box-component .search-input .search-box-help-component {
+    position: absolute;
+    top: 50%;
+    right: 50px;
+    transform: translateY(-50%);
+}
+
 .search-box-component .search-input button {
     position: absolute;
     top: 0;
