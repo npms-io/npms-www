@@ -43,8 +43,8 @@ class About extends Component {
                             relevance they have to the search terms. <a href="https://npmjs.com" target="_blank">npmjs.com</a> search does
                             not take into account the packages value to rank good packages higher. Because of this, users must manually
                             analyze the search results one by one, taking into consideration several attributes such as the package's
-                            version (> 1.0.0?), the downloads count, the latest publish date, the number of GitHub issues, stars, forks,
-                            etc. This process is tedious and slow.
+                            version (<code>> 1.0.0</code>?), the downloads count, the latest publish date, the number of GitHub issues,
+                            stars, forks, etc. This process is tedious and slow.
                         </p>
                     </div>
 
@@ -71,8 +71,8 @@ class About extends Component {
 
                                 </div>
                                 <ul className="examples">
-                                    <li>Has README? Has license? Has .gitignore and friends?</li>
-                                    <li>Is the version stable (&gt; 1.x.x)? Is it deprecated?</li>
+                                    <li>Has README? Has license? Has <code>.gitignore</code> and friends?</li>
+                                    <li>Is the version stable (<code>&gt; 1.x.x</code>)? Is it deprecated?</li>
                                     <li>Has tests? Whats their coverage %? Is build passing?</li>
                                     <li>Has outdated dependencies? Do they have vulnerabilities?</li>
                                     <li>Has custom website? Has badges?</li>
