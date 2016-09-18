@@ -27,7 +27,7 @@
 .search-box-component .search-input .search-box-help-component {
     position: absolute;
     top: 50%;
-    right: 50px;
+    right: 45px;
     transform: translateY(-50%);
 }
 

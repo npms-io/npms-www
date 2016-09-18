@@ -1,11 +1,11 @@
 .search-box-help-component i {
+    padding: 5px;
     color: #a1a1a1;
     font-size: 16px;
 }
 
 .search-box-help-component-tooltip {
     max-width: 400px;
-    margin: 10px;
 }
 
 .search-box-help-component-tooltip ul {
