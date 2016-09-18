@@ -11,3 +11,15 @@
 .tooltip-component .tooltip-component-arrow {
     position: absolute;
 }
+
+/* Text inside
+   ========================================================================== */
+
+.tooltip-component p {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.tooltip-component p:last-child {
+    margin-bottom: 0;
+}

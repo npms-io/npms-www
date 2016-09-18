@@ -6,6 +6,7 @@ import ago from 's-ago';
 import { uniq } from 'lodash';
 import Gravatar from 'react-gravatar';
 import PackageScore from 'shared/components/package-score/PackageScore';
+import PackageFlags from 'shared/components/package-flags/PackageFlags';
 import MaterialIcon from 'shared/components/icon/MaterialIcon';
 import SvgIcon from 'shared/components/icon/SvgIcon';
 
@@ -15,28 +16,29 @@ class ListItem extends Component {
     }
 
     render() {
-        const isDeprecated = this.props.flags ? this.props.flags.indexOf('deprecated') !== -1 : false;
-
         return (
-            <li className={ `results-list-item ${isDeprecated ? 'is-deprecated' : ''}` }>
+            <li className="results-list-item">
+                { /* Headline */ }
                 <div className="headline">
                     <a href={ this.props.package.links.repository || this.props.package.links.npm } target="_blank"
                         className="name ellipsis">{ this.props.package.name }</a>
                     <span className="version ellipsis">({ this.props.package.version })</span>
 
-                    { isDeprecated ? <span className="deprecated">deprecated</span> : '' }
-
                     <PackageScore score={ this.props.score } />
                 </div>
 
+                { /* Description */ }
                 { this.props.package.description ?
                     <div className="description ellipsis">{ this.props.package.description }</div> :
                     '' }
 
+                { /* Keywords */ }
                 { this._renderKeywords() }
 
+                { /* Updated by.. */ }
                 { this._renderPublisherInfo() }
 
+                { /* Useful links */ }
                 <div className="links">
                     <a className="tonic-link" href={ `https://tonicdev.com/npm/${encodeURIComponent(this.props.package.name)}` }
                         target="_blank" title="Try this package in Tonic">
@@ -47,6 +49,8 @@ class ListItem extends Component {
                     </a>
                 </div>
 
+                { /* Flags */ }
+                { this.props.flags ? <PackageFlags package={ this.props.package } flags={ this.props.flags } /> : '' }
             </li>
         );
     }
@@ -102,7 +106,7 @@ class ListItem extends Component {
 
 ListItem.propTypes = {
     package: PropTypes.object.isRequired,
-    flags: PropTypes.array,
+    flags: PropTypes.object,
     score: PropTypes.object.isRequired,
 };
 

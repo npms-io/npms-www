@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import MaterialIcon from 'shared/components/icon/MaterialIcon';
 import Tooltip from 'shared/components/tooltip/Tooltip';
 
-
 export default class SearchBoxHelp extends Component {
     shouldComponentUpdate() {
         return false;
@@ -12,7 +11,7 @@ export default class SearchBoxHelp extends Component {
     render() {
         const overlay = (
             <div>
-                <div>You may use search qualifiers in any combination.</div>
+                <p>You may use search qualifiers in any combination.</p>
 
                 <ul>
                     <li><code>author:sindresorhus</code> Show or filter results by author</li>
@@ -21,7 +20,7 @@ export default class SearchBoxHelp extends Component {
                     <li><code>not:deprecated</code> Exclude packages that are deprecated, unstable or insecure</li>
                 </ul>
 
-                <div>For the complete list of qualifiers, please read the Search API <a href="https://api-docs.npms.io" target="_blank">documentation</a>.</div>
+                <p>For the complete list of qualifiers, please read the Search API <a href="https://api-docs.npms.io" target="_blank">documentation</a>.</p>
             </div>
         );
 

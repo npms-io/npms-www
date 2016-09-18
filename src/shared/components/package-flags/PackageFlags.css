@@ -1,0 +1,26 @@
+.package-flags-component {
+    height: 14px;
+}
+
+.package-flags-component .package-flag {
+    margin-right: 5px;
+    padding: 1px 3px;
+    float: left;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 3px;
+    color: #fff;
+    font-size: 10px;
+    cursor: default;
+}
+
+.package-flags-component .package-flag-deprecated,
+.package-flags-component .package-flag-insecure {
+    background: #ad3237;
+}
+
+/* Tooltip
+   ========================================================================== */
+
+.package-flags-component-tooltip {
+    max-width: 400px;
+}

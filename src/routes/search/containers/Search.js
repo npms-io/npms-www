@@ -25,7 +25,6 @@ class Search extends Component {
     }
 
     render() {
-        console.log('render');
         // TODO: errors
 
         return (
