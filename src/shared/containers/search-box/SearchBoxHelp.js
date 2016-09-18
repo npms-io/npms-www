@@ -12,7 +12,7 @@ export default class SearchBoxHelp extends Component {
     render() {
         const overlay = (
             <div>
-                <div>You may use the following search qualifiers in any combination.</div>
+                <div>You may use search qualifiers in any combination.</div>
 
                 <ul>
                     <li><code>author:sindresorhus</code> Show or filter results by author</li>
