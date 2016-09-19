@@ -8,9 +8,7 @@
     "serve": "./scripts/serve",
     "pre-commit": "./scripts/lint",
     "postinstall": "./scripts/init",
-    "test": "npm run lint",
-    "test-cov": "npm test",
-    "test-travis": "npm test"
+    "test": "npm run lint"
   },
   "repository": {
     "type": "git",
