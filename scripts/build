@@ -6,7 +6,6 @@ const webpack = require('webpack');
 const path = require('path');
 const yargs = require('yargs');
 const planify = require('planify');
-const errcode = require('err-code');
 const validator = require('./common/validator');
 const web = require('./common/web');
 const webpackConfig = require('../config/webpack.config.js');
@@ -68,7 +67,7 @@ function runWebpack() {
 
         webpack(config, (err, stats) => {
             if (err) {
-                return reject(errcode(err, { detail: errDetail }));
+                return reject(Object.assign(err, { detail: errDetail }));
             }
 
             const options = {
@@ -81,7 +80,7 @@ function runWebpack() {
             const string = stats.toString(Object.assign({ colors: true }, options)).trim();
 
             if (json.errors.length) {
-                return reject(errcode('Webpack build failed', { detail: `${string}\n\n${errDetail}` }));
+                return reject(Object.assign(new Error('Webpack build failed'), { detail: `${string}\n\n${errDetail}` }));
             }
 
             process.stdout.write(`${string}\n\n`);

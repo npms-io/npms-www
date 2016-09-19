@@ -3,7 +3,6 @@
 const fs = require('fs');
 const path = require('path');
 const chalk = require('chalk');
-const errcode = require('err-code');
 const diff = require('diff-json-structure');
 
 const projectDir = `${__dirname}/../../`;
@@ -13,7 +12,7 @@ function validateEnvironment(env) {
         fs.statSync(`${projectDir}/config/config-${env}.js`);
     } catch (err) {
         if (err.code === 'ENOENT') {
-            throw errcode(`Environment ${env} does not exist`,
+            throw Object.assign(new Error(`Environment ${env} does not exist`),
                 { detail: `You must create its configuration file at config/config-${env}.js` });
         }
 
@@ -53,8 +52,8 @@ function validateParameters(parameters) {
 
     errDetail += '\n\nPlease apply the changes according to the diff above.';
 
-    throw errcode('config/parameters.json.dist was modified recently and \
-contains differences compared to config/parameters.json', { detail: errDetail });
+    throw Object.assign(new Error('config/parameters.json.dist was modified recently and \
+contains differences compared to config/parameters.json'), { detail: errDetail });
 }
 
 function validateBuild() {
@@ -63,7 +62,7 @@ function validateBuild() {
         fs.statSync(`${projectDir}/web/index.html`);
     } catch (err) {
         if (err.code === 'ENOENT') {
-            throw errcode(`No build was found in ${path.relative(process.cwd(), `${projectDir}/web`)}`,
+            throw Object.assign(new Error(`No build was found in ${path.relative(process.cwd(), `${projectDir}/web`)}`),
                 { detail: 'Please build the project before' });
         }
 
