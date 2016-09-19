@@ -1,9 +1,10 @@
 import './Tooltip.css';
 import './themes/default.css';
-import './animations/zoom.css';
+import './animations/fade.css';
 import React, { Component, PropTypes } from 'react';
 import shallowCompare from 'react-addons-shallow-compare';
 import RcTooltip from 'rc-tooltip';
+import placeArrow from './util/placeArrow';
 
 const validPlacements = ['top', 'right', 'bottom', 'left'];
 
@@ -35,12 +36,13 @@ class Tooltip extends Component {
 }
 
 Tooltip.defaultProps = {
-    animation: 'zoom',
+    animation: 'fade',
     theme: 'default',
     trigger: ['hover', 'click'],
     getTooltipContainer: () => document.body,
-    mouseLeaveDelay: 0.1,
     mouseEnterDelay: 0.1,
+    mouseLeaveDelay: 0.1,
+    onPopupAlign: placeArrow,
 };
 
 Tooltip.propTypes = {

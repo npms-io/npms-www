@@ -1,0 +1,52 @@
+.tooltip-component.tooltip-component-animation-fade-enter,
+.tooltip-component.tooltip-component-animation-fade-leave,
+.tooltip-component-animation-fade-appear {
+    pointer-events: none;
+}
+
+.tooltip-component-animation-fade-enter,
+.tooltip-component-animation-fade-appear {
+    z-index: 1170;  /* Appear above others */
+    opacity: 0;
+
+    animation-play-state: paused;
+    animation-fill-mode: both;
+    animation-duration: 0.2s;
+}
+
+.tooltip-component-animation-fade-leave {
+    animation-play-state: paused;
+    animation-fill-mode: both;
+    animation-duration: 0.1s;
+}
+
+.tooltip-component-animation-fade-enter.tooltip-component-animation-fade-enter-active,
+.tooltip-component-animation-fade-appear.tooltip-component-animation-fade-appear-active {
+    animation-name: tooltip-component-animation-fade-in;
+    animation-play-state: running;
+}
+
+.tooltip-component-animation-fade-leave.tooltip-component-animation-fade-leave-active {
+    animation-name: tooltip-component-animation-fade-out;
+    animation-play-state: running;
+}
+
+@keyframes tooltip-component-animation-fade-in {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes tooltip-component-animation-fade-out {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}

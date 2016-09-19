@@ -37,6 +37,7 @@
     "colour-me-life": "^2.0.0",
     "dom4": "^1.8.3",
     "lodash": "^4.0.0",
+    "positions": "^1.6.1",
     "query-string": "^4.1.0",
     "rc-tooltip": "^3.3.2",
     "react": "^15.0.0",

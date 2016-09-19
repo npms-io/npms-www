@@ -1,7 +1,6 @@
 .tooltip-component {
     position: absolute;
     z-index: 1070;
-    margin: 10px;  /* Helps not touching edge of window */
 }
 
 .tooltip-component.tooltip-component-hidden {
