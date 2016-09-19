@@ -3,7 +3,7 @@ import React, { Component, PropTypes } from 'react';
 import shallowCompare from 'react-addons-shallow-compare';
 import { Link } from 'react-router';
 import ago from 's-ago';
-import { uniq } from 'lodash';
+import uniq from 'lodash/uniq';
 import Gravatar from 'react-gravatar';
 import PackageScore from 'shared/components/package-score/PackageScore';
 import PackageFlags from 'shared/components/package-flags/PackageFlags';

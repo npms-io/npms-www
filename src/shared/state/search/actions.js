@@ -1,11 +1,13 @@
 import { push } from 'react-router-redux';
 import queryString from 'query-string';
 import omit from 'lodash/omit';
+import pick from 'lodash/pick';
 import uniqueId from 'lodash/uniqueId';
 import { markAsLoading, unmarkAsLoading } from '../app/actions';
 import npmsRequest from '../../util/npmsRequest';
 
 const resultsPerPage = 25;
+const validParams = ['q', 'size', 'from'];
 
 // TODO: store results in an LRU to improve integration with back button
 
@@ -28,7 +30,7 @@ function normalizeParams(params) {
 export function updateParams(params) {
     return {
         type: 'Search.UPDATE_PARAMS',
-        payload: params,
+        payload: pick(params, validParams),
     };
 }
 
