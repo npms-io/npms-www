@@ -53,7 +53,7 @@ class SearchBox extends Component {
                 <div className="search-input">
                     <Autosuggest
                         id="search-box-autosuggest"
-                        suggestions={ this.props.suggestions }
+                        suggestions={ this.props.suggestions || [] }
                         getSuggestionValue={ (suggestion) => suggestion.package.name }
                         renderSuggestion={ (suggestion) => this._renderSuggestion(suggestion) }
                         ref={ (ref) => { this._inputEl = ref && ref.input; } }
@@ -138,7 +138,7 @@ class SearchBox extends Component {
 SearchBox.propTypes = {
     dispatch: PropTypes.func.isRequired,
     q: PropTypes.string.isRequired,
-    suggestions: PropTypes.array.isRequired,
+    suggestions: PropTypes.array,
 
     initiallyEmpty: PropTypes.bool,
     initiallyFocused: PropTypes.bool,

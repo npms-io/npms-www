@@ -3,6 +3,7 @@ const defaultState = {
     params: { q: '', from: 0, size: 25 },
     isLoading: false,
     results: null,
+    error: null,
 };
 
 function reset(state) {
@@ -44,7 +45,7 @@ function run(state, action) {
             ...state,
             isLoading: false,
             results: null,
-            error: action.error,
+            error: action.payload,
         };
     case 'Search.RUN_FULFILLED':
         if (state.uid !== action.meta.uid) {
@@ -82,7 +83,7 @@ function scroll(state, action) {
         return {
             ...state,
             isLoading: false,
-            error: action.error,
+            error: action.payload,
         };
     case 'Search.SCROLL_FULFILLED':
         if (state.uid !== action.meta.uid) {

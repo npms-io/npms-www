@@ -2,7 +2,8 @@ const defaultState = {
     uid: null,
     query: '',
     isLoading: false,
-    results: [],
+    error: null,
+    results: null,
 };
 
 function reset() {
@@ -26,8 +27,8 @@ function fetch(state, action) {
         return {
             ...state,
             isLoading: false,
-            results: [],
-            error: action.error,
+            results: null,
+            error: action.payload,
         };
     case 'SearchSuggestions.FETCH_FULFILLED':
         if (state.uid !== action.meta.uid) {
