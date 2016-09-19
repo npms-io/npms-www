@@ -42,7 +42,7 @@ Tooltip.defaultProps = {
     getTooltipContainer: () => document.body,
     mouseEnterDelay: 0.1,
     mouseLeaveDelay: 0.1,
-    onPopupAlign: placeArrow,
+    onPopupAlign: placeArrow,  // Place arrow manually, see: https://github.com/react-component/tooltip/issues/54
 };
 
 Tooltip.propTypes = {

@@ -14,8 +14,10 @@ export default function placeArrow(tooltipEl, align) {
     const position = positions(arrowEl, placementsMap[align.points[0]], targetEl, placementsMap[align.points[1]]);
 
     if (align.points[0] === 'tc' || align.points[0] === 'bc') {
+        arrowEl.style.top = '';
         arrowEl.style.left = `${position.left}px`;
     } else {
         arrowEl.style.top = `${position.top}px`;
+        arrowEl.style.left = '';
     }
 }
