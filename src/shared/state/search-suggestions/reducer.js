@@ -1,6 +1,6 @@
 const defaultState = {
     uid: null,
-    text: '',
+    query: '',
     isLoading: false,
     results: [],
 };
@@ -15,7 +15,7 @@ function fetch(state, action) {
         return {
             ...state,
             uid: action.meta.uid,
-            text: action.payload,
+            query: action.payload,
             isLoading: true,
         };
     case 'SearchSuggestions.FETCH_REJECTED':

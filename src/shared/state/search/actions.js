@@ -51,6 +51,7 @@ export function run() {
     return (dispatch, getState) => {
         const params = normalizeParams(getState().search.params);
 
+        // Reset if query is empty
         if (!params.q) {
             return dispatch(reset());
         }

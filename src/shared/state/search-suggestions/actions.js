@@ -5,23 +5,30 @@ const maxResults = 10;
 
 // TODO: Use a LRU to cache results
 
+function normalizeQuery(query) {
+    return query
+    .replace(/[a-z0-9]+:([a-z0-9:]+)*/ig, '')  // Remove qualifiers
+    .replace(/\s\s*/g, ' ')                    // Remove extra spaces
+    .trim();
+}
+
 export function reset() {
     return {
         type: 'SearchSuggestions.RESET',
     };
 }
 
-export function fetch(text) {
+export function fetch(query) {
     return (dispatch, getState) => {
-        text = text.trim();
+        query = normalizeQuery(query);
 
-        // Do nothing if current text is the same
-        if (getState().searchSuggestions.text === text) {
+        // Do nothing if current query is the same
+        if (getState().searchSuggestions.query === query) {
             return;
         }
 
-        // Reset if text is empty
-        if (!text) {
+        // Reset if query is empty
+        if (!query) {
             return dispatch(reset());
         }
 
@@ -29,8 +36,8 @@ export function fetch(text) {
             type: 'SearchSuggestions.FETCH',
             meta: { uid: uniqueId('search-suggestions-') },
             payload: {
-                data: text,
-                promise: npmsRequest(`/search/suggestions?text=${encodeURIComponent(text)}&size=${maxResults}`),
+                data: query,
+                promise: npmsRequest(`/search/suggestions?q=${encodeURIComponent(query)}&size=${maxResults}`),
             },
         })
         .catch(() => {});  // SearchSuggestions.FETCH_REJECTED will be dispatched, so swallow any error
