@@ -32,11 +32,19 @@
 /* Modifiers
    ========================================================================== */
 
-.page-search .results-list.has-no-results {
+.page-search .results-list.has-no-results,
+.page-search .results-list.has-error {
     margin-top: 60px;
-    font-size: 16px;
 }
 
 .page-search .results-list.has-no-results span {
     font-weight: 500;
+}
+
+.page-search .results-list.has-error .error {
+    margin-top: 25px;
+}
+
+.page-search .results-list.has-error .error-message {
+    font-size: 14px;
 }

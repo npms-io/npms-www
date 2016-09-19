@@ -10,7 +10,7 @@ import PackageFlags from 'shared/components/package-flags/PackageFlags';
 import MaterialIcon from 'shared/components/icon/MaterialIcon';
 import SvgIcon from 'shared/components/icon/SvgIcon';
 
-class ListItem extends Component {
+class ResultsListItem extends Component {
     shouldComponentUpdate(nextProps, nextState) {
         return shallowCompare(this, nextProps, nextState);
     }
@@ -104,10 +104,10 @@ class ListItem extends Component {
     }
 }
 
-ListItem.propTypes = {
+ResultsListItem.propTypes = {
     package: PropTypes.object.isRequired,
     flags: PropTypes.object,
     score: PropTypes.object.isRequired,
 };
 
-export default ListItem;
+export default ResultsListItem;

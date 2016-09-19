@@ -22,6 +22,10 @@ select {
     font-family: "Roboto", Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 
+p {
+    margin: 1em 0;
+}
+
 ::selection {
     background: #1dd09b;
     color: #fff;
@@ -46,7 +50,7 @@ a:focus {
     outline: 0;
 }
 
-/* Code block
+/* Code & quote blocks
    ========================================================================== */
 
 code {
@@ -56,6 +60,13 @@ code {
     color: #414141;
     font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
     font-size: 12px;
+}
+
+blockquote {
+    margin: 0 0 16px 0;
+    padding: 0 1em;
+    border-left: 0.25em solid #ddd;
+    color: #777;
 }
 
 /* Ellipsis

@@ -6,12 +6,16 @@ import ResultsListItem from './ResultsListItem';
 
 // TODO: Add animation to list
 
-class List extends Component {
+class ResultsList extends Component {
     shouldComponentUpdate(nextProps, nextState) {
         return shallowCompare(this, nextProps, nextState);
     }
 
     render() {
+        if (this.props.error) {
+            return this._renderError();
+        }
+
         if (!this.props.results) {
             return this._renderEmpty();
         }
@@ -23,9 +27,27 @@ class List extends Component {
         return this._renderHasResults();
     }
 
+    // ---------------------------------------------------------
+
     _renderEmpty() {
         return (
             <div className="results-list is-empty header-component-with-logo-align-with-search-box" />
+        );
+    }
+
+    _renderError() {
+        const data = this.props.error.response && this.props.error.response.data;
+        const err = data.message ? data : {};
+
+        return (
+            <div className="results-list has-error header-component-with-logo-align-with-search-box">
+                <p>Oops, an error ocurred while fetching the results.</p>
+
+                <blockquote className="error">
+                    { err.code ? <div className="error-code">{ err.code }</div> : '' }
+                    { err.message ? <div className="error-message">{ err.message }</div> : '' }
+                </blockquote>
+            </div>
         );
     }
 
@@ -36,6 +58,7 @@ class List extends Component {
             </div>
         );
     }
+
     _renderHasResults() {
         return (
             <div className="results-list has-results">
@@ -61,9 +84,10 @@ class List extends Component {
     }
 }
 
-List.propTypes = {
+ResultsList.propTypes = {
     results: PropTypes.object,
+    error: PropTypes.object,
     onLoadMore: PropTypes.func.isRequired,
 };
 
-export default List;
+export default ResultsList;

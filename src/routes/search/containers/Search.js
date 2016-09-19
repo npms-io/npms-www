@@ -25,8 +25,6 @@ class Search extends Component {
     }
 
     render() {
-        // TODO: errors
-
         return (
             <div className="page page-search">
                 <Header showSearch />
@@ -35,8 +33,7 @@ class Search extends Component {
                     <ScrollToTop showUnder={ 200 }/>
                 </div>
 
-                <ResultsList
-                    results={ this.props.search.results }
+                <ResultsList results={ this.props.search.results } error={ this.props.search.error }
                     onLoadMore={ () => this.props.dispatch(scroll()) } />
             </div>
         );
