@@ -114,7 +114,7 @@
 .page-search .results-list-item .links {
     position: absolute;
     right: 0;
-    bottom: 5px;
+    bottom: 0;
     opacity: 0;
     transition: opacity 0.2s linear;
 }
