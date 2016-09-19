@@ -40,21 +40,36 @@ class ResultsList extends Component {
         const err = data.message ? data : {};
 
         return (
-            <div className="results-list has-error header-component-with-logo-align-with-search-box">
-                <p>Oops, an error ocurred while fetching the results.</p>
+            <div className="results-list has-error">
+                <div className="summary">
+                    <div className="header-component-with-logo-align-with-search-box ellipsis" />
+                </div>
 
-                <blockquote className="error">
-                    { err.code ? <div className="error-code">{ err.code }</div> : '' }
-                    { err.message ? <div className="error-message">{ err.message }</div> : '' }
-                </blockquote>
+                <div className="header-component-with-logo-align-with-search-box">
+                    <p>Oops, an error ocurred while fetching the results.</p>
+
+                    <blockquote className="error">
+                        { err.code ? <div className="code">{ err.code }</div> : '' }
+                        { err.message ? <div className="message">{ err.message }</div> : '' }
+                    </blockquote>
+                </div>
             </div>
         );
     }
 
     _renderNoResults() {
         return (
-            <div className="results-list has-no-results header-component-with-logo-align-with-search-box">
-                Sorry no results for <span className="query">{ this.props.results.q }</span>.
+            <div className="results-list has-no-results">
+                <div className="summary">
+                    <div className="header-component-with-logo-align-with-search-box ellipsis">
+                        <span className="nr-results">0</span> results for <span className="query">
+                        { this.props.results.q }</span>
+                    </div>
+                </div>
+
+                <div className="no-results header-component-with-logo-align-with-search-box">
+                    <p>Sorry there are no results for your query.<br/>Perhaps try searching something different?</p>
+                </div>
             </div>
         );
     }

@@ -3,6 +3,7 @@
 
 .page-search .results-list .summary {
     height: 30px;
+    margin-bottom: 30px;
     background-color: #ededeb;
     color: #939292;
     font-size: 14px;
@@ -15,27 +16,18 @@
     font-weight: 900;
 }
 
-.page-search .results-list .summary .query {
-    color: #57627d;
-}
-
 /* Items list
    ========================================================================== */
 
 .page-search .results-list .items {
     margin-top: 0;
     margin-bottom: 0;
-    padding: 30px 0 75px 0;
+    padding: 0 0 75px 0;
     list-style: none;
 }
 
 /* Modifiers
    ========================================================================== */
-
-.page-search .results-list.has-no-results,
-.page-search .results-list.has-error {
-    margin-top: 60px;
-}
 
 .page-search .results-list.has-no-results span {
     font-weight: 500;
@@ -45,6 +37,6 @@
     margin-top: 25px;
 }
 
-.page-search .results-list.has-error .error-message {
+.page-search .results-list.has-error .error .message {
     font-size: 14px;
 }
