@@ -72,9 +72,7 @@ class PackageScore extends Component {
         return (
             <div>
                 <span className="score-label">{ label }:</span>
-                <span className="score-value" style={ { color: this._getScoreColor(score) } }>
-                { this._getScoreText(score) }%
-                </span>
+                <span className="score-value" style={ { color: this._getScoreColor(score) } }>{ this._getScoreText(score) }%</span>
             </div>
         );
     }

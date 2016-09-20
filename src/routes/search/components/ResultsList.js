@@ -62,8 +62,7 @@ class ResultsList extends Component {
             <div className="results-list has-no-results">
                 <div className="summary">
                     <div className="header-component-with-logo-align-with-search-box ellipsis">
-                        <span className="nr-results">0</span> results for <span className="query">
-                        { this.props.results.q }</span>
+                        <span className="nr-results">0</span> results for <span className="query">{ this.props.results.q }</span>
                     </div>
                 </div>
 
@@ -79,8 +78,8 @@ class ResultsList extends Component {
             <div className="results-list has-results">
                 <div className="summary">
                     <div className="header-component-with-logo-align-with-search-box ellipsis">
-                        <span className="nr-results">{ this.props.results.total }</span> results for <span className="query">
-                        { this.props.results.q }</span>
+                        <span className="nr-results">{ this.props.results.total }</span> results for
+                        <span className="query">{ this.props.results.q }</span>
                     </div>
                 </div>
 

@@ -22,7 +22,7 @@ class Application extends Component {
                     { canSmoothScroll ?
                         <ReactCSSTransitionGroup component="div" transitionName="page-transition"
                             transitionEnterTimeout={ 250 } transitionLeaveTimeout={ 250 }>
-                          { React.cloneElement(this.props.children, { key: this.props.location.pathname }) }
+                            { React.cloneElement(this.props.children, { key: this.props.location.pathname }) }
                         </ReactCSSTransitionGroup> :
                         this.props.children
                     }
