@@ -2,7 +2,7 @@
 <OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
 	<ShortName>npms</ShortName>
 	<Description>npms - a better and open sourced search for node packages</Description>
-	<Tags>npm search node module score github nsp david</Tags>
+	<Tags>npm search node module package score github</Tags>
 	<Contact>amdfcruz+npms@gmail.com</Contact>
 	<Developer>André Cruz</Developer>
 	<Url type="text/html" method="get" template="https://npms.io/search?q={searchTerms}"/>
