@@ -25,11 +25,11 @@ export default class SearchBoxHelp extends Component {
         );
 
         return (
-            <div className="search-box-help-component">
-                <Tooltip overlayClassName="search-box-help-component-tooltip" placement="top" overlay={ overlay }>
+            <Tooltip overlayClassName="search-box-help-component-tooltip" placement="bottom" overlay={ overlay }>
+                <div className="search-box-help-component">
                     <MaterialIcon id="help_outline" className="help" />
-                </Tooltip>
-            </div>
+                </div>
+            </Tooltip>
         );
     }
 }
