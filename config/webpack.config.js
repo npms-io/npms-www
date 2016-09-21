@@ -35,7 +35,7 @@ function buildConfig(options) {
         ].filter((val) => !!val),
         output: {
             path: `${projectDir}/web/build/`,
-            publicPath: parameters.publicPath,
+            publicPath: `${parameters.publicPath}/`,
             filename: isDev ? '[name].js' : '[name].[hash].js',
             chunkFilename: isDev ? '[name].js' : '[name].[hash].js',
         },
@@ -119,7 +119,7 @@ function buildConfig(options) {
         // Webpack dev server configuration
         // ---------------------------------------------------------
         devServer: {
-            publicPath: parameters.publicPath,
+            publicPath: `${parameters.publicPath}/`,
             contentBase: `${projectDir}/web/`,
             filename: 'main.js',
             hot: isDev,                   // Enable HMR in dev
