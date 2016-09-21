@@ -51,8 +51,6 @@ class About extends Component {
                     { /* ------------- How it works ------------- */ }
 
                     <div className="section-how-it-works">
-                        <a id="how-it-works" />
-
                         <h1>How it works</h1>
                         <p>
                             The <a href="https://github.com/npms-io/npms-analyzer" target="_blank">npms analyzer</a> continuously analyzes <span className="highlight">npm</span> ecosystem,

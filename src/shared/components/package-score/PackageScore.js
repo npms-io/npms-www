@@ -42,7 +42,7 @@ class PackageScore extends Component {
                     <li>{ this._renderTooltipScore('Maintenance', this.props.score.detail.maintenance) }</li>
                 </ul>
 
-                <p><Link to={ '/about' } hash="#how-it-works" target="_blank">How are scores calculated?</Link></p>
+                <p><Link to={ '/about' } target="_blank">How are scores calculated?</Link></p>
             </div>
         );
 
