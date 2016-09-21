@@ -85,7 +85,8 @@ class ResultsList extends Component {
 
                 <ul className="items header-component-with-logo-align-with-search-box">
                     { this.props.results.items.map((item) =>
-                        <ResultsListItem key={ item.package.name } package={ item.package } score={ item.score } flags={ item.flags } />
+                        <ResultsListItem key={ item.package.name } package={ item.package } score={ item.score } flags={ item.flags }
+                            apiUrl={ this.props.apiUrl } />
                     ) }
                 </ul>
 
@@ -102,6 +103,11 @@ ResultsList.propTypes = {
     results: PropTypes.object,
     error: PropTypes.object,
     onLoadMore: PropTypes.func.isRequired,
+    apiUrl: PropTypes.string,
+};
+
+ResultsListItem.defaultProps = {
+    apiUrl: 'https://api.npms.io',
 };
 
 export default ResultsList;

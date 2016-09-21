@@ -4,3 +4,7 @@
     cursor: default;
     transition: color 0.15s linear, opacity linear 0.15s;
 }
+
+a .material-icons {
+    cursor: inherit;
+}

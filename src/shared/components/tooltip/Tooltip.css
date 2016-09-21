@@ -1,5 +1,6 @@
 .tooltip-component {
     position: absolute;
+    max-width: calc(100% - 20px);  /* Compensate for edges, see util/checkEdges.js */
     z-index: 1070;
 }
 

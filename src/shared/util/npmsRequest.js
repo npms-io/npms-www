@@ -1,11 +1,7 @@
+import config from 'config';
 import Promise from 'bluebird';
 import axios from 'axios';
-import config from 'config';
 import isPlainObject from 'lodash/isPlainObject';
-
-function createUrl(path) {
-    return `${config.api.url.replace(/\/+$/, '')}/${path.replace(/^\/+/, '')}`;
-}
 
 function onFullfilled(res) {
     if (!isPlainObject(res.data) && !Array.isArray(res.data)) {
@@ -34,7 +30,7 @@ export default function npmsRequest(path, options) {
     options = { timeout: config.api.timeout, ...options };
 
     return Promise.try(() => {
-        return axios(createUrl(path), options)
+        return axios(`${config.api.url}/${path}`, options)
         .then((res) => onFullfilled(res), (res) => onRejected(res));
     });
 }

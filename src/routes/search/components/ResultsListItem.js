@@ -7,6 +7,7 @@ import uniq from 'lodash/uniq';
 import Gravatar from 'react-gravatar';
 import PackageScore from 'shared/components/package-score/PackageScore';
 import PackageFlags from 'shared/components/package-flags/PackageFlags';
+import Tooltip from 'shared/components/tooltip/Tooltip';
 import MaterialIcon from 'shared/components/icon/MaterialIcon';
 import SvgIcon from 'shared/components/icon/SvgIcon';
 
@@ -29,7 +30,10 @@ class ResultsListItem extends Component {
 
                 { /* Description */ }
                 { this.props.package.description ?
-                    <div className="description ellipsis">{ this.props.package.description }</div> :
+                    <div className="description">
+                        { this.props.flags ? <PackageFlags package={ this.props.package } flags={ this.props.flags } /> : '' }
+                        { this.props.package.description }
+                    </div> :
                     '' }
 
                 { /* Keywords */ }
@@ -39,18 +43,8 @@ class ResultsListItem extends Component {
                 { this._renderPublisherInfo() }
 
                 { /* Useful links */ }
-                <div className="links">
-                    <a className="tonic-link" href={ `https://tonicdev.com/npm/${encodeURIComponent(this.props.package.name)}` }
-                        target="_blank" title="Try this package in Tonic">
-                        <SvgIcon id={ SvgIcon.tonic } />
-                    </a>
-                    <a className="npm-link" href={ this.props.package.links.npm } target="_blank" title="View this package in npmjs.org">
-                        <SvgIcon id={ SvgIcon.npm } />
-                    </a>
-                </div>
+                { this._renderLinks() }
 
-                { /* Flags */ }
-                { this.props.flags ? <PackageFlags package={ this.props.package } flags={ this.props.flags } /> : '' }
             </li>
         );
     }
@@ -91,10 +85,36 @@ class ResultsListItem extends Component {
 
                 { hasPublisher ? <span> by </span> : '' }
                 { hasPublisher ? <a href={ `https://npmjs.com/~${encodeURIComponent(this.props.package.publisher.username)}` }
-                    target="_blank" className="publisher-name ellipsis">{ this.props.package.publisher.username }</a> : '' }
+                    target="_blank" className="publisher-name">{ this.props.package.publisher.username }</a> : '' }
                 { hasPublisher ? <span className="publisher-avatar">
                     <Gravatar size={ 20 } email={ this.props.package.publisher.email || 'n/a' } https
                         onLoad={ (e) => this._onGravatarLoad(e) } /></span> : '' }
+            </div>
+        );
+    }
+
+    _renderLinks() {
+        return (
+            <div className="links">
+                <Tooltip placement="top" trigger={ ['hover'] } destroyTooltipOnHide overlay="View this package analysis">
+                    <a className="analysis-link" href={ `${this.props.apiUrl}/package/${encodeURIComponent(this.props.package.name)}` }
+                        target="_blank">
+                        <MaterialIcon id="timeline" />
+                    </a>
+                </Tooltip>
+
+                <Tooltip placement="top" trigger={ ['hover'] } destroyTooltipOnHide overlay="View this package in npmjs.org">
+                    <a className="npm-link" href={ this.props.package.links.npm } target="_blank">
+                        <SvgIcon id={ SvgIcon.npm } />
+                    </a>
+                </Tooltip>
+
+                <Tooltip placement="top" trigger={ ['hover'] } destroyTooltipOnHide overlay="Try this package in RunKit">
+                    <a className="runkit-link" href={ `https://runkit.com/npm/${encodeURIComponent(this.props.package.name)}` }
+                        target="_blank">
+                        <SvgIcon id={ SvgIcon.runkit } />
+                    </a>
+                </Tooltip>
             </div>
         );
     }
@@ -108,6 +128,11 @@ ResultsListItem.propTypes = {
     package: PropTypes.object.isRequired,
     flags: PropTypes.object,
     score: PropTypes.object.isRequired,
+    apiUrl: PropTypes.string,
+};
+
+ResultsListItem.defaultProps = {
+    apiUrl: 'https://api.npms.io',
 };
 
 export default ResultsListItem;

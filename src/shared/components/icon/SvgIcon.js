@@ -28,7 +28,7 @@ Object.assign(SvgIcon, {
     github: require('./svgs/github.svg'),
     twitter: require('./svgs/twitter.svg'),
     npm: require('./svgs/npm.svg'),
-    tonic: require('./svgs/tonic.svg'),
+    runkit: require('./svgs/runkit.svg'),
 });
 
 export default SvgIcon;
