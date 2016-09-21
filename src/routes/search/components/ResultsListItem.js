@@ -106,7 +106,7 @@ class ResultsListItem extends Component {
                 <Tooltip placement="top" trigger={ ['hover'] } destroyTooltipOnHide overlay="Try this package in RunKit">
                     <a className="runkit-link" href={ `https://runkit.com/npm/${encodeURIComponent(this.props.package.name)}` }
                         target="_blank">
-                        <SvgIcon id={ SvgIcon.tonic } />
+                        <SvgIcon id={ SvgIcon.runkit } />
                     </a>
                 </Tooltip>
 
