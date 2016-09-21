@@ -21,7 +21,7 @@ class PackageScore extends Component {
 
     render() {
         return (
-            <div className="package-score-component">
+            <div className="package-score-component clearfix">
                 { this._renderDetailedScore('quality') }
                 { this._renderDetailedScore('popularity') }
                 { this._renderDetailedScore('maintenance') }
@@ -59,9 +59,10 @@ class PackageScore extends Component {
         return (
             <Tooltip overlayClassName="package-score-tooltip-component" placement="top" destroyTooltipOnHide overlay={ tooltip }>
                 <div className="score-detailed">
-                    <CircularProgressbar classForPercentage={ () => 'score-detailed' }
+                    <CircularProgressbar classForPercentage={ () => 'score-circular-progessbar' }
                         percentage={ this.props.score.detail[property] * 100 }
-                        textForPercentage={ () => property[0].toUpperCase() } />
+                        textForPercentage={ () => '' } />
+                    <div className="score-text">{ property[0].toUpperCase() }</div>
                 </div>
             </Tooltip>
 

@@ -7,8 +7,7 @@
    ========================================================================== */
 
 .page-search .results-list-item .headline .name,
-.page-search .results-list-item .headline .version,
-.page-search .results-list-item .headline .package-score-component {
+.page-search .results-list-item .headline .version {
     display: inline-block;
     vertical-align: middle;
 }
@@ -48,6 +47,7 @@
    ========================================================================== */
 
 .page-search .results-list-item .package-flags-component {
+    margin-top: -2px;
     display: inline-block;
     vertical-align: middle;
 }

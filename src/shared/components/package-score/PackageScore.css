@@ -6,29 +6,32 @@
    ========================================================================== */
 
 .package-score-component .score-detailed {
+    position: relative;
     width: 20px;
     height: 20px;
-    margin-right: 5px;
-    display: table-cell;
-    vertical-align: middle;
+    margin: 3px 5px 0 0;
+    float: left;
     font-weight: 700;
     cursor: default;
 }
 
-.package-score-component .score-detailed .CircularProgressbar-path {
+.package-score-component .score-detailed .score-circular-progessbar .CircularProgressbar-path {
     stroke: #999;
     stroke-linecap: round;
 }
 
-.package-score-component .score-detailed .CircularProgressbar-trail {
+.package-score-component .score-detailed .score-circular-progessbar .CircularProgressbar-trail {
     stroke: #eaeaea;
 }
 
-.package-score-component .score-detailed .CircularProgressbar-text {
-    fill: #414141;
-    font-size: 44px;
-    dominant-baseline: central;
-    text-anchor: middle;
+.package-score-component .score-detailed .score-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+    transform: translate(-50%, -50%);
+    font-size: 9px;
+    user-select: none;
 }
 
 /* Full score
@@ -38,8 +41,7 @@
     position: relative;
     width: 26px;
     height: 26px;
-    display: table-cell;
-    vertical-align: middle;
+    float: left;
     cursor: default;
 }
 
@@ -58,13 +60,14 @@
 }
 
 .package-score-component .score-full .score-value {
-    position: relative;
+    position: absolute;
+    top: 50%;
+    left: 50%;
     z-index: 2;
+    transform: translate(-50%, -50%);
     color: #fff;
     font-size: 12px;
     font-weight: 900;
-    text-align: center;
-    line-height: 26px;
 }
 
 /* Tooltip
