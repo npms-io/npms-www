@@ -103,16 +103,16 @@ class ResultsListItem extends Component {
                     </a>
                 </Tooltip>
 
+                <Tooltip placement="top" trigger={ ['hover'] } destroyTooltipOnHide overlay="View this package in npmjs.org">
+                    <a className="npm-link" href={ this.props.package.links.npm } target="_blank" title="View this package in npmjs.org">
+                        <SvgIcon id={ SvgIcon.npm } />
+                    </a>
+                </Tooltip>
+
                 <Tooltip placement="top" trigger={ ['hover'] } destroyTooltipOnHide overlay="Try this package in RunKit">
                     <a className="runkit-link" href={ `https://runkit.com/npm/${encodeURIComponent(this.props.package.name)}` }
                         target="_blank">
                         <SvgIcon id={ SvgIcon.runkit } />
-                    </a>
-                </Tooltip>
-
-                <Tooltip placement="top" trigger={ ['hover'] } destroyTooltipOnHide overlay="View this package in npmjs.org">
-                    <a className="npm-link" href={ this.props.package.links.npm } target="_blank" title="View this package in npmjs.org">
-                        <SvgIcon id={ SvgIcon.npm } />
                     </a>
                 </Tooltip>
             </div>
