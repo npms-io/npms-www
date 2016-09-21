@@ -7,9 +7,9 @@ const placementsMap = {
     cr: 'center left',
 };
 
-export default function placeArrow(tooltipEl, align) {
+export default function placeArrow(tooltipEl, align, component) {
     const arrowEl = tooltipEl.querySelector('.tooltip-component-arrow');
-    const targetEl = this.getRootDomNode();  // eslint-disable-line no-invalid-this
+    const targetEl = component.getRootDomNode();
 
     const position = positions(arrowEl, placementsMap[align.points[0]], targetEl, placementsMap[align.points[1]]);
 

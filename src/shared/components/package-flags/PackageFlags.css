@@ -21,6 +21,8 @@
 /* Tooltip
    ========================================================================== */
 
-.package-flags-component-tooltip {
-    max-width: 400px;
+@media (min-width: 420px) {
+    .package-flags-component-tooltip {
+        max-width: 400px;
+    }
 }

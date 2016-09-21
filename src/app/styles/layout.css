@@ -10,6 +10,7 @@ body {
 }
 
 body {
+    position: relative;  /* Necessary so that descendants with 100% actually target body width */
     overflow-y: scroll;  /* Prevent screen from "dancing" when going from a page to another */
 }
 

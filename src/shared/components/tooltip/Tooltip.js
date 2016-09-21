@@ -5,6 +5,7 @@ import React, { Component, PropTypes } from 'react';
 import shallowCompare from 'react-addons-shallow-compare';
 import RcTooltip from 'rc-tooltip';
 import placeArrow from './util/placeArrow';
+import checkEdges from './util/checkEdges';
 
 const validPlacements = ['top', 'right', 'bottom', 'left'];
 
@@ -42,7 +43,10 @@ Tooltip.defaultProps = {
     getTooltipContainer: () => document.body,
     mouseEnterDelay: 0.1,
     mouseLeaveDelay: 0.1,
-    onPopupAlign: placeArrow,  // Place arrow manually, see: https://github.com/react-component/tooltip/issues/54
+    onPopupAlign: function (node, align) { // eslint-disable-line object-shorthand
+        checkEdges(node, align, this);
+        placeArrow(node, align, this);
+    },
 };
 
 Tooltip.propTypes = {
