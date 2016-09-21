@@ -14,7 +14,7 @@
 
         <% if (env !== 'dev') { %>
         <!-- App stylesheet -->
-        <link rel="stylesheet" href="<%= parameters.publicPath %>app.<%= hash %>.css">
+        <link rel="stylesheet" href="<%= parameters.publicPath %>/app.<%= hash %>.css">
 
         <!-- Open search -->
         <link title="npms.io" type="application/opensearchdescription+xml" href="https://npms.io/opensearch.xml" rel="search">
@@ -25,7 +25,7 @@
         <div id="root"></div>
 
         <!-- Load app main file -->
-        <script src="<%= parameters.publicPath %>main<%= hash ? '.' + hash : '' %>.js"></script>
+        <script src="<%= parameters.publicPath %>/main<%= hash ? '.' + hash : '' %>.js"></script>
 
         <!-- Outdated browser -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.3/outdatedbrowser.min.css">
