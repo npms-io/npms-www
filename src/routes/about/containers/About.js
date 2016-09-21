@@ -77,7 +77,6 @@ class About extends Component {
                                     <li>Has outdated dependencies? Do they have vulnerabilities?</li>
                                     <li>Has custom website? Has badges?</li>
                                     <li>Does the project have linters configured?</li>
-                                    <li>What's the code complexity score?</li>
                                 </ul>
                             </div>
                             <div className="aspect">
@@ -91,10 +90,11 @@ class About extends Component {
                                     </p>
                                 </div>
                                 <ul className="examples">
-                                    <li>Ratio of open issues vs the total issues</li>
+                                    <li>Ratio of open issues vs total issues</li>
                                     <li>The time it takes to close issues</li>
                                     <li>Most recent commit</li>
                                     <li>Commit frequency</li>
+                                    <li>Release frequency</li>
                                 </ul>
                             </div>
                             <div className="aspect">
