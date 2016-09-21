@@ -28,12 +28,12 @@ class ResultsListItem extends Component {
                     <PackageScore score={ this.props.score } />
                 </div>
 
-                { /* Flags */ }
-                { this.props.flags ? <PackageFlags package={ this.props.package } flags={ this.props.flags } /> : '' }
-
                 { /* Description */ }
                 { this.props.package.description ?
-                    <div className="description">{ this.props.package.description }</div> :
+                    <div className="description">
+                        { this.props.flags ? <PackageFlags package={ this.props.package } flags={ this.props.flags } /> : '' }
+                        { this.props.package.description }
+                    </div> :
                     '' }
 
                 { /* Keywords */ }

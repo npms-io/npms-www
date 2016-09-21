@@ -48,14 +48,14 @@
    ========================================================================== */
 
 .page-search .results-list-item .package-flags-component {
-    margin: 1px 0 5px 0;
+    display: inline-block;
+    vertical-align: middle;
 }
 
 /* Description
    ========================================================================== */
 
 .page-search .results-list-item .description {
-    margin-top: 2px;
     font-size: 14px;
 
     /* Two lines of text */
