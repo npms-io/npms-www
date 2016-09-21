@@ -33,7 +33,7 @@ class ResultsListItem extends Component {
 
                 { /* Description */ }
                 { this.props.package.description ?
-                    <div className="description ellipsis">{ this.props.package.description }</div> :
+                    <div className="description">{ this.props.package.description }</div> :
                     '' }
 
                 { /* Keywords */ }
