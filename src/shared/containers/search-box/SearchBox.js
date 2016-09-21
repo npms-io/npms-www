@@ -115,7 +115,8 @@ class SearchBox extends Component {
 
     _handleWindowKeyDown(e) {
         // Skip if `focusOnKeyDown` is not enabled or if something else is already focused
-        if (this.props.focusOnKeyDown && !e.target.matches('input,textarea,select')) {
+        // Also ctrl & meta keys are ignored to allow copying to clipboard
+        if (this.props.focusOnKeyDown && !e.ctrlKey && !e.metaKey && !e.target.matches('input,textarea,select')) {
             this._inputEl.focus();
         }
     }
