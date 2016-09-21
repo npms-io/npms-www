@@ -16,7 +16,7 @@ class Tooltip extends Component {
 
     render() {
         const { overlayClassName, theme, animation, ...props } = this.props;
-        const finalOverlayClassName = theme ? `${overlayClassName} tooltip-component-theme-${theme}` : overlayClassName;
+        const finalOverlayClassName = theme ? `${overlayClassName || ''} tooltip-component-theme-${theme}`.trim() : overlayClassName;
         const finalAnimation = animation ? `animation-${animation}` : animation;
 
         if (props.placement && validPlacements.indexOf(props.placement) === -1) {
@@ -44,8 +44,8 @@ Tooltip.defaultProps = {
     mouseEnterDelay: 0.1,
     mouseLeaveDelay: 0.1,
     onPopupAlign: function (node, align) { // eslint-disable-line object-shorthand
-        checkEdges(node, align, this);
-        placeArrow(node, align, this);
+        checkEdges(node, align, this);  // Prevent tooltips from being too close from the edges of the browser, see https://github.com/react-component/tooltip/issues/55
+        placeArrow(node, align, this);  // Properly position arrow on target, see: https://github.com/react-component/tooltip/issues/54
     },
 };
 
