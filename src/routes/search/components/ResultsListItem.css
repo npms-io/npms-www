@@ -44,11 +44,29 @@
     stroke: #d6d6d6;
 }
 
+/* Flags
+   ========================================================================== */
+
+.page-search .results-list-item .package-flags-component {
+    margin: 1px 0 5px 0;
+}
+
 /* Description
    ========================================================================== */
 
 .page-search .results-list-item .description {
+    margin-top: 2px;
     font-size: 14px;
+
+    /* Two lines of text */
+    /* stylelint-disable */
+    display: -webkit-box;
+    max-height: 38px;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    /* stylelint-enable */
 }
 
 /* Keywords
@@ -114,7 +132,7 @@
 .page-search .results-list-item .links {
     position: absolute;
     right: 0;
-    bottom: 0;
+    bottom: 4px;
     opacity: 0;
     transition: opacity 0.2s linear;
 }
@@ -127,7 +145,11 @@
     margin-left: 10px;
 }
 
-.page-search .results-list-item .tonic-link svg {
+.page-search .results-list-item .analysis-link i {
+    font-size: 14px;
+}
+
+.page-search .results-list-item .runkit-link svg {
     width: 20px;
     height: 20px;
 }

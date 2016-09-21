@@ -1,4 +1,5 @@
 import './Search.css';
+import config from 'config';
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import isEqual from 'lodash/isEqual';
@@ -34,7 +35,7 @@ class Search extends Component {
                 </div>
 
                 <ResultsList results={ this.props.search.results } error={ this.props.search.error }
-                    onLoadMore={ () => this.props.dispatch(scroll()) } />
+                    onLoadMore={ () => this.props.dispatch(scroll()) } apiUrl={ config.api.url } />
             </div>
         );
     }
