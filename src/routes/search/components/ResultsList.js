@@ -37,7 +37,7 @@ class ResultsList extends Component {
 
     _renderError() {
         const data = this.props.error.response && this.props.error.response.data;
-        const err = data.message ? data : {};
+        const err = data && data.message ? data : {};
 
         return (
             <div className="results-list has-error">
