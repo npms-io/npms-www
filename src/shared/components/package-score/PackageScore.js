@@ -1,5 +1,6 @@
 import './PackageScore.css';
 import React, { Component, PropTypes } from 'react';
+import { Link } from 'react-router';
 import shallowCompare from 'react-addons-shallow-compare';
 import ColourMeLife from 'colour-me-life';
 import range from 'lodash/range';
@@ -34,11 +35,15 @@ class PackageScore extends Component {
 
     _renderFinalScore() {
         const tooltip = (
-            <ul>
-                <li>{ this._renderTooltipScore('Quality', this.props.score.detail.quality) }</li>
-                <li>{ this._renderTooltipScore('Popularity', this.props.score.detail.popularity) }</li>
-                <li>{ this._renderTooltipScore('Maintenance', this.props.score.detail.maintenance) }</li>
-            </ul>
+            <div>
+                <ul>
+                    <li>{ this._renderTooltipScore('Quality', this.props.score.detail.quality) }</li>
+                    <li>{ this._renderTooltipScore('Popularity', this.props.score.detail.popularity) }</li>
+                    <li>{ this._renderTooltipScore('Maintenance', this.props.score.detail.maintenance) }</li>
+                </ul>
+
+                <p><Link to={ '/about' } hash="#how-it-works" target="_blank">How are scores calculated?</Link></p>
+            </div>
         );
 
         return (
