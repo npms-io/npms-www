@@ -47,7 +47,7 @@ class PackageScore extends Component {
         );
 
         return (
-            <Tooltip overlayClassName="package-score-tooltip-component" placement="top" destroyTooltipOnHide overlay={ tooltip }>
+            <Tooltip overlayClassName="package-score-tooltip-component" placement="top" overlay={ tooltip }>
                 <div className="score-full">
                     <svg className="score-badge" style={ { fill: this._getScoreColor(this.props.score.final) } }>
                         <use xlinkHref={ scoreBadgeSvg } />
@@ -62,7 +62,7 @@ class PackageScore extends Component {
         const tooltip = this._renderTooltipScore(capitalize(property), this.props.score.detail[property]);
 
         return (
-            <Tooltip overlayClassName="package-score-tooltip-component" placement="top" destroyTooltipOnHide overlay={ tooltip }>
+            <Tooltip overlayClassName="package-score-tooltip-component" placement="top" overlay={ tooltip }>
                 <div className="score-detailed">
                     <CircularProgressbar classForPercentage={ () => 'score-circular-progessbar' }
                         percentage={ this.props.score.detail[property] * 100 }

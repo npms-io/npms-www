@@ -96,20 +96,20 @@ class ResultsListItem extends Component {
     _renderLinks() {
         return (
             <div className="links">
-                <Tooltip placement="top" trigger={ ['hover'] } destroyTooltipOnHide overlay="View this package analysis">
+                <Tooltip placement="top" trigger={ ['hover'] } overlay="View this package analysis">
                     <a className="analysis-link" href={ `${this.props.apiUrl}/package/${encodeURIComponent(this.props.package.name)}` }
                         target="_blank">
                         <MaterialIcon id="timeline" />
                     </a>
                 </Tooltip>
 
-                <Tooltip placement="top" trigger={ ['hover'] } destroyTooltipOnHide overlay="View this package in npmjs.org">
+                <Tooltip placement="top" trigger={ ['hover'] } overlay="View this package in npmjs.org">
                     <a className="npm-link" href={ this.props.package.links.npm } target="_blank">
                         <SvgIcon id={ SvgIcon.npm } />
                     </a>
                 </Tooltip>
 
-                <Tooltip placement="top" trigger={ ['hover'] } destroyTooltipOnHide overlay="Try this package in RunKit">
+                <Tooltip placement="top" trigger={ ['hover'] } overlay="Try this package in RunKit">
                     <a className="runkit-link" href={ `https://runkit.com/npm/${encodeURIComponent(this.props.package.name)}` }
                         target="_blank">
                         <SvgIcon id={ SvgIcon.runkit } />

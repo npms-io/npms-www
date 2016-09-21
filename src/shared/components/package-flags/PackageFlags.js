@@ -24,7 +24,7 @@ class PackageFlags extends Component {
 
     _renderDeprecated() {
         return (
-            <Tooltip overlayClassName="package-flags-component-tooltip" placement="bottom" destroyTooltipOnHide
+            <Tooltip overlayClassName="package-flags-component-tooltip" placement="bottom"
                 overlay={ this.props.flags.deprecated }>
                 <div className="package-flag package-flag-deprecated clearfix">deprecated</div>
             </Tooltip>
@@ -43,7 +43,7 @@ class PackageFlags extends Component {
         );
 
         return (
-            <Tooltip overlayClassName="package-flags-component-tooltip" placement="bottom" destroyTooltipOnHide overlay={ overlay }>
+            <Tooltip overlayClassName="package-flags-component-tooltip" placement="bottom" overlay={ overlay }>
                 <div className="package-flag package-flag-insecure clearfix">insecure</div>
             </Tooltip>
         );
@@ -57,7 +57,7 @@ class PackageFlags extends Component {
         );
 
         return (
-            <Tooltip overlayClassName="package-flags-component-tooltip" placement="bottom" destroyTooltipOnHide overlay={ overlay }>
+            <Tooltip overlayClassName="package-flags-component-tooltip" placement="bottom" overlay={ overlay }>
                 <div className="package-flag package-flag-unstable clearfix">unstable</div>
             </Tooltip>
         );
