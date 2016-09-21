@@ -9,3 +9,12 @@
 .disable-transition *::after {
     transition: none !important;
 }
+
+/* Utility class to clear children floats
+   ========================================================================== */
+
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
