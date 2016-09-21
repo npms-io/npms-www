@@ -104,7 +104,7 @@ class ResultsListItem extends Component {
                 </Tooltip>
 
                 <Tooltip placement="top" trigger={ ['hover'] } destroyTooltipOnHide overlay="View this package in npmjs.org">
-                    <a className="npm-link" href={ this.props.package.links.npm } target="_blank" title="View this package in npmjs.org">
+                    <a className="npm-link" href={ this.props.package.links.npm } target="_blank">
                         <SvgIcon id={ SvgIcon.npm } />
                     </a>
                 </Tooltip>
