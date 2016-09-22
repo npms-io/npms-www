@@ -20,7 +20,7 @@ export default class SearchBoxHelp extends Component {
                     <li><code>not:deprecated</code> Exclude packages that are deprecated, unstable or insecure</li>
                 </ul>
 
-                <p>For the complete list of qualifiers, please read the <a href="https://api-docs.npms.io/#api-search-query" target="_blank">Search API documentation</a>.</p>
+                <p>For the complete list of qualifiers, please read the <a href="https://api-docs.npms.io/#api-Search-ExecuteSearchQuery" target="_blank">Search API documentation</a>.</p>
             </div>
         );
 
