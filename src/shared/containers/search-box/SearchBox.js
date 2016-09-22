@@ -65,6 +65,8 @@ class SearchBox extends Component {
                             value: this._inputValue,
                             placeholder: this._placeholder,
                             onChange: (e, { newValue }) => this._handleInputChange(newValue),
+                            autoCapitalize: 'none',
+                            autoCorrect: 'off',
                         } }
                         theme={ {
                             container: 'autosuggest-component-container',
