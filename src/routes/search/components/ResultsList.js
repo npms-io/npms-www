@@ -31,7 +31,11 @@ class ResultsList extends Component {
 
     _renderEmpty() {
         return (
-            <div className="results-list is-empty header-component-with-logo-align-with-search-box" />
+            <div className="results-list is-empty">
+                <div className="summary">
+                    <div className="header-component-with-logo-align-with-search-box" />
+                </div>
+            </div>
         );
     }
 
@@ -78,7 +82,7 @@ class ResultsList extends Component {
             <div className="results-list has-results">
                 <div className="summary">
                     <div className="header-component-with-logo-align-with-search-box ellipsis">
-                        <span className="nr-results">{ this.props.results.total }</span> results for
+                        <span className="nr-results">{ this.props.results.total }</span> results for{ '' }
                         <span className="query">{ this.props.results.q }</span>
                     </div>
                 </div>
