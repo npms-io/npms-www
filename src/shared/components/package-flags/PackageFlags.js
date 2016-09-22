@@ -38,7 +38,7 @@ class PackageFlags extends Component {
                     Package <code>{ this.props.package.name}@{ this.props.package.version}</code> has { ' ' }
                     <strong>{ this.props.flags.insecure }</strong> { this.props.flags.insecure > 1 ? 'vulnerabilities' : 'vulnerability' }.
                 </p>
-                <p>For more details, check against <a href={ `https://api.nodesecurity.io/check/${this.props.package.name}` } target="_blank">nodesecurity.io</a>.</p>
+                <p>For more details, check against <a href={ `https://nodesecurity.io/check/${this.props.package.name}` } target="_blank">nodesecurity.io</a>.</p>
             </div>
         );
 
