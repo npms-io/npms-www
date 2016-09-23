@@ -10,13 +10,13 @@ import { run, updateParams, scroll, reset } from 'shared/state/search/actions';
 
 class Search extends Component {
     componentWillMount() {
-        this.props.dispatch(updateParams(this.props.location.query));
+        this.props.dispatch(updateParams({ q: '', ...this.props.location.query }));
         this.props.dispatch(run());
     }
 
     componentWillReceiveProps(nextProps) {
         if (!isEqual(this.props.location.query, nextProps.location.query)) {
-            this.props.dispatch(updateParams(nextProps.location.query));
+            this.props.dispatch(updateParams({ q: '', ...nextProps.location.query }));
             this.props.dispatch(run());
         }
     }
