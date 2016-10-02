@@ -2,6 +2,7 @@
 
 import './LoadingBar.css';
 import React, { Component, PropTypes } from 'react';
+import ReactDOM from 'react-dom';
 import shallowCompare from 'react-addons-shallow-compare';
 
 const autoUpdateInterval = 250;
@@ -13,16 +14,16 @@ class LoadingBar extends Component {
         this.state = { percentage: 0 };
     }
 
-    componentDidMount() {
-        this._update();
+    componentWillMount() {
+        this._update(this.props);
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this._update(nextProps);
     }
 
     shouldComponentUpdate(nextProps, nextState) {
         return shallowCompare(this, nextProps, nextState);
-    }
-
-    componentDidUpdate() {
-        this._update();
     }
 
     componentWillUnmount() {
@@ -33,22 +34,20 @@ class LoadingBar extends Component {
     }
 
     render() {
-        const hasFinished = this.state.percentage === 1;
-        const className = `loading-bar-component ${hasFinished ? 'is-finished' : ''} ${this.state.instant ? 'disable-transition' : ''}`;
         const style = {
             transform: `scaleX(${this.state.percentage})`,
             opacity: this.state.percentage === 1 ? '0' : '1',
         };
 
         return (
-            <div className={ className } style={ style } />
+            <div className={ `loading-bar-component ${this.state.instant ? 'disable-transition' : ''}` } style={ style } />
         );
     }
 
     // ------------------------------------------------------
 
-    _update() {
-        if (this.props.running) {
+    _update(props) {
+        if (props.running) {
             this._start();
         } else {
             this._finish();
@@ -63,7 +62,13 @@ class LoadingBar extends Component {
         this._interval = setInterval(() => this._autoIncrement(), autoUpdateInterval);
 
         this.setState({ percentage: 0, instant: true }, () => {
-            setTimeout(() => this.props.running && this.setState({ percentage: firstPercentage, instant: false }), 0);
+            if (!this.props.running) {
+                return;
+            }
+
+            // Reflow, so that the disable-transition has been applied
+            ReactDOM.findDOMNode(this).offsetHeight;  // eslint-disable-line no-unused-expressions
+            this.setState({ percentage: firstPercentage, instant: false });
         });
     }
 
@@ -72,10 +77,10 @@ class LoadingBar extends Component {
             return;
         }
 
-        this.setState({ percentage: 1, instant: false });
-
         clearInterval(this._interval);
         this._interval = null;
+
+        this.setState({ percentage: 1, instant: false });
     }
 
     _autoIncrement() {
