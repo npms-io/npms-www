@@ -59,14 +59,18 @@ class LoadingBar extends Component {
             return;
         }
 
+        // Start a timer to increase the bar once in a while
         this._interval = setInterval(() => this._autoIncrement(), autoUpdateInterval);
 
+        // Reset bar to 0 instanteounsly
         this.setState({ percentage: 0, instant: true }, () => {
+            // At this point, state has been flushed.. but was the `running` prop changed meanwhile?
             if (!this.props.running) {
                 return;
             }
 
-            // Reflow, so that the disable-transition has been applied
+            // Now increase the bar to `firstPercentage`
+            // Note that we must reflow before, so that the disable-transition has been applied
             ReactDOM.findDOMNode(this).offsetHeight;  // eslint-disable-line no-unused-expressions
             this.setState({ percentage: firstPercentage, instant: false });
         });
@@ -77,9 +81,11 @@ class LoadingBar extends Component {
             return;
         }
 
+        // Stop the timer that increases the bar
         clearInterval(this._interval);
         this._interval = null;
 
+        // Move the bar to 100%
         this.setState({ percentage: 1, instant: false });
     }
 
