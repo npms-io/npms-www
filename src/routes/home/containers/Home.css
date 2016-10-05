@@ -40,19 +40,6 @@
     cursor: default;
 }
 
-.page-home .upper-half .logo > span {
-    position: relative;
-}
-
-.page-home .upper-half .logo .beta {
-    position: absolute;
-    right: 5px;
-    bottom: 12px;
-    color: #95a2c1;
-    font-size: 16px;
-    font-weight: 500;
-}
-
 .page-home .upper-half .moto {
     text-align: center;
 }

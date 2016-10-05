@@ -14,7 +14,7 @@ class Header extends Component {
         return (
             <div className={ `header-component ${this.props.showLogo ? 'has-logo' : ''} ${this.props.showSearch ? 'has-search' : ''}` }>
                 <div className="logo">
-                    { this.props.showLogo ? <Link to={ '/' }><span>npms<span className="beta">beta</span></span></Link> : '' }
+                    { this.props.showLogo ? <Link to={ '/' }>npms</Link> : '' }
                 </div>
 
                 <div className="search-box">
