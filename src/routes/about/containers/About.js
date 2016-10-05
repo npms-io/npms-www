@@ -6,6 +6,7 @@ import Header from 'shared/containers/header/Header';
 import MaterialIcon from 'shared/components/icon/MaterialIcon';
 import SvgIcon from 'shared/components/icon/SvgIcon';
 import keymetricsLogo from 'file!./logos/keymetrics.svg';
+import opbeatLogo from 'file!./logos/opbeat.svg';
 
 // TODO: split each section in its own component?
 // TODO: add screenshots of npmjs search results
@@ -160,12 +161,22 @@ class About extends Component {
 
                         <div className="sponsors-list">
                             <div className="sponsor">
+                                <a href="https://opbeat.com" className="logo" target="_blank">
+                                    <img src={ opbeatLogo } />
+                                </a>
+                                <div className="description">
+                                    <a href="https://opbeat.com" target="_blank">Opbeat</a> allows us to monitor our services performance, from backend to frontend.
+                                    Additionally, <a href="https://opbeat.com" target="_blank">Opbeat</a> is supporting <span className="highlight">npms</span> by generously paying for our hosting expenses.
+                                </div>
+                            </div>
+
+                            <div className="sponsor">
                                 <a href="https://keymetrics.io" className="logo" target="_blank">
                                     <img src={ keymetricsLogo } />
                                 </a>
                                 <div className="description">
-                                    We use <a href="http://pm2.keymetrics.io/" target="_blank">PM2</a> to deploy our services
-                                    and <a href="https://keymetrics.io" target="_blank">Keymetrics</a> allows us to easily manage these deployments and to monitor the production machines.
+                                    We use <a href="http://pm2.keymetrics.io" target="_blank">PM2</a> to deploy our services
+                                    and <a href="https://keymetrics.io" target="_blank">Keymetrics</a> provides an easy way to manage these deployments and to monitor the production machines.
                                 </div>
                             </div>
                         </div>

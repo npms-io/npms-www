@@ -114,12 +114,12 @@
 }
 
 .page-about .section-sponsors .sponsor {
-    margin: 20px 0 20px 0;
+    margin: 30px 0 30px 0;
 }
 
 .page-about .section-sponsors .sponsor .logo {
-    width: 250px;
-    margin-right: 40px;
+    width: 200px;
+    margin-right: 30px;
     display: inline-block;
     vertical-align: middle;
 }
@@ -129,7 +129,7 @@
 }
 
 .page-about .section-sponsors .sponsor .description {
-    width: calc(100% - 290px);
+    width: calc(100% - 230px);
     display: inline-block;
     vertical-align: middle;
 }
@@ -218,7 +218,7 @@
     .page-about .section-sponsors .sponsor .logo {
         width: calc(100% - 100px);
         min-width: 250px;
-        max-width: 380px;
+        max-width: 300px;
         margin: 0 auto;
         display: block;
     }

@@ -23,6 +23,10 @@ class Home extends Component {
                         <SearchBox initiallyEmpty initiallyFocused focusOnKeyDown />
                     </div>
                 </div>
+
+                <div className="bottom-half">
+                    Supported by <a href="https://opbeat.com" target="_blank">Opbeat</a> &lt;3
+                </div>
             </div>
         );
     }

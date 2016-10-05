@@ -66,6 +66,14 @@
     max-height: calc(35vh - 5px - 20px + ((65vh - 80px - 234px) / 2));
 }
 
+/* Bottom half */
+
+.page-home .bottom-half {
+    margin-top: 30px;
+    font-size: 16px;
+    text-align: center;
+}
+
 /* Media queries
    ========================================================================== */
 
