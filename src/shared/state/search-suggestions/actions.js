@@ -7,8 +7,8 @@ const maxResults = 10;
 
 function normalizeQuery(query) {
     return query
-    .replace(/[a-z0-9]+:([a-z0-9:]+)*/ig, '')  // Remove qualifiers
-    .replace(/\s\s*/g, ' ')                    // Remove extra spaces
+    .replace(/(\S+:'(?:[^'\\]|\\.)*')|(\S+:"(?:[^"\\]|\\.)*")|\S+:\S+/g, '')  // Remove qualifiers
+    .replace(/\s\s*/g, ' ')                                                   // Remove extra spaces left behind
     .trim();
 }
 
