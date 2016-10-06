@@ -16,8 +16,8 @@ class Terms extends Component {
 
                     <p>
                         Please read these Terms of Service ("Terms", "Terms of Service") carefully before using
-                        the <a href="https://npms.io">https://npms.io</a> website (the "Service") operated by
-                        <span className="npms">npms</span> ("us", "we", or "our").
+                        the <a href="https://npms.io">https://npms.io</a> website (the "Service") operated by <span className="npms">npms
+                        </span> ("us", "we", or "our").
                     </p>
                     <p>
                         Your access to and use of the Service is conditioned on your acceptance of and compliance with these Terms.
@@ -30,14 +30,14 @@ class Terms extends Component {
 
                     <h1>Links To Other Web Sites</h1>
                     <p>
-                        Our Service may contain links to third-party web sites or services that are not owned or controlled by
-                        <span className="npms">npms</span>.
+                        Our Service may contain links to third-party web sites or services that are not owned or
+                        controlled by <span className="npms">npms</span>.
                     </p>
                     <p>
                         <span className="npms">npms</span> has no control over, and assumes no responsibility for, the content, privacy
-                        policies, or practices of any third party web sites or services. You further acknowledge and agree that
-                        <span className="npms">npms</span> shall not be responsible or liable, directly or indirectly, for any damage or
-                        loss caused or alleged to be caused by or in connection with use of or reliance on any such content, goods or
+                        policies, or practices of any third party web sites or services. You further acknowledge and agree
+                        that <span className="npms">npms</span> shall not be responsible or liable, directly or indirectly, for any damage
+                        or loss caused or alleged to be caused by or in connection with use of or reliance on any such content, goods or
                         services available on or through any such web sites or services.
                     </p>
                     <p>
