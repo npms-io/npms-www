@@ -134,9 +134,9 @@ function buildConfig(options) {
             // See available options in https://github.com/chimurai/http-proxy-middleware
             proxy: {
                 '/api/*': {
-                    target: 'https://api.npms.io/v2/',
+                    target: 'https://api.npms.io/v2',
                     headers: { host: 'api.npms.io' },
-                    pathRewrite: { '^/api': '/' },
+                    pathRewrite: { '^/api': '' },
                     logLevel: 'warn',
                 },
             },
