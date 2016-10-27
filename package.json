@@ -43,7 +43,7 @@
     "react": "^15.0.0",
     "react-addons-css-transition-group": "^15.1.0",
     "react-addons-shallow-compare": "^15.0.1",
-    "react-autosuggest": "^6.0.3",
+    "react-autosuggest": "^7.0.0",
     "react-circular-progressbar": "^0.1.2",
     "react-dom": "^15.0.0",
     "react-gravatar": "^2.4.3",
