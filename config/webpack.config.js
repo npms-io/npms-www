@@ -148,6 +148,6 @@ function buildConfig(options) {
 // Do some trickery to export the config based on the running script name
 // This allows us to use the webpack executable directly as well as supporting
 // building the configuration dynamically
-const isWebpackExecutable = /^webpack\-?/.test(path.basename(process.argv[1]));
+const isWebpackExecutable = /^webpack-?/.test(path.basename(process.argv[1]));
 
 module.exports = isWebpackExecutable ? buildConfig(require('yargs').argv) : buildConfig;
