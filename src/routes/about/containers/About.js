@@ -21,7 +21,7 @@ class About extends Component {
 
                 <div className="page-content">
                     <p className="section-headline">
-                        <span className="highlight">npms</span> - which stands for npm search - was built to empower the javascript
+                        <span className="highlight">npms</span> - which stands for npm search - was built to empower the JavaScript
                         community by providing a better and open source search for node packages.
                     </p>
 
@@ -132,7 +132,7 @@ class About extends Component {
                                         between them. We can infer that people prefer packages from the users they follow.
                                     </p>
                                     <p>
-                                        As of this writting the personalities attributes are not yet implemented.
+                                        As of this writing the personalities attributes are not yet implemented.
                                     </p>
                                 </div>
                             </div>
