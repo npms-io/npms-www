@@ -1,5 +1,6 @@
 .page-search .results-list-item {
     position: relative;
+    min-height: 65px;  /* In case there is no description nor author */
     margin-bottom: 30px;
 }
 
