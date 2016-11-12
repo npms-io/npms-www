@@ -43,7 +43,7 @@ class SearchBoxSettings extends Component {
                     <div className="label">
                         <span className="text">Quality weight</span>
                         <span className="help">
-                            { this._renderSettingHelp('Tweak the weight that the quality score has to packages scores') }
+                            { this._renderSettingHelp('Tweak the weight that quality has for each package score') }
                         </span>
                         <span className="value">
                             ({ this.props.qualityWeight } / ~{ round(normalizeNumber(weightRange, this.props.qualityWeight), 2) })
@@ -56,7 +56,7 @@ class SearchBoxSettings extends Component {
                     <div className="label">
                         <span className="text">Popularity weight</span>
                         <span className="help">
-                            { this._renderSettingHelp('Tweak the weight that popularity has to packages scores') }
+                            { this._renderSettingHelp('Tweak the weight that popularity has for each package score') }
                         </span>
                         <span className="value">
                             ({ this.props.popularityWeight } / ~{ round(normalizeNumber(weightRange, this.props.popularityWeight), 2) })
@@ -70,7 +70,7 @@ class SearchBoxSettings extends Component {
                     <div className="label">
                         <span className="text">Maintenance weight</span>
                         <span className="help">
-                            { this._renderSettingHelp('Tweak the weight that maintenance has compared to packages scores') }
+                            { this._renderSettingHelp('Tweak the weight that maintenance has for each package score') }
                         </span>
                         <span className="value">
                             ({ this.props.maintenanceWeight } / ~{ round(normalizeNumber(weightRange, this.props.maintenanceWeight), 2) })
@@ -87,7 +87,7 @@ class SearchBoxSettings extends Component {
                     <div className="label">
                         <span className="text">Score effect</span>
                         <span className="help">
-                            { this._renderSettingHelp('Tweak the effect that package score has related to search relevance') }
+                            { this._renderSettingHelp('Tweak the effect that package score has over the search relevance') }
                         </span>
                         <span className="value">({ this.props.scoreEffect }) </span>
                     </div>
