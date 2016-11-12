@@ -1,11 +1,17 @@
 import './SearchBoxHelp.css';
 import React, { Component } from 'react';
+import shallowCompare from 'react-addons-shallow-compare';
 import MaterialIcon from 'shared/components/icon/MaterialIcon';
 import Tooltip from 'shared/components/tooltip/Tooltip';
 
 export default class SearchBoxHelp extends Component {
-    shouldComponentUpdate() {
-        return false;
+    constructor(props) {
+        super(props);
+        this.state = { isOpen: false };
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        return shallowCompare(this, nextProps, nextState);
     }
 
     render() {
@@ -25,11 +31,16 @@ export default class SearchBoxHelp extends Component {
         );
 
         return (
-            <Tooltip overlayClassName="search-box-help-component-tooltip" placement="bottom" overlay={ overlay }>
+            <Tooltip overlayClassName="search-box-help-component-tooltip" placement="bottom" overlay={ overlay } trigger="click"
+                onVisibleChange={ (visible) => this._onVisibleChange(visible) }>
                 <div className="search-box-help-component">
-                    <MaterialIcon id="help_outline" className="help" />
+                    <MaterialIcon id="help_outline" className={ this.state.isOpen ? 'hover' : '' }/>
                 </div>
             </Tooltip>
         );
+    }
+
+    _onVisibleChange(visible) {
+        this.setState({ isOpen: visible });  // eslint-disable-line react/no-set-state
     }
 }

@@ -6,6 +6,7 @@ import MaterialIcon from 'shared/components/icon/MaterialIcon';
 import { updateParams, navigate } from 'shared/state/search/actions';
 import { fetch as fetchSuggestions, reset as resetSuggestions } from 'shared/state/search-suggestions/actions';
 import SearchBoxHelp from './SearchBoxHelp';
+import SearchBoxSettings from './SearchBoxSettings';
 
 const placeholderSuggestions = [
     'test',
@@ -82,6 +83,7 @@ class SearchBox extends Component {
                         } } />
 
                     <SearchBoxHelp />
+                    <SearchBoxSettings />
 
                     <button ref={ (ref) => { this._buttonEl = ref; } }>
                         <MaterialIcon id="search" />

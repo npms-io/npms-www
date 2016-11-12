@@ -2,6 +2,12 @@
     padding: 5px;
     color: #a1a1a1;
     font-size: 16px;
+    cursor: pointer;
+}
+
+.search-box-help-component i:hover,
+.search-box-help-component i.hover {
+    color: #1fb387;
 }
 
 /* Tooltip
@@ -19,12 +25,6 @@
 
 /* Media queries
    ========================================================================== */
-
-@media (max-width: 374px) {
-    .search-box-help-component {
-        display: none;
-    }
-}
 
 @media (min-width: 420px) {
     .tooltip-component.search-box-help-component-tooltip {
