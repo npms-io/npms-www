@@ -1,10 +1,9 @@
 import { push } from 'react-router-redux';
 import queryString from 'query-string';
 import uniqueId from 'lodash/uniqueId';
+import kebabCase from 'lodash/kebabCase';
 import npmsRequest from 'shared/util/npmsRequest';
 import { markAsLoading, unmarkAsLoading } from 'shared/state/app/actions';
-
-// TODO: store results in an LRU to improve integration with back button?
 
 const resultsPerPage = 25;
 
@@ -13,6 +12,21 @@ function normalizeParams(params) {
         ...params,
         q: params.q.trim(),
     };
+}
+
+function buildApiQueryString(params, settings) {
+    const queryObject = { ...params };
+
+    Object.keys(settings).forEach((name) => {
+        const hyphenatedName = kebabCase(name);
+        const regExp = new RegExp(`${hyphenatedName}:[^\\s]+`);
+
+        if (!regExp.test(params.q)) {
+            queryObject.q += ` ${hyphenatedName}:${settings[name]}`;
+        }
+    });
+
+    return queryString.stringify(queryObject);
 }
 
 // --------------------------------------------------
@@ -64,7 +78,7 @@ export function run() {
             meta: { uid: uniqueId('search-') },
             payload: {
                 data: params,
-                promise: npmsRequest(`/search?${queryString.stringify(params)}`)
+                promise: npmsRequest(`/search?${buildApiQueryString(params, getState().search.settings)}`)
                 .then((res) => ({ total: res.total, items: res.results }))
                 .finally(() => dispatch(unmarkAsLoading())),
             },
@@ -94,7 +108,7 @@ export function scroll() {
             meta: { uid: uniqueId('search') },
             payload: {
                 data: params,
-                promise: npmsRequest(`/search?${queryString.stringify(params)}`)
+                promise: npmsRequest(`/search?${buildApiQueryString(params, getState().search.settings)}`)
                 .then((res) => ({ total: res.total, items: res.results }))
                 .finally(() => dispatch(unmarkAsLoading())),
             },

@@ -1,8 +1,6 @@
 import uniqueId from 'lodash/uniqueId';
 import npmsRequest from 'shared/util/npmsRequest';
 
-// TODO: Use a LRU to cache results
-
 const maxResults = 10;
 
 function normalizeQuery(query) {

@@ -7,7 +7,7 @@ import MaterialIcon from 'shared/components/icon/MaterialIcon';
 import SvgIcon from 'shared/components/icon/SvgIcon';
 import { toggleMenu } from 'shared/state/app/actions';
 
-// TODO: show header when scrolling top
+// TODO: Show header when scrolling top
 
 class Header extends Component {
     render() {

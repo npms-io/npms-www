@@ -137,9 +137,11 @@
 /* Media queries
    ========================================================================== */
 
-@media (max-width: 400px) {
+@media (max-width: 400px), (max-height: 360px) {
     .search-box-help-component,
-    .search-box-settings-component {
+    .search-box-settings-component,
+    .search-box-help-component-tooltip,
+    .search-box-settings-component-tooltip {
         display: none;
     }
 

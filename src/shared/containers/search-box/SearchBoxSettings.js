@@ -1,6 +1,6 @@
 import './SearchBoxSettings.css';
 import React, { Component, PropTypes } from 'react';
-import { round } from 'lodash';
+import round from 'lodash/round';
 import { connect } from 'react-redux';
 import shallowCompare from 'react-addons-shallow-compare';
 import normalizeNumber from 'normalize-number';
@@ -11,7 +11,6 @@ import { update, reset } from 'shared/state/search/settings/actions';
 
 const marks0to10 = { 0: '', 2.5: '', 5: '', 7.5: '', 10: '' };
 const marks0to20 = { 0: '', 5: '', 10: '', 15: '', 20: '' };
-
 
 class SearchBoxSettings extends Component {
     constructor(props) {
@@ -52,7 +51,7 @@ class SearchBoxSettings extends Component {
                 </div>
                 <div className="row row-slider row-popularity-weight">
                     <div className="label">
-                        Quality weight
+                        Popularity weight
                         <span>
                             ({ this.props.popularityWeight } / ~{ round(normalizeNumber(weightRange, this.props.popularityWeight), 2) })
                         </span>
@@ -62,7 +61,7 @@ class SearchBoxSettings extends Component {
                 </div>
                 <div className="row row-slider row-maintenance-weight">
                     <div className="label">
-                        Quality weight
+                        Maintenance weight
                         <span>
                             ({ this.props.maintenanceWeight } / ~{ round(normalizeNumber(weightRange, this.props.maintenanceWeight), 2) })
                         </span>
@@ -87,7 +86,7 @@ class SearchBoxSettings extends Component {
                     <label>
                         <input type="checkbox" name="boost-exact" checked={ this.props.boostExact }
                             onChange={ (e) => this._onSettingChange('boostExact', e.target.checked) }/>
-                        <span>Make exact matches appear first</span>
+                        <span>Exact matches appear first</span>
                     </label>
                 </div>
 

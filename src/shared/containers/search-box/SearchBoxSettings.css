@@ -165,3 +165,9 @@
         max-width: 400px;
     }
 }
+
+@media (max-height: 420px) {
+    .search-box-settings-component-tooltip .separator {
+        display: none;
+    }
+}
