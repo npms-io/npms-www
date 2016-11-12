@@ -41,8 +41,11 @@ class SearchBoxSettings extends Component {
                 { /* ------------- Weights sliders ------------- */ }
                 <div className="row row-slider row-quality-weight">
                     <div className="label">
-                        Quality weight
-                        <span>
+                        <span className="text">Quality weight</span>
+                        <span className="help">
+                            { this._renderSettingHelp('Tweak the weight that the quality score has to packages scores') }
+                        </span>
+                        <span className="value">
                             ({ this.props.qualityWeight } / ~{ round(normalizeNumber(weightRange, this.props.qualityWeight), 2) })
                         </span>
                     </div>
@@ -51,18 +54,25 @@ class SearchBoxSettings extends Component {
                 </div>
                 <div className="row row-slider row-popularity-weight">
                     <div className="label">
-                        Popularity weight
-                        <span>
+                        <span className="text">Popularity weight</span>
+                        <span className="help">
+                            { this._renderSettingHelp('Tweak the weight that popularity has to packages scores') }
+                        </span>
+                        <span className="value">
                             ({ this.props.popularityWeight } / ~{ round(normalizeNumber(weightRange, this.props.popularityWeight), 2) })
                         </span>
                     </div>
                     <Slider value={ this.props.popularityWeight } marks={ marks0to10 } tipFormatter={ null }
                         step={ 0.1 } min={ 0 } max={ 10 } onChange={ (value) => this._onSettingChange('popularityWeight', value) } />
+
                 </div>
                 <div className="row row-slider row-maintenance-weight">
                     <div className="label">
-                        Maintenance weight
-                        <span>
+                        <span className="text">Maintenance weight</span>
+                        <span className="help">
+                            { this._renderSettingHelp('Tweak the weight that maintenance has compared to packages scores') }
+                        </span>
+                        <span className="value">
                             ({ this.props.maintenanceWeight } / ~{ round(normalizeNumber(weightRange, this.props.maintenanceWeight), 2) })
                         </span>
                     </div>
@@ -74,7 +84,13 @@ class SearchBoxSettings extends Component {
 
                 { /* ------------- Score effect slider ------------- */ }
                 <div className="row row-slider row-score-effect">
-                    <div className="label">Score effect <span>({ this.props.scoreEffect }) </span></div>
+                    <div className="label">
+                        <span className="text">Score effect</span>
+                        <span className="help">
+                            { this._renderSettingHelp('Tweak the effect that package score has related to search relevance') }
+                        </span>
+                        <span className="value">({ this.props.scoreEffect }) </span>
+                    </div>
                     <Slider value={ this.props.scoreEffect } marks={ marks0to20 } tipFormatter={ null }
                         step={ 0.1 } min={ 0 } max={ 20 } onChange={ (value) => this._onSettingChange('scoreEffect', value) } />
                 </div>
@@ -86,13 +102,21 @@ class SearchBoxSettings extends Component {
                     <label>
                         <input type="checkbox" name="boost-exact" checked={ this.props.boostExact }
                             onChange={ (e) => this._onSettingChange('boostExact', e.target.checked) }/>
-                        <span>Exact matches appear first</span>
+                        <span className="text">Exact matches appear first</span>
                     </label>
                 </div>
 
                 { /* ------------- Reset settings ------------- */ }
                 <div className="reset-settings" onClick={ () => this._onResetSettingsClick() }>Reset settings</div>
             </div>
+        );
+    }
+
+    _renderSettingHelp(msg) {
+        return (
+            <Tooltip placement="bottom" overlay={ msg }>
+                <MaterialIcon id="help_outline" />
+            </Tooltip>
         );
     }
 
