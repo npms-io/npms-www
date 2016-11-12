@@ -1,20 +1,15 @@
 import { push } from 'react-router-redux';
 import queryString from 'query-string';
-import omit from 'lodash/omit';
-import pick from 'lodash/pick';
 import uniqueId from 'lodash/uniqueId';
-import { markAsLoading, unmarkAsLoading } from '../app/actions';
-import npmsRequest from '../../util/npmsRequest';
+import npmsRequest from 'shared/util/npmsRequest';
+import { markAsLoading, unmarkAsLoading } from 'shared/state/app/actions';
+
+// TODO: store results in an LRU to improve integration with back button?
 
 const resultsPerPage = 25;
-const validParams = ['q', 'size', 'from'];
-
-// TODO: store results in an LRU to improve integration with back button
 
 function buildSearchUrl(params) {
-    params = omit(params, 'from', 'size');  // Params that don't go into the URL
-
-    const queryStr = queryString.stringify(params)
+    const queryStr = queryString.stringify({ q: params.q })
     .replace(/%20/g, '+');                // Replace spaces with + because it's prettier
 
     return `/search${queryStr ? `?${queryStr}` : ''}`;
@@ -27,22 +22,24 @@ function normalizeParams(params) {
     };
 }
 
-export function updateParams(params) {
+// --------------------------------------------------
+
+export function updateQuery(q) {
     return {
-        type: 'Search.UPDATE_PARAMS',
-        payload: pick(params, validParams),
+        type: 'Search.Main.UPDATE_QUERY',
+        payload: q,
     };
 }
 
 export function reset() {
     return {
-        type: 'Search.RESET',
+        type: 'Search.Main.RESET',
     };
 }
 
 export function navigate() {
     return (dispatch, getState) => {
-        const params = normalizeParams(getState().search.params);
+        const params = normalizeParams(getState().search.main.params);
 
         // Only navigate if we got a query filled in
         params.q && dispatch(push(buildSearchUrl(params)));
@@ -51,7 +48,7 @@ export function navigate() {
 
 export function run() {
     return (dispatch, getState) => {
-        const params = normalizeParams(getState().search.params);
+        const params = normalizeParams(getState().search.main.params);
 
         // Reset if query is empty
         if (!params.q) {
@@ -63,7 +60,7 @@ export function run() {
         dispatch(markAsLoading());
 
         dispatch({
-            type: 'Search.RUN',
+            type: 'Search.Main.RUN',
             meta: { uid: uniqueId('search-') },
             payload: {
                 data: params,
@@ -72,13 +69,13 @@ export function run() {
                 .finally(() => dispatch(unmarkAsLoading())),
             },
         })
-        .catch(() => {});  // Search.RUN_REJECTED will be dispatched, so swallow any error
+        .catch(() => {});  // Search.Main.RUN_REJECTED will be dispatched, so swallow any error
     };
 }
 
 export function scroll() {
     return (dispatch, getState) => {
-        const state = getState().search;
+        const state = getState().search.main;
         const from = state.results.items.length;
 
         if (state.isLoading || from >= state.results.total) {
@@ -93,7 +90,7 @@ export function scroll() {
         dispatch(markAsLoading());
 
         dispatch({
-            type: 'Search.SCROLL',
+            type: 'Search.Main.SCROLL',
             meta: { uid: uniqueId('search') },
             payload: {
                 data: params,
@@ -102,6 +99,6 @@ export function scroll() {
                 .finally(() => dispatch(unmarkAsLoading())),
             },
         })
-        .catch(() => {});  // Search.SCROLL_REJECTED will be dispatched, so swallow any error
+        .catch(() => {});  // Search.Main.SCROLL_REJECTED will be dispatched, so swallow any error
     };
 }

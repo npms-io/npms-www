@@ -3,8 +3,8 @@ import React, { Component, PropTypes } from 'react';
 import Autosuggest from 'react-autosuggest';
 import { connect } from 'react-redux';
 import MaterialIcon from 'shared/components/icon/MaterialIcon';
-import { updateParams, navigate } from 'shared/state/search/actions';
-import { fetch as fetchSuggestions, reset as resetSuggestions } from 'shared/state/search-suggestions/actions';
+import { updateQuery, navigate } from 'shared/state/search/main/actions';
+import { fetch as fetchSuggestions, reset as resetSuggestions } from 'shared/state/search/suggestions/actions';
 import SearchBoxHelp from './SearchBoxHelp';
 import SearchBoxSettings from './SearchBoxSettings';
 
@@ -108,7 +108,7 @@ class SearchBox extends Component {
     }
 
     _handleInputChange(newValue) {
-        this.props.dispatch(updateParams({ q: newValue }));
+        this.props.dispatch(updateQuery(newValue));
     }
 
     _handleSubmit(e) {
@@ -135,7 +135,7 @@ class SearchBox extends Component {
     }
 
     _handleSuggestionSelected(e, selected) {
-        this.props.dispatch(updateParams({ q: selected.suggestionValue }));
+        this.props.dispatch(updateQuery(selected.suggestionValue));
         this._buttonEl.click();  // Submit the form (calling submit() was not working with react)
     }
 }
@@ -158,6 +158,6 @@ SearchBox.defaultProps = {
 
 export default connect((state, ownProps) => ({
     ...ownProps,
-    q: state.search.params.q,
-    suggestions: state.searchSuggestions.results,
+    q: state.search.main.params.q,
+    suggestions: state.search.suggestions.results,
 }))(SearchBox);

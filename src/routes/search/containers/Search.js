@@ -6,17 +6,17 @@ import isEqual from 'lodash/isEqual';
 import Header from 'shared/containers/header/Header';
 import ResultsList from '../components/ResultsList';
 import ScrollToTop from 'shared/components/scroll-to-top/ScrollToTop';
-import { run, updateParams, scroll, reset } from 'shared/state/search/actions';
+import { run, updateQuery, scroll, reset } from 'shared/state/search/main/actions';
 
 class Search extends Component {
     componentWillMount() {
-        this.props.dispatch(updateParams({ q: '', ...this.props.location.query }));
+        this.props.dispatch(updateQuery(this.props.location.query.q || ''));
         this.props.dispatch(run());
     }
 
     componentWillReceiveProps(nextProps) {
         if (!isEqual(this.props.location.query, nextProps.location.query)) {
-            this.props.dispatch(updateParams({ q: '', ...nextProps.location.query }));
+            this.props.dispatch(updateQuery(nextProps.location.query.q || ''));
             this.props.dispatch(run());
         }
     }
@@ -48,5 +48,5 @@ Search.propTypes = {
 };
 
 export default connect((state) => ({
-    search: state.search,
+    search: state.search.main,
 }))(Search);

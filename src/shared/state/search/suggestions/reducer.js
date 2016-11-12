@@ -12,14 +12,14 @@ function reset() {
 
 function fetch(state, action) {
     switch (action.type) {
-    case 'SearchSuggestions.FETCH_PENDING':
+    case 'Search.Suggestions.FETCH_PENDING':
         return {
             ...state,
             uid: action.meta.uid,
             query: action.payload,
             isLoading: true,
         };
-    case 'SearchSuggestions.FETCH_REJECTED':
+    case 'Search.Suggestions.FETCH_REJECTED':
         if (state.uid !== action.meta.uid) {
             return state;
         }
@@ -30,7 +30,7 @@ function fetch(state, action) {
             results: null,
             error: action.payload,
         };
-    case 'SearchSuggestions.FETCH_FULFILLED':
+    case 'Search.Suggestions.FETCH_FULFILLED':
         if (state.uid !== action.meta.uid) {
             return state;
         }
@@ -46,13 +46,15 @@ function fetch(state, action) {
     }
 }
 
+// --------------------------------------------------
+
 export function searchSuggestions(state = defaultState, action) {
     switch (action.type) {
-    case 'SearchSuggestions.RESET':
+    case 'Search.Suggestions.RESET':
         return reset(state, action);
-    case 'SearchSuggestions.FETCH_PENDING':
-    case 'SearchSuggestions.FETCH_FULFILLED':
-    case 'SearchSuggestions.FETCH_REJECTED':
+    case 'Search.Suggestions.FETCH_PENDING':
+    case 'Search.Suggestions.FETCH_FULFILLED':
+    case 'Search.Suggestions.FETCH_REJECTED':
         return fetch(state, action);
     default:
         return state;

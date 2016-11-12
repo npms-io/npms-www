@@ -1,9 +1,9 @@
 import uniqueId from 'lodash/uniqueId';
-import npmsRequest from '../../util/npmsRequest';
-
-const maxResults = 10;
+import npmsRequest from 'shared/util/npmsRequest';
 
 // TODO: Use a LRU to cache results
+
+const maxResults = 10;
 
 function normalizeQuery(query) {
     return query
@@ -12,9 +12,11 @@ function normalizeQuery(query) {
     .trim();
 }
 
+// --------------------------------------------------
+
 export function reset() {
     return {
-        type: 'SearchSuggestions.RESET',
+        type: 'Search.Suggestions.RESET',
     };
 }
 
@@ -23,7 +25,7 @@ export function fetch(query) {
         query = normalizeQuery(query);
 
         // Do nothing if current query is the same
-        if (getState().searchSuggestions.query === query) {
+        if (getState().search.suggestions.query === query) {
             return;
         }
 
@@ -33,13 +35,13 @@ export function fetch(query) {
         }
 
         dispatch({
-            type: 'SearchSuggestions.FETCH',
+            type: 'Search.Suggestions.FETCH',
             meta: { uid: uniqueId('search-suggestions-') },
             payload: {
                 data: query,
                 promise: npmsRequest(`/search/suggestions?q=${encodeURIComponent(query)}&size=${maxResults}`),
             },
         })
-        .catch(() => {});  // SearchSuggestions.FETCH_REJECTED will be dispatched, so swallow any error
+        .catch(() => {});  // Search.Suggestions.FETCH_REJECTED will be dispatched, so swallow any error
     };
 }

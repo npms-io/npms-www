@@ -10,5 +10,8 @@
         "@satazor/eslint-config/addons/es6-modules",
         "@satazor/eslint-config/addons/browser",
         "@satazor/eslint-config/addons/react"
-    ]
+    ],
+    "globals": {
+        "process": false
+    }
 }

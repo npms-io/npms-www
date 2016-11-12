@@ -1,53 +1,39 @@
-import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import promiseMiddleware from 'redux-promise-middleware';
 import { browserHistory } from 'react-router';
-import { routerMiddleware } from 'react-router-redux';
-import omit from 'lodash/omit';
+import { syncHistoryWithStore, routerMiddleware, routerReducer } from 'react-router-redux';
 import appReducer from './app/reducer';
 import searchReducer from './search/reducer';
-import searchSuggestionsReducer from './search-suggestions/reducer';
-
-const store = createStore((state = {}) => state, {}, compose(
-    applyMiddleware(routerMiddleware(browserHistory), thunkMiddleware, promiseMiddleware()),
-    window.devToolsExtension ? window.devToolsExtension() : (f) => f
-));
-
-let registeredReducers = {
-    app: appReducer,
-    search: searchReducer,
-    searchSuggestions: searchSuggestionsReducer,
-};
-
-/**
- * Adds an object of reducers.
- *
- * @param {Object}  reducers     The reducers object, similar to what you would pass to combineReducers
- * @param {Boolean} [apply=true] False to not apply the combined reducer to the store
- */
-export function addReducers(reducers, apply) {
-    registeredReducers = { ...registeredReducers, ...reducers };
-    (apply || apply == null) && applyReducers();
-}
-
-/**
- * Removes reducers.
- *
- * @param {Array}   reducers     The reducers names to remove.
- * @param {Boolean} [apply=true] False to not apply the combined reducer to the store
- */
-export function removeReducers(reducers, apply) {
-    registeredReducers = omit(registeredReducers, reducers);
-    (apply || apply == null) && applyReducers();
-}
-
-/**
- * Applies the combined reducers to the store.
- */
-export function applyReducers() {
-    store.replaceReducer(combineReducers(registeredReducers));
-}
-
-applyReducers();
 
 export default store;
+let store = null;
+
+export function configure(history) {
+    const reducer = combineReducers({
+        app: appReducer,
+        search: searchReducer,
+        routing: routerReducer,
+    });
+
+    const middlewares = [
+        routerMiddleware(history),
+        thunkMiddleware,
+        promiseMiddleware(),
+    ];
+
+    const enhancers = [
+        applyMiddleware(...middlewares),
+    ];
+
+    // If Redux DevTools Extension is installed use it, otherwise use Redux compose
+    const composeEnhancers = process.env.NODE_ENV !== 'production' && typeof window === 'object' &&
+        window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : compose;
+
+
+    store = createStore(reducer, composeEnhancers(...enhancers));
+
+    syncHistoryWithStore(browserHistory, store);
+
+    return store;
+}

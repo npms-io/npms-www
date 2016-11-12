@@ -21,6 +21,16 @@
     margin-bottom: 15px;
 }
 
+.search-box-settings-component-tooltip .row-slider .label span {
+    margin-left: 5px;
+    color: #6e6e6f;
+    font-size: 11px;
+}
+
+.search-box-settings-component-tooltip .row-boost-exact label {
+    user-select: none;
+}
+
 .search-box-settings-component-tooltip .row-boost-exact input[type="checkbox"] {
     margin: 0;
     vertical-align: middle;
