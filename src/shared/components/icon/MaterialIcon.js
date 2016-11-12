@@ -1,9 +1,10 @@
 import './MaterialIcon.css';
 import React, { Component, PropTypes } from 'react';
+import shallowCompare from 'react-addons-shallow-compare';
 
 class MaterialIcon extends Component {
-    shouldComponentUpdate() {
-        return false;
+    shouldComponentUpdate(nextProps, nextState) {
+        return shallowCompare(this, nextProps, nextState);
     }
 
     render() {
