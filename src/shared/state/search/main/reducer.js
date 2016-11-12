@@ -6,7 +6,9 @@ const defaultState = {
     error: null,
 };
 
-function reset(state) {
+// --------------------------------------------------
+
+function resetReducer(state) {
     return {
         ...defaultState,
         params: {
@@ -17,7 +19,7 @@ function reset(state) {
     };
 }
 
-function updateQuery(state, action) {
+function updateQueryReducer(state, action) {
     return {
         ...state,
         params: {
@@ -27,7 +29,7 @@ function updateQuery(state, action) {
     };
 }
 
-function run(state, action) {
+function runReducer(state, action) {
     switch (action.type) {
     case 'Search.Main.RUN_PENDING':
         return {
@@ -66,7 +68,7 @@ function run(state, action) {
     }
 }
 
-function scroll(state, action) {
+function scrollReducer(state, action) {
     switch (action.type) {
     case 'Search.Main.SCROLL_PENDING':
         return {
@@ -105,22 +107,20 @@ function scroll(state, action) {
     }
 }
 
-// --------------------------------------------------
-
 export function mainReducer(state = defaultState, action) {
     switch (action.type) {
     case 'Search.Main.UPDATE_QUERY':
-        return updateQuery(state, action);
+        return updateQueryReducer(state, action);
     case 'Search.Main.RESET':
-        return reset(state, action);
+        return resetReducer(state, action);
     case 'Search.Main.RUN_PENDING':
     case 'Search.Main.RUN_FULFILLED':
     case 'Search.Main.RUN_REJECTED':
-        return run(state, action);
+        return runReducer(state, action);
     case 'Search.Main.SCROLL_PENDING':
     case 'Search.Main.SCROLL_FULFILLED':
     case 'Search.Main.SCROLL_REJECTED':
-        return scroll(state, action);
+        return scrollReducer(state, action);
     default:
         return state;
     }

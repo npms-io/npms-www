@@ -8,13 +8,6 @@ import { markAsLoading, unmarkAsLoading } from 'shared/state/app/actions';
 
 const resultsPerPage = 25;
 
-function buildSearchUrl(params) {
-    const queryStr = queryString.stringify({ q: params.q })
-    .replace(/%20/g, '+');                // Replace spaces with + because it's prettier
-
-    return `/search${queryStr ? `?${queryStr}` : ''}`;
-}
-
 function normalizeParams(params) {
     return {
         ...params,
@@ -42,7 +35,14 @@ export function navigate() {
         const params = normalizeParams(getState().search.main.params);
 
         // Only navigate if we got a query filled in
-        params.q && dispatch(push(buildSearchUrl(params)));
+        if (!params.q) {
+            return;
+        }
+
+        const queryStr = queryString.stringify({ q: params.q })
+        .replace(/%20/g, '+');  // Replace spaces with + because it's prettier
+
+        dispatch(push(`/search?${queryStr}`));
     };
 }
 

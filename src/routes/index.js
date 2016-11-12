@@ -1,5 +1,5 @@
 import { markAsLoading, unmarkAsLoading } from 'shared/state/app/actions';
-import store from 'shared/state/store';
+import { get as getStore } from 'shared/state/store';
 import homeRoute from './home';
 import searchRoute from './search';
 
@@ -9,12 +9,12 @@ import searchRoute from './search';
 function startLoading() {
     let timeout = setTimeout(() => {
         timeout = null;
-        store.dispatch(markAsLoading());
+        getStore().dispatch(markAsLoading());
     }, 1);
 
     return () => {
         if (!timeout) {
-            store.dispatch(unmarkAsLoading());
+            getStore().dispatch(unmarkAsLoading());
         } else {
             clearTimeout(timeout);
         }

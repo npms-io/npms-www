@@ -6,8 +6,11 @@ import { syncHistoryWithStore, routerMiddleware, routerReducer } from 'react-rou
 import appReducer from './app/reducer';
 import searchReducer from './search/reducer';
 
-export default store;
 let store = null;
+
+export function get() {
+    return store;
+}
 
 export function configure(history) {
     const reducer = combineReducers({
