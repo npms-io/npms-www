@@ -31,7 +31,6 @@ function buildConfig(options) {
             isDev && 'webpack-dev-server/client?/',  // Necessary for hot reloading
             isDev && 'webpack/hot/only-dev-server',  // Necessary for hot reloading
             `${projectDir}/src/bootstrap.js`,
-
         ].filter((val) => !!val),
         output: {
             path: `${projectDir}/web/build/`,
@@ -114,7 +113,7 @@ function buildConfig(options) {
             }),
         ].filter((val) => !!val),
         debug: isDev,
-        devtool: isDev ? 'cheap-module-source-map' : 'source-map',
+        devtool: isDev ? 'eval-source-map' : 'source-map',
         // ---------------------------------------------------------
         // Webpack dev server configuration
         // ---------------------------------------------------------
