@@ -38,6 +38,7 @@
     "normalize-number": "^1.0.3",
     "positions": "^1.6.1",
     "query-string": "^4.1.0",
+    "rc-slider": "^5.2.1",
     "rc-tooltip": "^3.3.2",
     "react": "^15.0.0",
     "react-addons-css-transition-group": "^15.1.0",
