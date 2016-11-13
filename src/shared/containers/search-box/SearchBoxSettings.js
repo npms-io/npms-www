@@ -143,5 +143,5 @@ SearchBoxSettings.propTypes = {
 };
 
 export default connect((state) => ({
-    ...state.search.settings,
+    ...state.search.settings.current,
 }))(SearchBoxSettings);

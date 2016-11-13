@@ -1,4 +1,4 @@
-import { run as runSearch } from '../main/actions';
+import { navigate } from '../main/actions';
 
 let rerunSearchTimer;
 
@@ -9,7 +9,7 @@ function rerunSearch(dispatch, getState) {
         rerunSearchTimer && clearTimeout(rerunSearchTimer);
         rerunSearchTimer = setTimeout(() => {
             rerunSearchTimer = null;
-            currentSearchUid === getState().search.main.uid && dispatch(runSearch());
+            currentSearchUid === getState().search.main.uid && dispatch(navigate(true));
         }, 500);
     }
 }

@@ -1,6 +1,8 @@
-import { push } from 'react-router-redux';
+import { push as pushUrl, replace as replaceUrl } from 'react-router-redux';
 import queryString from 'query-string';
 import uniqueId from 'lodash/uniqueId';
+import omit from 'lodash/omit';
+import forIn from 'lodash/forIn';
 import kebabCase from 'lodash/kebabCase';
 import npmsRequest from 'shared/util/npmsRequest';
 import { markAsLoading, unmarkAsLoading } from 'shared/state/app/actions';
@@ -17,16 +19,35 @@ function normalizeParams(params) {
 function buildApiQueryString(params, settings) {
     const queryObject = { ...params };
 
-    Object.keys(settings).forEach((name) => {
+    forIn(settings.current, (value, name) => {
         const hyphenatedName = kebabCase(name);
         const regExp = new RegExp(`${hyphenatedName}:[^\\s]+`);
 
         if (!regExp.test(params.q)) {
-            queryObject.q += ` ${hyphenatedName}:${settings[name]}`;
+            queryObject.q += ` ${hyphenatedName}:${value}`;
         }
     });
 
     return queryString.stringify(queryObject);
+}
+
+function buildQueryString(params, settings) {
+    const queryObject = omit(params, 'from', 'size');
+
+    forIn(settings.current, (value, name) => {
+        const hyphenatedName = kebabCase(name);
+        const regExp = new RegExp(`\\s?${hyphenatedName}:([^\\s]+)`);
+        const match = params.q.match(regExp);
+        const queryValue = match ? match[1] : value.toString();
+
+        queryObject.q = queryObject.q.replace(regExp, '');
+
+        if (settings.defaults[name].toString() !== queryValue || value.toString() !== queryValue) {
+            queryObject.q += ` ${hyphenatedName}:${queryValue}`;
+        }
+    });
+
+    return queryString.stringify(queryObject).replace(/%20/g, '+');  // Replace spaces with + because it's prettier
 }
 
 // --------------------------------------------------
@@ -38,47 +59,58 @@ export function updateQuery(q) {
     };
 }
 
+export function normalizeQuery() {
+    return (dispatch, getState) => dispatch({
+        type: 'Search.Main.NORMALIZE_QUERY',
+        meta: { settings: getState().search.settings },
+    });
+}
+
 export function reset() {
     return {
         type: 'Search.Main.RESET',
     };
 }
 
-export function navigate() {
+export function navigate(replace) {
     return (dispatch, getState) => {
         const params = normalizeParams(getState().search.main.params);
+        const settings = getState().search.settings;
 
         // Only navigate if we got a query filled in
         if (!params.q) {
             return;
         }
 
-        const queryStr = queryString.stringify({ q: params.q })
-        .replace(/%20/g, '+');  // Replace spaces with + because it's prettier
+        const queryStr = buildQueryString(params, settings);
+        const url = `/search?${queryStr}`;
 
-        dispatch(push(`/search?${queryStr}`));
+        // Navigate or normalize query
+        if (location.pathname + location.search !== url) {
+            dispatch(replace ? replaceUrl(url) : pushUrl(url));
+        } else {
+            dispatch(normalizeQuery());
+        }
     };
 }
 
 export function run() {
     return (dispatch, getState) => {
-        const params = normalizeParams(getState().search.main.params);
+        const params = getState().search.main.params;
+        const settings = getState().search.settings;
 
         // Reset if query is empty
-        if (!params.q) {
+        if (!params.q.trim()) {
             return dispatch(reset());
         }
-
-        params.from = 0;
 
         dispatch(markAsLoading());
 
         dispatch({
             type: 'Search.Main.RUN',
-            meta: { uid: uniqueId('search-') },
+            meta: { uid: uniqueId('search-'), settings },
             payload: {
-                data: params,
-                promise: npmsRequest(`/search?${buildApiQueryString(params, getState().search.settings)}`)
+                promise: npmsRequest(`/search?${buildApiQueryString(params, settings)}`)
                 .then((res) => ({ total: res.total, items: res.results }))
                 .finally(() => dispatch(unmarkAsLoading())),
             },
@@ -96,6 +128,7 @@ export function scroll() {
             return;
         }
 
+        // TODO: Bug!!! Do not use current state
         const params = normalizeParams({
             ...state.params,
             ...{ from: state.results.items.length, size: resultsPerPage },

@@ -1,3 +1,6 @@
+import forIn from 'lodash/forIn';
+import kebabCase from 'lodash/kebabCase';
+
 const defaultState = {
     uid: null,
     params: { q: '', from: 0, size: 25 },
@@ -5,6 +8,24 @@ const defaultState = {
     results: null,
     error: null,
 };
+
+// --------------------------------------------------
+
+function normalizeQuery(q, settings) {
+    console.log('normalize', q, settings);
+    forIn(settings.current, (value, name) => {
+        const hyphenatedName = kebabCase(name);
+        const regExp = new RegExp(`\\s?${hyphenatedName}:([^\\s]+)`);
+        const match = q.match(regExp);
+
+        // TODO: SPACE
+        if (match && match[1] === value.toString()) {
+            q = q.replace(regExp, '');
+        }
+    });
+
+    return q.trim();
+}
 
 // --------------------------------------------------
 
@@ -29,15 +50,26 @@ function updateQueryReducer(state, action) {
     };
 }
 
+function normalizeQueryReducer(state, action) {
+    return {
+        ...state,
+        params: {
+            ...state.params,
+            q: normalizeQuery(state.params.q, action.meta.settings),
+        },
+    };
+}
+
 function runReducer(state, action) {
     switch (action.type) {
-    case 'Search.Main.RUN_PENDING':
+    case 'Search.Main.RUN_PENDING': {
         return {
             ...state,
             uid: action.meta.uid,
-            params: action.payload,
+            params: { ...state.params, q: normalizeQuery(state.params.q, action.meta.settings), from: 0 }, // removeSettingsFromQuery({ ...state.params, from: 0 }, action.meta.settings),
             isLoading: true,
         };
+    }
     case 'Search.Main.RUN_REJECTED':
         if (state.uid !== action.meta.uid) {
             return state;
@@ -111,6 +143,8 @@ export function mainReducer(state = defaultState, action) {
     switch (action.type) {
     case 'Search.Main.UPDATE_QUERY':
         return updateQueryReducer(state, action);
+    case 'Search.Main.NORMALIZE_QUERY':
+        return normalizeQueryReducer(state, action);
     case 'Search.Main.RESET':
         return resetReducer(state, action);
     case 'Search.Main.RUN_PENDING':
