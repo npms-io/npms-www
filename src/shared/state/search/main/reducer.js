@@ -27,7 +27,6 @@ function normalizeQuery(state, action) {
         const regExp = new RegExp(`\\s?${hyphenatedName}:([^\\s]+)`);
         const match = q.match(regExp);
 
-        // TODO: SPACE
         if (match && match[1] === value.toString()) {
             q = q.replace(regExp, '');
         }
