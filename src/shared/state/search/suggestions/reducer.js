@@ -8,11 +8,11 @@ const defaultState = {
 
 // --------------------------------------------------
 
-function resetReducer() {
+function reset() {
     return defaultState;
 }
 
-function fetchReducer(state, action) {
+function fetch(state, action) {
     switch (action.type) {
     case 'Search.Suggestions.FETCH_PENDING':
         return {
@@ -51,11 +51,11 @@ function fetchReducer(state, action) {
 export function searchSuggestions(state = defaultState, action) {
     switch (action.type) {
     case 'Search.Suggestions.RESET':
-        return resetReducer(state, action);
+        return reset(state, action);
     case 'Search.Suggestions.FETCH_PENDING':
     case 'Search.Suggestions.FETCH_FULFILLED':
     case 'Search.Suggestions.FETCH_REJECTED':
-        return fetchReducer(state, action);
+        return fetch(state, action);
     default:
         return state;
     }

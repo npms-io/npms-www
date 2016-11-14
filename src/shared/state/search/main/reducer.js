@@ -3,7 +3,7 @@ import kebabCase from 'lodash/kebabCase';
 
 const defaultState = {
     uid: null,
-    params: { q: '', from: 0, size: 25 },
+    q: '',
     isLoading: false,
     results: null,
     error: null,
@@ -11,8 +11,17 @@ const defaultState = {
 
 // --------------------------------------------------
 
-function normalizeQuery(q, settings) {
-    console.log('normalize', q, settings);
+function updateQuery(state, action) {
+    return {
+        ...state,
+        q: action.payload,
+    };
+}
+
+function normalizeQuery(state, action) {
+    const settings = action.payload.settings;
+    let q = state.q;
+
     forIn(settings.current, (value, name) => {
         const hyphenatedName = kebabCase(name);
         const regExp = new RegExp(`\\s?${hyphenatedName}:([^\\s]+)`);
@@ -24,49 +33,41 @@ function normalizeQuery(q, settings) {
         }
     });
 
-    return q.trim();
-}
+    q = q.trim();
 
-// --------------------------------------------------
-
-function resetReducer(state) {
-    return {
-        ...defaultState,
-        params: {
-            ...state.params,
-            q: '',
-            from: 0,
-        },
-    };
-}
-
-function updateQueryReducer(state, action) {
     return {
         ...state,
-        params: {
-            ...state.params,
-            q: action.payload,
-        },
+        q,
     };
 }
 
-function normalizeQueryReducer(state, action) {
+function tidyQuerySettings(state, action) {
+    const changed = action.payload.changed ? action.payload.changed : Object.keys(action.payload.settings.current);
+    let q = state.q;
+
+    changed.forEach((name) => {
+        const hyphenatedName = kebabCase(name);
+        const regExp = new RegExp(`\\s?${hyphenatedName}:([^\\s]+)`);
+
+        q = q.replace(regExp, '');
+    });
+
     return {
         ...state,
-        params: {
-            ...state.params,
-            q: normalizeQuery(state.params.q, action.meta.settings),
-        },
+        q,
     };
 }
 
-function runReducer(state, action) {
+function reset() {
+    return defaultState;
+}
+
+function run(state, action) {
     switch (action.type) {
     case 'Search.Main.RUN_PENDING': {
         return {
             ...state,
             uid: action.meta.uid,
-            params: { ...state.params, q: normalizeQuery(state.params.q, action.meta.settings), from: 0 }, // removeSettingsFromQuery({ ...state.params, from: 0 }, action.meta.settings),
             isLoading: true,
         };
     }
@@ -90,7 +91,7 @@ function runReducer(state, action) {
             ...state,
             isLoading: false,
             results: {
-                q: state.params.q,
+                q: state.q,
                 ...action.payload,
             },
             error: null,
@@ -100,13 +101,12 @@ function runReducer(state, action) {
     }
 }
 
-function scrollReducer(state, action) {
+function scroll(state, action) {
     switch (action.type) {
     case 'Search.Main.SCROLL_PENDING':
         return {
             ...state,
             uid: action.meta.uid,
-            params: action.payload,
             isLoading: true,
         };
     case 'Search.Main.SCROLL_REJECTED':
@@ -128,7 +128,6 @@ function scrollReducer(state, action) {
             ...state,
             isLoading: false,
             results: {
-                q: state.params.q,
                 ...action.payload,
                 items: state.results.items.concat(action.payload.items),
             },
@@ -142,19 +141,21 @@ function scrollReducer(state, action) {
 export function mainReducer(state = defaultState, action) {
     switch (action.type) {
     case 'Search.Main.UPDATE_QUERY':
-        return updateQueryReducer(state, action);
+        return updateQuery(state, action);
     case 'Search.Main.NORMALIZE_QUERY':
-        return normalizeQueryReducer(state, action);
+        return normalizeQuery(state, action);
+    case 'Search.Main.TIDY_QUERY_SETTINGS':
+        return tidyQuerySettings(state, action);
     case 'Search.Main.RESET':
-        return resetReducer(state, action);
+        return reset(state, action);
     case 'Search.Main.RUN_PENDING':
     case 'Search.Main.RUN_FULFILLED':
     case 'Search.Main.RUN_REJECTED':
-        return runReducer(state, action);
+        return run(state, action);
     case 'Search.Main.SCROLL_PENDING':
     case 'Search.Main.SCROLL_FULFILLED':
     case 'Search.Main.SCROLL_REJECTED':
-        return scrollReducer(state, action);
+        return scroll(state, action);
     default:
         return state;
     }

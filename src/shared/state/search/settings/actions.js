@@ -1,40 +1,45 @@
-import { navigate } from '../main/actions';
+import { navigate, tidyQuerySettings } from '../main/actions';
 
 let rerunSearchTimer;
 
-function rerunSearch(dispatch, getState) {
-    const currentSearchUid = getState().search.main.uid;
+function rerunSearch(dispatch) {
+    rerunSearchTimer && clearTimeout(rerunSearchTimer);
+    rerunSearchTimer = setTimeout(() => {
+        rerunSearchTimer = null;
 
-    if (currentSearchUid) {
-        rerunSearchTimer && clearTimeout(rerunSearchTimer);
-        rerunSearchTimer = setTimeout(() => {
-            rerunSearchTimer = null;
-            currentSearchUid === getState().search.main.uid && dispatch(navigate(true));
-        }, 500);
-    }
+        if (location.pathname === '/search') {
+            dispatch(navigate({ replace: true }));
+        }
+    }, 500);
 }
 
 // -----------------------------------------
 
 export function reset() {
-    return (dispatch, getState) => {
+    return (dispatch) => {
         dispatch({
             type: 'Search.Settings.RESET',
         });
 
-        // Update search if visible
-        rerunSearch(dispatch, getState);
+        // Remove all settings from the query string
+        dispatch(tidyQuerySettings());
+
+        // Re-run search
+        rerunSearch(dispatch);
     };
 }
 
 export function update(settings) {
-    return (dispatch, getState) => {
+    return (dispatch) => {
         dispatch({
             type: 'Search.Settings.UPDATE',
             payload: settings,
         });
 
-        // Update search if visible
-        rerunSearch(dispatch, getState);
+        // Remove changed settings from the query string
+        dispatch(tidyQuerySettings(Object.keys(settings)));
+
+        // Re-run search
+        rerunSearch(dispatch);
     };
 }

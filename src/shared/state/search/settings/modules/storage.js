@@ -3,7 +3,7 @@
 const hasLocalStorage = typeof localStorage !== 'undefined';
 let persistTimer = null;
 
-function read() {
+export function read() {
     let state;
 
     if (hasLocalStorage) {
@@ -19,7 +19,7 @@ function read() {
     return state || null;
 }
 
-function persist(state) {
+export function persist(state) {
     if (hasLocalStorage) {
         let json;
 
@@ -35,7 +35,7 @@ function persist(state) {
     return state;
 }
 
-function persistDelayed(state) {
+export function persistDelayed(state) {
     if (hasLocalStorage) {
         persistTimer && clearTimeout(persistTimer);
         persistTimer = setTimeout(() => {
@@ -46,9 +46,3 @@ function persistDelayed(state) {
 
     return state;
 }
-
-export default {
-    read,
-    persist,
-    persistDelayed,
-};

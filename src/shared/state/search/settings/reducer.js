@@ -1,4 +1,4 @@
-import storage from './modules/storage';
+import * as storage from './modules/storage';
 import pick from 'lodash/pick';
 import assignWith from 'lodash/assignWith';
 
@@ -28,7 +28,7 @@ function getInitialState() {
 
 // --------------------------------------------------
 
-function resetReducer() {
+function reset() {
     storage.persistDelayed(defaults);
 
     return {
@@ -37,7 +37,7 @@ function resetReducer() {
     };
 }
 
-function updateReducer(state, action) {
+function update(state, action) {
     const current = { ...state.current, ...action.payload };
 
     storage.persistDelayed(current);
@@ -51,9 +51,9 @@ function updateReducer(state, action) {
 export function settingsReducer(state = getInitialState(), action) {
     switch (action.type) {
     case 'Search.Settings.RESET':
-        return resetReducer(state, action);
+        return reset(state, action);
     case 'Search.Settings.UPDATE':
-        return updateReducer(state, action);
+        return update(state, action);
     default:
         return state;
     }

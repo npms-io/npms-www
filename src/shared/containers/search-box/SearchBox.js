@@ -158,6 +158,6 @@ SearchBox.defaultProps = {
 
 export default connect((state, ownProps) => ({
     ...ownProps,
-    q: state.search.main.params.q,
+    q: state.search.main.q,
     suggestions: state.search.suggestions.results,
 }))(SearchBox);
