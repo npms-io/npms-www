@@ -6,13 +6,7 @@ import { syncHistoryWithStore, routerMiddleware, routerReducer } from 'react-rou
 import appReducer from './app/reducer';
 import searchReducer from './search/reducer';
 
-let store = null;
-
-export function get() {
-    return store;
-}
-
-export function configure(history) {
+export default function buildStore(history) {
     const reducer = combineReducers({
         app: appReducer,
         search: searchReducer,
@@ -34,7 +28,7 @@ export function configure(history) {
         window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : compose;
 
 
-    store = createStore(reducer, composeEnhancers(...enhancers));
+    const store = createStore(reducer, composeEnhancers(...enhancers));
 
     syncHistoryWithStore(browserHistory, store);
 

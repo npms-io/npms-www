@@ -5,9 +5,9 @@ import { Provider } from 'react-redux';
 import { applyRouterMiddleware, Router, browserHistory } from 'react-router';
 import { useScroll } from 'react-router-scroll';
 import config from 'config';
-import { configure as configureStore } from 'shared/state/store';
+import buildStore from 'shared/state/store';
+import buildRoutes from './routes';
 import Application from './app';
-import routes from './routes';
 
 console.info('[bootstrap] App config is', config);
 
@@ -19,17 +19,20 @@ browserHistory.listen((location) => {
     }
 });
 
+// Build redux store
+const store = buildStore(browserHistory);
+
 // Build our routes
-const appRoutes = {
+const routes = {
     path: '/',
     component: Application,
-    childRoutes: routes,
+    childRoutes: buildRoutes(store),
 };
 
 // Render our app!
 ReactDOM.render(
-    <Provider store={ configureStore(browserHistory) }>
-        <Router history={ browserHistory } routes={ appRoutes } render={ applyRouterMiddleware(useScroll()) }/>
+    <Provider store={ store }>
+        <Router history={ browserHistory } routes={ routes } render={ applyRouterMiddleware(useScroll()) }/>
     </Provider>,
     document.querySelector('#root')
 );
