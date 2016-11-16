@@ -38,5 +38,5 @@ Released under the [MIT License](http://www.opensource.org/licenses/mit-license.
 [david-dm-dev-url]: https://david-dm.org/npms-io/npms-www#info=devDependencies
 [david-dm-image]: https://img.shields.io/david/npms-io/npms-www.svg
 [david-dm-url]: https://david-dm.org/npms-io/npms-www
-[travis-image]: http://img.shields.io/travis/npms-io/npms-www.svg
+[travis-image]: http://img.shields.io/travis/npms-io/npms-www/master.svg
 [travis-url]: https://travis-ci.org/npms-io/npms-www
