@@ -42,7 +42,7 @@ class About extends Component {
                         <p>
                             When a list of results is presented to you on the screen, the order of the results are simply based on the
                             relevance they have to the search terms. <a href="https://npmjs.com" target="_blank">npmjs.com</a> search does
-                            not take into account the packages value to rank good packages higher. Because of this, users must manually
+                            not take into account the package's value to rank good packages higher. Because of this, users must manually
                             analyze the search results one by one, taking into consideration several attributes such as the package's
                             version (<code>> 1.0.0</code>?), the downloads count, the latest publish date, the number of GitHub issues,
                             stars, forks, etc. This process is tedious and slow.
@@ -54,8 +54,8 @@ class About extends Component {
                     <div className="section-how-it-works">
                         <h1>How it works</h1>
                         <p>
-                            The <a href="https://github.com/npms-io/npms-analyzer" target="_blank">npms analyzer</a> continuously analyzes <span className="highlight">npm</span> ecosystem,
-                            gathering as much information as possible from a variety of sources, including GitHub, <a href="https://david-dm.org/" target="_blank">david</a> and <a href="https://nodesecurity.io/" target="_blank">nsp</a>.
+                            The <a href="https://github.com/npms-io/npms-analyzer" target="_blank">npms analyzer</a> continuously analyzes the <span className="highlight">npm</span> ecosystem,
+                            gathering as much information as possible from a variety of sources, including GitHub, <a href="https://david-dm.org/" target="_blank">David</a> and <a href="https://nodesecurity.io/" target="_blank">nsp</a>.
 
                             Using the collected information, a final score for each package is calculated based on four different aspects:
                         </p>
@@ -66,18 +66,18 @@ class About extends Component {
                                 <div className="name">Quality</div>
                                 <div className="description">
                                     <p>
-                                        Quality attributes are easy to calculate because they are self contained.
-                                        These are the kind of attributes that a person looks first when looking at the package.
+                                        Quality attributes are easy to calculate because they are self-contained.
+                                        These are the kind of attributes that a person at looks first when checking out a package.
                                     </p>
 
                                 </div>
                                 <ul className="examples">
                                     <li>Has README? Has license? Has <code>.gitignore</code> and friends?</li>
                                     <li>Is the version stable (<code>&gt; 1.x.x</code>)? Is it deprecated?</li>
-                                    <li>Has tests? Whats their coverage %? Is build passing?</li>
+                                    <li>Has tests? What's their coverage %? Is the build passing?</li>
                                     <li>Has outdated dependencies? Do they have vulnerabilities?</li>
                                     <li>Has custom website? Has badges?</li>
-                                    <li>Does the project have linters configured?</li>
+                                    <li>Are there linters configured?</li>
                                 </ul>
                             </div>
                             <div className="aspect">
@@ -85,13 +85,12 @@ class About extends Component {
                                 <div className="name">Maintenance</div>
                                 <div className="description">
                                     <p>
-                                        Maintenance attributes allows us to understand if the package is active & healthy or if it is
-                                        abandoned. These are typically the second kind of attributes that a person looks when looking at
-                                        the package.
+                                        Maintenance attributes allows us to understand if the package is active and healthy or if it is
+                                        abandoned. These are typically the second kind of attributes that a person looks at when examining a package.
                                     </p>
                                 </div>
                                 <ul className="examples">
-                                    <li>Ratio of open issues vs total issues</li>
+                                    <li>Ratio of open issues vs. total issues</li>
                                     <li>The time it takes to close issues</li>
                                     <li>Most recent commit</li>
                                     <li>Commit frequency</li>
@@ -106,7 +105,7 @@ class About extends Component {
                                         Popularity attributes allows us to understand the package adoption and community size.
                                     </p>
                                     <p>
-                                        These are the kind of attributes that a person looks when they are undecided on the package choice.
+                                        These are the kind of attributes that a person looks at when they are undecided on the package choice.
                                     </p>
                                 </div>
                                 <ul className="examples">
@@ -124,11 +123,11 @@ class About extends Component {
                                 <div className="name">Personalities</div>
                                 <div className="description">
                                     <p>
-                                        If two packages are similar, one tends to choose the one in which the author is well known in the
+                                        If two packages are similar, one tends to choose the one whose author is well known in the
                                         community.
                                     </p>
                                     <p>
-                                        Relationships between people are also important. When an user follows another, there's a bound
+                                        Relationships between people are also important. When a user follows another, there's a link
                                         between them. We can infer that people prefer packages from the users they follow.
                                     </p>
                                     <p>
