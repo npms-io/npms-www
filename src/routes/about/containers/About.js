@@ -67,7 +67,7 @@ class About extends Component {
                                 <div className="description">
                                     <p>
                                         Quality attributes are easy to calculate because they are self-contained.
-                                        These are the kind of attributes that a person at looks first when checking out a package.
+                                        These are the kind of attributes that a person looks at first when checking out a package.
                                     </p>
 
                                 </div>
