@@ -86,3 +86,7 @@
 .package-score-tooltip-component .score-value {
     font-weight: 500;
 }
+
+.package-score-tooltip-component a {
+    font-weight: inherit;
+}

@@ -96,6 +96,7 @@
 
 .menu-component nav li a {
     color: inherit;
+    font-weight: inherit;
 }
 
 .menu-component nav li a.is-active {

@@ -87,6 +87,7 @@
 
 .page-search .results-list-item .keywords .keyword a {
     color: #858585;
+    font-weight: inherit;
 }
 
 /* Publish info

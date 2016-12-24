@@ -38,6 +38,7 @@ a,
 a:visited,
 a:active {
     color: #35405b;
+    font-weight: 500;
     text-decoration: none;
     transition: color 0.15s linear;
 }

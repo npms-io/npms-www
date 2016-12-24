@@ -36,7 +36,7 @@ class About extends Component {
                         <p>
                             The official search is powered by <a href="http://elasticsearch.com" target="_blank">Elasticsearch</a> but no advanced analyzers were
                             configured. More specifically, no <a href="https://www.elastic.co/guide/en/elasticsearch/guide/current/stemming.html" target="_blank">stemming</a> nor <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-word-delimiter-tokenfilter.html" target="_blank">split word</a> are
-                            enabled. What does this mean for you? Try searching for <a href="https://www.npmjs.com/search?q=couchdb+promise" target="_blank">"couchdb promise"</a> and <a href="https://www.npmjs.com/search?q=couchdb+promises" target="_blank">"couchdb promises"</a> and see how different the search results are.
+                            enabled. What does this mean for you? Try searching for "<a href="https://www.npmjs.com/search?q=couchdb+promise" target="_blank">couchdb promise</a>" and "<a href="https://www.npmjs.com/search?q=couchdb+promises" target="_blank">couchdb promises</a>" and see how different the search results are.
                             Imagine how many packages you lost on your previous searches because of this.
                         </p>
                         <p>
@@ -193,7 +193,7 @@ class About extends Component {
                             <h1>Authors</h1>
                             <div className="authors-list">
                                 <div className="author">
-                                    <Gravatar size={ 130 } email="andremiguelcruz@msn.com" className="avatar" https />
+                                    <Gravatar size={ 130 } email="andremiguelcruz@msn.com" className="avatar" />
                                     <div className="name">André Cruz</div>
                                     <div className="links">
                                         <a className="social-link" href="https://twitter.com/satazor" target="_blank">
@@ -206,7 +206,7 @@ class About extends Component {
                                 </div>
 
                                 <div className="author">
-                                    <Gravatar size={ 130 } email="mail@andreduarte.net" className="avatar" https />
+                                    <Gravatar size={ 130 } email="mail@andreduarte.net" className="avatar" />
                                     <div className="name">André Duarte</div>
                                     <div className="links">
                                         <a className="social-link" href="https://twitter.com/atduarte" target="_blank">
