@@ -103,7 +103,7 @@ class ResultsListItem extends Component {
                     </a>
                 </Tooltip>
 
-                <Tooltip placement="top" trigger={ ['hover'] } overlay="View this package in npmjs.org">
+                <Tooltip placement="top" trigger={ ['hover'] } overlay="View this package in npmjs.com">
                     <a className="npm-link" href={ this.props.package.links.npm } target="_blank">
                         <SvgIcon id={ SvgIcon.npm } />
                     </a>
