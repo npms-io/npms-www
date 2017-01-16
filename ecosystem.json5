@@ -3,7 +3,7 @@
     deploy: {
         production: {
             user: 'www',
-            host: '212.47.226.136',
+            host: '163.172.160.79',
             ref: 'origin/master',
             repo: 'https://github.com/npms-io/npms-www.git',
             path: '/home/www/npms-www',
