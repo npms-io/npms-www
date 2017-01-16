@@ -14,7 +14,7 @@ Before doing the first deploy, you need to setup the server.
 - Add `www` user to the list of sudoers
 - Install pm2 in the server
 - Setup the deploy environment by running `$ pm2 deploy ecosystem.json5 production setup` in your local machine
-- Create `~/npms-www/parameters.json` in the server with the custom configuration (API URL pointing to https://api.npms.io/, Google Analytics id, etc)
+- Create `~/npms-www/parameters.json` in the server with the custom configuration (API URL pointing to https://api.npms.io, Google Analytics id, etc)
 - Do your first deploy by running `$ pm2 deploy ecosystem.json5 production` in your local machine
 
 ### Nginx
