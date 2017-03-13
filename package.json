@@ -87,7 +87,7 @@
     "style-loader": "^0.13.0",
     "stylelint": "^7.0.2",
     "svg-sprite-loader": "0.0.31",
-    "webpack": "^1.12.9",
+    "webpack": "^2.2.1",
     "webpack-dev-server": "^1.14.0",
     "yargs": "^6.0.0"
   },
