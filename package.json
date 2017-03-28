@@ -84,7 +84,7 @@
     "planify": "^1.0.0",
     "postcss-loader": "^1.1.0",
     "rimraf": "^2.4.4",
-    "style-loader": "^0.13.0",
+    "style-loader": "^0.16.1",
     "stylelint": "^7.0.2",
     "svg-sprite-loader": "0.0.31",
     "webpack": "^1.12.9",
