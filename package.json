@@ -89,7 +89,7 @@
     "svg-sprite-loader": "0.0.31",
     "webpack": "^1.12.9",
     "webpack-dev-server": "^1.14.0",
-    "yargs": "^6.0.0"
+    "yargs": "^7.1.0"
   },
   "engines": {
     "node": ">=4.0.0"
