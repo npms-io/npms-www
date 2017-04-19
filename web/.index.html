@@ -43,6 +43,9 @@
                 lowerThan: 'borderImage',
                 languagePath: ''
             });
+            
+            // Focus the text input on non-mobile devices
+            !window.orientation && document.querySelector('.autosuggest-component-input').focus();
         };
         </script>
 
