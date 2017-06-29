@@ -71,7 +71,7 @@
     "babel-preset-react": "^6.3.13",
     "babel-preset-react-hmre": "^1.0.1",
     "babel-preset-stage-2": "^6.3.13",
-    "chalk": "^1.1.1",
+    "chalk": "^2.0.0",
     "css-loader": "^0.26.0",
     "diff-json-structure": "^1.0.0",
     "eslint": "^3.0.0",
