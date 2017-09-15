@@ -74,7 +74,7 @@
     "chalk": "^2.0.0",
     "css-loader": "^0.26.0",
     "diff-json-structure": "^1.0.0",
-    "eslint": "^3.0.0",
+    "eslint": "^4.7.0",
     "eslint-plugin-react": "^6.0.0",
     "extract-text-webpack-plugin": "^1.0.0",
     "file-loader": "^0.9.0",
