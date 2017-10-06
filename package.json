@@ -60,7 +60,7 @@
   "devDependencies": {
     "@satazor/eslint-config": "^3.0.0",
     "@satazor/stylelint-config": "^8.0.0",
-    "autoprefixer": "^6.2.2",
+    "autoprefixer": "^7.1.5",
     "babel-core": "^6.3.15",
     "babel-loader": "^6.2.0",
     "babel-plugin-transform-object-assign": "^6.8.0",
