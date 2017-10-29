@@ -20,7 +20,7 @@ class Home extends Component {
                 </div>
 
                 <div className="bottom-half">
-                    Supported by <a href="https://opbeat.com" target="_blank">Opbeat</a> &lt;3
+                    Supported by <a href="https://moxy.studio" target="_blank">MOXY</a> &lt;3
                 </div>
             </div>
         );
