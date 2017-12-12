@@ -33,7 +33,7 @@
     "axios": "^0.15.0",
     "bluebird": "^3.3.5",
     "colour-me-life": "^2.0.0",
-    "dom4": "^1.8.3",
+    "dom4": "^2.0.0",
     "lodash": "^4.0.0",
     "positions": "^1.6.1",
     "query-string": "^4.1.0",
