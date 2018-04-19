@@ -3,11 +3,11 @@
   "version": "0.1.0",
   "description": "The http://npms.io website",
   "scripts": {
-    "lint": "./scripts/lint",
-    "build": "./scripts/build",
-    "serve": "./scripts/serve",
-    "pre-commit": "./scripts/lint",
-    "postinstall": "./scripts/init",
+    "lint": "node ./scripts/lint",
+    "build": "node ./scripts/build",
+    "serve": "node ./scripts/serve",
+    "pre-commit": "node ./scripts/lint",
+    "postinstall": "node ./scripts/init",
     "test": "npm run lint"
   },
   "repository": {
