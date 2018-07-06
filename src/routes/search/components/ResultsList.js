@@ -88,8 +88,13 @@ class ResultsList extends Component {
                 </div>
 
                 <ul className="items header-component-with-logo-align-with-search-box">
-                    { this.props.results.items.map((item) => (
-                        <ResultsListItem key={ item.package.name } package={ item.package } score={ item.score } flags={ item.flags }
+                    { this.props.results.items.map((item, index) =>
+                        <ResultsListItem
+                            itemId={ index }
+                            key={ item.package.name }
+                            package={ item.package }
+                            score={ item.score }
+                            flags={ item.flags }
                             apiUrl={ this.props.apiUrl } />
                     )) }
                 </ul>

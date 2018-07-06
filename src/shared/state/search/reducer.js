@@ -3,6 +3,7 @@ const defaultState = {
     params: { q: '', from: 0, size: 25 },
     isLoading: false,
     results: null,
+    focusedResultsItem: 0,
     error: null,
 };
 
@@ -105,6 +106,13 @@ function scroll(state, action) {
     }
 }
 
+function moveResultsFocus(state, action) {
+    return {
+        ...state,
+        focusedResultsItem: action.payload,
+    };
+}
+
 export function searchReducer(state = defaultState, action) {
     switch (action.type) {
     case 'Search.UPDATE_PARAMS':
@@ -119,6 +127,8 @@ export function searchReducer(state = defaultState, action) {
     case 'Search.SCROLL_FULFILLED':
     case 'Search.SCROLL_REJECTED':
         return scroll(state, action);
+    case 'Search.MOVE_RESULTS_FOCUS':
+        return moveResultsFocus(state, action);
     default:
         return state;
     }
