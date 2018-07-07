@@ -147,22 +147,15 @@
     opacity: 1;
 }
 
-.page-search .results-list-item#selected:focus {
+.page-search .results-list-item:focus {
     outline: none;
 }
 
-.page-search .results-list-item#selected:focus .headline a::before {
-    content: "";
-    top: 0.15em;
-    left: 0.15em;
-    width: 0.45em;
-    height: 0.45em;
-    margin-right: 0.25em;
-    transform: rotate(45deg);
-    display: inline-block;
-    vertical-align: middle;
-    border-style: solid;
-    border-width: 0.1em 0.1em 0 0;
+.page-search .results-list-item#selected .headline a::before {
+    content: "\25B6";
+    margin-right: 5px;
+    font-size: 15px;
+    line-height: 20px;
 }
 
 .page-search .results-list-item .links a {
