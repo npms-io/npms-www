@@ -90,7 +90,7 @@ class ResultsList extends Component {
                 <ul className="items header-component-with-logo-align-with-search-box">
                     { this.props.results.items.map((item, index) =>
                         <ResultsListItem
-                            itemId={ index }
+                            itemId={ index + 1 }
                             key={ item.package.name }
                             package={ item.package }
                             score={ item.score }

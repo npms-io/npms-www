@@ -48,6 +48,8 @@ class Search extends Component {
                 </div>
 
                 <Shortcuts
+                    global
+                    targetNodeSelector="body"
                     name="Search"
                     // eslint-disable-next-line react/jsx-handler-names
                     handler={ this._handleShortcuts } >
@@ -64,10 +66,10 @@ class Search extends Component {
     _handleShortcuts(action) {
         switch (action) {
         case 'MOVE_UP':
-            this.props.dispatch(moveResultsFocus(-1));
+            this.props.dispatch(moveResultsFocus(this.props.search.focusedResultsItem - 1));
             break;
         case 'MOVE_DOWN':
-            this.props.dispatch(moveResultsFocus(1));
+            this.props.dispatch(moveResultsFocus(this.props.search.focusedResultsItem + 1));
             break;
         case 'ENTER':
             console.log('enter!');

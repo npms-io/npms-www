@@ -40,13 +40,6 @@ export function reset() {
     };
 }
 
-export function moveResultsFocusAction(payload = 1) {
-    return {
-        type: 'Search.MOVE_RESULTS_FOCUS',
-        payload,
-    };
-}
-
 export function navigate() {
     return (dispatch, getState) => {
         const params = normalizeParams(getState().search.params);
@@ -113,12 +106,11 @@ export function scroll() {
     };
 }
 
-export function moveResultsFocus(value) {
-    return (dispatch, getState) => {
-        const { search: { focusedResultsItem } } = getState();
-
-        const sanitizedInput = (focusedResultsItem + value) > 0 ? (focusedResultsItem + value) : 0;
-
-        dispatch(moveResultsFocusAction(sanitizedInput));
+export function moveResultsFocus(payload) {
+    return (dispatch) => {
+        dispatch({
+            type: 'Search.MOVE_RESULTS_FOCUS',
+            payload: payload < 0 ? 0 : payload,
+        });
     };
 }
