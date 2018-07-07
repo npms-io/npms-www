@@ -1,6 +1,5 @@
 import './ResultsListItem.css';
 import React, { Component, PropTypes } from 'react';
-import shallowCompare from 'react-addons-shallow-compare';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import ago from 's-ago';
@@ -13,8 +12,11 @@ import MaterialIcon from 'shared/components/icon/MaterialIcon';
 import SvgIcon from 'shared/components/icon/SvgIcon';
 
 class ResultsListItem extends Component {
-    shouldComponentUpdate(nextProps, nextState) {
-        return shallowCompare(this, nextProps, nextState);
+    shouldComponentUpdate(nextProps) {
+        return (
+            (this.props.itemId === nextProps.focusedItem ||
+            this.props.itemId === this.props.focusedItem)
+        );
     }
 
     componentDidUpdate() {
