@@ -64,6 +64,9 @@ class Search extends Component {
     }
 
     _handleShortcuts(action) {
+        if (this.props.isLoading) {
+            return;
+        }
         switch (action) {
         case 'MOVE_UP':
             this.props.dispatch(moveResultsFocus(this.props.search.focusedResultsItem - 1));
@@ -85,11 +88,13 @@ Search.childContextTypes = {
 };
 
 Search.propTypes = {
+    isLoading: PropTypes.bool.isRequired,
     dispatch: PropTypes.func.isRequired,
     location: PropTypes.object.isRequired,
     search: PropTypes.object.isRequired,
 };
 
 export default connect((state) => ({
+    isLoading: state.search.isLoading || Boolean(state.app.loadingCount),
     search: state.search,
 }))(Search);
