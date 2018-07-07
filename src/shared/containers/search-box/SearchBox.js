@@ -116,6 +116,10 @@ class SearchBox extends Component {
     }
 
     _handleWindowKeyDown(e) {
+        // Prevent the default behaviour of window scrolling with arrow keys, arrow keys control the selected results item
+        if ([38, 40].indexOf(e.keyCode) > -1) {
+            e.preventDefault();
+        }
         // Skip if `focusOnKeyDown` is not enabled or if something else is already focused
         // Also ctrl & meta keys are ignored to allow copying to clipboard
         if (this.props.focusOnKeyDown && !e.ctrlKey && !e.metaKey && !e.target.matches('input,textarea,select')) {
