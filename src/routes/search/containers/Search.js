@@ -75,7 +75,7 @@ class Search extends Component {
             this.props.dispatch(moveResultsFocus(this.props.search.focusedResultsItem + 1));
             break;
         case 'ENTER':
-            console.log('enter!');
+            document.activeElement.querySelector('a.name').click();
             break;
         default:
             break;
