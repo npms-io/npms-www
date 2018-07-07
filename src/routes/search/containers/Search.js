@@ -77,6 +77,10 @@ class Search extends Component {
         case 'ENTER':
             document.activeElement.querySelector('a.name').click();
             break;
+        case 'ESCAPE':
+            this.props.dispatch(moveResultsFocus(0));
+            document.activeElement.blur();
+            break;
         default:
             break;
         }

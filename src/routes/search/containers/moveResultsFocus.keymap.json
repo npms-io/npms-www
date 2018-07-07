@@ -2,6 +2,7 @@
     "Search": {
         "MOVE_UP": "up",
         "MOVE_DOWN": "down",
-        "ENTER": "enter"
+        "ENTER": "enter",
+        "ESCAPE": "escape"
     }
 }
