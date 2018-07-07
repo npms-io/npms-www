@@ -17,9 +17,20 @@ class ResultsListItem extends Component {
         return shallowCompare(this, nextProps, nextState);
     }
 
+    componentDidUpdate() {
+        if (this.props.focusedItem === this.props.itemId) {
+            this.refs.resultsListItem.focus();
+        }
+    }
+
+
     render() {
         return (
-            <li className="results-list-item" id={ this.props.focusedItem === this.props.itemId ? 'selected' : '' }>
+            <li
+                ref="resultsListItem"
+                tabIndex={ -1 }
+                className="results-list-item"
+                id={ this.props.focusedItem === this.props.itemId ? 'selected' : '' }>
                 { /* Headline */ }
                 <div className="headline">
                     <a href={ this.props.package.links.repository || this.props.package.links.npm } target="_blank"

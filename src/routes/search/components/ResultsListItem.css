@@ -147,7 +147,11 @@
     opacity: 1;
 }
 
-#selected .headline a::before {
+.page-search .results-list-item#selected:focus {
+    outline: none;
+}
+
+.page-search .results-list-item#selected:focus .headline a::before {
     content: "";
     top: 0.15em;
     left: 0.15em;
