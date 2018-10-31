@@ -33,16 +33,16 @@
 
 .tooltip-component-theme-default.tooltip-component-placement-bottom .tooltip-component-arrow::after {
     margin-left: -5px;
+    border-width: 5px;
     border-color: rgba(255, 255, 255, 0);
     border-bottom-color: #fff;
-    border-width: 5px;
 }
 
 .tooltip-component-theme-default.tooltip-component-placement-bottom .tooltip-component-arrow::before {
     margin-left: -6px;
+    border-width: 6px;
     border-color: rgba(204, 204, 204, 0);
     border-bottom-color: #ccc;
-    border-width: 6px;
 }
 
 /* Top placement
@@ -71,16 +71,16 @@
 
 .tooltip-component-theme-default.tooltip-component-placement-top .tooltip-component-arrow::after {
     margin-left: -5px;
+    border-width: 5px;
     border-color: rgba(255, 255, 255, 0);
     border-top-color: #fff;
-    border-width: 5px;
 }
 
 .tooltip-component-theme-default.tooltip-component-placement-top .tooltip-component-arrow::before {
     margin-left: -6px;
+    border-width: 6px;
     border-color: rgba(204, 204, 204, 0);
     border-top-color: #ccc;
-    border-width: 6px;
 }
 
 /* Left placement
@@ -109,16 +109,16 @@
 
 .tooltip-component-theme-default.tooltip-component-placement-left .tooltip-component-arrow::after {
     margin-top: -5px;
+    border-width: 5px;
     border-color: rgba(255, 255, 255, 0);
     border-left-color: #fff;
-    border-width: 5px;
 }
 
 .tooltip-component-theme-default.tooltip-component-placement-left .tooltip-component-arrow::before {
     margin-top: -6px;
+    border-width: 6px;
     border-color: rgba(204, 204, 204, 0);
     border-left-color: #ccc;
-    border-width: 6px;
 }
 
 /* Right placement
@@ -147,14 +147,14 @@
 
 .tooltip-component-theme-default.tooltip-component-placement-right .tooltip-component-arrow::after {
     margin-top: -5px;
+    border-width: 5px;
     border-color: rgba(255, 255, 255, 0);
     border-right-color: #fff;
-    border-width: 5px;
 }
 
 .tooltip-component-theme-default.tooltip-component-placement-right .tooltip-component-arrow::before {
     margin-top: -6px;
+    border-width: 6px;
     border-color: rgba(204, 204, 204, 0);
     border-right-color: #ccc;
-    border-width: 6px;
 }

@@ -32,11 +32,11 @@
     margin-left: -22px;
     border-style: solid;
     border-color: transparent;
-    border-right-width: 28px;
-    border-left-width: 28px;
     border-top-width: 22px;
-    border-bottom-width: 0;
     border-top-color: #35405b;
+    border-left-width: 28px;
+    border-bottom-width: 0;
+    border-right-width: 28px;
 }
 
 /* Page content

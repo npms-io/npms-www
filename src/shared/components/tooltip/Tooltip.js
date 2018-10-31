@@ -45,13 +45,12 @@ Tooltip.defaultProps = {
     mouseLeaveDelay: 0.1,
     destroyTooltipOnHide: true, // Destroy by default because it was causing issues on resize
     onPopupAlign: function (node, align) { // eslint-disable-line object-shorthand
-        checkEdges(node, align, this);  // Prevent tooltips from being too close from the edges of the browser, see https://github.com/react-component/tooltip/issues/55
-        placeArrow(node, align, this);  // Properly position arrow on target, see: https://github.com/react-component/tooltip/issues/54
+        checkEdges(node, align, this); // Prevent tooltips from being too close from the edges of the browser, see https://github.com/react-component/tooltip/issues/55
+        placeArrow(node, align, this); // Properly position arrow on target, see: https://github.com/react-component/tooltip/issues/54
     },
 };
 
 Tooltip.propTypes = {
-    ...RcTooltip.propTypes,
     theme: PropTypes.string,
 };
 

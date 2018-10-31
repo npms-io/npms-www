@@ -36,9 +36,9 @@ function generateIndex(data, minify) {
     // Otherwise clean the empty lines left over from the template
     } else {
         index = index
-            .split('\n')
-            .filter((line) => !/^\s+$/.test(line))
-            .join('\n');
+        .split('\n')
+        .filter((line) => !/^\s+$/.test(line))
+        .join('\n');
     }
 
     fs.writeFileSync(`${projectDir}/web/index.html`, index);

@@ -1,7 +1,7 @@
 {
     "root": true,
     "extends": [
-        "@satazor/eslint-config/es6.js",
-        "@satazor/eslint-config/addons/node.js"
+        "eslint-config-moxy/es6",
+        "eslint-config-moxy/addons/node"
     ]
 }

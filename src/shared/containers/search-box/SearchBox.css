@@ -93,8 +93,8 @@
 .search-box-component .autosuggest-component-suggestion {
     height: 40px;
     padding: 0 15px;
-    align-items: center;
     display: flex;
+    align-items: center;
     color: #414141;
     cursor: pointer;
     transition: background-color 0.1s linear;

@@ -22,8 +22,8 @@ let registeredReducers = {
 /**
  * Adds an object of reducers.
  *
- * @param {Object}  reducers     The reducers object, similar to what you would pass to combineReducers
- * @param {Boolean} [apply=true] False to not apply the combined reducer to the store
+ * @param {Object}  reducers     - The reducers object, similar to what you would pass to combineReducers.
+ * @param {Boolean} [apply=true] - False to not apply the combined reducer to the store.
  */
 export function addReducers(reducers, apply) {
     registeredReducers = { ...registeredReducers, ...reducers };
@@ -33,8 +33,8 @@ export function addReducers(reducers, apply) {
 /**
  * Removes reducers.
  *
- * @param {Array}   reducers     The reducers names to remove.
- * @param {Boolean} [apply=true] False to not apply the combined reducer to the store
+ * @param {Array}   reducers     - The reducers names to remove.
+ * @param {Boolean} [apply=true] - False to not apply the combined reducer to the store.
  */
 export function removeReducers(reducers, apply) {
     registeredReducers = omit(registeredReducers, reducers);

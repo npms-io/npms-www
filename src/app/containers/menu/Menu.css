@@ -51,8 +51,8 @@
 }
 
 .menu-component .svg-morph svg {
-    fill: #f2f2f1;
     transform: rotate(180deg);
+    fill: #f2f2f1;
 }
 
 /* Nav

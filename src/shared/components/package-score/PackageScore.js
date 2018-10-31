@@ -10,8 +10,8 @@ import Tooltip from 'shared/components/tooltip/Tooltip';
 import scoreBadgeSvg from './svgs/score-badge.svg';
 
 const gradient = new ColourMeLife()
-    .setSpectrum('#6e4b46', '#9e6b64', '#1ac391')
-    .setNumberRange(0, 1);
+.setSpectrum('#6e4b46', '#9e6b64', '#1ac391')
+.setNumberRange(0, 1);
 
 const colors = range(101).map((index) => gradient.colourAt(index / 100));
 

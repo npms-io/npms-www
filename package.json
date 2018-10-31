@@ -58,8 +58,8 @@
     "snapsvg": "^0.4.0"
   },
   "devDependencies": {
-    "@satazor/eslint-config": "^3.0.0",
-    "@satazor/stylelint-config": "^8.0.0",
+    "@commitlint/cli": "^7.1.2",
+    "@commitlint/config-conventional": "^7.1.2",
     "autoprefixer": "^6.2.2",
     "babel-core": "^6.3.15",
     "babel-loader": "^6.2.0",
@@ -74,21 +74,41 @@
     "chalk": "^2.0.0",
     "css-loader": "^0.26.0",
     "diff-json-structure": "^1.0.0",
-    "eslint": "^3.0.0",
-    "eslint-plugin-react": "^6.0.0",
+    "eslint": "^5.8.0",
+    "eslint-config-moxy": "^6.1.1",
     "extract-text-webpack-plugin": "^1.0.0",
     "file-loader": "^0.9.0",
     "html-minifier": "^3.0.2",
+    "husky": "^1.1.2",
     "imports-loader": "^0.6.5",
     "json-loader": "^0.5.4",
+    "lint-staged": "^8.0.4",
     "planify": "^1.0.0",
     "postcss-loader": "^1.1.0",
     "rimraf": "^2.4.4",
     "style-loader": "^0.13.0",
-    "stylelint": "^7.0.2",
+    "stylelint": "^9.7.1",
+    "stylelint-config-moxy": "^5.0.0",
     "svg-sprite-loader": "0.0.31",
     "webpack": "^1.12.9",
     "webpack-dev-server": "^1.14.0",
     "yargs": "^6.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   }
 }

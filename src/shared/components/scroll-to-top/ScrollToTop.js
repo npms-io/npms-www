@@ -11,7 +11,7 @@ class ScrollToTop extends Component {
 
     componentDidMount() {
         window.addEventListener('scroll', this._handleScroll);
-        setTimeout(() => this._handleScroll(), 50);  // Do not cause a reflow syncronously
+        setTimeout(() => this._handleScroll(), 50); // Do not cause a reflow syncronously
     }
 
     shouldComponentUpdate(nextProps, nextState) {
@@ -29,7 +29,7 @@ class ScrollToTop extends Component {
     render() {
         return (
             <div className="scroll-to-top-component" ref={ (ref) => { this._el = ref; } }>
-                <MaterialIcon id="keyboard_arrow_up" onClick={ () => this._handleScrollToTopIconClick() }/>
+                <MaterialIcon id="keyboard_arrow_up" onClick={ () => this._handleScrollToTopIconClick() } />
             </div>
         );
     }

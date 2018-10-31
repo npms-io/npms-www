@@ -1,14 +1,12 @@
 {
     "root": true,
-    "parserOptions": {
-        "ecmaFeatures": {
-            "experimentalObjectRestSpread": true
-        }
-    },
     "extends": [
-        "@satazor/eslint-config/es6",
-        "@satazor/eslint-config/addons/es6-modules",
-        "@satazor/eslint-config/addons/browser",
-        "@satazor/eslint-config/addons/react"
-    ]
+        "eslint-config-moxy/es9",
+        "eslint-config-moxy/addons/es-modules",
+        "eslint-config-moxy/addons/browser",
+        "eslint-config-moxy/addons/react"
+    ],
+    "rules": {
+        "react/no-unescaped-entities": 0
+    }
 }

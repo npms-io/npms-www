@@ -20,7 +20,8 @@ const projectDir = `${__dirname}/..`;
 const argv = yargs
 .strict()
 .wrap(Math.min(120, yargs.terminalWidth()))
-.version().alias('version', 'v')
+.version()
+.alias('version', 'v')
 .usage('Usage: ./$0 [options]')
 .demand(0, 0)
 .option('env', {
@@ -110,9 +111,7 @@ planify({ exit: true, reporter: argv.reporter })
 // Validate if parameters.json are ok and up to date
 .step('Validating config/parameters.json', () => validator.validateParameters(parameters))
 .step('Remove previous build', () => web.cleanBuild())
-.step('Bundle with webpack', { slow: 10000 }, (data) => {
-    return runWebpack()
-    .then((result) => { data.webpack = result; });
-})
+.step('Bundle with webpack', { slow: 10000 }, (data) => runWebpack()
+.then((result) => { data.webpack = result; }))
 .step('Generate index HTML page', (data) => web.generateIndex(data.webpack, argv.minify))
 .run();

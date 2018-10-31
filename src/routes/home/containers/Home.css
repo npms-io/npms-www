@@ -20,9 +20,9 @@
 
 .page-home .upper-half {
     height: calc(65vh - 80px);
+    display: flex;
     justify-content: center;
     align-items: center;
-    display: flex;
     background-color: #35405b;
     color: #fff;
 }

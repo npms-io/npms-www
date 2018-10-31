@@ -1,21 +1,19 @@
 /* eslint-env node */
-/* eslint camelcase:0 */
-
-'use strict';
+/* eslint-disable camelcase, prefer-import/prefer-import-over-require */
 
 const path = require('path');
 const assign = require('lodash/assign');
 const parameters = require('./parameters.json');
 const projectDir = path.resolve(`${__dirname}/..`);
 
-// webpack plugins
+// Webpack plugins
 const HotModuleReplacementPlugin = require('webpack/lib/HotModuleReplacementPlugin');
 const NoErrorsPlugin = require('webpack/lib/NoErrorsPlugin');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-// post css plugins
+// Post css plugins
 const autoprefixer = require('autoprefixer');
 
 function buildConfig(options) {
@@ -28,8 +26,8 @@ function buildConfig(options) {
         // Webpack configuration
         // ---------------------------------------------------------
         entry: [
-            isDev && 'webpack-dev-server/client?/',  // Necessary for hot reloading
-            isDev && 'webpack/hot/only-dev-server',  // Necessary for hot reloading
+            isDev && 'webpack-dev-server/client?/', // Necessary for hot reloading
+            isDev && 'webpack/hot/only-dev-server', // Necessary for hot reloading
             `${projectDir}/src/bootstrap.js`,
 
         ].filter((val) => !!val),
@@ -62,7 +60,7 @@ function buildConfig(options) {
                     test: /\.css$/,
                     include: [`${projectDir}/src`],
                     loader: ExtractTextPlugin.extract('style-loader',
-                                'css-loader?importLoaders=1&sourceMap!postcss-loader'),
+                        'css-loader?importLoaders=1&sourceMap!postcss-loader'),
                 },
                 // JSON loader so that we can import json files, such as parameters.json
                 {
@@ -107,9 +105,9 @@ function buildConfig(options) {
             options.minify && new UglifyJsPlugin({
                 compressor: {
                     warnings: false,
-                    drop_console: true,   // Drop console.* statements
-                    drop_debugger: true,  // Drop debugger statements
-                    screw_ie8: true,      // We don't support IE8 and lower, this further improves compression
+                    drop_console: true, // Drop console.* statements
+                    drop_debugger: true, // Drop debugger statements
+                    screw_ie8: true, // We don't support IE8 and lower, this further improves compression
                 },
             }),
         ].filter((val) => !!val),
@@ -122,13 +120,18 @@ function buildConfig(options) {
             publicPath: `${parameters.publicPath}/`,
             contentBase: `${projectDir}/web/`,
             filename: 'main.js',
-            hot: isDev,                   // Enable HMR in dev
-            compress: !isDev,             // Gzip compress when not in dev
-            lazy: !isDev,                 // Don't do webpack builds when not in dev
-            historyApiFallback: true,     // Allow deep-linking
+            hot: isDev, // Enable HMR in dev
+            compress: !isDev, // Gzip compress when not in dev
+            lazy: !isDev, // Don't do webpack builds when not in dev
+            historyApiFallback: true, // Allow deep-linking
             stats: {
-                chunks: false, children: false, modules: false,
-                assets: false, hash: false, timings: false, version: false,
+                chunks: false,
+                children: false,
+                modules: false,
+                assets: false,
+                hash: false,
+                timings: false,
+                version: false,
             },
             // API proxies to circumvent CORS issues while developing
             // See available options in https://github.com/chimurai/http-proxy-middleware
@@ -143,7 +146,6 @@ function buildConfig(options) {
         },
     };
 }
-
 
 // Do some trickery to export the config based on the running script name
 // This allows us to use the webpack executable directly as well as supporting

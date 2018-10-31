@@ -50,7 +50,7 @@ class ResultsListItem extends Component {
     }
 
     _renderKeywords() {
-        const keywords = uniq(this.props.package.keywords);  // Remove duplicates because we use keywords as React keys
+        const keywords = uniq(this.props.package.keywords); // Remove duplicates because we use keywords as React keys
         const keywordsCount = keywords && keywords.length;
 
         if (!keywordsCount) {
@@ -60,12 +60,12 @@ class ResultsListItem extends Component {
         return (
             <div className="keywords ellipsis">
                 <MaterialIcon id="local_offer" />
-                { keywords.map((keyword, index) =>
+                { keywords.map((keyword, index) => (
                     <span className="keyword" key={ keyword }>
                         <Link to={ `/search?q=${encodeURIComponent(keyword)}` }>{ keyword }</Link>
                         { index < keywordsCount - 1 ? ', ' : '' }
                     </span>
-                ) }
+                )) }
             </div>
         );
     }

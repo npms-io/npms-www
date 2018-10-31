@@ -12,10 +12,10 @@ const validParams = ['q', 'size', 'from'];
 // TODO: store results in an LRU to improve integration with back button
 
 function buildSearchUrl(params) {
-    params = omit(params, 'from', 'size');  // Params that don't go into the URL
+    params = omit(params, 'from', 'size'); // Params that don't go into the URL
 
     const queryStr = queryString.stringify(params)
-    .replace(/%20/g, '+');                // Replace spaces with + because it's prettier
+    .replace(/%20/g, '+'); // Replace spaces with + because it's prettier
 
     return `/search${queryStr ? `?${queryStr}` : ''}`;
 }
@@ -72,7 +72,7 @@ export function run() {
                 .finally(() => dispatch(unmarkAsLoading())),
             },
         })
-        .catch(() => {});  // Search.RUN_REJECTED will be dispatched, so swallow any error
+        .catch(() => {}); // Search.RUN_REJECTED will be dispatched, so swallow any error
     };
 }
 
@@ -102,6 +102,6 @@ export function scroll() {
                 .finally(() => dispatch(unmarkAsLoading())),
             },
         })
-        .catch(() => {});  // Search.SCROLL_REJECTED will be dispatched, so swallow any error
+        .catch(() => {}); // Search.SCROLL_REJECTED will be dispatched, so swallow any error
     };
 }

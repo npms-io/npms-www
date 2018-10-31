@@ -7,8 +7,8 @@ const maxResults = 10;
 
 function normalizeQuery(query) {
     return query
-    .replace(/(\S+:'(?:[^'\\]|\\.)*')|(\S+:"(?:[^"\\]|\\.)*")|\S+:\S+/g, '')  // Remove qualifiers
-    .replace(/\s\s*/g, ' ')                                                   // Remove extra spaces left behind
+    .replace(/(\S+:'(?:[^'\\]|\\.)*')|(\S+:"(?:[^"\\]|\\.)*")|\S+:\S+/g, '') // Remove qualifiers
+    .replace(/\s\s*/g, ' ') // Remove extra spaces left behind
     .trim();
 }
 
@@ -40,6 +40,6 @@ export function fetch(query) {
                 promise: npmsRequest(`/search/suggestions?q=${encodeURIComponent(query)}&size=${maxResults}`),
             },
         })
-        .catch(() => {});  // SearchSuggestions.FETCH_REJECTED will be dispatched, so swallow any error
+        .catch(() => {}); // SearchSuggestions.FETCH_REJECTED will be dispatched, so swallow any error
     };
 }

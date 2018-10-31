@@ -34,7 +34,7 @@ const appRoutes = {
 // Render our app!
 ReactDOM.render(
     <Provider store={ store }>
-        <Router history={ browserHistory } routes={ appRoutes } render={ applyRouterMiddleware(useScroll()) }/>
+        <Router history={ browserHistory } routes={ appRoutes } render={ applyRouterMiddleware(useScroll()) } />
     </Provider>,
     document.querySelector('#root')
 );

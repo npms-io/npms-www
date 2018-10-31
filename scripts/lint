@@ -16,7 +16,8 @@ const projectDir = `${__dirname}/..`;
 const argv = yargs
 .strict()
 .wrap(Math.min(120, yargs.terminalWidth()))
-.help('help').alias('help', 'h')
+.help('help')
+.alias('help', 'h')
 .usage('Usage: ./$0 [options]')
 .demand(0, 0)
 .option('lint-output', {
@@ -78,7 +79,6 @@ function runStylelint(files) {
 // ---------------------------------------------------------
 // Steps
 // ---------------------------------------------------------
-
 
 planify({ exit: true, reporter: argv.reporter })
 // Run es-lint to validate JS source code

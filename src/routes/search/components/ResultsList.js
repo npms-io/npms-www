@@ -71,7 +71,7 @@ class ResultsList extends Component {
                 </div>
 
                 <div className="no-results header-component-with-logo-align-with-search-box">
-                    <p>Sorry there are no results for your query.<br/>Perhaps try searching something different?</p>
+                    <p>Sorry there are no results for your query.<br />Perhaps try searching something different?</p>
                 </div>
             </div>
         );
@@ -88,10 +88,10 @@ class ResultsList extends Component {
                 </div>
 
                 <ul className="items header-component-with-logo-align-with-search-box">
-                    { this.props.results.items.map((item) =>
+                    { this.props.results.items.map((item) => (
                         <ResultsListItem key={ item.package.name } package={ item.package } score={ item.score } flags={ item.flags }
                             apiUrl={ this.props.apiUrl } />
-                    ) }
+                    )) }
                 </ul>
 
                 <Waypoint

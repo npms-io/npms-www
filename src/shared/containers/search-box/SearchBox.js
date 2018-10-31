@@ -96,9 +96,9 @@ class SearchBox extends Component {
     _renderSuggestion(suggestion) {
         return (
             <div className="suggestion">
-                { suggestion.highlight
-                    ? <div className="suggestion-name ellipsis" dangerouslySetInnerHTML={ { __html: suggestion.highlight } } />
-                    : <div className="suggestion-name ellipsis">{ suggestion.package.name }</div>
+                { suggestion.highlight ?
+                    <div className="suggestion-name ellipsis" dangerouslySetInnerHTML={ { __html: suggestion.highlight } } /> :
+                    <div className="suggestion-name ellipsis">{ suggestion.package.name }</div>
                 }
                 <div className="suggestion-description ellipsis">{ suggestion.package.description }</div>
             </div>
@@ -111,7 +111,7 @@ class SearchBox extends Component {
 
     _handleSubmit(e) {
         e.preventDefault();
-        this._inputEl.blur();  // Ensure keyboard is hidden in mobile
+        this._inputEl.blur(); // Ensure keyboard is hidden in mobile
         this.props.dispatch(navigate());
     }
 
@@ -134,7 +134,7 @@ class SearchBox extends Component {
 
     _handleSuggestionSelected(e, selected) {
         this.props.dispatch(updateParams({ q: selected.suggestionValue }));
-        this._buttonEl.click();  // Submit the form (calling submit() was not working with react)
+        this._buttonEl.click(); // Submit the form (calling submit() was not working with react)
     }
 }
 

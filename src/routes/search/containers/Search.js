@@ -31,7 +31,7 @@ class Search extends Component {
                 <Header showSearch />
 
                 <div className="scroll-to-top header-component-with-logo-align-with-search-box-floated">
-                    <ScrollToTop showUnder={ 200 }/>
+                    <ScrollToTop showUnder={ 200 } />
                 </div>
 
                 <ResultsList results={ this.props.search.results } error={ this.props.search.error }

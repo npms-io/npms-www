@@ -71,7 +71,7 @@ class LoadingBar extends Component {
 
             // Now increase the bar to `firstPercentage`
             // Note that we must reflow before, so that the disable-transition has been applied
-            ReactDOM.findDOMNode(this).offsetHeight;  // eslint-disable-line no-unused-expressions
+            ReactDOM.findDOMNode(this).offsetHeight; // eslint-disable-line no-unused-expressions
             this.setState({ percentage: firstPercentage, instant: false });
         });
     }

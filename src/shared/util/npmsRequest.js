@@ -29,12 +29,12 @@ function onRejected(res) {
 export default function npmsRequest(path, options) {
     options = {
         timeout: config.api.timeout,
-        withCredentials: true,  // Necessary for better integration with CloudFlare and Google Analytics
+        withCredentials: true, // Necessary for better integration with CloudFlare and Google Analytics
         ...options,
     };
 
-    return Promise.try(() => {
-        return axios(`${config.api.url}${path}`, options)
-        .then((res) => onFullfilled(res), (res) => onRejected(res));
-    });
+    return Promise.try(() => (
+        axios(`${config.api.url}${path}`, options)
+        .then((res) => onFullfilled(res), (res) => onRejected(res))
+    ));
 }
