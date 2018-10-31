@@ -3,10 +3,9 @@
   "version": "0.1.0",
   "description": "The http://npms.io website",
   "scripts": {
-    "lint": "./scripts/lint",
+    "lint": "eslint . --ignore-path .gitignore && stylelint \"**/*.css\" --ignore-path .gitignore",
     "build": "./scripts/build",
     "serve": "./scripts/serve",
-    "pre-commit": "./scripts/lint",
     "postinstall": "./scripts/init",
     "test": "npm run lint"
   },
