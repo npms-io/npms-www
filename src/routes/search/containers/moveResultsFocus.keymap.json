@@ -1,0 +1,8 @@
+{
+    "Search": {
+        "MOVE_UP": "up",
+        "MOVE_DOWN": "down",
+        "ENTER": "enter",
+        "ESCAPE": "escape"
+    }
+}

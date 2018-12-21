@@ -1,6 +1,6 @@
 import './ResultsListItem.css';
 import React, { Component, PropTypes } from 'react';
-import shallowCompare from 'react-addons-shallow-compare';
+import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import ago from 's-ago';
 import uniq from 'lodash/uniq';
@@ -12,13 +12,27 @@ import MaterialIcon from 'shared/components/icon/MaterialIcon';
 import SvgIcon from 'shared/components/icon/SvgIcon';
 
 class ResultsListItem extends Component {
-    shouldComponentUpdate(nextProps, nextState) {
-        return shallowCompare(this, nextProps, nextState);
+    shouldComponentUpdate(nextProps) {
+        return (
+            (this.props.itemId === nextProps.focusedItem ||
+            this.props.itemId === this.props.focusedItem)
+        );
     }
+
+    componentDidUpdate() {
+        if (this.props.focusedItem === this.props.itemId) {
+            this.refs.resultsListItem.focus();
+        }
+    }
+
 
     render() {
         return (
-            <li className="results-list-item">
+            <li
+                ref="resultsListItem"
+                tabIndex={ -1 }
+                className="results-list-item"
+                id={ this.props.focusedItem === this.props.itemId ? 'selected' : '' }>
                 { /* Headline */ }
                 <div className="headline">
                     <a href={ this.props.package.links.repository || this.props.package.links.npm } target="_blank"
@@ -129,10 +143,16 @@ ResultsListItem.propTypes = {
     flags: PropTypes.object,
     score: PropTypes.object.isRequired,
     apiUrl: PropTypes.string,
+    itemId: PropTypes.number.isRequired,
+    focusedItem: PropTypes.number.isRequired,
 };
 
 ResultsListItem.defaultProps = {
     apiUrl: 'https://api.npms.io',
 };
 
-export default ResultsListItem;
+const mapStateToProps = (state) => ({
+    focusedItem: state.search.focusedResultsItem,
+});
+
+export default connect(mapStateToProps)(ResultsListItem);

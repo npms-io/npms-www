@@ -6,9 +6,22 @@ import isEqual from 'lodash/isEqual';
 import Header from 'shared/containers/header/Header';
 import ResultsList from '../components/ResultsList';
 import ScrollToTop from 'shared/components/scroll-to-top/ScrollToTop';
-import { run, updateParams, scroll, reset } from 'shared/state/search/actions';
+import { run, updateParams, scroll, reset, moveResultsFocus } from 'shared/state/search/actions';
+
+import keymap from './moveResultsFocus.keymap.json';
+import { ShortcutManager, Shortcuts } from 'react-shortcuts';
+const shortcutManager = new ShortcutManager(keymap);
 
 class Search extends Component {
+    constructor() {
+        super();
+        this._handleShortcuts = this._handleShortcuts.bind(this);
+    }
+
+    getChildContext() {
+        return { shortcuts: shortcutManager };
+    }
+
     componentWillMount() {
         this.props.dispatch(updateParams({ q: '', ...this.props.location.query }));
         this.props.dispatch(run());
@@ -34,19 +47,58 @@ class Search extends Component {
                     <ScrollToTop showUnder={ 200 } />
                 </div>
 
-                <ResultsList results={ this.props.search.results } error={ this.props.search.error }
-                    onLoadMore={ () => this.props.dispatch(scroll()) } apiUrl={ config.api.url } />
+                <Shortcuts
+                    global
+                    targetNodeSelector="body"
+                    name="Search"
+                    // eslint-disable-next-line react/jsx-handler-names
+                    handler={ this._handleShortcuts } >
+                    <ResultsList
+                        results={ this.props.search.results }
+                        error={ this.props.search.error }
+                        onLoadMore={ () => this.props.dispatch(scroll()) }
+                        apiUrl={ config.api.url } />
+                </Shortcuts>
             </div>
         );
     }
+
+    _handleShortcuts(action) {
+        if (this.props.isLoading) {
+            return;
+        }
+        switch (action) {
+        case 'MOVE_UP':
+            this.props.dispatch(moveResultsFocus(this.props.search.focusedResultsItem - 1));
+            break;
+        case 'MOVE_DOWN':
+            this.props.dispatch(moveResultsFocus(this.props.search.focusedResultsItem + 1));
+            break;
+        case 'ENTER':
+            document.activeElement.querySelector('a.name').click();
+            break;
+        case 'ESCAPE':
+            this.props.dispatch(moveResultsFocus(0));
+            document.activeElement.blur();
+            break;
+        default:
+            break;
+        }
+    }
 }
 
+Search.childContextTypes = {
+    shortcuts: PropTypes.object.isRequired,
+};
+
 Search.propTypes = {
+    isLoading: PropTypes.bool.isRequired,
     dispatch: PropTypes.func.isRequired,
     location: PropTypes.object.isRequired,
     search: PropTypes.object.isRequired,
 };
 
 export default connect((state) => ({
+    isLoading: state.search.isLoading || Boolean(state.app.loadingCount),
     search: state.search,
 }))(Search);

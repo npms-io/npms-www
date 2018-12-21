@@ -143,6 +143,21 @@
     opacity: 1;
 }
 
+#selected .links {
+    opacity: 1;
+}
+
+.page-search .results-list-item:focus {
+    outline: none;
+}
+
+.page-search .results-list-item#selected .headline a::before {
+    content: "\25B6";
+    margin-right: 5px;
+    font-size: 15px;
+    line-height: 20px;
+}
+
 .page-search .results-list-item .links a {
     margin-left: 10px;
 }

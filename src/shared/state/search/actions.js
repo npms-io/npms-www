@@ -105,3 +105,12 @@ export function scroll() {
         .catch(() => {}); // Search.SCROLL_REJECTED will be dispatched, so swallow any error
     };
 }
+
+export function moveResultsFocus(payload) {
+    return (dispatch) => {
+        dispatch({
+            type: 'Search.MOVE_RESULTS_FOCUS',
+            payload: payload < 0 ? 0 : payload,
+        });
+    };
+}
