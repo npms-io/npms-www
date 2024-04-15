@@ -30,7 +30,7 @@
   "dependencies": {
     "arrival": "^1.2.2",
     "axios": "^0.15.0",
-    "bluebird": "^3.3.5",
+    "bluebird": "^3.5.5",
     "colour-me-life": "^2.0.0",
     "dom4": "^1.8.3",
     "lodash": "^4.0.0",
