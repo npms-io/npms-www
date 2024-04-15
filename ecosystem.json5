@@ -3,13 +3,13 @@
     deploy: {
         production: {
             user: 'www',
-            host: '163.172.160.79',
+            host: '212.47.254.51',
             ref: 'origin/master',
             repo: 'https://github.com/npms-io/npms-www.git',
             path: '/home/www/npms-www',
             'post-deploy': '\
 cp ../parameters.json ./config/ && \
-npm update --loglevel http && \
+npm update --legacy-peer-deps --loglevel http && \
 npm run build && \
 mkdir -p ../web && \
 rsync -r --delete --exclude .index.html ./web/ ../web/',

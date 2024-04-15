@@ -81,6 +81,9 @@ function buildConfig(options) {
                 },
             ],
         },
+        externals: {
+            'async_hooks': 'async_hooks',
+        },
         postcss: () => [
             // Auto prefix CSS based on https://github.com/ai/browserslist
             autoprefixer({ browsers: ['last 2 versions', 'IE >= 11'] }),
