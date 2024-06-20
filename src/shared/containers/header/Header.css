@@ -13,6 +13,9 @@
     vertical-align: middle;
 }
 
+/* Logo
+   ========================================================================== */
+
 .header-component .logo {
     width: 20px;
     padding-left: 20px;
@@ -29,28 +32,20 @@
     text-decoration: none;
 }
 
+/* Search box tweeks
+   ========================================================================== */
+
 .header-component .search-box .search-box-component {
     max-width: 700px;
 }
+
+/* Right side actions
+   ========================================================================== */
 
 .header-component .other-actions {
     width: 160px;
     text-align: right;
     user-select: none;
-}
-
-.header-component .other-actions .toggle-menu {
-    margin-right: 17px;  /* Should be 20px but icon is centered */
-    display: inline-block;
-    vertical-align: middle;
-}
-
-.header-component .other-actions .toggle-menu i {
-    cursor: pointer;
-}
-
-.header-component .other-actions .toggle-menu:hover {
-    color: #1dd09b;
 }
 
 .header-component .other-actions .social-link {
@@ -63,6 +58,28 @@
 
 .header-component .other-actions .social-link:hover {
     fill: #1dd09b;
+}
+
+.header-component .other-actions .toggle-menu {
+    margin-right: 17px;  /* Should be 20px but icon is centered */
+    display: inline-block;
+    vertical-align: middle;
+    opacity: 0.3;
+    pointer-events: none;
+    transition: opacity 0.2s linear;
+}
+
+.header-component .other-actions .toggle-menu:hover {
+    color: #1dd09b;
+}
+
+.is-menu-mounted .header-component .other-actions .toggle-menu {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.header-component .other-actions .toggle-menu i {
+    cursor: pointer;
 }
 
 /* Utility classes to be used by several pages
